@@ -6009,3 +6009,10 @@ html {
   .aug-block { padding: 1rem 1.1rem; }
   .aug-tension { grid-template-columns: 1fr; }
 }
+
+/* Company logos on avatars (logos.js) */
+.has-logo[data-logo] { background: #FFFFFF !important; color: transparent !important; overflow: hidden; }
+.has-logo[data-logo] img { width: 62%; height: 62%; object-fit: contain; display: block; }
+.pai-brain-icon.has-logo { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+.rv-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.15em; height: 1.15em; margin-right: 0.4em; border-radius: 0.25em; background: #FFFFFF; vertical-align: -0.18em; overflow: hidden; flex: 0 0 auto; }
+.rv-logo img { width: 78%; height: 78%; object-fit: contain; display: block; }

@@ -62,7 +62,7 @@
         { name: 'EvenUp',     detail: '$2B+ · demand letters' }
       ],
       dvc: [
-        { name: 'Higgsfield',         detail: 'In talks at $5B · >$500M run-rate' },
+        { name: 'Higgsfield',         detail: '$5.4B Series B (Aug 2026) · ~$700M run-rate' },
         { name: 'Doctronic',          detail: 'AI medical consults · acquired Summer Health' },
         { name: 'Howie AI',           detail: 'EA · scheduling' },
         { name: 'tely.ai',            detail: 'B2B content marketing' },

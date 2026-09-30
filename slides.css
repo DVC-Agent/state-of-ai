@@ -1962,3 +1962,9 @@ body.is-fullscreen .nav-hint { display: none; }
   .cover-tagline { display: none; }
   .cover-title { font-size: clamp(32px, 12vw, 46px); }
 }
+
+/* Company logos (logos.js) */
+.has-logo[data-logo] { background: #FFFFFF !important; color: transparent !important; overflow: hidden; box-shadow: 0 4px 12px -4px rgba(0,0,0,0.35) !important; }
+.has-logo[data-logo] img { width: 62%; height: 62%; object-fit: contain; display: block; }
+.rv-logo { display: inline-flex; align-items: center; justify-content: center; width: 1.15em; height: 1.15em; margin-right: 0.4em; border-radius: 0.25em; background: #FFFFFF; vertical-align: -0.18em; overflow: hidden; flex: 0 0 auto; }
+.rv-logo img { width: 78%; height: 78%; object-fit: contain; display: block; }

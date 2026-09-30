@@ -829,10 +829,10 @@
 
     const YEARS = ['2020', '2021', '2022', '2023', '2024', '2025', '2026E'];
     const COMPANIES = {
-      amazon:    { label: 'Amazon',    color: '#FF9900', data: [40, 61, 63, 54, 83, 131, 200] },
+      amazon:    { label: 'Amazon',    color: '#FF9900', data: [40, 61, 63, 54, 83, 131, 220] },
       alphabet:  { label: 'Alphabet',  color: '#4285F4', data: [22, 29, 31, 32, 52, 91, 200] },
       microsoft: { label: 'Microsoft', color: '#7FBA00', data: [20, 27, 32, 35, 56, 80, 190] },
-      meta:      { label: 'Meta',      color: '#0668E1', data: [16, 19, 32, 28, 39, 72, 135] },
+      meta:      { label: 'Meta',      color: '#0668E1', data: [16, 19, 32, 28, 39, 72, 138] },
       oracle:    { label: 'Oracle',    color: '#C74634', data: [9, 7, 9, 9, 13, 35, 50] }
     };
     const AI_REVENUE = [2, 5, 10, 20, 40, 100, 180];
@@ -1332,7 +1332,7 @@
       const card = document.createElement('div');
       card.className = 'vibe-card' + (c.dvc ? ' vibe-card--dvc' : '');
       card.innerHTML = `
-        <div class="vibe-logo" style="--logo-color:${c.color}">${c.letter}</div>
+        <div class="vibe-logo" style="--logo-color:${c.color}"${c.domain ? ` data-logo="${c.domain}"` : ''}>${c.letter}</div>
         <div class="vibe-body">
           <div class="vibe-head">
             <span class="vibe-name">${c.name}</span>
@@ -1343,6 +1343,7 @@
         </div>`;
       grid.appendChild(card);
     });
+    if (window.dvcApplyLogos) window.dvcApplyLogos(grid);
     if (window.gsap) {
       gsap.fromTo(grid.children,
         { opacity: 0, y: 18, scale: 0.96 },

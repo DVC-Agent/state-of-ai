@@ -21,7 +21,7 @@ window.SLIDES_DATA = {
     },
     {
       badge: 'LAYER 3', title: 'CLOUD & INFRA', accent: '#4A90D9',
-      revenue2026: '$45-55B', revenueLabel: 'AI cloud rev (+ ~$725B 2026 CapEx)',
+      revenue2026: '$45-55B', revenueLabel: 'AI cloud rev (+ ~$750B 2026 CapEx)',
       revenue2024Num: 20, revenue2026Num: 50,
       growth: '+150%',
       marginPct: 28, marginRange: '20-35%'
@@ -42,10 +42,10 @@ window.SLIDES_DATA = {
     }
   ],
 
-  // Hyperscaler CapEx ($B) — Big 4 2026 guidance: ~$725B midpoint, up to ~$745B top end
+  // Hyperscaler CapEx ($B) — Big 4 2026 guidance: ~$750B midpoint, up to ~$760B top end
   // (post-Q2 2026 earnings; Alphabet raised to $195–205B on the Jul 22 2026 call).
   // y2024 = 224 is the 2024 figure and is labelled as such — it is NOT a 2026 number.
-  hyperscalerCapex: { y2024: 224, y2026: 725, y2026Label: '~$725B mid / up to ~$745B', ratio: '$12 infra : $1 app revenue' },
+  hyperscalerCapex: { y2024: 224, y2026: 750, y2026Label: '~$750B mid / up to ~$760B', ratio: '$12 infra : $1 app revenue' },
 
   // Inference cost collapse — log scale. Cost per million tokens (USD).
   inferenceCost: [
@@ -56,48 +56,47 @@ window.SLIDES_DATA = {
     { date: 'Today (commodity)', cost: 0.14 }
   ],
   inferenceCostDrop: null, // removed Aug 4 2026: the two cost series in the report used different model classes, baselines and windows and could not be reconciled to one current source
-  inferenceBarbell: 'Commodity tier at $1/$6 (GPT-5.6 Luna) against $10/$50 at the agentic frontier (Claude Fable 5) — published list prices, Aug 2026',
+  inferenceBarbell: 'Floor at $0.10/$0.50 (GPT-6 Luna, Sep 22) against $10/$50 at the agentic top (GPT-6 Astra, Claude Fable 5.1): a 100x spread, up from ~10x in July. Floor fell on cheaper inference and caching, Chinese open-weight competition and buyers routing to cheaper tiers (Ramp: effective price per 1M tokens -41% since March) — published list prices, Sep 2026',
 
   // Application layer companies (slide 7)
   // Aug 3, 2026. Private run-rate/ARR figures are company-disclosed and unaudited.
   // Anthropic's run-rate is a time series, not a source conflict: $14B Feb → $19B Mar
   // → $30B Apr (official) → $47B reported June 2026. We show the latest point.
-  // Cursor: the SpaceX transaction was signed Jun 16 2026 and is expected to close in
-  // Q3 2026 subject to regulatory approval — signed, not closed.
+  // Cursor: the SpaceX transaction was signed Jun 16 2026 and closed Aug 14 2026.
   appLayer: [
-    { name: 'Anthropic',  val: '$47B', color: '#D4A574' },
+    { name: 'Anthropic',  val: '$65B', color: '#D4A574' },
     { name: 'OpenAI',     val: '1B MAU',  color: '#10A37F' },
-    { name: 'Cursor',     val: '$4B',     color: '#A0A8BC' },
+    { domain: 'cursor.com', name: 'Cursor',     val: '$4B',     color: '#A0A8BC' },
     { name: 'ElevenLabs', val: '$600M',   color: '#A0A8BC' },
-    { name: 'Lovable',    val: '$500M',   color: '#7C4DFF' },
-    { name: 'Higgsfield', val: '$500M+',  color: '#4ECDC4', dvc: true }
+    { domain: 'lovable.dev', name: 'Lovable',    val: '$500M',   color: '#7C4DFF' },
+    { name: 'Higgsfield', val: '$1B',  color: '#4ECDC4', dvc: true }
   ],
 
   // ── Lab leadership (slide 5 strip + report cards) ──
   // Valuations are primary-round marks; secondary prints differ and are labelled.
   labLeadership: {
-    anthropic: { primary: '$965B', secondary: null, runRate: '$47B run-rate reported June 2026, up from the official $30B in April',
-                 enterprise: '42.4% of US paid business use vs OpenAI 39.5% (Ramp AI Index, July 2026; overall business AI adoption 46.6%)',
+    anthropic: { primary: '$965B', secondary: null, runRate: '$65B run-rate at end of July 2026 (reported Aug 17), up from $47B in June',
+                 enterprise: '43.8% of US paid business use vs OpenAI 39.8% (Ramp AI Index, September 2026 release)',
                  customers: '300K+ business customers · ~70% of the Fortune 100' },
-    openai:    { primary: '$852B', secondary: '~$880–895B (secondary prints, late Jun 2026)', usage: 'ChatGPT 1B MAU · Codex + ChatGPT Work ~10M WAU',
-                 caveat: 'No audited 2026 revenue filed; latest signal is a partial internal transcript with no dollar figures' },
-    google:    { gemini: '950M MAU', aiMode: '1B+ MAU', enterprise: '~90% of the Fortune 100', tokens: '22B tokens/min through Gemini APIs' },
+    openai:    { primary: '$852B', secondary: 'in talks to raise ~$30B at ~$1.4T (Bloomberg, Sep 29 2026) — not closed', usage: 'ChatGPT 1B MAU · Codex + ChatGPT Work ~10M WAU',
+                 caveat: 'Annualized revenue nearing $70B (Axios, Sep 29 2026), up from >$40B in August (Bloomberg); no audited figures disclosed' },
+    google:    { gemini: '1B+ MAU', aiMode: '1B+ MAU', enterprise: '~90% of the Fortune 100', tokens: '22B tokens/min through Gemini APIs' },
     meta:      { mau: '1.2B MAU', wau: '800M WAU', note: 'Largest by reach, but embedded in existing search bars rather than chosen' },
     disclosure: 'Private-company ARR and run-rate figures are company-disclosed and unaudited unless noted.'
   },
 
-  // ── Slide 6: THE MODEL MARKET BECAME A BARBELL (Aug 3, 2026) ──
+  // ── Slide 6: THE MODEL MARKET BECAME A BARBELL (updated Sep 30, 2026) ──
   // Four lanes. Slide 6 renders these as native HTML (see slides.html) so the
   // text stays legible in fullscreen; this block is the source of record.
   modelBarbell: {
     premiumAgentic: [
-      { model: 'Claude Fable 5', price: '$10/$50', note: 'Jun 9 · multi-day agentic tier · SWE-Bench Pro 80.3% · Mythos 5 is restricted to Project Glasswing partners, not purchasable' },
-      { model: 'GPT-5.6 Sol',               price: '$5/$30',  note: 'Jul 9 GA · 54% more token-efficient on coding' }
+      { model: 'Claude Fable 5.1', price: '$10/$50', note: 'Sep 1 (succeeds Fable 5, Jun 9) · multi-day agentic tier · Mythos is restricted to Project Glasswing partners, not purchasable' },
+      { model: 'GPT-6 Astra',               price: '$10/$50', note: 'GA Sep 4 · GPT-5.6 Sol (Jul 9) now lists at $4/$20' }
     ],
     efficientFrontier: [
-      { model: 'Claude Sonnet 5',        price: '$2/$10',            note: 'Promo through Aug 31, then $3/$15 · 1M context · default in Claude Code' },
+      { model: 'Claude Sonnet 5.5',      price: '$2/$10',            note: 'Sep 28 · 1M context' },
       { model: 'Grok 4.5',               price: 'efficient frontier', note: 'Exact price, context and token comparison removed after primary-source audit' },
-      { model: 'GPT-5.6 Terra / Luna',   price: '$2.50/$15 · $1/$6', note: 'Luna is the floor of the credible frontier tier' },
+      { model: 'GPT-6 Sol / Luna',       price: '$2/$10 · $0.10/$0.50', note: 'Sep 22 · Luna is the new floor; GPT-5.6 Luna was cut 80% to $0.20/$1.20 on Jul 30' },
       { model: 'Gemini 3.6 Flash',       price: 'efficient frontier', note: 'Exact pricing and token comparison removed after primary-source audit' },
       { model: 'Meta Muse Spark 1.1',    price: '$1.25/$4.25',       note: "Meta's first paid Model API · leads on tool use" }
     ],
@@ -134,7 +133,7 @@ window.SLIDES_DATA = {
 
   // ── NEW slide 6: Infrastructure & Energy headline stats ──
   infraStats: {
-    capex2026: '~$725B mid / up to ~$745B',
+    capex2026: '~$750B mid / up to ~$760B',
     capex2026Detail: 'Top four 2026 guidance · up to ~$800B calendar 2026 including leases · Google raised to $195–205B',
     capex2024: '$224B (2024)',
     multiplier: '3.1×',
@@ -151,11 +150,11 @@ window.SLIDES_DATA = {
 
   // ── Slide 9 (NEW): SILICON & POWER ──
   siliconPower: {
-    nvidia:   { period: 'Q1 FY2027 (quarter ended Apr 26, 2026)', revenue: '$81.6B', dataCenter: '$75.2B',
-                note: 'VeraRubin production ships Q3 · physical AI is a disclosed revenue line (TTM figure not printed — unsourced) · China compute revenue zero',
+    nvidia:   { period: 'Q2 FY2027 (quarter ended Jul 26, 2026)', revenue: '$96.2B', dataCenter: '$89.0B',
+                note: 'Vera Rubin in full production · Q3 FY27 guided $108B ±2% · physical AI is a disclosed revenue line (TTM figure not printed — unsourced) · China compute revenue zero',
                 annualContrast: 'Do not confuse with FY2026 annual revenue of $215.9B — always label the period' },
     amd:      { summary: 'Major hyperscaler commitments for the Instinct roadmap; exact gigawatt totals removed after the Aug 4 source audit.' },
-    broadcom: { aiSemis: '$10.8B FQ2 (+143%)', q3Guide: '$16.0B', openai: 'OpenAI partnered with Broadcom on its first in-house processors' },
+    broadcom: { aiSemis: '$16.7B FQ3 (+221%)', q3Guide: '$21.7B (FQ4 guide)', openai: 'OpenAI partnered with Broadcom on its first in-house processors' },
     // Etched IS a DVC portfolio company (dvc: true below). DVC publicly states "DVC invested
     // in Etched at an early stage" — a firm's own statement about its own portfolio is first-party.
     // The DVC badge must render on the report card and on the Etched card in the silicon slide.
@@ -190,12 +189,12 @@ window.SLIDES_DATA = {
   // ── NEW slide 11: Vibe coding ──
   // Aug 3, 2026. ARR figures are company-disclosed and unaudited.
   vibeCoding: [
-    { letter: 'C', name: 'Cursor',      stat: '$4B ARR',         color: '#FF8C42', desc: '$60B all-stock agreement with SpaceX, signed Jun 16 and subject to closing' },
-    { letter: 'A', name: 'Claude Code', stat: 'Sonnet 5 default', color: '#D4A574', desc: 'Default surface for Sonnet 5 from Jul 1 · ~$2.5B annualized' },
-    { letter: 'L', name: 'Lovable',     stat: '$500M ARR',       color: '#7C4DFF', desc: '146 employees · ~$3.4M ARR/head · $13.2B raise reportedly in progress' },
-    { letter: 'O', name: 'Work + Codex', stat: '~10M WAU',       color: '#10A37F', desc: 'OpenAI platform bundle · doubled from 6M in nine days' },
-    { letter: 'M', name: 'Muse Spark',  stat: '$1.25/$4.25',     color: '#1877F2', desc: "Meta entered coding Jul 9 — its first paid Model API" },
-    { letter: 'W', name: 'Wabi',        stat: '$20M pre-seed',   color: '#4ECDC4', desc: 'Software creation, reimagined', dvc: true }
+    { domain: 'cursor.com', letter: 'C', name: 'Cursor',      stat: '$4B ARR',         color: '#FF8C42', desc: '$60B all-stock acquisition by SpaceX, signed Jun 16 and closed Aug 14' },
+    { domain: 'claude.ai', letter: 'A', name: 'Claude Code', stat: 'Sonnet 5 default', color: '#D4A574', desc: 'Default surface for Sonnet 5 from Jul 1 · ~$2.5B annualized' },
+    { domain: 'lovable.dev', letter: 'L', name: 'Lovable',     stat: '$500M ARR',       color: '#7C4DFF', desc: '146 employees · ~$3.4M ARR/head · $400M Series C at $13.3B (Aug 2026)' },
+    { domain: 'openai.com', letter: 'O', name: 'Work + Codex', stat: '~10M WAU',       color: '#10A37F', desc: 'OpenAI platform bundle · doubled from 6M in nine days' },
+    { domain: 'meta.com', letter: 'M', name: 'Muse Spark',  stat: '$1.25/$4.25',     color: '#1877F2', desc: "Meta entered coding Jul 9 — its first paid Model API" },
+    { domain: 'wabi.ai', letter: 'W', name: 'Wabi',        stat: '$20M pre-seed',   color: '#4ECDC4', desc: 'Software creation, reimagined', dvc: true }
   ],
   // SonarSource 2026 State of Code Developer Survey: 42% of committed code is AI-generated
   // or significantly AI-assisted; 72% of developers who tried AI use it every day.
@@ -214,8 +213,8 @@ window.SLIDES_DATA = {
   physicalAI: {
     waymoWeeklyRides: '~500,000',
     waymoTarget:      '1M/week by year-end (one forecast puts Q4 nearer 775,000)',
-    waymoMetros:      '11 public driverless US metros + 4 employee-only · ~3,871 vehicles (Jun 2026 NHTSA filing)',
-    waymoMiles:       '220M+ autonomous miles through end-March 2026',
+    waymoMetros:      '15 commercial US markets (Denver, San Diego, Tampa Sep 1; Las Vegas Sep 14, 2026) · 4,000+ robotaxis',
+    waymoMiles:       '271M+ autonomous miles through June 2026',
     teslaPaidMiles:   '2.5M paid robotaxi miles · only 380,000 without a safety monitor',
     teslaFlat:        '~1.1M added paid miles in Q1 vs ~700K in Q2 2026 — roughly 36% lower on the majority reading of Tesla’s cumulative chart',
     laborMarketTAM:   '$38T',
@@ -224,11 +223,11 @@ window.SLIDES_DATA = {
   },
   physicalAITiles: [
     { category: 'AUTONOMOUS MOBILITY',  color: '#4ECDC4', icon: 'car',
-      company: 'WAYMO',          detail: '~500K paid rides/week (flat since Mar 2026) · 11 public driverless metros · 220M+ mi' },
+      company: 'WAYMO',          detail: '~500K paid rides/week (flat since Mar 2026) · 15 commercial markets · 271M+ mi' },
     { category: 'THE GAP WIDENED',      color: '#F5C542', icon: 'truck',
       company: 'TESLA ROBOTAXI', detail: '2.5M paid mi · 380K without a safety monitor · Q2 added miles ~36% below Q1 on majority read' },
     { category: 'AUTONOMOUS WORK',      color: '#E8837C', icon: 'robotarm',
-      company: 'RHODA',          detail: '>$450M raised · >$2.4B valuation', dvc: true }
+      company: 'RHODA',          detail: '$450M Series A · $1.7B valuation (Bloomberg, Mar 2026)', dvc: true }
   ],
   physicalAIStats: [
     { num: '~500K',  label: 'WAYMO PAID RIDES/WEEK',   accent: '#4ECDC4' },

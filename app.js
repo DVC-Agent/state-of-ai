@@ -360,10 +360,10 @@
     // Annual capex data by company ($B) — SEC filings, earnings, analyst estimates
     const YEARS = ['2020', '2021', '2022', '2023', '2024', '2025', '2026E'];
     const COMPANIES = {
-      amazon:   { label: 'Amazon',   color: '#FF9900', data: [40, 61, 63, 54, 83, 131, 200] },
+      amazon:   { label: 'Amazon',   color: '#FF9900', data: [40, 61, 63, 54, 83, 131, 220] },
       alphabet: { label: 'Alphabet', color: '#4285F4', data: [22, 29, 31, 32, 52, 91, 200] },
       microsoft:{ label: 'Microsoft',color: '#7FBA00', data: [20, 27, 32, 35, 56, 80, 190] },
-      meta:     { label: 'Meta',     color: '#0668E1', data: [16, 19, 32, 28, 39, 72, 135] },
+      meta:     { label: 'Meta',     color: '#0668E1', data: [16, 19, 32, 28, 39, 72, 138] },
       oracle:   { label: 'Oracle',   color: '#C74634', data: [9, 7, 9, 9, 13, 35, 50] },
     };
 
@@ -418,10 +418,12 @@
     function updateTotalBadge() {
       const el = document.getElementById('capexTotalNum');
       if (!el) return;
+      // The badge is the Big-4 hyperscaler total; Oracle reports on a different
+      // fiscal year, so it stays on the chart but out of the sum.
       const total = Object.keys(COMPANIES).reduce((sum, key) => {
-        return sum + (activeCompanies.has(key) ? COMPANIES[key].data[6] : 0);
+        return sum + (key !== 'oracle' && activeCompanies.has(key) ? COMPANIES[key].data[6] : 0);
       }, 0);
-      el.textContent = '$' + total + 'B';
+      el.textContent = '~$' + Math.round(total / 5) * 5 + 'B';
     }
 
     // GPT-4 annotation plugin
@@ -1113,7 +1115,7 @@
         name: 'Google',
         rank: '#1 Best Positioned',
         color: '#4ECDC4',
-        superpower: 'Owns search (90%), cloud ($70B+ run rate), custom TPUs, 950M Gemini app MAU (Jul 2026), and the Anthropic relationship',
+        superpower: 'Owns search (90%), cloud ($24.8B in Q2 2026, +82%), custom TPUs, 950M Gemini app MAU (Jul 2026), and the Anthropic relationship',
         heel: 'AI Overviews halve clickthrough rates (15% → 8%), compressing Google\'s $200B search ad machine. Each AI answer that replaces a search link erodes high-intent ad inventory.',
         stat: 'Perplexity: 200M daily queries (~1.3% of Google\'s 15B/day). ChatGPT: 2.5B prompts/day. Combined AI search is now a real threat — growing 20%+ month-over-month.'
       },
@@ -1121,8 +1123,8 @@
         name: 'Microsoft',
         rank: '#2 Enterprise King',
         color: '#7C4DFF',
-        superpower: 'Deepest enterprise distribution: Office 365, Azure, GitHub, LinkedIn. 100M+ Copilot MAU. Multi-model (OpenAI, Anthropic, Mistral).',
-        heel: 'Consumer AI is invisible — 2.4M daily Copilot web visits vs. ChatGPT\'s ~1B mobile MAU. No consumer identity. Bing AI never broke through.',
+        superpower: 'Deepest enterprise distribution: Office 365, Azure, GitHub, LinkedIn. 30M+ paid M365 Copilot seats (FY26 Q4). Multi-model (OpenAI, Anthropic, Mistral).',
+        heel: 'Consumer AI is invisible — consumer Copilot is a rounding error next to ChatGPT\'s ~1B mobile MAU. No consumer identity. Bing AI never broke through.',
         stat: 'Rolled out Claude Code to its E+D division, telling even non-technical employees to use it. M365 Copilot drives ARPU uplift, but hedging away from OpenAI dependency.'
       },
       meta: {
@@ -1130,7 +1132,7 @@
         rank: '#3 Brute Force',
         color: '#4A90D9',
         superpower: '3.58B daily users across Facebook/Instagram/WhatsApp. $201B revenue. Can embed AI into every surface without asking.',
-        heel: 'Four AI reorgs in 6 months. Llama 4 flopped on benchmarks. Open-source lead lost to DeepSeek. Cut ~15,000 jobs (20% workforce) while raising 2026 AI CapEx to $125–145B (late Apr) — stock dropped 7% on the news. Even Meta is testing investor patience.',
+        heel: 'Four AI reorgs in 6 months. Llama 4 flopped on benchmarks. Open-source lead lost to DeepSeek. Cut ~8,000 jobs in May 2026 while guiding 2026 CapEx to $130–145B (narrowed Jul 29). Even Meta is testing investor patience.',
         stat: 'Launched Muse Spark (Apr 2026) — first model from Meta Superintelligence Labs. Banned external AI agents from WhatsApp, building own assistant for 2B+ users. $14.3B invested in Scale AI (49% stake). Cutting humans, adding AI. Partnered with Broadcom (Apr 15) to co-develop custom AI silicon.'
       },
       apple: {
@@ -1139,14 +1141,14 @@
         color: '#A0A8BC',
         superpower: 'Best on-device silicon (M-series, A-series). 2B+ active devices. Unmatched privacy trust. On-device inference is the future. CapEx discipline while everyone else burns cash.',
         heel: 'Apple Intelligence still underwhelming. Siri overhaul delayed a year. Switched from OpenAI to Google Gemini for Siri backend (Jan 2026) — outsourcing the hardest part.',
-        stat: 'Bloomberg (May 2026): &ldquo;Apple is winning the AI spending game by not playing it.&rdquo; Strong Q2 earnings, no AI CapEx blowout. Pick-and-shovel strategy: take a cut on every AI service running on iPhone, no infrastructure bet of their own. Gemini-powered Siri ships with iOS 26.4.'
+        stat: 'Bloomberg (May 2026): &ldquo;Apple is winning the AI spending game by not playing it.&rdquo; Strong Q2 earnings, no AI CapEx blowout. Pick-and-shovel strategy: take a cut on every AI service running on iPhone, no infrastructure bet of their own. Gemini-backed Siri shipped with iOS 27 (Sep 14 2026) as an opt-in beta.'
       },
       xai: {
         name: 'xAI / SpaceX',
         rank: '#5 Arms Dealer',
         color: '#E8837C',
-        superpower: 'Absorbed into SpaceX. $1.25T combined valuation. Colossus supercomputer. Now using compute as acquisition currency — $60B all-stock acquisition of Cursor agreed Jun 16 2026, expected to close Q3 2026.',
-        heel: 'Lost all 11 original cofounders. Elon rebuilding team from scratch. Grok 5 targeting Q2 release but consistently behind OpenAI/Anthropic on benchmarks.',
+        superpower: 'Absorbed into SpaceX. $1.25T combined valuation. Colossus supercomputer. Now using compute as acquisition currency — $60B all-stock acquisition of Cursor agreed Jun 16 2026, closed Aug 14 2026.',
+        heel: 'Lost all 11 original cofounders. Elon rebuilding team from scratch. Grok 5 has slipped repeatedly and was still unreleased at end-Sep 2026; xAI remains consistently behind OpenAI/Anthropic on benchmarks.',
         stat: 'April 2026: Signed Cursor deal giving SpaceX option to acquire at $60B. Cursor gets Colossus access — "bottlenecked by compute" no more. SpaceX completed its IPO on June 12 2026.'
       },
       nvidia: {

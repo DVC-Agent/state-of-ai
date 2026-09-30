@@ -1,0 +1,180 @@
+/* five-years.css — DVC at Five deck. Builds on slides.css tokens and
+   typography (slide-eyebrow, slide-headline, slide-sub, hl-accent, cover). */
+
+.slide-inner { gap: 0; }
+
+/* Cover: a large "5" in the teal block */
+.fy-cover-five {
+  position: absolute; right: 8%; bottom: -6%;
+  font-size: clamp(160px, 26vw, 420px); font-weight: 900; line-height: 1;
+  color: rgba(26, 26, 46, 0.14); letter-spacing: -0.05em;
+  user-select: none;
+}
+
+/* Who we are: the path through three waves */
+.fy-path { display: flex; align-items: stretch; gap: 14px; margin: 6px 0 22px; flex-wrap: wrap; }
+.fy-path-step {
+  display: flex; flex-direction: column; gap: 4px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 22px; min-width: 190px;
+}
+.fy-path-step--now { border-color: rgba(78, 205, 196, 0.6); background: rgba(78, 205, 196, 0.08); }
+.fy-path-k { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+.fy-path-v { font-size: clamp(20px, 1.8vw, 28px); font-weight: 800; color: var(--text); }
+.fy-path-n { font-size: 14px; color: var(--teal); font-weight: 600; }
+.fy-path-arrow { align-self: center; font-size: 26px; color: var(--text-mute); }
+
+.fy-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.fy-chip {
+  font-size: 15px; color: var(--text-mute);
+  border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px;
+}
+.fy-chip strong { color: var(--text); font-weight: 700; }
+
+/* Then and now */
+.fy-then-now { display: grid; grid-template-columns: minmax(220px, 1fr) 2.4fr; gap: 22px; width: 100%; margin-top: 10px; }
+.fy-col { display: flex; flex-direction: column; gap: 12px; padding: 22px; border-radius: 16px; border: 1px solid var(--border); }
+.fy-col--then { background: rgba(255, 255, 255, 0.02); }
+.fy-col--then .fy-num { color: var(--text-mute); }
+.fy-col--now { background: rgba(245, 197, 66, 0.05); border-color: rgba(245, 197, 66, 0.35); }
+.fy-col-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+.fy-col--now .fy-col-label { color: var(--gold); }
+.fy-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.fy-stat { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.fy-num { font-size: clamp(30px, 3.2vw, 52px); font-weight: 900; letter-spacing: -0.02em; line-height: 1; color: var(--text); font-feature-settings: "tnum" 1; }
+.fy-lbl { font-size: 14px; color: var(--text-mute); line-height: 1.35; }
+
+/* Lessons */
+.fy-lesson { flex-direction: row; align-items: flex-start; gap: clamp(20px, 3vw, 48px); }
+.fy-lesson-n {
+  font-size: clamp(90px, 11vw, 180px); font-weight: 900; line-height: 0.85;
+  letter-spacing: -0.04em; color: rgba(160, 168, 188, 0.14); flex: 0 0 auto;
+}
+.fy-lesson-body { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.fy-lesson .slide-sub { margin-bottom: 18px; }
+
+.fy-points { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 4px 0 16px; max-width: 980px; }
+.fy-points li {
+  position: relative; padding-left: 22px;
+  font-size: clamp(15px, 1.25vw, 19px); line-height: 1.5; color: var(--text);
+}
+.fy-points li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; border-radius: 2px; background: var(--teal); }
+.fy-points strong { color: var(--gold); font-weight: 700; }
+.fy-points--three li::before { background: var(--coral); }
+
+.fy-takeaway {
+  font-size: clamp(16px, 1.35vw, 21px); font-weight: 600; line-height: 1.45;
+  color: var(--text); max-width: 980px;
+  border-left: 3px solid var(--gold); padding: 6px 0 6px 16px;
+}
+
+/* Lesson 1: the asymmetry */
+.fy-asym { display: flex; gap: 14px; margin: 2px 0 18px; flex-wrap: wrap; }
+.fy-asym > div { display: flex; align-items: baseline; gap: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; }
+.fy-asym-n { font-size: clamp(28px, 2.6vw, 40px); font-weight: 900; color: var(--text-mute); }
+.fy-asym-n--gold { color: var(--gold); }
+.fy-asym-l { font-size: 14px; color: var(--text-mute); }
+
+/* Lesson 2: the check ladder */
+.fy-ladder { display: flex; align-items: flex-end; gap: 12px; margin: 0 0 18px; }
+.fy-rung {
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 18px; min-width: 170px;
+}
+.fy-rung:nth-child(1) { height: 78px; }
+.fy-rung:nth-child(2) { height: 104px; }
+.fy-rung--top { height: 132px; border-color: rgba(245, 197, 66, 0.55); background: rgba(245, 197, 66, 0.08); }
+.fy-rung-v { font-size: clamp(20px, 1.8vw, 28px); font-weight: 800; color: var(--text); }
+.fy-rung--top .fy-rung-v { color: var(--gold); }
+.fy-rung-l { font-size: 13px; color: var(--text-mute); }
+
+/* Lesson 3: the social ladder */
+.fy-steps { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 18px; }
+.fy-steps > span:not(.fy-steps-arrow) {
+  font-size: 15px; font-weight: 700; color: var(--text);
+  background: rgba(232, 131, 124, 0.1); border: 1px solid rgba(232, 131, 124, 0.45);
+  border-radius: 999px; padding: 7px 14px;
+}
+.fy-steps-arrow { color: var(--text-mute); }
+
+/* Lesson 4: 2010 vs 2026 */
+.fy-vs { display: grid; grid-template-columns: 1fr 1.6fr; gap: 14px; margin: 6px 0 18px; width: 100%; max-width: 980px; }
+.fy-vs-col { display: flex; flex-direction: column; gap: 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; }
+.fy-vs-col--now { border-color: rgba(78, 205, 196, 0.55); background: rgba(78, 205, 196, 0.07); }
+.fy-vs-y { font-size: clamp(24px, 2.2vw, 34px); font-weight: 900; color: var(--text-mute); }
+.fy-vs-col--now .fy-vs-y { color: var(--teal); }
+.fy-vs-t { font-size: 15px; color: var(--text); line-height: 1.45; }
+
+/* Lesson 5: three metrics */
+.fy-metrics { display: flex; gap: 12px; flex-wrap: wrap; margin: 6px 0 18px; }
+.fy-metric { background: rgba(245, 197, 66, 0.08); border: 1px solid rgba(245, 197, 66, 0.45); border-radius: 12px; padding: 12px 18px; }
+.fy-metric-t { font-size: clamp(16px, 1.4vw, 21px); font-weight: 800; color: var(--gold); }
+
+/* Lesson 6 */
+.fy-quote {
+  font-size: clamp(22px, 2.2vw, 34px); font-weight: 800; font-style: italic;
+  color: var(--teal); letter-spacing: -0.01em; margin-top: 4px;
+}
+
+/* Stack and theses */
+.fy-grid--theses { width: 100%; max-width: 1100px; margin: 8px 0 20px; }
+.fy-grid--theses .fy-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+.fy-angles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 1100px; }
+.fy-angle {
+  display: flex; flex-direction: column; gap: 6px;
+  font-size: clamp(15px, 1.25vw, 19px); font-weight: 700; color: var(--text);
+  border: 1px solid rgba(78, 205, 196, 0.4); background: rgba(78, 205, 196, 0.06);
+  border-radius: 12px; padding: 14px 16px;
+}
+.fy-angle--phys { border-color: rgba(245, 197, 66, 0.5); background: rgba(245, 197, 66, 0.07); }
+.fy-angle-k { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+.fy-under { margin: 18px 0 0; }
+
+/* Funds */
+.fy-funds { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; max-width: 1100px; margin-top: 8px; }
+.fy-fund { display: flex; flex-direction: column; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px; }
+.fy-fund--ai { border-color: rgba(245, 197, 66, 0.5); background: rgba(245, 197, 66, 0.06); }
+.fy-fund-k { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); }
+.fy-fund--ai .fy-fund-k { color: var(--gold); }
+.fy-fund-h { font-size: clamp(19px, 1.7vw, 26px); font-weight: 800; color: var(--text); line-height: 1.25; }
+.fy-fund ul { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.fy-fund li { font-size: 16px; color: var(--text-mute); line-height: 1.45; }
+
+/* Close */
+.fy-close { align-items: center; text-align: center; }
+.fy-close .slide-headline, .fy-close .slide-sub { margin-left: auto; margin-right: auto; }
+.fy-close-marks { display: flex; gap: 8px; margin: 18px 0 12px; }
+.fy-close-marks span { width: 28px; height: 28px; border-radius: 4px; }
+.fy-close-marks span:nth-child(1) { background: #FFFFFF; }
+.fy-close-marks span:nth-child(2) { background: var(--teal); }
+.fy-close-marks span:nth-child(3) { background: var(--coral); }
+.fy-close-name { font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+
+/* Speaker notes (N toggles) */
+.fy-notes { display: none; }
+body.fy-show-notes .slide.is-active .fy-notes {
+  display: block; position: fixed; left: 24px; right: 24px; bottom: 18px; z-index: 60;
+  background: rgba(20, 22, 32, 0.94); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 16px; font-size: 15px; line-height: 1.5; color: var(--text);
+}
+
+/* Inline company logo (five-years.js) */
+.fy-inline-logo { display: inline-flex; width: 1em; height: 1em; margin-right: 0.35em; vertical-align: -0.12em; background: #FFFFFF; border-radius: 0.22em; align-items: center; justify-content: center; overflow: hidden; }
+.fy-inline-logo img { width: 80%; height: 80%; object-fit: contain; }
+
+/* Entry motion */
+.slide .slide-inner > *, .slide .fy-lesson-body > * { transition: opacity 500ms ease, transform 500ms ease; }
+.slide:not(.is-active) .slide-inner > *, .slide:not(.is-active) .fy-lesson-body > * { opacity: 0; transform: translateY(10px); }
+@media (prefers-reduced-motion: reduce) {
+  .slide .slide-inner > *, .slide .fy-lesson-body > * { transition: none; }
+}
+
+/* Narrow screens: slides scroll vertically on mobile (slides.css), so stack */
+@media (max-width: 900px) {
+  .fy-then-now, .fy-funds, .fy-vs { grid-template-columns: 1fr; }
+  .fy-grid, .fy-angles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fy-lesson { flex-direction: column; gap: 4px; }
+  .fy-lesson-n { font-size: 72px; }
+  .fy-ladder { flex-wrap: wrap; }
+}

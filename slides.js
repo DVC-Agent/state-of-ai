@@ -5,7 +5,11 @@
 (function () {
   'use strict';
 
-  const D = window.SLIDES_DATA;
+  // A deck whose <body> carries data-plain-deck reuses this navigation
+  // (keys, swipe, fullscreen, progress, #sN deep links) without the
+  // State of AI slide animations, which address that deck's own elements.
+  const PLAIN = document.body.hasAttribute('data-plain-deck');
+  const D = window.SLIDES_DATA || (PLAIN ? {} : null);
   if (!D) {
     console.error('[slides] SLIDES_DATA not found. slides-data.js must load before slides.js');
     return;
@@ -142,6 +146,7 @@
         // (no explicit nav)
         return;
       }
+      if (PLAIN) return; // a live talk should not leave the deck on a stray Escape
       window.location.href = 'index.html';
     } else if (e.key === 'f' || e.key === 'F') {
       e.preventDefault(); toggleFullscreen();
@@ -208,6 +213,7 @@
 
   // ── Dispatcher ──
   function triggerSlideAnimation(n) {
+    if (PLAIN) return;
     try {
       const fn = ANIMATIONS[n];
       if (fn) fn();

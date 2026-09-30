@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DVC at Five — Slideshow | DVC</title>
+<meta name="description" content="Davidovs Venture Collective at five: six lessons from five years of seed investing in AI">
+<!-- Presented at the five-year event; not linked from the public report. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="slides.css?v=20260930b">
+<link rel="stylesheet" href="five-years.css?v=20260930b">
+</head>
+<body data-plain-deck>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<button class="fs-toggle" id="fsToggle" type="button" aria-label="Toggle fullscreen (F)" title="Present / Fullscreen (F)">
+  <svg class="fs-icon fs-icon--enter" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M3 8V3h5M17 8V3h-5M3 12v5h5M17 12v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <svg class="fs-icon fs-icon--exit" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M8 3v5H3M12 3v5h5M8 17v-5H3M12 17v-5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span class="fs-toggle-label">Present</span>
+</button>
+<div class="slide-counter"><span id="slideNum">1</span> / <span id="slideTotal">12</span></div>
+
+<div class="click-zone click-zone--prev" id="zonePrev" aria-label="Previous slide"></div>
+<div class="click-zone click-zone--next" id="zoneNext" aria-label="Next slide"></div>
+
+<main class="deck" id="deck">
+
+  <!-- ============== 1. COVER ============== -->
+  <section class="slide slide--cover" data-slide="1" id="slide-1">
+    <div class="slide-inner cover-inner">
+      <div class="cover-blocks" aria-hidden="true">
+        <div class="cover-block cover-block--white">
+          <span class="cover-wordmark">Davidovs<br>Venture<br>Collective</span>
+        </div>
+        <div class="cover-block cover-block--teal"><span class="fy-cover-five">5</span></div>
+        <div class="cover-block cover-block--salmon"></div>
+        <div class="cover-block cover-block--gold"></div>
+        <div class="cover-block cover-block--navy"></div>
+        <div class="cover-block cover-block--blue"></div>
+      </div>
+      <div class="cover-content">
+        <p class="cover-eyebrow">September 2021 &rarr; September 2026</p>
+        <h1 class="cover-title">DVC AT FIVE</h1>
+        <p class="cover-subtitle">Six lessons from five years of seed investing in AI</p>
+        <p class="cover-tagline">What we got right, what we had to relearn, and why the collective is the product.</p>
+      </div>
+      <div class="cover-footer">
+        <span>Press <kbd>&rarr;</kbd> or click to begin &middot; <kbd>N</kbd> for speaker notes</span>
+      </div>
+    </div>
+    <aside class="fy-notes">Welcome. Five years ago this was ~50 LPs and a quarterly check. Tonight: who we are, where the numbers are, and six lessons. About three minutes per lesson.</aside>
+  </section>
+
+  <!-- ============== 2. WHO WE ARE ============== -->
+  <section class="slide" data-slide="2" id="slide-2">
+    <div class="slide-inner">
+      <p class="slide-eyebrow">Who we are</p>
+      <h1 class="slide-headline">Twenty years together. <span class="hl-accent hl-accent--teal">Twelve in AI.</span></h1>
+      <p class="slide-sub">We did not arrive at AI through a thesis deck. We built and invested through each wave of it.</p>
+      <div class="fy-path">
+        <div class="fy-path-step"><span class="fy-path-k">Wave 1</span><span class="fy-path-v">Adtech ML</span></div>
+        <span class="fy-path-arrow" aria-hidden="true">&rarr;</span>
+        <div class="fy-path-step"><span class="fy-path-k">Wave 2</span><span class="fy-path-v">Computer vision</span><span class="fy-path-n">Cherry Labs</span></div>
+        <span class="fy-path-arrow" aria-hidden="true">&rarr;</span>
+        <div class="fy-path-step fy-path-step--now"><span class="fy-path-k">Wave 3</span><span class="fy-path-v">LLMs</span><span class="fy-path-n">DVC</span></div>
+      </div>
+      <div class="fy-chips">
+        <span class="fy-chip"><strong>iTech Capital</strong> 6&times;</span>
+        <span class="fy-chip"><strong>MSQRD</strong> &rarr; Meta</span>
+        <span class="fy-chip"><strong>Prisma</strong></span>
+        <span class="fy-chip"><strong>Cherry Labs</strong> exit, 2021</span>
+      </div>
+    </div>
+    <aside class="fy-notes">Adtech machine learning, then computer vision at Cherry Labs, then LLMs. The track record before DVC: iTech Capital returned 6x; MSQRD went to Meta; Prisma; the Cherry Labs exit in 2021 is the year DVC started.</aside>
+  </section>
+
+  <!-- ============== 3. THEN AND NOW ============== -->
+  <section class="slide" data-slide="3" id="slide-3">
+    <div class="slide-inner">
+      <p class="slide-eyebrow">Five years in numbers</p>
+      <h1 class="slide-headline">From a quarterly check to a <span class="hl-accent hl-accent--gold">collective</span>.</h1>
+      <div class="fy-then-now">
+        <div class="fy-col fy-col--then">
+          <span class="fy-col-label">September 2021</span>
+          <div class="fy-stat"><span class="fy-num">~50</span><span class="fy-lbl">LPs</span></div>
+          <div class="fy-stat"><span class="fy-num">$1.5M</span><span class="fy-lbl">per quarter</span></div>
+          <div class="fy-stat"><span class="fy-num">12</span><span class="fy-lbl">deals in the first quarter</span></div>
+        </div>
+        <div class="fy-col fy-col--now">
+          <span class="fy-col-label">September 2026</span>
+          <div class="fy-grid">
+            <div class="fy-stat"><span class="fy-num">120+</span><span class="fy-lbl">companies</span></div>
+            <div class="fy-stat"><span class="fy-num">~$21M</span><span class="fy-lbl">deployed from seed</span></div>
+            <div class="fy-stat"><span class="fy-num">7</span><span class="fy-lbl">unicorns</span></div>
+            <div class="fy-stat"><span class="fy-num">5&times;+</span><span class="fy-lbl">TVPI</span></div>
+            <div class="fy-stat"><span class="fy-num">$75M</span><span class="fy-lbl">DVC AI Fund</span></div>
+            <div class="fy-stat"><span class="fy-num">220+</span><span class="fy-lbl">LPs &middot; 500+ members</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="slide-source">TVPI is mostly unrealized. The power law is the model, not a flaw.</p>
+    </div>
+    <aside class="fy-notes">Say the footnote out loud: most of the TVPI is unrealized. We run a power-law portfolio on purpose; a few companies carry the fund.</aside>
+  </section>
+
+  <!-- ============== 4. LESSON 1 ============== -->
+  <section class="slide" data-slide="4" id="slide-4">
+    <div class="slide-inner fy-lesson">
+      <span class="fy-lesson-n" aria-hidden="true">01</span>
+      <div class="fy-lesson-body">
+        <p class="slide-eyebrow">Lesson 1 &middot; Founders</p>
+        <h1 class="slide-headline">At seed the data is noise. <span class="hl-accent hl-accent--teal">The founder is legible.</span></h1>
+        <p class="slide-sub">A deck, a demo, an ARR number that changes weekly. Outliers are, by definition, the companies the data would have rejected.</p>
+        <ul class="fy-points">
+          <li>Has done it before. Technical. Obsessive about a real user.</li>
+          <li>Energy when the market turns. Failed once and came back sharper.</li>
+          <li><strong>Repeat founders only</strong>, for five years.</li>
+        </ul>
+        <div class="fy-asym">
+          <div><span class="fy-asym-n">1&times;</span><span class="fy-asym-l">the cost of being wrong</span></div>
+          <div><span class="fy-asym-n fy-asym-n--gold">100&times;</span><span class="fy-asym-l">the cost of passing on the one that works</span></div>
+        </div>
+        <p class="fy-takeaway">Our edge is not a better model of companies. It is a better model of people, checked by 220 people who have worked with them.</p>
+      </div>
+    </div>
+    <aside class="fy-notes">Tell Nick's Uber Series B pass: that is the 100x side of the asymmetry. Being wrong on a seed check costs 1x; missing the outlier costs 100x.</aside>
+  </section>
+
+  <!-- ============== 5. LESSON 2 ============== -->
+  <section class="slide" data-slide="5" id="slide-5">
+    <div class="slide-inner fy-lesson">
+      <span class="fy-lesson-n" aria-hidden="true">02</span>
+      <div class="fy-lesson-body">
+        <p class="slide-eyebrow">Lesson 2 &middot; Ownership</p>
+        <h1 class="slide-headline">Being in the room at seed is a ticket, <span class="hl-accent hl-accent--gold">not a prize</span>.</h1>
+        <p class="slide-sub">The prize is buying ownership when evidence appears, before the round is priced by someone else.</p>
+        <div class="fy-ladder">
+          <div class="fy-rung"><span class="fy-rung-v">$100&ndash;300K</span><span class="fy-rung-l">Seed</span></div>
+          <div class="fy-rung"><span class="fy-rung-v">$300&ndash;500K</span><span class="fy-rung-l">Evidence appears</span></div>
+          <div class="fy-rung fy-rung--top"><span class="fy-rung-v">$1&ndash;3M</span><span class="fy-rung-l">Series A/B, pre-empted</span></div>
+        </div>
+        <ul class="fy-points">
+          <li><strong data-logo-inline="perplexity.ai">Perplexity</strong> Series B: IVP, NEA, Nvidia and Bezos wanted the allocation; the founders kept DVC in.</li>
+          <li><strong data-logo-inline="kick.co">Kick</strong>: the founder carved a bigger slot for us in the OpenAI Fund round.</li>
+          <li>Signals: <strong>Investor Competition</strong> and <strong>raise prediction</strong>. An AI memo before the first call; decisions in days.</li>
+        </ul>
+      </div>
+    </div>
+    <aside class="fy-notes">The DVC AI Fund exists to pre-empt Series A and B in our best seed companies. Perplexity and Kick are the proof that founders make room for us.</aside>
+  </section>
+
+  <!-- ============== 6. LESSON 3 ============== -->
+  <section class="slide" data-slide="6" id="slide-6">
+    <div class="slide-inner fy-lesson">
+      <span class="fy-lesson-n" aria-hidden="true">03</span>
+      <div class="fy-lesson-body">
+        <p class="slide-eyebrow">Lesson 3 &middot; Community</p>
+        <h1 class="slide-headline">Community is repeated cooperation under <span class="hl-accent hl-accent--coral">shared incentives</span>.</h1>
+        <p class="slide-sub">Not a mailing list. 220+ LPs: engineers, founders and angels, a third each; 94% immigrants. Carry is shared, 30&ndash;40% per deal.</p>
+        <div class="fy-steps">
+          <span>LP</span><span class="fy-steps-arrow">&rarr;</span><span>Deal Advisor</span><span class="fy-steps-arrow">&rarr;</span><span>Deal Captain</span><span class="fy-steps-arrow">&rarr;</span><span>Venture Partner</span>
+        </div>
+        <ul class="fy-points">
+          <li><strong data-logo-inline="perplexity.ai">Perplexity</strong> came in because our LPs were obsessed users.</li>
+          <li><strong data-logo-inline="higgsfield.ai">Higgsfield</strong>&rsquo;s founders met inside DVC.</li>
+          <li>An LP who found Perplexity&rsquo;s Comet lead hire earned carry. Denis Yarats is now an LP in the DVC AI Fund.</li>
+        </ul>
+        <p class="fy-takeaway">Deals are sourcing us. The State of AI report is a community product.</p>
+      </div>
+    </div>
+    <aside class="fy-notes">The social ladder is the mechanism: people move from LP to Deal Advisor to Deal Captain to Venture Partner as they do the work. Compounding examples: Perplexity, Higgsfield, the Comet hire, Denis.</aside>
+  </section>
+
+  <!-- ============== 7. LESSON 4 ============== -->
+  <section class="slide" data-slide="7" id="slide-7">
+    <div class="slide-inner fy-lesson">
+      <span class="fy-lesson-n" aria-hidden="true">04</span>
+      <div class="fy-lesson-body">
+        <p class="slide-eyebrow">Lesson 4 &middot; AI inside the fund</p>
+        <h1 class="slide-headline">AI moved judgment to <span class="hl-accent hl-accent--teal">where it should live</span>.</h1>
+        <div class="fy-vs">
+          <div class="fy-vs-col"><span class="fy-vs-y">2010</span><span class="fy-vs-t">Ten people for eighteen investments.</span></div>
+          <div class="fy-vs-col fy-vs-col--now"><span class="fy-vs-y">2026</span><span class="fy-vs-t">Eight to ten new deals a quarter, 120+ companies, a team you count on two hands.</span></div>
+        </div>
+        <ul class="fy-points">
+          <li>Five analyst roles gone. Agents write the memo for <strong>under 30 cents</strong>.</li>
+          <li>~120 signals, raise prediction, and Ask2Task routing founder asks to the right LPs. Transparency builds trust.</li>
+          <li>What cannot be automated: a founder&rsquo;s state of mind at month eighteen, a co-founder argument, a company quietly dying.</li>
+        </ul>
+      </div>
+    </div>
+    <aside class="fy-notes">Show VentureOS live here if the room allows: pipeline, a memo, a signal, an Ask2Task route.</aside>
+  </section>
+
+  <!-- ============== 8. LESSON 5 ============== -->
+  <section class="slide" data-slide="8" id="slide-8">
+    <div class="slide-inner fy-lesson">
+      <span class="fy-lesson-n" aria-hidden="true">05</span>
+      <div class="fy-lesson-body">
+        <p class="slide-eyebrow">Lesson 5 &middot; Follow-ons and support</p>
+        <h1 class="slide-headline">Relationship is measured, because <span class="hl-accent hl-accent--gold">it gets you the allocation</span>.</h1>
+        <div class="fy-metrics">
+          <div class="fy-metric"><span class="fy-metric-t">Founder Relationship</span></div>
+          <div class="fy-metric"><span class="fy-metric-t">Investor Competition</span></div>
+          <div class="fy-metric"><span class="fy-metric-t">Traction Perceived</span></div>
+        </div>
+        <ul class="fy-points">
+          <li>Support is operational: every LP letter carries a &ldquo;how can you help our startups&rdquo; list, and Ask2Task routes it.</li>
+          <li>Years one and two KPIs: runway (~22 months) and survival.</li>
+          <li><strong>Pro-rata</strong>: negotiate it at the first check, hold it, use it. Unused pro-rata goes to active LPs.</li>
+        </ul>
+        <p class="fy-takeaway">Value per percent of ownership is the metric founders care about.</p>
+      </div>
+    </div>
+    <aside class="fy-notes">Three custom metrics decide follow-ons. Stress that pro-rata is negotiated on day one, not asked for at the Series A.</aside>
+  </section>
+
+  <!-- ============== 9. LESSON 6 ============== -->
+  <section class="slide" data-slide="9" id="slide-9">
+    <div class="slide-inner fy-lesson">
+      <span class="fy-lesson-n" aria-hidden="true">06</span>
+      <div class="fy-lesson-body">
+        <p class="slide-eyebrow">Lesson 6 &middot; The job itself</p>
+        <h1 class="slide-headline">None of this makes the job calm. <span class="hl-accent hl-accent--coral">Bring life into the work.</span></h1>
+        <p class="slide-sub">Eight to ten deals a quarter, rounds that close in days, a market where a five-person team can go from zero to $300M ARR in a year. FOMO and anxiety are structural, not personal.</p>
+        <ul class="fy-points fy-points--three">
+          <li>Treat the anxiety as fuel.</li>
+          <li>Choose the people.</li>
+          <li>Bring life into the work: kids in founder offices, a company named after a dog, hikes, tea ceremonies, a fire-marshal fine at Mad Hats, twenty years working with your spouse.</li>
+        </ul>
+        <blockquote class="fy-quote">&ldquo;Much harder at the beginning, much easier at the end.&rdquo;</blockquote>
+      </div>
+    </div>
+    <aside class="fy-notes">The human slide. Slow down here; the stories matter more than the list.</aside>
+  </section>
+
+  <!-- ============== 10. STACK AND THESES ============== -->
+  <section class="slide" data-slide="10" id="slide-10">
+    <div class="slide-inner">
+      <p class="slide-eyebrow">Where we look next</p>
+      <h1 class="slide-headline">Distribution beats intelligence. <span class="hl-accent hl-accent--teal">Energy binds.</span></h1>
+      <div class="fy-grid fy-grid--theses">
+        <div class="fy-stat"><span class="fy-num">~12:1</span><span class="fy-lbl">~$750B of 2026 capex against ~$60B of app revenue</span></div>
+        <div class="fy-stat"><span class="fy-num">30&ndash;60&cent;</span><span class="fy-lbl">inference tax on every revenue dollar</span></div>
+        <div class="fy-stat"><span class="fy-num">0</span><span class="fy-lbl">times the user sees the model</span></div>
+      </div>
+      <div class="fy-angles">
+        <div class="fy-angle"><span class="fy-angle-k">Angle 1</span>SaaS sold to incumbents</div>
+        <div class="fy-angle"><span class="fy-angle-k">Angle 2</span>Vertical agentic companies</div>
+        <div class="fy-angle"><span class="fy-angle-k">Angle 3</span>Agentic roll-ups</div>
+        <div class="fy-angle fy-angle--phys"><span class="fy-angle-k">Plus</span>Physical AI</div>
+      </div>
+      <p class="slide-sub fy-under">Underdeveloped, not undervalued: <strong>healthcare, industrial, robotics, construction</strong>.</p>
+      <p class="slide-source">Capex: Big-4 hyperscaler 2026 guidance midpoints, as in the State of AI report (September 2026).</p>
+    </div>
+    <aside class="fy-notes">This is the compressed State of AI. Point people to the full report for the healthcare, robotics and industrial money rivers.</aside>
+  </section>
+
+  <!-- ============== 11. FUNDS ============== -->
+  <section class="slide" data-slide="11" id="slide-11">
+    <div class="slide-inner">
+      <p class="slide-eyebrow">Two ways in</p>
+      <h1 class="slide-headline">The door, and the <span class="hl-accent hl-accent--gold">follow-on engine</span>.</h1>
+      <div class="fy-funds">
+        <div class="fy-fund">
+          <span class="fy-fund-k">Seed (Rolling) Fund</span>
+          <span class="fy-fund-h">The door into the collective</span>
+          <ul>
+            <li>Evergreen, $100&ndash;300K first checks</li>
+            <li>From $30K per quarter, 4&ndash;16 quarters</li>
+            <li>2% and 20%, administered by AngelList</li>
+          </ul>
+        </div>
+        <div class="fy-fund fy-fund--ai">
+          <span class="fy-fund-k">DVC AI Fund &middot; $75M</span>
+          <span class="fy-fund-h">$1&ndash;3M into the best seed companies at Series A/B</span>
+          <ul>
+            <li>Five partners</li>
+            <li>61 LPs, including Arrington, Yarats, Shchegolev and Filev</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="fy-notes">Seed Fund is how people join; the AI Fund is how we keep ownership in the winners.</aside>
+  </section>
+
+  <!-- ============== 12. CLOSE ============== -->
+  <section class="slide slide--fy-close" data-slide="12" id="slide-12">
+    <div class="slide-inner fy-close">
+      <p class="slide-eyebrow">Thank you</p>
+      <h1 class="slide-headline slide-headline--xl">Five years. <span class="hl-accent hl-accent--teal">Just getting started.</span></h1>
+      <p class="slide-sub">Next step: a 20-minute call.</p>
+      <div class="fy-close-marks" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="fy-close-name">Davidovs Venture Collective</p>
+    </div>
+    <aside class="fy-notes">Close on the ask: a 20-minute call with anyone who wants to go deeper.</aside>
+  </section>
+
+</main>
+
+<script src="slides.js?v=20260930b"></script>
+<script src="logos.js?v=20260930b"></script>
+<script src="five-years.js?v=20260930b"></script>
+</body>
+</html>

@@ -163,11 +163,12 @@ body.fy-show-notes .slide.is-active .fy-notes {
 .fy-inline-logo { display: inline-flex; width: 1em; height: 1em; margin-right: 0.35em; vertical-align: -0.12em; background: #FFFFFF; border-radius: 0.22em; align-items: center; justify-content: center; overflow: hidden; }
 .fy-inline-logo img { width: 80%; height: 80%; object-fit: contain; }
 
-/* Entry motion */
-.slide .slide-inner > *, .slide .fy-lesson-body > * { transition: opacity 500ms ease, transform 500ms ease; }
-.slide:not(.is-active) .slide-inner > *, .slide:not(.is-active) .fy-lesson-body > * { opacity: 0; transform: translateY(10px); }
-@media (prefers-reduced-motion: reduce) {
-  .slide .slide-inner > *, .slide .fy-lesson-body > * { transition: none; }
+/* Entry motion — presenting layout only. Below 769px slides.css stacks every
+   slide in a scrolling column and never sets .is-active, so hiding inactive
+   content there would blank the whole deck. */
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  .slide .slide-inner > *, .slide .fy-lesson-body > * { transition: opacity 500ms ease, transform 500ms ease; }
+  .slide:not(.is-active) .slide-inner > *, .slide:not(.is-active) .fy-lesson-body > * { opacity: 0; transform: translateY(10px); }
 }
 
 /* Narrow screens: slides scroll vertically on mobile (slides.css), so stack */

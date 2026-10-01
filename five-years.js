@@ -23,4 +23,13 @@
     };
     img.src = url;
   });
+  // Take cards: <span class="fy-take-icon" data-take-logo="domain"> gets the company icon.
+  document.querySelectorAll('[data-take-logo]').forEach(function (el) {
+    var url = src && src(el.getAttribute('data-take-logo'));
+    if (!url) return;
+    var img = new Image();
+    img.alt = ''; img.referrerPolicy = 'no-referrer';
+    img.onload = function () { el.appendChild(img); };
+    img.src = url;
+  });
 })();

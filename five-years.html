@@ -12,10 +12,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="slides.css?v=20260930b">
-<link rel="stylesheet" href="five-years.css?v=20261001b">
+<link rel="stylesheet" href="five-years.css?v=20261001t">
 </head>
 <body data-plain-deck>
 
+<img class="fy-corner-logo" src="assets/five-years/logos/dvc-logo.svg" alt="" aria-hidden="true">
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
 <button class="fs-toggle" id="fsToggle" type="button" aria-label="Toggle fullscreen (F)" title="Present / Fullscreen (F)">
@@ -27,7 +28,7 @@
   </svg>
   <span class="fs-toggle-label">Present</span>
 </button>
-<div class="slide-counter"><span id="slideNum">1</span> / <span id="slideTotal">13</span></div>
+<div class="slide-counter"><span id="slideNum">1</span> / <span id="slideTotal">12</span></div>
 
 <div class="click-zone click-zone--prev" id="zonePrev" aria-label="Previous slide"></div>
 <div class="click-zone click-zone--next" id="zoneNext" aria-label="Next slide"></div>
@@ -48,10 +49,9 @@
         <div class="cover-block cover-block--blue"></div>
       </div>
       <div class="cover-content">
+        <img class="fy-cover-logo" src="assets/five-years/logos/dvc-logo.svg" alt="DVC">
         <p class="cover-eyebrow">September 2021 &rarr; September 2026</p>
         <h1 class="cover-title">DVC AT FIVE</h1>
-        <p class="cover-subtitle">Six lessons from five years of seed investing in AI</p>
-        <p class="cover-tagline">What we got right, what we had to relearn, and why the collective is the product.</p>
       </div>
       <div class="cover-footer">
         <span>Press <kbd>&rarr;</kbd> or click to begin &middot; <kbd>N</kbd> for speaker notes</span>
@@ -64,70 +64,41 @@
   <section class="slide" data-slide="2" id="slide-2">
     <div class="slide-inner fy-split">
       <div class="fy-split-text">
-        <p class="slide-eyebrow">Who we are</p>
+        <p class="slide-eyebrow">Who we are &middot; five years in numbers</p>
         <h1 class="slide-headline">Twenty years together. <span class="hl-accent hl-accent--teal">Twelve in AI.</span></h1>
-        <p class="slide-sub">We did not arrive at AI through a thesis deck. We built and invested through each wave of it.</p>
-        <div class="fy-path">
-          <div class="fy-path-step"><span class="fy-path-k">Wave 1</span><span class="fy-path-v">Adtech ML</span></div>
-          <span class="fy-path-arrow" aria-hidden="true">&rarr;</span>
-          <div class="fy-path-step"><span class="fy-path-k">Wave 2</span><span class="fy-path-v">Computer vision</span><span class="fy-path-n">Cherry Labs</span></div>
-          <span class="fy-path-arrow" aria-hidden="true">&rarr;</span>
-          <div class="fy-path-step fy-path-step--now"><span class="fy-path-k">Wave 3</span><span class="fy-path-v">LLMs</span><span class="fy-path-n">DVC</span></div>
+        <p class="fy-waves">Adtech ML <span>&rarr;</span> computer vision at Cherry Labs <span>&rarr;</span> AI at DVC</p>
+        <div class="fy-logos" aria-label="Companies and funds we built and backed">
+          <img src="assets/five-years/logos/itech.png" alt="iTech Capital">
+          <img src="assets/five-years/logos/gagarin.png" alt="Gagarin Capital">
+          <img src="assets/five-years/logos/cherry-labs.png" alt="Cherry Labs">
+          <img src="assets/five-years/logos/msqrd.png" alt="MSQRD">
+          <img src="https://www.google.com/s2/favicons?domain=prisma-ai.com&amp;sz=64" alt="Prisma" referrerpolicy="no-referrer">
+          <img class="fy-logo-wide" src="assets/five-years/logos/bitfury.png" alt="iTech Capital portfolio: Bitfury, TradingView, Ecwid, Aviasales">
         </div>
-        <div class="fy-record">
-          <div class="fy-record-row"><span class="fy-record-k">iTech Capital</span><span class="fy-record-v">$120M seed / Series A fund &middot; <strong>6&times; TVPI</strong> &middot; Bitfury, TradingView</span></div>
-          <div class="fy-record-row"><span class="fy-record-k">Gagarin Capital</span><span class="fy-record-v">$18M AI pre-seed fund &middot; <strong>MSQRD &rarr; Meta</strong>, Prisma / Lensa</span></div>
-          <div class="fy-record-row"><span class="fy-record-k">Cherry Labs</span><span class="fy-record-v">Founded and built &middot; <strong>exited 2021</strong>, the year DVC began</span></div>
+        <p class="fy-record-line">iTech Capital <strong>6&times; TVPI</strong> &middot; Gagarin Capital: <strong>MSQRD &rarr; Meta</strong>, Prisma &middot; Cherry Labs <strong>exit, 2021</strong></p>
+        <div class="fy-numbers">
+          <div class="fy-numbers-then"><span class="fy-col-label">September 2021</span><span class="fy-then-line">~50 LPs &middot; $1.5M a quarter &middot; 12 deals in Q1</span></div>
+          <div class="fy-numbers-now">
+            <span class="fy-col-label">Today</span>
+            <div class="fy-grid">
+              <div class="fy-stat"><span class="fy-num">167</span><span class="fy-lbl">companies</span></div>
+              <div class="fy-stat"><span class="fy-num">$28M</span><span class="fy-lbl">deployed from the Rolling Fund</span></div>
+              <div class="fy-stat"><span class="fy-num">7</span><span class="fy-lbl">unicorns</span></div>
+              <div class="fy-stat"><span class="fy-num">5&times;+</span><span class="fy-lbl">TVPI</span></div>
+              <div class="fy-stat"><span class="fy-num">$75M</span><span class="fy-lbl">DVC AI Fund I</span></div>
+              <div class="fy-stat"><span class="fy-num">220+</span><span class="fy-lbl">LPs &middot; 500+ members</span></div>
+            </div>
+          </div>
         </div>
+        <p class="slide-source">TVPI is mostly unrealized. The power law is the model, not a flaw.</p>
       </div>
       <figure class="fy-portrait"><img src="assets/five-years/team/nick-marina.jpg" alt="Nick Davidov and Marina Davidova" loading="eager"><figcaption>Nick Davidov &amp; Marina Davidova, founders</figcaption></figure>
     </div>
-    <aside class="fy-notes">Adtech machine learning, then computer vision at Cherry Labs, then LLMs. Before DVC: iTech Capital ($120M, 6x TVPI; Bitfury, TradingView) and Gagarin Capital ($18M AI pre-seed; MSQRD to Meta, Prisma/Lensa). Cherry Labs exited in 2021, the year DVC started.</aside>
-  </section>
-
-  <!-- ============== 3. THEN AND NOW ============== -->
-  <section class="slide" data-slide="3" id="slide-3">
-    <div class="slide-inner">
-      <p class="slide-eyebrow">Five years in numbers</p>
-      <h1 class="slide-headline">From a quarterly check to a <span class="hl-accent hl-accent--gold">collective</span>.</h1>
-      <div class="fy-then-now">
-        <div class="fy-col fy-col--then">
-          <span class="fy-col-label">September 2021</span>
-          <div class="fy-stat"><span class="fy-num">~50</span><span class="fy-lbl">LPs</span></div>
-          <div class="fy-stat"><span class="fy-num">$1.5M</span><span class="fy-lbl">per quarter</span></div>
-          <div class="fy-stat"><span class="fy-num">12</span><span class="fy-lbl">deals in the first quarter</span></div>
-        </div>
-        <div class="fy-col fy-col--now">
-          <span class="fy-col-label">September 2026</span>
-          <div class="fy-grid">
-            <div class="fy-stat"><span class="fy-num">120+</span><span class="fy-lbl">companies</span></div>
-            <div class="fy-stat"><span class="fy-num">~$21M</span><span class="fy-lbl">deployed from seed</span></div>
-            <div class="fy-stat"><span class="fy-num">7</span><span class="fy-lbl">unicorns</span></div>
-            <div class="fy-stat"><span class="fy-num">5&times;+</span><span class="fy-lbl">TVPI</span></div>
-            <div class="fy-stat"><span class="fy-num">$75M</span><span class="fy-lbl">DVC AI Fund</span></div>
-            <div class="fy-stat"><span class="fy-num">220+</span><span class="fy-lbl">LPs &middot; 500+ members</span></div>
-          </div>
-        </div>
-      </div>
-      <p class="slide-source">TVPI is mostly unrealized. The power law is the model, not a flaw.</p>
-    </div>
-    <aside class="fy-notes">Say the footnote out loud: most of the TVPI is unrealized. We run a power-law portfolio on purpose; a few companies carry the fund.</aside>
-  </section>
-
-  <section class="slide" data-slide="4" id="slide-4">
-    <div class="slide-inner">
-      <p class="slide-eyebrow">The team</p>
-      <h1 class="slide-headline">A team you count on <span class="hl-accent hl-accent--gold">two hands</span>.</h1>
-      <p class="slide-sub">Repeat founders and operators, with AI doing the analyst work. Partners decide; the platform team builds the machine.</p>
-      <div class="fy-people fy-people--partners"><figure class="fy-person"><img src="assets/five-years/team/marina.jpg" alt="Marina Davidova" loading="lazy"><figcaption><strong>Marina Davidova</strong><span>GP, Founder</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/nick.jpg" alt="Nick Davidov" loading="lazy"><figcaption><strong>Nick Davidov</strong><span>GP, Founder</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/mel.jpg" alt="Mel Guymon" loading="lazy"><figcaption><strong>Mel Guymon</strong><span>Partner</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/charles.jpg" alt="Charles Ferguson" loading="lazy"><figcaption><strong>Charles Ferguson</strong><span>Partner</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/igor.jpg" alt="Igor Ryabenkiy" loading="lazy"><figcaption><strong>Igor Ryabenkiy</strong><span>Investment Committee</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/alexey.jpg" alt="Alexey Rybak" loading="lazy"><figcaption><strong>Alexey Rybak</strong><span>Venture Partner</span></figcaption></figure></div>
-      <p class="fy-people-label">Platform &amp; operations</p>
-      <div class="fy-people fy-people--ops"><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/luda.jpg" alt="Luda Domakhina" loading="lazy"><figcaption><strong>Luda Domakhina</strong><span>CTO &amp; Head of Platform</span></figcaption></figure><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/tony.jpg" alt="Tony Shapovalov" loading="lazy"><figcaption><strong>Tony Shapovalov</strong><span>Principal, Product &amp; Analytics</span></figcaption></figure><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/elena.jpg" alt="Elena Malyanova" loading="lazy"><figcaption><strong>Elena Malyanova</strong><span>Head of IR &amp; Community</span></figcaption></figure><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/vlad.jpg" alt="Vlad Baskakov" loading="lazy"><figcaption><strong>Vlad Baskakov</strong><span>Lead Engineer</span></figcaption></figure><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/alexa.jpg" alt="Alexa Romanova" loading="lazy"><figcaption><strong>Alexa Romanova</strong><span>Chief of Staff</span></figcaption></figure></div>
-    </div>
-    <aside class="fy-notes">Partners: Marina and Nick (GPs), Mel Guymon (ex-Yahoo, ex-Google, IMVU), Charles Ferguson (FrontPage, sold to Microsoft), Igor Ryabenkiy (AltaiR, Investment Committee), Alexey Rybak (Product at Meta, ex-Google, ex-Perplexity). The platform team runs VentureOS and the community.</aside>
+    <aside class="fy-notes">Adtech machine learning, then computer vision at Cherry Labs, then AI at DVC. Before DVC: iTech Capital ($120M, 6x TVPI; Bitfury, TradingView) and Gagarin Capital ($18M AI pre-seed; MSQRD to Meta, Prisma/Lensa); Cherry Labs exited in 2021, the year DVC started. Then the numbers: from ~50 LPs and $1.5M a quarter to 167 companies and 220+ LPs. Say the footnote out loud: most of the TVPI is unrealized; a few companies carry a power-law portfolio on purpose.</aside>
   </section>
 
   <!-- ============== 4. LESSON 1 ============== -->
-  <section class="slide" data-slide="5" id="slide-5">
+  <section class="slide" data-slide="3" id="slide-3">
     <div class="slide-inner fy-lesson">
       <span class="fy-lesson-n" aria-hidden="true">01</span>
       <div class="fy-lesson-body">
@@ -139,18 +110,19 @@
           <li>Energy when the market turns. Failed once and came back sharper.</li>
           <li><strong>Repeat founders only</strong>, for five years.</li>
         </ul>
+        <p class="fy-story"><strong>Nick passed on Uber&rsquo;s Series B.</strong></p>
         <div class="fy-asym">
           <div><span class="fy-asym-n">1&times;</span><span class="fy-asym-l">the cost of being wrong</span></div>
-          <div><span class="fy-asym-n fy-asym-n--gold">100&times;</span><span class="fy-asym-l">the cost of passing on the one that works</span></div>
+          <div><span class="fy-asym-n fy-asym-n--gold">100&times;</span><span class="fy-asym-l">the cost of being right</span></div>
         </div>
         <p class="fy-takeaway">Our edge is not a better model of companies. It is a better model of people, checked by 220 people who have worked with them.</p>
       </div>
     </div>
-    <aside class="fy-notes">Tell Nick's Uber Series B pass: that is the 100x side of the asymmetry. Being wrong on a seed check costs 1x; missing the outlier costs 100x.</aside>
+    <aside class="fy-notes">Tell Nick's Uber Series B pass: the cost of being wrong is 1x, the cost of being right is 100x.</aside>
   </section>
 
   <!-- ============== 5. LESSON 2 ============== -->
-  <section class="slide" data-slide="6" id="slide-6">
+  <section class="slide" data-slide="4" id="slide-4">
     <div class="slide-inner fy-lesson">
       <span class="fy-lesson-n" aria-hidden="true">02</span>
       <div class="fy-lesson-body">
@@ -162,19 +134,19 @@
           <div class="fy-rung"><span class="fy-rung-v">$300&ndash;500K</span><span class="fy-rung-l">Evidence appears</span></div>
           <div class="fy-rung fy-rung--top"><span class="fy-rung-v">$1&ndash;3M</span><span class="fy-rung-l">Series A/B, pre-empted</span></div>
         </div>
-        <div class="fy-deals">
-          <div class="fy-deal"><span class="fy-deal-n"><strong data-logo-inline="higgsfield.ai">Higgsfield</strong></span><span class="fy-deal-v">$1B ARR</span><span class="fy-deal-t">We introduced the co-founders and wrote the inception check. The platform saw revenue go exponential after six pivots; we pre-empted at $120M and $290M.</span></div>
-          <div class="fy-deal"><span class="fy-deal-n"><strong data-logo-inline="kick.co">Kick</strong></span><span class="fy-deal-v">3&times; cheaper</span><span class="fy-deal-t">Pre-seed and seed. We approached the founder before he planned to raise and pre-empted the Series A with OpenAI at $35M; Felicis led it at $110M.</span></div>
-          <div class="fy-deal"><span class="fy-deal-n"><strong data-logo-inline="perplexity.ai">Perplexity</strong></span><span class="fy-deal-v">~$22.6B</span><span class="fy-deal-t">An LP sourced the co-founder; we missed the seed. Perplexity acquired a portfolio company for shares and allocation; we pre-empted the Series B. IVP, NEA, Nvidia and Bezos wanted that allocation; the founders kept DVC in.</span></div>
+        <div class="fy-deals fy-deals--two">
+          <div class="fy-deal"><span class="fy-deal-n"><strong data-logo-inline="kick.co">Kick</strong></span><span class="fy-deal-v">The founder made room</span><span class="fy-deal-t">First check at a $15M valuation, with a repeat founder (Teachable). Conrad carved out a bigger slot for us in the 2024 round led by General Catalyst and the OpenAI Startup Fund; Felicis and GV co-led the Series A in 2025.</span></div>
+          <div class="fy-deal"><span class="fy-deal-n"><strong data-logo-inline="perplexity.ai">Perplexity</strong></span><span class="fy-deal-v">The founders kept us in</span><span class="fy-deal-t">We came in at the Series A when Perplexity acquired Spellwise, a portfolio company. In the Series B, IVP, NEA, Nvidia and Bezos wanted the allocation; the founders kept DVC in.</span></div>
         </div>
-        <p class="fy-takeaway">Signals: Investor Competition and raise prediction. An AI memo before the first call; decisions in days.</p>
+        <p class="fy-takeaway">DVC AI Fund I is designed to pre-empt Series A/B.</p>
+        <p class="fy-signals">Signals: Investor Competition and raise prediction. An AI memo before the first call; decisions in days.</p>
       </div>
     </div>
-    <aside class="fy-notes">The DVC AI Fund exists to pre-empt Series A and B in our best seed companies. Perplexity and Kick are the proof that founders make room for us.</aside>
+    <aside class="fy-notes">DVC AI Fund I exists to pre-empt Series A and B in our best seed companies. Perplexity and Kick are the proof that founders make room for us.</aside>
   </section>
 
   <!-- ============== 6. LESSON 3 ============== -->
-  <section class="slide" data-slide="7" id="slide-7">
+  <section class="slide fy-dense" data-slide="5" id="slide-5">
     <div class="slide-inner fy-lesson">
       <span class="fy-lesson-n" aria-hidden="true">03</span>
       <div class="fy-lesson-body">
@@ -182,21 +154,22 @@
         <h1 class="slide-headline">Community is repeated cooperation under <span class="hl-accent hl-accent--coral">shared incentives</span>.</h1>
         <p class="slide-sub">Not a mailing list. 220+ LPs: engineers, founders and angels, a third each; 94% immigrants. Carry is shared, 30&ndash;40% per deal.</p>
         <div class="fy-steps">
-          <span>LP</span><span class="fy-steps-arrow">&rarr;</span><span>Deal Advisor</span><span class="fy-steps-arrow">&rarr;</span><span>Deal Captain</span><span class="fy-steps-arrow">&rarr;</span><span>Venture Partner</span>
+          <span>LP</span><span class="fy-steps-arrow">&rarr;</span><span>Deal Advisor / Deal Captain</span><span class="fy-steps-arrow">&rarr;</span><span>Venture Partner</span>
         </div>
-        <ul class="fy-points">
-          <li><strong data-logo-inline="perplexity.ai">Perplexity</strong> came in because our LPs were obsessed users.</li>
-          <li><strong data-logo-inline="higgsfield.ai">Higgsfield</strong>&rsquo;s founders met inside DVC.</li>
-        </ul>
-        <div class="fy-faces"><figure class="fy-face"><img src="assets/five-years/members/michael-arrington.jpg" alt="Michael Arrington" loading="lazy"><figcaption><strong>Michael Arrington</strong><span>TechCrunch, Arrington Capital</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/denis-yarats.jpg" alt="Denis Yarats" loading="lazy"><figcaption><strong>Denis Yarats</strong><span>Co-founder, Perplexity</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/oleg-shchegolev.jpg" alt="Oleg Shchegolev" loading="lazy"><figcaption><strong>Oleg Shchegolev</strong><span>Co-founder, Semrush</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/andrew-filev.jpg" alt="Andrew Filev" loading="lazy"><figcaption><strong>Andrew Filev</strong><span>Founder, Wrike</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/alex-mashrabov.jpg" alt="Alex Mashrabov" loading="lazy"><figcaption><strong>Alex Mashrabov</strong><span>CEO, Higgsfield</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/mikita-mikado.jpg" alt="Mikita Mikado" loading="lazy"><figcaption><strong>Mikita Mikado</strong><span>CEO, PandaDoc</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/karina-nguyen.jpg" alt="Karina Nguyen" loading="lazy"><figcaption><strong>Karina Nguyen</strong><span>AI Researcher, OpenAI</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/yaser-sheikh.jpg" alt="Yaser Sheikh" loading="lazy"><figcaption><strong>Yaser Sheikh</strong><span>Ex-VP AI Research, Meta</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/anton-kaplanyan.jpg" alt="Anton Kaplanyan" loading="lazy"><figcaption><strong>Anton Kaplanyan</strong><span>VP Graphics Research, Intel</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/karen-kornbluh.jpg" alt="Karen Kornbluh" loading="lazy"><figcaption><strong>Karen Kornbluh</strong><span>Ex-Deputy White House CTO</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/marina-mogilko.jpg" alt="Marina Mogilko" loading="lazy"><figcaption><strong>Marina Mogilko</strong><span>17M+ YouTube subscribers</span></figcaption></figure><figure class="fy-face"><img src="assets/five-years/members/bill-schmitt.jpg" alt="William H Schmitt" loading="lazy"><figcaption><strong>William H Schmitt</strong><span>CRO, Series A to IPO</span></figcaption></figure></div>
+        <div class="fy-takes">
+          <div class="fy-take"><span class="fy-take-n"><span class="fy-take-icon" data-take-logo="perplexity.ai" aria-hidden="true"></span><strong>Perplexity</strong></span><span class="fy-take-v">Our LPs were obsessed users</span><span class="fy-take-t">That is how Perplexity came to us.</span></div>
+          <div class="fy-take"><span class="fy-take-n"><span class="fy-take-icon" data-take-logo="higgsfield.ai" aria-hidden="true"></span><strong>Higgsfield</strong></span><span class="fy-take-v">We made the intro</span><span class="fy-take-t">We introduced Higgsfield&rsquo;s founders to each other and invested the first check.</span></div>
+          <div class="fy-take"><span class="fy-take-n"><span class="fy-take-icon" data-take-logo="perplexity.ai" aria-hidden="true"></span><strong>Perplexity Comet</strong></span><span class="fy-take-v">An LP earned carry</span><span class="fy-take-t">An LP found the lead hire for Comet.</span></div>
+          <div class="fy-take"><span class="fy-take-n"><span class="fy-take-icon fy-take-icon--photo" aria-hidden="true"><img src="assets/five-years/members/denis-yarats.jpg" alt=""></span><strong>Denis Yarats</strong></span><span class="fy-take-v">Founder &rarr; LP</span><span class="fy-take-t">Perplexity&rsquo;s co-founder is now an LP in DVC AI Fund I.</span></div>
+        </div>
         <p class="fy-takeaway">Deals are sourcing us. The State of AI report is a community product.</p>
       </div>
     </div>
-    <aside class="fy-notes">The social ladder is the mechanism: people move from LP to Deal Advisor to Deal Captain to Venture Partner as they do the work. Compounding examples: Perplexity, Higgsfield, the Comet hire, Denis.</aside>
+    <aside class="fy-notes">The social ladder is the mechanism: people move from LP to Deal Advisor or Deal Captain to Venture Partner as they do the work. Compounding examples: Perplexity, Higgsfield (we introduced the founders), the Comet hire, Denis.</aside>
   </section>
 
   <!-- ============== 7. LESSON 4 ============== -->
-  <section class="slide" data-slide="8" id="slide-8">
+  <section class="slide" data-slide="6" id="slide-6">
     <div class="slide-inner fy-lesson">
       <span class="fy-lesson-n" aria-hidden="true">04</span>
       <div class="fy-lesson-body">
@@ -204,7 +177,7 @@
         <h1 class="slide-headline">AI moved judgment to <span class="hl-accent hl-accent--teal">where it should live</span>.</h1>
         <div class="fy-vs">
           <div class="fy-vs-col"><span class="fy-vs-y">2010</span><span class="fy-vs-t">Ten people for eighteen investments.</span></div>
-          <div class="fy-vs-col fy-vs-col--now"><span class="fy-vs-y">2026</span><span class="fy-vs-t">Eight to ten new deals a quarter, 120+ companies, a team you count on two hands.</span></div>
+          <div class="fy-vs-col fy-vs-col--now"><span class="fy-vs-y">2026</span><span class="fy-vs-t">Eight to ten new deals a quarter, 167 companies, a team you count on two hands.</span></div>
         </div>
         <ul class="fy-points">
           <li>Five analyst roles gone. Agents write the memo for <strong>under 30 cents</strong>.</li>
@@ -217,7 +190,7 @@
   </section>
 
   <!-- ============== 8. LESSON 5 ============== -->
-  <section class="slide" data-slide="9" id="slide-9">
+  <section class="slide" data-slide="7" id="slide-7">
     <div class="slide-inner fy-lesson">
       <span class="fy-lesson-n" aria-hidden="true">05</span>
       <div class="fy-lesson-body">
@@ -229,7 +202,7 @@
           <div class="fy-metric"><span class="fy-metric-t">Traction Perceived</span></div>
         </div>
         <ul class="fy-points">
-          <li>Support is operational: every LP letter carries a &ldquo;how can you help our startups&rdquo; list, and Ask2Task routes it.</li>
+          <li>Support is operational: a &ldquo;how can you help our startups&rdquo; list in every LP letter, and Ask2Task.</li>
           <li>Years one and two KPIs: runway (~22 months) and survival.</li>
           <li><strong>Pro-rata</strong>: negotiate it at the first check, hold it, use it. Unused pro-rata goes to active LPs.</li>
         </ul>
@@ -240,12 +213,12 @@
   </section>
 
   <!-- ============== 9. LESSON 6 ============== -->
-  <section class="slide" data-slide="10" id="slide-10">
+  <section class="slide" data-slide="8" id="slide-8">
     <div class="slide-inner fy-lesson">
       <span class="fy-lesson-n" aria-hidden="true">06</span>
       <div class="fy-lesson-body">
         <p class="slide-eyebrow">Lesson 6 &middot; The job itself</p>
-        <h1 class="slide-headline">None of this makes the job calm. <span class="hl-accent hl-accent--coral">Bring life into the work.</span></h1>
+        <h1 class="slide-headline fy-headline--long">Everything above is true and none of it makes the job calm. <span class="hl-accent hl-accent--coral">Bring life into the work.</span></h1>
         <p class="slide-sub">Eight to ten deals a quarter, rounds that close in days, a market where a five-person team can go from zero to $300M ARR in a year. FOMO and anxiety are structural, not personal.</p>
         <ul class="fy-points fy-points--three">
           <li>Treat the anxiety as fuel.</li>
@@ -260,14 +233,14 @@
   </section>
 
   <!-- ============== 10. STACK AND THESES ============== -->
-  <section class="slide" data-slide="11" id="slide-11">
+  <section class="slide" data-slide="9" id="slide-9">
     <div class="slide-inner">
       <p class="slide-eyebrow">Where we look next</p>
       <h1 class="slide-headline">Distribution beats intelligence. <span class="hl-accent hl-accent--teal">Energy binds.</span></h1>
       <div class="fy-grid fy-grid--theses">
-        <div class="fy-stat"><span class="fy-num">~12:1</span><span class="fy-lbl">~$750B of 2026 capex against ~$60B of app revenue</span></div>
-        <div class="fy-stat"><span class="fy-num">30&ndash;60&cent;</span><span class="fy-lbl">inference tax on every revenue dollar</span></div>
-        <div class="fy-stat"><span class="fy-num">0</span><span class="fy-lbl">times the user sees the model</span></div>
+        <div class="fy-stat"><span class="fy-num">12:1</span><span class="fy-lbl">$60B of app revenue on $725B of capex</span></div>
+        <div class="fy-stat"><span class="fy-num">30&ndash;60&cent;</span><span class="fy-lbl">inference tax</span></div>
+        <div class="fy-stat fy-stat--text"><span class="fy-num">The user never sees the model.</span></div>
       </div>
       <div class="fy-angles">
         <div class="fy-angle"><span class="fy-angle-k">Angle 1</span>SaaS sold to incumbents</div>
@@ -276,46 +249,63 @@
         <div class="fy-angle fy-angle--phys"><span class="fy-angle-k">Plus</span>Physical AI</div>
       </div>
       <p class="slide-sub fy-under">Underdeveloped, not undervalued: <strong>healthcare, industrial, robotics, construction</strong>.</p>
-      <p class="slide-source">Capex: Big-4 hyperscaler 2026 guidance midpoints, as in the State of AI report (September 2026).</p>
     </div>
     <aside class="fy-notes">This is the compressed State of AI. Point people to the full report for the healthcare, robotics and industrial money rivers.</aside>
   </section>
 
+  <!-- ============== 10. TEAM ============== -->
+  <section class="slide" data-slide="10" id="slide-10">
+    <div class="slide-inner">
+      <p class="slide-eyebrow">The team</p>
+      <h1 class="slide-headline">A team you count on <span class="hl-accent hl-accent--gold">two hands</span>.</h1>
+      <p class="slide-sub">Repeat founders and operators, with AI doing the analyst work. Partners decide; the platform team builds the machine.</p>
+      <div class="fy-people fy-people--partners"><figure class="fy-person"><img src="assets/five-years/team/marina.jpg" alt="Marina Davidova" loading="lazy"><figcaption><strong>Marina Davidova</strong><span>GP, Founder</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/nick.jpg" alt="Nick Davidov" loading="lazy"><figcaption><strong>Nick Davidov</strong><span>GP, Founder</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/mel.jpg" alt="Mel Guymon" loading="lazy"><figcaption><strong>Mel Guymon</strong><span>Partner</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/charles.jpg" alt="Charles Ferguson" loading="lazy"><figcaption><strong>Charles Ferguson</strong><span>Partner</span></figcaption></figure><figure class="fy-person"><img src="assets/five-years/team/alexey.jpg" alt="Alexey Rybak" loading="lazy"><figcaption><strong>Alexey Rybak</strong><span>Venture Partner</span></figcaption></figure></div>
+      <p class="fy-people-label">Platform &amp; operations</p>
+      <div class="fy-people fy-people--ops"><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/luda.jpg" alt="Luda Domakhina" loading="lazy"><figcaption><strong>Luda Domakhina</strong><span>CTO &amp; Head of Platform</span></figcaption></figure><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/tony.jpg" alt="Tony Shapovalov" loading="lazy"><figcaption><strong>Tony Shapovalov</strong><span>Principal, Product &amp; Analytics</span></figcaption></figure><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/elena.jpg" alt="Elena Malyanova" loading="lazy"><figcaption><strong>Elena Malyanova</strong><span>Head of IR &amp; Community</span></figcaption></figure><figure class="fy-person fy-person--sm"><img src="assets/five-years/team/alexa.jpg" alt="Alexa Romanova" loading="lazy"><figcaption><strong>Alexa Romanova</strong><span>Chief of Staff</span></figcaption></figure></div>
+    </div>
+    <aside class="fy-notes">Partners: Marina and Nick (GPs), Mel Guymon (ex-Yahoo, ex-Google, IMVU), Charles Ferguson (FrontPage, sold to Microsoft), Alexey Rybak (Product at Meta, ex-Google, ex-Perplexity). The platform team runs VentureOS and the community.</aside>
+  </section>
+
   <!-- ============== 11. FUNDS ============== -->
-  <section class="slide" data-slide="12" id="slide-12">
+  <section class="slide fy-funds-slide" data-slide="11" id="slide-11">
     <div class="slide-inner">
       <p class="slide-eyebrow">Two ways in</p>
       <h1 class="slide-headline">The door, and the <span class="hl-accent hl-accent--gold">follow-on engine</span>.</h1>
-      <div class="fy-funds">
-        <div class="fy-fund">
-          <span class="fy-fund-k">Seed (Rolling) Fund</span>
-          <span class="fy-fund-h">The door into the collective</span>
-          <ul>
-            <li>Evergreen, $100&ndash;300K first checks</li>
-            <li>From $30K per quarter, 4&ndash;16 quarters</li>
-            <li>2% and 20%, administered by AngelList</li>
-          </ul>
+      <div class="fy-fundwall">
+        <div class="fy-fundcard">
+          <div class="fy-fundcard-head">
+            <span class="fy-fund-k">Seed (Rolling) Fund</span>
+            <span class="fy-fund-h">The door into the collective</span>
+            <div class="fy-terms"><span>Evergreen</span><span>$100&ndash;300K first checks</span><span>From $30K a quarter, 4&ndash;16 quarters</span><span>2% / 20%, AngelList</span></div>
+          </div>
+          <div class="fy-cogrid fy-cogrid--rf"><div class="fy-co"><span class="fy-co-icon" data-take-logo="perplexity.ai" aria-hidden="true"></span><span class="fy-co-n">Perplexity</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/higgsfield.png" alt=""></span><span class="fy-co-n">Higgsfield</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="rhoda.ai" aria-hidden="true"></span><span class="fy-co-n">Rhoda AI</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="thinkingmachines.ai" aria-hidden="true"></span><span class="fy-co-n">Thinking Machines</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="etched.com" aria-hidden="true"></span><span class="fy-co-n">Etched</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/avoca.png" alt=""></span><span class="fy-co-n">Avoca</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/permitflow.png" alt=""></span><span class="fy-co-n">PermitFlow</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/wabi.png" alt=""></span><span class="fy-co-n">Wabi</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/kick.png" alt=""></span><span class="fy-co-n">Kick</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="qualifiedhealthai.com" aria-hidden="true"></span><span class="fy-co-n">Qualified Health</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/fleetworks.png" alt=""></span><span class="fy-co-n">FleetWorks</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/firmly.png" alt=""></span><span class="fy-co-n">Firmly</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/solveintelligence.png" alt=""></span><span class="fy-co-n">Solve Intelligence</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/mem0.png" alt=""></span><span class="fy-co-n">Mem0</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/curex.png" alt=""></span><span class="fy-co-n">Curex</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/intento.png" alt=""></span><span class="fy-co-n">Intento</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/collectly.png" alt=""></span><span class="fy-co-n">Collectly</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="humand.co" aria-hidden="true"></span><span class="fy-co-n">Humand</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/doctronic.png" alt=""></span><span class="fy-co-n">Doctronic</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/remofirst.png" alt=""></span><span class="fy-co-n">Remofirst</span></div></div>
         </div>
-        <div class="fy-fund fy-fund--ai">
-          <span class="fy-fund-k">DVC AI Fund &middot; $75M</span>
-          <span class="fy-fund-h">$1&ndash;3M into the best seed companies at Series A/B</span>
-          <ul>
-            <li>Five partners</li>
-            <li>61 LPs, including Arrington, Yarats, Shchegolev and Filev</li>
-          </ul>
+        <div class="fy-fundcard fy-fundcard--ai">
+          <div class="fy-fundcard-head">
+            <span class="fy-fund-k">DVC AI Fund I &middot; $75M</span>
+            <span class="fy-fund-h">$1&ndash;3M into the best seed companies at Series A/B</span>
+          </div>
+          <div class="fy-cogrid fy-cogrid--ai"><div class="fy-co"><span class="fy-co-icon" data-take-logo="perplexity.ai" aria-hidden="true"></span><span class="fy-co-n">Perplexity</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/higgsfield.png" alt=""></span><span class="fy-co-n">Higgsfield</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="rhoda.ai" aria-hidden="true"></span><span class="fy-co-n">Rhoda AI</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/animation.png" alt=""></span><span class="fy-co-n">Animation</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="copilotkit.ai" aria-hidden="true"></span><span class="fy-co-n">CopilotKit</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="humand.co" aria-hidden="true"></span><span class="fy-co-n">Humand</span></div><div class="fy-co"><span class="fy-co-icon"><img src="assets/five-years/portfolio/kick.png" alt=""></span><span class="fy-co-n">Kick</span></div><div class="fy-co"><span class="fy-co-icon" data-take-logo="bioptic.io" aria-hidden="true"></span><span class="fy-co-n">Bioptic</span></div></div>
+          <div class="fy-fund-lps"><span class="fy-stack"><img class="fy-stack-img" src="assets/five-years/members/michael-arrington.jpg" alt="Michael Arrington" title="Michael Arrington"><img class="fy-stack-img" src="assets/five-years/members/denis-yarats.jpg" alt="Denis Yarats" title="Denis Yarats"><img class="fy-stack-img" src="assets/five-years/members/oleg-shchegolev.jpg" alt="Oleg Shchegolev" title="Oleg Shchegolev"><img class="fy-stack-img" src="assets/five-years/members/andrew-filev.jpg" alt="Andrew Filev" title="Andrew Filev"></span><span>LPs include Arrington, Yarats, Shchegolev and Filev</span></div>
         </div>
       </div>
+      <div class="fy-collective">
+        <span class="fy-stack fy-stack--lg"><img class="fy-stack-img" src="assets/five-years/members/michael-arrington.jpg" alt="Michael Arrington" title="Michael Arrington"><img class="fy-stack-img" src="assets/five-years/members/denis-yarats.jpg" alt="Denis Yarats" title="Denis Yarats"><img class="fy-stack-img" src="assets/five-years/members/oleg-shchegolev.jpg" alt="Oleg Shchegolev" title="Oleg Shchegolev"><img class="fy-stack-img" src="assets/five-years/members/andrew-filev.jpg" alt="Andrew Filev" title="Andrew Filev"><img class="fy-stack-img" src="assets/five-years/members/alex-mashrabov.jpg" alt="Alex Mashrabov" title="Alex Mashrabov"><img class="fy-stack-img" src="assets/five-years/members/mikita-mikado.jpg" alt="Mikita Mikado" title="Mikita Mikado"><img class="fy-stack-img" src="assets/five-years/members/karina-nguyen.jpg" alt="Karina Nguyen" title="Karina Nguyen"><img class="fy-stack-img" src="assets/five-years/members/yaser-sheikh.jpg" alt="Yaser Sheikh" title="Yaser Sheikh"><img class="fy-stack-img" src="assets/five-years/members/anton-kaplanyan.jpg" alt="Anton Kaplanyan" title="Anton Kaplanyan"><img class="fy-stack-img" src="assets/five-years/members/karen-kornbluh.jpg" alt="Karen Kornbluh" title="Karen Kornbluh"><img class="fy-stack-img" src="assets/five-years/members/marina-mogilko.jpg" alt="Marina Mogilko" title="Marina Mogilko"><img class="fy-stack-img" src="assets/five-years/members/bill-schmitt.jpg" alt="William H Schmitt" title="William H Schmitt"></span>
+        <span class="fy-collective-t"><strong>The collective</strong> &middot; 220+ LPs and 500+ members: engineers, founders and angels, a third each</span>
+      </div>
+      <p class="slide-source">Selected portfolio companies; logos do not imply endorsement.</p>
     </div>
-    <aside class="fy-notes">Seed Fund is how people join; the AI Fund is how we keep ownership in the winners.</aside>
+    <aside class="fy-notes">Seed Fund is how people join; DVC AI Fund I is how we keep ownership in the winners.</aside>
   </section>
 
+
   <!-- ============== 12. CLOSE ============== -->
-  <section class="slide slide--fy-close" data-slide="13" id="slide-13">
+  <section class="slide slide--fy-close" data-slide="12" id="slide-12">
     <div class="slide-inner fy-close">
       <p class="slide-eyebrow">Thank you</p>
       <h1 class="slide-headline slide-headline--xl">Five years. <span class="hl-accent hl-accent--teal">Just getting started.</span></h1>
       <p class="slide-sub">Next step: a 20-minute call.</p>
-      <div class="fy-close-marks" aria-hidden="true"><span></span><span></span><span></span></div>
+      <img class="fy-close-logo" src="assets/five-years/logos/dvc-logo.svg" alt="DVC">
       <p class="fy-close-name">Davidovs Venture Collective</p>
     </div>
     <aside class="fy-notes">Close on the ask: a 20-minute call with anyone who wants to go deeper.</aside>
@@ -325,6 +315,6 @@
 
 <script src="slides.js?v=20260930b"></script>
 <script src="logos.js?v=20260930b"></script>
-<script src="five-years.js?v=20260930b"></script>
+<script src="five-years.js?v=20261001m"></script>
 </body>
 </html>

@@ -179,3 +179,61 @@ body.fy-show-notes .slide.is-active .fy-notes {
   .fy-lesson-n { font-size: 72px; }
   .fy-ladder { flex-wrap: wrap; }
 }
+
+/* ── Photos and people (assets/five-years) ── */
+.fy-split { flex-direction: row; align-items: center; gap: clamp(24px, 4vw, 64px); }
+.fy-split-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.fy-portrait { flex: 0 0 clamp(240px, 26vw, 400px); margin: 0; }
+.fy-portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px; display: block; box-shadow: 0 18px 40px -18px rgba(0,0,0,0.6); }
+.fy-portrait figcaption { font-size: 13px; color: var(--text-mute); margin-top: 10px; }
+
+.fy-record { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 760px; }
+.fy-record-row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: baseline; border-top: 1px solid var(--border); padding-top: 8px; }
+.fy-record-k { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); }
+.fy-record-v { font-size: clamp(14px, 1.15vw, 17px); color: var(--text-mute); line-height: 1.45; }
+.fy-record-v strong { color: var(--text); }
+
+.fy-people { display: grid; gap: 16px; width: 100%; }
+.fy-people--partners { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.fy-people--ops { grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: 900px; }
+.fy-people-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); margin: 22px 0 10px; }
+.fy-person { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.fy-person img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block; background: var(--bg-card); }
+.fy-person--sm img { width: 72px; height: 72px; border-radius: 50%; }
+.fy-person--sm { flex-direction: row; align-items: center; gap: 12px; }
+.fy-person figcaption { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.fy-person strong { font-size: clamp(14px, 1.1vw, 17px); color: var(--text); font-weight: 700; }
+.fy-person span { font-size: 13px; color: var(--text-mute); line-height: 1.35; }
+
+.fy-faces { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px 14px; width: 100%; max-width: 1100px; margin: 4px 0 16px; }
+.fy-face { margin: 0; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.fy-face img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; border: 2px solid rgba(232, 131, 124, 0.45); }
+.fy-face figcaption { display: flex; flex-direction: column; min-width: 0; }
+.fy-face strong { font-size: 13px; color: var(--text); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fy-face span { font-size: 11.5px; color: var(--text-mute); line-height: 1.3; }
+
+.fy-deals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 1150px; margin: 0 0 16px; }
+.fy-deal { display: flex; flex-direction: column; gap: 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; }
+.fy-deal-n { font-size: 16px; color: var(--text); }
+.fy-deal-v { font-size: clamp(22px, 2vw, 30px); font-weight: 900; color: var(--gold); letter-spacing: -0.01em; }
+.fy-deal-t { font-size: 13.5px; color: var(--text-mute); line-height: 1.45; }
+
+.fy-events { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 10px; width: 100%; max-width: 1150px; margin: 2px 0 16px; }
+.fy-events img { width: 100%; height: clamp(120px, 15vh, 180px); object-fit: cover; border-radius: 12px; display: block; }
+
+@media (max-width: 900px) {
+  .fy-split { flex-direction: column; }
+  .fy-portrait { flex-basis: auto; width: 100%; max-width: 360px; }
+  .fy-people--partners { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .fy-people--ops { grid-template-columns: 1fr; }
+  .fy-faces { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fy-deals { grid-template-columns: 1fr; }
+  .fy-events { grid-template-columns: 1fr 1fr; }
+  .fy-record-row { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* slides.css carries layout overrides keyed to the State of AI deck's slide
+   numbers (.slide[data-slide="13"] etc.). Neutralise them for this deck. */
+body[data-plain-deck] .slide { align-items: center; padding: 64px 72px; }
+@media (max-width: 768px) { body[data-plain-deck] .slide { padding: 80px 24px; } body[data-plain-deck] .slide.slide--cover { padding: 0; align-items: stretch; } }
+body[data-plain-deck] .slide.slide--cover { padding: 0; align-items: stretch; }

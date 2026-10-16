@@ -20,8 +20,8 @@
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 100px;
   color: #A0A8BC;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
+  font-family: 'Stabil Grotesk', sans-serif;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   cursor: pointer;
@@ -36,9 +36,9 @@
 }
 
 .eco-filter-btn.active {
-  background: rgba(78,205,196,0.12);
-  border-color: rgba(78,205,196,0.3);
-  color: #4ECDC4;
+  background: rgba(75,181,171,0.12);
+  border-color: rgba(75,181,171,0.3);
+  color: #4BB5AB;
 }
 
 .eco-filter-badge {
@@ -48,17 +48,17 @@
   min-width: 20px;
   height: 20px;
   padding: 0 5px;
-  border-radius: 10px;
+  border-radius: 0;
   background: rgba(255,255,255,0.08);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #A0A8BC;
   font-variant-numeric: tabular-nums;
 }
 
 .eco-filter-btn.active .eco-filter-badge {
-  background: rgba(78,205,196,0.2);
-  color: #4ECDC4;
+  background: rgba(75,181,171,0.2);
+  color: #4BB5AB;
 }
 
 /* --- Logo Cloud Grid --- */
@@ -75,9 +75,9 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem 0.5rem 0.85rem;
-  background: #383E52;
+  background: #26304C;
   border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
+  border-radius: 0;
   cursor: default;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -88,14 +88,14 @@
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: 0;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
 .eco-card:hover {
-  background: #3F4560;
+  background: #2D3857;
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.25);
   border-color: rgba(255,255,255,0.12);
@@ -114,13 +114,13 @@
 .eco-logo {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Stabil Grotesk', sans-serif;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: #fff;
   margin-bottom: 0.6rem;
   flex-shrink: 0;
@@ -133,7 +133,7 @@
 
 /* --- Company Name --- */
 .eco-name {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #E8E9ED;
   text-align: center;
@@ -151,38 +151,38 @@
   grid-column: span 2;
   grid-row: span 1;
   padding: 1.25rem 1rem 1.1rem;
-  background: linear-gradient(135deg, #383E52 0%, #3a4158 100%);
-  border-color: rgba(245,197,66,0.3);
-  box-shadow: 0 0 20px rgba(245,197,66,0.06);
+  background: linear-gradient(135deg, #26304C 0%, #3a4158 100%);
+  border-color: rgba(255,215,32,0.3);
+  box-shadow: 0 0 20px rgba(255,215,32,0.06);
 }
 
 .eco-card.eco-featured::before {
-  background: linear-gradient(135deg, rgba(245,197,66,0.04), rgba(78,205,196,0.03));
+  background: linear-gradient(135deg, rgba(255,215,32,0.04), rgba(75,181,171,0.03));
 }
 
 .eco-card.eco-featured:hover {
-  border-color: rgba(245,197,66,0.5);
-  box-shadow: 0 8px 32px rgba(245,197,66,0.12), 0 4px 16px rgba(0,0,0,0.3);
+  border-color: rgba(255,215,32,0.5);
+  box-shadow: 0 8px 32px rgba(255,215,32,0.12), 0 4px 16px rgba(0,0,0,0.3);
   transform: translateY(-4px);
 }
 
 .eco-card.eco-featured .eco-logo {
   width: 56px;
   height: 56px;
-  border-radius: 14px;
-  font-size: 1.15rem;
+  border-radius: 0;
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .eco-card.eco-featured .eco-name {
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
 .eco-card.eco-featured .eco-desc {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #A0A8BC;
   text-align: center;
   margin-top: 0.3rem;
@@ -204,7 +204,7 @@
 .eco-star svg {
   width: 12px;
   height: 12px;
-  fill: #F5C542;
+  fill: #FFD720;
   opacity: 0.6;
 }
 
@@ -214,7 +214,7 @@
   padding: 0.5rem 0.75rem;
   background: #1a1d2b;
   border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 8px;
+  border-radius: 0;
   color: #E8E9ED;
   font-size: 0.75rem;
   line-height: 1.4;
@@ -234,12 +234,12 @@
 
 .eco-tooltip-name {
   font-weight: 700;
-  color: #F5C542;
+  color: #FFD720;
   margin-bottom: 2px;
 }
 
 .eco-tooltip-cat {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: #A0A8BC;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -252,9 +252,9 @@
   justify-content: center;
   gap: 2.5rem;
   padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, rgba(78,205,196,0.05), rgba(245,197,66,0.03));
-  border: 1px solid rgba(78,205,196,0.1);
-  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(75,181,171,0.05), rgba(255,215,32,0.03));
+  border: 1px solid rgba(75,181,171,0.1);
+  border-radius: 0;
   margin-top: 0;
   flex-wrap: wrap;
 }
@@ -267,21 +267,21 @@
   display: block;
   font-size: 1.8rem;
   font-weight: 800;
-  color: #4ECDC4;
+  color: #4BB5AB;
   line-height: 1;
   margin-bottom: 0.3rem;
   font-variant-numeric: tabular-nums;
 }
 
 .eco-stat-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #A0A8BC;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
 
 .eco-stat-tagline {
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   color: #C8CCD4;
   font-style: italic;
   text-align: center;
@@ -311,7 +311,7 @@
 }
 
 .eco-category-text {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -346,17 +346,17 @@
   }
 
   .eco-card.eco-featured .eco-name {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
   }
 
   .eco-logo {
     width: 38px;
     height: 38px;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
   }
 
   .eco-name {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
   }
 
   .eco-filters {
@@ -365,7 +365,7 @@
 
   .eco-filter-btn {
     padding: 0.4rem 0.7rem;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   .eco-stats-bar {
@@ -374,7 +374,7 @@
   }
 
   .eco-stat-num {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 }
 

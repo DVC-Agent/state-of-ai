@@ -438,9 +438,9 @@
         .attr('patternUnits', 'userSpaceOnUse')
         .attr('width', 8).attr('height', 8)
         .attr('patternTransform', 'rotate(45)');
-      hatch.append('rect').attr('width', 8).attr('height', 8).attr('fill', 'rgba(245,197,66,0.10)');
+      hatch.append('rect').attr('width', 8).attr('height', 8).attr('fill', 'rgba(255,215,32,0.10)');
       hatch.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 8)
-        .attr('stroke', 'rgba(245,197,66,0.85)').attr('stroke-width', 2);
+        .attr('stroke', 'rgba(255,215,32,0.85)').attr('stroke-width', 2);
 
       var layerA = DATA.paymentChannels.map(function (n) { return Object.assign({}, n, { layer: 0 }); });
       var layerB = DATA.destinations.map(function (n) { return Object.assign({}, n, { layer: 1 }); });
@@ -672,7 +672,7 @@
           .attr('class', 'hc-ai-flow-halo')
           .attr('d', d3.sankeyLinkHorizontal()(l))
           .attr('fill', 'none')
-          .attr('stroke', 'rgba(78,205,196,0.55)')
+          .attr('stroke', 'rgba(75,181,171,0.55)')
           .attr('stroke-width', Math.max(2, l.width))
           .attr('pointer-events', 'none');
       });
@@ -688,7 +688,7 @@
           .attr('height', (p.y1 - p.y0) + 6)
           .attr('rx', 3)
           .attr('fill', 'none')
-          .attr('stroke', 'rgba(78,205,196,0.85)')
+          .attr('stroke', 'rgba(75,181,171,0.85)')
           .attr('stroke-width', 1.5)
           .attr('pointer-events', 'none');
       });
@@ -713,7 +713,7 @@
           .attr('class', 'hc-overlay-tick hc-ai-tick')
           .attr('x1', p.x1 + 4).attr('y1', (p.y0 + p.y1) / 2)
           .attr('x2', gutterX - 2).attr('y2', (p.y0 + p.y1) / 2)
-          .attr('stroke', 'rgba(78,205,196,0.5)').attr('stroke-width', 1)
+          .attr('stroke', 'rgba(75,181,171,0.5)').attr('stroke-width', 1)
           .attr('stroke-dasharray', '2 2')
           .attr('pointer-events', 'none');
         list.forEach(function (a, i) {
@@ -853,7 +853,7 @@
             .attr('width', (nodeRect.x1 - nodeRect.x0) + 4)
             .attr('height', nodeRect.y1 - nodeRect.y0)
             .attr('fill', 'url(#hc-inc-hatch)')
-            .attr('stroke', 'rgba(245,197,66,0.85)')
+            .attr('stroke', 'rgba(255,215,32,0.85)')
             .attr('stroke-width', 1)
             .attr('pointer-events', 'none');
         });
@@ -904,7 +904,7 @@
           .attr('class', 'hc-inc-tick')
           .attr('x1', chipMidX).attr('y1', chipBottomY)
           .attr('x2', s.idealCx).attr('y2', s.anchorTop - 1)
-          .attr('stroke', 'rgba(245,197,66,0.45)')
+          .attr('stroke', 'rgba(255,215,32,0.45)')
           .attr('stroke-width', 1)
           .attr('stroke-dasharray', '2 2')
           .attr('pointer-events', 'none');
@@ -1765,11 +1765,11 @@
         var m = svgEl('marker', { id: id, viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto-start-reverse' }, defs);
         svgEl('path', { d: 'M0,0 L10,5 L0,10 z', fill: fill }, m);
       }
-      marker('hcl-arrow-care', '#4ECDC4');
-      marker('hcl-arrow-fin',  '#F5C542');
-      marker('hcl-arrow-prev', '#FF8C42');
-      marker('hcl-arrow-vbc',  '#7C4DFF');
-      marker('hcl-arrow-bridge','#7C4DFF');
+      marker('hcl-arrow-care', '#4BB5AB');
+      marker('hcl-arrow-fin',  '#FFD720');
+      marker('hcl-arrow-prev', '#E07A5F');
+      marker('hcl-arrow-vbc',  '#8CC0EE');
+      marker('hcl-arrow-bridge','#8CC0EE');
 
       // ----- Group hulls (subtle outlines for each named process path)
       // These give every node a visible group membership even when its
@@ -1818,9 +1818,9 @@
       // Center patient card
       var cardX = 510, cardY = 245, cardW = 220, cardH = 115;
       var cg = svgEl('g', { class: 'patient-center', transform: 'translate(' + (cardX + cardW/2) + ',' + (cardY + cardH/2) + ')' });
-      svgEl('rect', { x: -cardW/2, y: -cardH/2, width: cardW, height: cardH, rx: 14, fill: 'rgba(0,0,0,0.55)', stroke: stateInfo ? stateInfo.color : '#4ECDC4', 'stroke-width': 2 }, cg);
+      svgEl('rect', { x: -cardW/2, y: -cardH/2, width: cardW, height: cardH, rx: 14, fill: 'rgba(0,0,0,0.55)', stroke: stateInfo ? stateInfo.color : '#4BB5AB', 'stroke-width': 2 }, cg);
       svgEl('text', { class: 'patient-label', x: 0, y: -34, 'text-anchor': 'middle' }, cg).textContent = 'Patient state';
-      svgEl('text', { class: 'patient-state', x: 0, y: -10, 'text-anchor': 'middle', fill: stateInfo ? stateInfo.color : '#4ECDC4' }, cg).textContent = stateInfo ? stateInfo.label : '';
+      svgEl('text', { class: 'patient-state', x: 0, y: -10, 'text-anchor': 'middle', fill: stateInfo ? stateInfo.color : '#4BB5AB' }, cg).textContent = stateInfo ? stateInfo.label : '';
       svgEl('text', { class: 'patient-prompt', x: 0, y: 14, 'text-anchor': 'middle' }, cg).textContent = stateInfo ? stateInfo.prompt : '';
       svgEl('text', { class: 'patient-scenario', x: 0, y: 38, 'text-anchor': 'middle' }, cg).textContent = scenario.scenario || '';
 
@@ -1844,7 +1844,7 @@
         if (!(aOn && bOn)) continue;
         svgEl('path', { class: 'vbc-link is-active',
           d: 'M ' + a.x + ' ' + (a.y + 16) + ' Q ' + ((a.x + b.x)/2 - 18) + ' ' + ((a.y + b.y)/2) + ' ' + b.x + ' ' + (b.y - 16),
-          fill: 'none', stroke: 'rgba(124,77,255,0.7)', 'stroke-width': 1.6, 'marker-end': 'url(#hcl-arrow-vbc)' }, vbcG);
+          fill: 'none', stroke: 'rgba(140,192,238,0.7)', 'stroke-width': 1.6, 'marker-end': 'url(#hcl-arrow-vbc)' }, vbcG);
       }
 
       // Prevention loop edges — closed loop on the right.
@@ -1856,7 +1856,7 @@
         var bx = mx + 36, by = my;
         svgEl('path', { class: 'prev-link is-active',
           d: 'M ' + pa.x + ' ' + (pa.y + 16) + ' Q ' + bx + ' ' + by + ' ' + pb.x + ' ' + (pb.y - 16),
-          fill: 'none', stroke: 'rgba(255,140,66,0.75)', 'stroke-width': 1.6, 'marker-end': 'url(#hcl-arrow-prev)' }, preG);
+          fill: 'none', stroke: 'rgba(224,122,95,0.75)', 'stroke-width': 1.6, 'marker-end': 'url(#hcl-arrow-prev)' }, preG);
       }
       for (var j = 0; j < DATA.preventionOrbit.length - 1; j++) {
         preventionEdge(DATA.preventionOrbit[j], DATA.preventionOrbit[j + 1]);
@@ -1866,7 +1866,7 @@
         var p5 = DATA.preventionOrbit[4], p1 = DATA.preventionOrbit[0];
         svgEl('path', { class: 'prev-link is-active',
           d: 'M ' + (p5.x - 70) + ' ' + p5.y + ' C ' + 905 + ' ' + 420 + ' ' + 940 + ' ' + 230 + ' ' + (p1.x - 70) + ' ' + p1.y,
-          fill: 'none', stroke: 'rgba(255,140,66,0.55)', 'stroke-width': 1.4, 'marker-end': 'url(#hcl-arrow-prev)', 'stroke-dasharray': '4 4' }, preG);
+          fill: 'none', stroke: 'rgba(224,122,95,0.55)', 'stroke-width': 1.4, 'marker-end': 'url(#hcl-arrow-prev)', 'stroke-dasharray': '4 4' }, preG);
       }
 
       // Cross-track bridge edges (data-driven). These remove the
@@ -1889,7 +1889,7 @@
         if (!isStepActive(e.from) || !isStepActive(e.to)) return;
         var a = findAnyStep(e.from), b = findAnyStep(e.to);
         if (!a || !b) return;
-        var stroke = e.kind === 'bridge' ? 'rgba(124,77,255,0.65)' : 'rgba(255,140,66,0.55)';
+        var stroke = e.kind === 'bridge' ? 'rgba(140,192,238,0.65)' : 'rgba(224,122,95,0.55)';
         var marker = e.kind === 'bridge' ? 'url(#hcl-arrow-bridge)' : 'url(#hcl-arrow-prev)';
         var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
         var ax = mx - patientCx, ay = my - patientCy;
@@ -1920,7 +1920,7 @@
         var ly = cy + (ay / alen) * 8 - 4;
         svgEl('text', {
           class: 'bridge-label', x: lx, y: ly, 'text-anchor': 'middle',
-          fill: e.kind === 'bridge' ? 'rgba(124,77,255,0.85)' : 'rgba(255,140,66,0.85)'
+          fill: e.kind === 'bridge' ? 'rgba(140,192,238,0.85)' : 'rgba(224,122,95,0.85)'
         }, bridgeG).textContent = e.label;
       });
 
@@ -2046,7 +2046,7 @@
           class: 'loop-arrow is-' + kind + ' is-active',
           d: 'M ' + sx + ' ' + sy + ' Q ' + bx + ' ' + by + ' ' + ex + ' ' + ey,
           fill: 'none',
-          stroke: kind === 'care' ? '#4ECDC4' : '#F5C542',
+          stroke: kind === 'care' ? '#4BB5AB' : '#FFD720',
           'stroke-width': 2.2,
           'stroke-linecap': 'round',
           'marker-end': 'url(#' + markerId + ')'

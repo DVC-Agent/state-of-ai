@@ -333,12 +333,12 @@
   // PATIENT LOOP
   // =====================================================================
   var patientStates = [
-    { id: 'state_healthy',     label: 'Healthy',     prompt: 'No acute event. Continuous consumer signal.', color: '#4ECDC4' },
-    { id: 'state_at_risk',     label: 'At risk',     prompt: 'Lab, wearable, family history, or genomics indicates elevated risk.', color: '#F5C542' },
-    { id: 'state_symptomatic', label: 'Symptomatic', prompt: 'Patient experiences symptoms and seeks help.', color: '#FF8C42' },
-    { id: 'state_diagnosed',   label: 'Diagnosed',   prompt: 'A condition is named and treatment begins.', color: '#4A90D9' },
-    { id: 'state_chronic',     label: 'Chronic',     prompt: 'Longitudinal management across visits and data streams.', color: '#7C4DFF' },
-    { id: 'state_acute',       label: 'Acute',       prompt: 'High-intensity episode mobilizes hospital/urgent workflow.', color: '#E8837C' }
+    { id: 'state_healthy',     label: 'Healthy',     prompt: 'No acute event. Continuous consumer signal.', color: '#4BB5AB' },
+    { id: 'state_at_risk',     label: 'At risk',     prompt: 'Lab, wearable, family history, or genomics indicates elevated risk.', color: '#FFD720' },
+    { id: 'state_symptomatic', label: 'Symptomatic', prompt: 'Patient experiences symptoms and seeks help.', color: '#E07A5F' },
+    { id: 'state_diagnosed',   label: 'Diagnosed',   prompt: 'A condition is named and treatment begins.', color: '#2080D6' },
+    { id: 'state_chronic',     label: 'Chronic',     prompt: 'Longitudinal management across visits and data streams.', color: '#8CC0EE' },
+    { id: 'state_acute',       label: 'Acute',       prompt: 'High-intensity episode mobilizes hospital/urgent workflow.', color: '#F4B6A9' }
   ];
 
   // Care loop — clockwise upper ellipse
@@ -1975,13 +1975,13 @@
   // there are no orphan boxes (prevention/monitoring used to "float").
   // =====================================================================
   var processGroups = [
-    { id: 'pg_care',       label: 'Clinical care loop',            short: 'Care',       color: '#4ECDC4',
+    { id: 'pg_care',       label: 'Clinical care loop',            short: 'Care',       color: '#4BB5AB',
       steps: ['C1','C2','C3','C4','C5','C6','C7','C8'] },
-    { id: 'pg_financial',  label: 'Financial / reimbursement loop', short: 'Financial',  color: '#F5C542',
+    { id: 'pg_financial',  label: 'Financial / reimbursement loop', short: 'Financial',  color: '#FFD720',
       steps: ['F1','F2','F3','F4','F5','F6','F7','F8'] },
-    { id: 'pg_prevention', label: 'Prevention / monitoring loop',  short: 'Prevention', color: '#FF8C42',
+    { id: 'pg_prevention', label: 'Prevention / monitoring loop',  short: 'Prevention', color: '#E07A5F',
       steps: ['P1','P2','P3','P4','P5'] },
-    { id: 'pg_vbc',        label: 'VBC / risk bridge',              short: 'VBC',        color: '#7C4DFF',
+    { id: 'pg_vbc',        label: 'VBC / risk bridge',              short: 'VBC',        color: '#8CC0EE',
       steps: ['V1','V2','V3','V4','V5'] }
   ];
 
@@ -2101,7 +2101,7 @@
       group: 'pg_prevention',
       tag: 'Consumer front door',
       title: 'The consumer front door is now a frontier lab',
-      stat: 'Health in ChatGPT launched Jul 23 · 40M ask daily',
+      stat: 'Health in ChatGPT launched Jul 23',
       body: 'OpenAI launched "Health in ChatGPT" in July 2026. Users can connect Apple Health, supported US hospital medical records, One Medical and Function Health with separate controls for connected data. We retain the product and consent architecture from the first-party release and remove the model-comparison, conversation-share and daily-user figures that could not be independently reproduced during the audit. Consumer AI is now a live healthcare distribution channel.',
       source_label: 'OpenAI · Reuters (40M/day) · King\'s College London via The Register',
       source_url: SRC.openai_health },

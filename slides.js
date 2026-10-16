@@ -17,7 +17,7 @@
 
   // ── Chart.js global defaults to match dark theme ──
   if (window.Chart) {
-    Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
+    Chart.defaults.font.family = "'Stabil Grotesk', -apple-system, sans-serif";
     Chart.defaults.font.size = 12;
     Chart.defaults.color = '#A0A8BC';
     Chart.defaults.borderColor = 'rgba(160,168,188,0.12)';
@@ -304,13 +304,13 @@
       return { x, y };
     }
     function sunColor(t) {
-      // dawn (#E8837C salmon) → day (#FFE6A8 warm) → dusk (#E8837C salmon)
+      // dawn (#F4B6A9 salmon) → day (#FFE6A8 warm) → dusk (#F4B6A9 salmon)
       if (t < 0.5) {
         const k = t * 2;
-        return gsap.utils.interpolate('#E8837C', '#FFE6A8', k);
+        return gsap.utils.interpolate('#F4B6A9', '#FFE6A8', k);
       } else {
         const k = (t - 0.5) * 2;
-        return gsap.utils.interpolate('#FFE6A8', '#E8837C', k);
+        return gsap.utils.interpolate('#FFE6A8', '#F4B6A9', k);
       }
     }
 
@@ -533,7 +533,7 @@
       const marginBar = card.querySelector('.stack-margin-bar');
       const accent = card.dataset.accent;
       const marginPct = parseFloat(card.dataset.marginPct) || 0;
-      const marginSemantic = marginPct >= 40 ? '#4ECDC4' : (marginPct < 20 ? '#E8837C' : '#F5C542');
+      const marginSemantic = marginPct >= 40 ? '#4BB5AB' : (marginPct < 20 ? '#F4B6A9' : '#FFD720');
 
       // Reset state classes
       card.classList.remove('stack-layer--margin', 'stack-layer--force');
@@ -835,11 +835,11 @@
 
     const YEARS = ['2020', '2021', '2022', '2023', '2024', '2025', '2026E'];
     const COMPANIES = {
-      amazon:    { label: 'Amazon',    color: '#FF9900', data: [40, 61, 63, 54, 83, 131, 220] },
-      alphabet:  { label: 'Alphabet',  color: '#4285F4', data: [22, 29, 31, 32, 52, 91, 200] },
-      microsoft: { label: 'Microsoft', color: '#7FBA00', data: [20, 27, 32, 35, 56, 80, 190] },
+      amazon:    { label: 'Amazon',    color: '#FF9900', data: [40, 61, 63, 53, 83, 131, 220] },
+      alphabet:  { label: 'Alphabet',  color: '#4285F4', data: [22, 25, 31, 32, 52, 91, 200] },
+      microsoft: { label: 'Microsoft', color: '#7FBA00', data: [18, 23, 25, 35, 56, 83, 175] },
       meta:      { label: 'Meta',      color: '#0668E1', data: [16, 19, 32, 28, 39, 72, 138] },
-      oracle:    { label: 'Oracle',    color: '#C74634', data: [9, 7, 9, 9, 13, 35, 50] }
+      oracle:    { label: 'Oracle',    color: '#C74634', data: [1.6, 2.1, 4.5, 8.7, 6.9, 21.2, 55.7] } // fiscal years ending May (FY20–FY26), 10-K
     };
     const AI_REVENUE = [2, 5, 10, 20, 40, 100, 180];
     const activeCompanies = new Set(Object.keys(COMPANIES));
@@ -868,15 +868,15 @@
         datasets.push({
           label: 'AI Revenue',
           data: [...AI_REVENUE],
-          backgroundColor: 'rgba(232,131,124,0.08)',
-          borderColor: '#E8837C',
+          backgroundColor: 'rgba(244,182,169,0.08)',
+          borderColor: '#F4B6A9',
           borderWidth: 2.5,
           borderDash: [6, 3],
           fill: 'origin',
           tension: 0.35,
           pointRadius: 4,
-          pointBackgroundColor: '#E8837C',
-          pointBorderColor: '#2D3142',
+          pointBackgroundColor: '#F4B6A9',
+          pointBorderColor: '#1D253E',
           pointBorderWidth: 1.5,
           yAxisID: 'yRevenue',
           order: -1
@@ -889,7 +889,7 @@
       const el = document.getElementById('slide7CapexTotalNum');
       if (!el) return;
       const total = Object.keys(COMPANIES).reduce((s, k) => s + (activeCompanies.has(k) ? COMPANIES[k].data[6] : 0), 0);
-      el.textContent = '~$' + total + 'B';
+      el.textContent = '~$' + Math.round(total / 5) * 5 + 'B';
     }
 
     const gpt4Plugin = {
@@ -901,7 +901,7 @@
         const xPos = x2022 + (x2023 - x2022) * 0.21;
         const ctx = c.ctx;
         ctx.save();
-        ctx.strokeStyle = 'rgba(245,197,66,0.5)';
+        ctx.strokeStyle = 'rgba(255,215,32,0.5)';
         ctx.lineWidth = 1;
         ctx.setLineDash([4, 4]);
         ctx.beginPath();
@@ -909,11 +909,11 @@
         ctx.lineTo(xPos, ys.bottom);
         ctx.stroke();
         ctx.setLineDash([]);
-        ctx.fillStyle = '#F5C542';
+        ctx.fillStyle = '#FFD720';
         ctx.font = '600 10px Inter, sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText('GPT-4', xPos, ys.top + 14);
-        ctx.fillStyle = 'rgba(245,197,66,0.6)';
+        ctx.fillStyle = 'rgba(255,215,32,0.6)';
         ctx.font = '9px Inter, sans-serif';
         ctx.fillText('Mar 2023', xPos, ys.top + 26);
         ctx.restore();
@@ -930,8 +930,8 @@
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: 'rgba(45,49,66,0.95)',
-            borderColor: 'rgba(78,205,196,0.2)',
+            backgroundColor: 'rgba(29,37,62,0.95)',
+            borderColor: 'rgba(75,181,171,0.2)',
             borderWidth: 1,
             padding: 12,
             titleFont: { size: 13, weight: '600' },
@@ -1035,7 +1035,7 @@
       pill.setAttribute('rx', 8);
       pill.setAttribute('class', a.dvc ? 'app-pill app-pill--dvc' : 'app-pill');
       if (a.dvc) {
-        pill.setAttribute('fill', 'rgba(78,205,196,0.10)');
+        pill.setAttribute('fill', 'rgba(75,181,171,0.10)');
       }
       g.appendChild(pill);
 
@@ -1043,7 +1043,7 @@
       t1.setAttribute('class', 'app-pill-text');
       t1.setAttribute('y', -2);
       t1.textContent = a.name;
-      if (a.dvc) t1.setAttribute('fill', '#4ECDC4');
+      if (a.dvc) t1.setAttribute('fill', '#4BB5AB');
       g.appendChild(t1);
 
       const t2 = document.createElementNS(SVG_NS, 'text');
@@ -1155,20 +1155,20 @@
             label: 'MMLU benchmark (%)',
             data: mmlu,
             yAxisID: 'yMMLU',
-            borderColor: '#4ECDC4',
-            backgroundColor: 'rgba(78,205,196,0.10)',
+            borderColor: '#4BB5AB',
+            backgroundColor: 'rgba(75,181,171,0.10)',
             fill: false, tension: 0.3,
-            pointBackgroundColor: '#4ECDC4', pointRadius: 5, pointBorderColor: '#fff', pointBorderWidth: 1,
+            pointBackgroundColor: '#4BB5AB', pointRadius: 5, pointBorderColor: '#fff', pointBorderWidth: 1,
             borderWidth: 3
           },
           {
             label: 'Cost ($/M tokens)',
             data: cost,
             yAxisID: 'yCost',
-            borderColor: '#E8837C',
-            backgroundColor: 'rgba(232,131,124,0.08)',
+            borderColor: '#F4B6A9',
+            backgroundColor: 'rgba(244,182,169,0.08)',
             fill: false, tension: 0.3,
-            pointBackgroundColor: '#E8837C', pointRadius: 5, pointBorderColor: '#fff', pointBorderWidth: 1,
+            pointBackgroundColor: '#F4B6A9', pointRadius: 5, pointBorderColor: '#fff', pointBorderWidth: 1,
             borderWidth: 3, borderDash: [6, 4]
           }
         ]
@@ -1181,22 +1181,22 @@
             position: 'top', align: 'end',
             labels: { color: '#E8ECEF', font: { size: 12, weight: '600' }, boxWidth: 14 }
           },
-          tooltip: { backgroundColor: '#1f2433', borderColor: '#4ECDC4', borderWidth: 1 }
+          tooltip: { backgroundColor: '#1f2433', borderColor: '#4BB5AB', borderWidth: 1 }
         },
         scales: {
           x: { grid: { display: false }, ticks: { color: '#A0A8BC', font: { weight: '600' } } },
           yMMLU: {
             position: 'left', min: 60, max: 100,
             grid: { color: 'rgba(160,168,188,0.08)' },
-            ticks: { color: '#4ECDC4', callback: v => v + '%' },
-            title: { display: true, text: 'MMLU (capability) ↑', color: '#4ECDC4', font: { weight: '700', size: 11 } }
+            ticks: { color: '#4BB5AB', callback: v => v + '%' },
+            title: { display: true, text: 'MMLU (capability) ↑', color: '#4BB5AB', font: { weight: '700', size: 11 } }
           },
           yCost: {
             type: 'logarithmic',
             position: 'right', min: 0.1, max: 100,
             grid: { drawOnChartArea: false },
-            ticks: { color: '#E8837C', callback: v => '$' + (v < 1 ? v : v.toFixed(0)) },
-            title: { display: true, text: '$ / M tokens (cost) ↓', color: '#E8837C', font: { weight: '700', size: 11 } }
+            ticks: { color: '#F4B6A9', callback: v => '$' + (v < 1 ? v : v.toFixed(0)) },
+            title: { display: true, text: '$ / M tokens (cost) ↓', color: '#F4B6A9', font: { weight: '700', size: 11 } }
           }
         }
       },
@@ -1208,13 +1208,13 @@
           const p = meta.data[2]; // 2025 point — approximate crossover
           const ctx = chart.ctx;
           ctx.save();
-          ctx.fillStyle = '#F5C542';
+          ctx.fillStyle = '#FFD720';
           ctx.font = '700 11px Inter';
           ctx.textAlign = 'center';
           ctx.fillText('The assumption broke.', p.x, p.y - 18);
           ctx.beginPath();
           ctx.arc(p.x, p.y, 9, 0, Math.PI * 2);
-          ctx.strokeStyle = '#F5C542'; ctx.lineWidth = 1.5;
+          ctx.strokeStyle = '#FFD720'; ctx.lineWidth = 1.5;
           ctx.stroke();
           ctx.restore();
         }
@@ -1402,7 +1402,7 @@
         [95, 165].forEach(cx => {
           const w = document.createElementNS(SVG_NS, 'circle');
           w.setAttribute('cx', cx); w.setAttribute('cy', 90); w.setAttribute('r', 8);
-          w.setAttribute('fill', '#2D3142'); w.setAttribute('stroke', color); w.setAttribute('stroke-width', 2);
+          w.setAttribute('fill', '#1D253E'); w.setAttribute('stroke', color); w.setAttribute('stroke-width', 2);
           svg.appendChild(w);
         });
       } else if (kind === 'truck') {
@@ -1427,7 +1427,7 @@
         [78, 130, 175].forEach(cx => {
           const w = document.createElementNS(SVG_NS, 'circle');
           w.setAttribute('cx', cx); w.setAttribute('cy', 90); w.setAttribute('r', 7);
-          w.setAttribute('fill', '#2D3142'); w.setAttribute('stroke', color); w.setAttribute('stroke-width', 2);
+          w.setAttribute('fill', '#1D253E'); w.setAttribute('stroke', color); w.setAttribute('stroke-width', 2);
           svg.appendChild(w);
         });
       } else if (kind === 'robotarm') {
@@ -1450,7 +1450,7 @@
         [[85,88],[130,50],[175,70]].forEach(([cx,cy]) => {
           const j = document.createElementNS(SVG_NS, 'circle');
           j.setAttribute('cx', cx); j.setAttribute('cy', cy); j.setAttribute('r', 4);
-          j.setAttribute('fill', '#2D3142'); j.setAttribute('stroke', color); j.setAttribute('stroke-width', 2);
+          j.setAttribute('fill', '#1D253E'); j.setAttribute('stroke', color); j.setAttribute('stroke-width', 2);
           svg.appendChild(j);
         });
         // gripper

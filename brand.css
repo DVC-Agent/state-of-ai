@@ -1,0 +1,43 @@
+/* DVC brandbook layer (Oct 2026): Stabil Grotesk, brand palette, square corners. Loaded last. */
+@font-face { font-family: 'Stabil Grotesk'; src: url('assets/fonts/StabilGrotesk-Regular.woff2') format('woff2');
+  font-weight: 100 449; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Stabil Grotesk'; src: url('assets/fonts/StabilGrotesk-Medium.woff2') format('woff2');
+  font-weight: 450 1000; font-style: normal; font-display: swap; }
+
+/* The brand ships Regular and Medium only; bold headings are the browser's bold of Medium, thickened a touch more. */
+h1, h2, .hero-title, .section-headline { -webkit-text-stroke: 0.02em currentColor; }
+h3, h4 { -webkit-text-stroke: 0.012em currentColor; }
+:root { --text-primary: #FAF9F5; }
+
+.brand-logo { display: block; height: auto; }
+.hero-block-inner .brand-logo { position: absolute; top: 40px; left: 40px; width: 120px; z-index: 4; }
+.dvc-logo--closing .brand-logo { width: 156px; margin: 0 auto 0.9rem; }
+
+@media (max-width: 768px) {
+  .hero-block-inner .brand-logo { top: 14px; left: 14px; width: 84px; }
+  .dvc-logo--closing .brand-logo { width: 120px; }
+}
+
+/* Company logos, one system for the whole report: inline logos are a 26px white square
+   (logos.js, money-river.css); a logo that heads a card is a 48px white square. */
+.model-logo, .ar-card-icon, .pai-brain-icon, .inc-co-icon, .eco-logo,
+.eco-card.eco-featured .eco-logo {
+  width: 48px !important; height: 48px !important; min-width: 48px; border-radius: 0 !important; flex: 0 0 48px; opacity: 1 !important;
+}
+/* A company with no public logo shows its initials on the same tile, never a coloured block. */
+.model-logo:not(.has-logo), .ar-card-icon:not(.has-logo), .pai-brain-icon:not(.has-logo),
+.inc-co-icon:not(.has-logo), .eco-logo:not(.has-logo) {
+  background: rgba(250, 249, 245, 0.14) !important; color: #FAF9F5 !important;
+}
+@media (max-width: 768px) {
+  .model-logo, .ar-card-icon, .pai-brain-icon, .inc-co-icon, .eco-logo,
+  .eco-card.eco-featured .eco-logo { width: 40px !important; height: 40px !important; min-width: 40px; flex-basis: 40px; }
+}
+@media (max-width: 768px) {
+  /* The incumbents matrix fits seven columns into a phone width; its tiles stay smaller there. */
+  .inc-co-icon { width: 30px !important; height: 30px !important; min-width: 30px; flex-basis: 30px; }
+}
+
+/* A callout is a row (icon + text) only when it holds one paragraph; with several
+   paragraphs or a list it stacks them, instead of setting them side by side as columns. */
+.callout-box:has(> p ~ p, > p ~ ul, > ul ~ p, > p ~ ol) { flex-direction: column; align-items: stretch; gap: 0.75rem; }

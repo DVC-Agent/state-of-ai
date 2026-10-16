@@ -110,7 +110,7 @@
     var ctx = canvas.getContext('2d');
     var particles = [];
     var PARTICLE_COUNT = 40;
-    var COLORS = ['#4ECDC4', '#F5C542', '#E8837C', '#4A90D9'];
+    var COLORS = ['#4BB5AB', '#FFD720', '#F4B6A9', '#2080D6'];
     var animating = false;
     var rafId = null;
 

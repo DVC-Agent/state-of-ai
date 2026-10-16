@@ -26,10 +26,10 @@
   var SEQ = 'https://sequoiacap.com/article/services-the-new-software/';
 
   var QUADRANTS = [
-    { id: 'q1', label: 'COPILOT TERRITORY', sub: 'Outsourced \u00d7 Judgement \u2014 AI augments, humans decide', color: '#F5C542', rgb: '245,197,66', radius: '14px 4px 4px 4px', glyph: '\u25cb' },
-    { id: 'q2', label: 'AUTOPILOT TERRITORY', sub: 'Outsourced \u00d7 Intelligence \u2014 ripe for full automation', color: '#4ECDC4', rgb: '78,205,196', radius: '4px 14px 4px 4px', glyph: '\u25cf' },
-    { id: 'q3', label: 'WATCH', sub: 'Insourced \u00d7 Judgement \u2014 hardest to automate', color: '#E8837C', rgb: '232,131,124', radius: '4px 4px 4px 14px', glyph: '\u25cb' },
-    { id: 'q4', label: 'NEXT WAVE', sub: 'Insourced \u00d7 Intelligence \u2014 automation coming fast', color: '#7C4DFF', rgb: '124,77,255', radius: '4px 4px 14px 4px', glyph: '\u25cf' }
+    { id: 'q1', label: 'COPILOT TERRITORY', sub: 'Outsourced \u00d7 Judgement \u2014 AI augments, humans decide', color: '#FFD720', rgb: '245,197,66', radius: '14px 4px 4px 4px', glyph: '\u25cb' },
+    { id: 'q2', label: 'AUTOPILOT TERRITORY', sub: 'Outsourced \u00d7 Intelligence \u2014 ripe for full automation', color: '#4BB5AB', rgb: '78,205,196', radius: '4px 14px 4px 4px', glyph: '\u25cf' },
+    { id: 'q3', label: 'WATCH', sub: 'Insourced \u00d7 Judgement \u2014 hardest to automate', color: '#F4B6A9', rgb: '232,131,124', radius: '4px 4px 4px 14px', glyph: '\u25cb' },
+    { id: 'q4', label: 'NEXT WAVE', sub: 'Insourced \u00d7 Intelligence \u2014 automation coming fast', color: '#8CC0EE', rgb: '124,77,255', radius: '4px 4px 14px 4px', glyph: '\u25cf' }
   ];
 
   /* Each row:
@@ -476,42 +476,42 @@
 
   function tipFor(r) {
     var h = '<strong>' + esc(r.cat) + '</strong>';
-    if (r.tam) h += "<br><span style='color:#F5C542;font-size:0.78rem'>" + esc(r.tam) + "</span> <span style='color:#6B7280;font-size:0.68rem'>" + esc(r.tamNote) + '</span>';
-    else h += "<br><span style='color:#6B7280;font-size:0.68rem'>No market size shown \u2014 this category is not in the Sequoia list and no sourced figure was found.</span>";
-    h += "<br><span style='color:#E8837C;font-size:0.75rem'>Incumbents:</span> <span style='color:#A0A8BC;font-size:0.78rem'>" + esc(r.incumbents) + '</span>';
+    if (r.tam) h += "<br><span style='color:#FFD720;font-size:0.875rem'>" + esc(r.tam) + "</span> <span style='color:#6B7280;font-size:0.75rem'>" + esc(r.tamNote) + '</span>';
+    else h += "<br><span style='color:#6B7280;font-size:0.75rem'>No market size shown \u2014 this category is not in the Sequoia list and no sourced figure was found.</span>";
+    h += "<br><span style='color:#F4B6A9;font-size:0.75rem'>Incumbents:</span> <span style='color:#A0A8BC;font-size:0.875rem'>" + esc(r.incumbents) + '</span>';
     if (r.contenders && r.contenders.length) {
-      h += "<br><span style='color:#4ECDC4;font-size:0.75rem;margin-top:4px;display:inline-block'>AI contenders:</span>";
+      h += "<br><span style='color:#4BB5AB;font-size:0.75rem;margin-top:4px;display:inline-block'>AI contenders:</span>";
       r.contenders.forEach(function (c) {
-        h += "<br><span style='color:#E8E9ED;font-size:0.78rem'>&bull; " + esc(c.n);
-        if (c.f) h += " <span style='color:#F5C542'>" + esc(c.f) + '</span>';
-        if (c.asOf) h += " <span style='color:#6B7280;font-size:0.68rem'>(as of " + esc(c.asOf) + ')</span>';
+        h += "<br><span style='color:#E8E9ED;font-size:0.875rem'>&bull; " + esc(c.n);
+        if (c.f) h += " <span style='color:#FFD720'>" + esc(c.f) + '</span>';
+        if (c.asOf) h += " <span style='color:#6B7280;font-size:0.75rem'>(as of " + esc(c.asOf) + ')</span>';
         h += '</span>';
-        if (c.note) h += "<span style='color:#6B7280;font-size:0.7rem;display:block'>" + esc(c.note) + '</span>';
+        if (c.note) h += "<span style='color:#6B7280;font-size:0.75rem;display:block'>" + esc(c.note) + '</span>';
       });
     } else if (r.contendersNote) {
-      h += "<br><span style='color:#4ECDC4;font-size:0.75rem;margin-top:4px;display:inline-block'>AI contenders:</span> <span style='color:#E8E9ED;font-size:0.78rem'>" + esc(r.contendersNote) + '</span>';
+      h += "<br><span style='color:#4BB5AB;font-size:0.75rem;margin-top:4px;display:inline-block'>AI contenders:</span> <span style='color:#E8E9ED;font-size:0.875rem'>" + esc(r.contendersNote) + '</span>';
     }
     if (r.dvc && r.dvc.length) {
-      h += "<br><span style='color:#7C4DFF;font-size:0.75rem;margin-top:4px;display:inline-block'>DVC portfolio:</span>";
+      h += "<br><span style='color:#8CC0EE;font-size:0.75rem;margin-top:4px;display:inline-block'>DVC portfolio:</span>";
       r.dvc.forEach(function (d) {
-        h += "<br><span style='color:#E8E9ED;font-size:0.78rem'>&bull; " + esc(d.n) + ' \u00b7 ' + esc(d.d) + '</span>';
+        h += "<br><span style='color:#E8E9ED;font-size:0.875rem'>&bull; " + esc(d.n) + ' \u00b7 ' + esc(d.d) + '</span>';
       });
     }
     if (r.stat && r.stat.text) {
-      h += "<br><span style='color:#F5C542;font-size:0.72rem;margin-top:6px;display:inline-block'>" + esc(r.stat.text) + '</span>';
-      if (r.stat.src) h += "<br><a href='" + esc(r.stat.src) + "' target='_blank' rel='noopener' style='color:#4ECDC4;font-size:0.7rem'>Source</a>";
+      h += "<br><span style='color:#FFD720;font-size:0.75rem;margin-top:6px;display:inline-block'>" + esc(r.stat.text) + '</span>';
+      if (r.stat.src) h += "<br><a href='" + esc(r.stat.src) + "' target='_blank' rel='noopener' style='color:#4BB5AB;font-size:0.75rem'>Source</a>";
     }
-    if (r.note) h += "<br><span style='color:#8A93A6;font-size:0.7rem;margin-top:6px;display:inline-block;font-style:italic'>" + esc(r.note) + '</span>';
+    if (r.note) h += "<br><span style='color:#8A93A6;font-size:0.75rem;margin-top:6px;display:inline-block;font-style:italic'>" + esc(r.note) + '</span>';
     return h;
   }
 
   function chip(r, q) {
-    var base = 'display:inline-flex;align-items:center;gap:0.3rem;padding:0.3rem 0.6rem;background:rgba(' + q.rgb + ',0.06);border:1px solid rgba(' + q.rgb + ',0.12);border-radius:6px;font-size:0.72rem;color:#C8CCD4;cursor:pointer;transition:all 0.2s ease';
+    var base = 'display:inline-flex;align-items:center;gap:0.3rem;padding:0.3rem 0.6rem;background:rgba(' + q.rgb + ',0.06);border:1px solid rgba(' + q.rgb + ',0.12);border-radius:0;font-size:0.75rem;color:#C8CCD4;cursor:pointer;transition:all 0.2s ease';
     var s = '<span class="seq-entry" data-tip="' + attr(tipFor(r)) + '" style="' + base + '"'
       + ' onmouseover="this.style.borderColor=\'rgba(' + q.rgb + ',0.4)\';this.style.background=\'rgba(' + q.rgb + ',0.12)\'"'
       + ' onmouseout="this.style.borderColor=\'rgba(' + q.rgb + ',0.12)\';this.style.background=\'rgba(' + q.rgb + ',0.06)\'">'
-      + '<span style="color:' + q.color + ';font-size:0.65rem">' + q.glyph + '</span>' + esc(r.label);
-    if (r.tam) s += ' <span class="tabnum" style="color:#6B7280;font-size:0.65rem">' + esc(r.tam) + '</span>';
+      + '<span style="color:' + q.color + ';font-size:0.75rem">' + q.glyph + '</span>' + esc(r.label);
+    if (r.tam) s += ' <span class="tabnum" style="color:#6B7280;font-size:0.75rem">' + esc(r.tam) + '</span>';
     s += '</span>';
     return s;
   }
@@ -519,8 +519,8 @@
   function quadrantHtml(q) {
     var rows = ROWS.filter(function (r) { return r.q === q.id; });
     var h = '<div style="background:rgba(' + q.rgb + ',0.04);border:1px solid rgba(' + q.rgb + ',0.15);border-radius:' + q.radius + ';padding:1rem 1.25rem;min-height:180px">'
-      + '<div style="margin-bottom:0.5rem"><span style="color:' + q.color + ';font-size:0.72rem;font-weight:800;letter-spacing:0.1em">' + q.label + '</span></div>'
-      + '<p style="color:#6B7280;font-size:0.7rem;margin:0 0 0.75rem;font-style:italic">' + q.sub + '</p>'
+      + '<div style="margin-bottom:0.5rem"><span style="color:' + q.color + ';font-size:0.75rem;font-weight:800;letter-spacing:0.1em">' + q.label + '</span></div>'
+      + '<p style="color:#6B7280;font-size:0.75rem;margin:0 0 0.75rem;font-style:italic">' + q.sub + '</p>'
       + '<div style="display:flex;flex-wrap:wrap;gap:0.35rem">';
     rows.forEach(function (r) { h += chip(r, q); });
     return h + '</div></div>';
@@ -528,12 +528,12 @@
 
   function gridHtml() {
     var h = '<div style="position:relative;margin:0 auto;max-width:1100px">'
-      + '<div style="text-align:center;margin-bottom:0.5rem"><span style="color:#6B7280;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">OUTSOURCED</span></div>'
+      + '<div style="text-align:center;margin-bottom:0.5rem"><span style="color:#6B7280;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">OUTSOURCED</span></div>'
       + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;position:relative">'
-      + '<div style="position:absolute;left:-2.5rem;top:50%;transform:translateY(-50%) rotate(-90deg);white-space:nowrap"><span style="color:#6B7280;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">JUDGEMENT</span></div>'
-      + '<div style="position:absolute;right:-2.8rem;top:50%;transform:translateY(-50%) rotate(90deg);white-space:nowrap"><span style="color:#6B7280;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">INTELLIGENCE</span></div>';
+      + '<div style="position:absolute;left:-2.5rem;top:50%;transform:translateY(-50%) rotate(-90deg);white-space:nowrap"><span style="color:#6B7280;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">JUDGEMENT</span></div>'
+      + '<div style="position:absolute;right:-2.8rem;top:50%;transform:translateY(-50%) rotate(90deg);white-space:nowrap"><span style="color:#6B7280;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">INTELLIGENCE</span></div>';
     QUADRANTS.forEach(function (q) { h += quadrantHtml(q); });
-    h += '</div><div style="text-align:center;margin-top:0.5rem"><span style="color:#6B7280;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">INSOURCED</span></div></div>';
+    h += '</div><div style="text-align:center;margin-top:0.5rem"><span style="color:#6B7280;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">INSOURCED</span></div></div>';
     return h;
   }
 
@@ -541,19 +541,19 @@
     var items = CONSOLIDATION.map(function (c) {
       return '<a href="' + esc(c.src) + '" target="_blank" rel="noopener" style="color:#C8CCD4;text-decoration:none;border-bottom:1px dotted rgba(200,204,212,0.35)">' + esc(c.n) + '</a> \u2192 ' + esc(c.to);
     }).join(' &middot; ');
-    return '<p style="color:#8A93A6;font-size:0.72rem;line-height:1.5;margin:0.75rem auto 0;max-width:860px;text-align:center">'
+    return '<p style="color:#8A93A6;font-size:0.75rem;line-height:1.5;margin:0.75rem auto 0;max-width:860px;text-align:center">'
       + '<strong style="color:#A0A8BC">Absorbed by incumbents, so not shown as challengers:</strong> ' + items + '.</p>';
   }
 
   function footerHtml() {
-    return '<p style="color:#8A93A6;font-size:0.72rem;line-height:1.55;margin:0.75rem auto 0;max-width:900px;text-align:center">'
-      + 'Vertical market sizes for ten categories after <a href="' + SEQ + '" target="_blank" rel="noopener" style="color:#4ECDC4">Sequoia Capital (Bek, March 2026)</a>. '
+    return '<p style="color:#8A93A6;font-size:0.75rem;line-height:1.55;margin:0.75rem auto 0;max-width:900px;text-align:center">'
+      + 'Vertical market sizes for ten categories after <a href="' + SEQ + '" target="_blank" rel="noopener" style="color:#4BB5AB">Sequoia Capital (Bek, March 2026)</a>. '
       + 'Remaining categories, quadrant grouping and company selections are DVC\u2019s.'
       + '</p>'
-      + '<p style="color:#6B7280;font-size:0.7rem;margin:0.4rem auto 0;max-width:900px;text-align:center">'
+      + '<p style="color:#6B7280;font-size:0.75rem;margin:0.4rem auto 0;max-width:900px;text-align:center">'
       + 'Funding figures checked Aug 4, 2026; company totals mix equity/debt only where explicitly labelled. '
       + 'Categories with no dollar figure are ones Sequoia does not size and for which no sourced market size was found. '
-      + '<span style="color:#7C4DFF">DVC portfolio</span> pairings highlighted in each tooltip.'
+      + '<span style="color:#8CC0EE">DVC portfolio</span> pairings highlighted in each tooltip.'
       + '</p>';
   }
 

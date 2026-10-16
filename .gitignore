@@ -24,6 +24,7 @@ fix-agent-anatomy.py
 # QA screenshots (generated)
 qa/
 qa-full/
+audit/*.png
 
 # Node (if added later)
 node_modules/

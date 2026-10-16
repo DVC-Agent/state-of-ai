@@ -1,0 +1,400 @@
+/* five-years.css — DVC at Five deck. Builds on slides.css tokens and
+   typography (slide-eyebrow, slide-headline, slide-sub, hl-accent, cover). */
+
+.slide-inner { gap: 0; }
+
+/* Cover: a large "5" in the teal block */
+.fy-cover-five {
+  position: absolute; right: 8%; bottom: -6%;
+  font-size: clamp(160px, 26vw, 420px); font-weight: 900; line-height: 1;
+  color: rgba(26, 26, 46, 0.14); letter-spacing: -0.05em;
+  user-select: none;
+}
+
+/* Who we are: the path through three waves */
+.fy-path { display: flex; align-items: stretch; gap: 14px; margin: 6px 0 22px; flex-wrap: wrap; }
+.fy-path-step {
+  display: flex; flex-direction: column; gap: 4px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 22px; min-width: 190px;
+}
+.fy-path-step--now { border-color: rgba(75, 181, 171, 0.6); background: rgba(75, 181, 171, 0.08); }
+.fy-path-k { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+.fy-path-v { font-size: clamp(20px, 1.8vw, 28px); font-weight: 800; color: var(--text); }
+.fy-path-n { font-size: 14px; color: var(--teal); font-weight: 600; }
+.fy-path-arrow { align-self: center; font-size: 26px; color: var(--text-mute); }
+
+.fy-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.fy-chip {
+  font-size: 15px; color: var(--text-mute);
+  border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px;
+}
+.fy-chip strong { color: var(--text); font-weight: 700; }
+
+/* Then and now */
+.fy-then-now { display: grid; grid-template-columns: minmax(220px, 1fr) 2.4fr; gap: 22px; width: 100%; margin-top: 10px; }
+.fy-col { display: flex; flex-direction: column; gap: 12px; padding: 22px; border-radius: 16px; border: 1px solid var(--border); }
+.fy-col--then { background: rgba(255, 255, 255, 0.02); }
+.fy-col--then .fy-num { color: var(--text-mute); }
+.fy-col--now { background: rgba(255, 215, 32, 0.05); border-color: rgba(255, 215, 32, 0.35); }
+.fy-col-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+.fy-col--now .fy-col-label { color: var(--gold); }
+.fy-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.fy-stat { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.fy-num { font-size: clamp(30px, 3.2vw, 52px); font-weight: 900; letter-spacing: -0.02em; line-height: 1; color: var(--text); font-feature-settings: "tnum" 1; }
+.fy-lbl { font-size: 14px; color: var(--text-mute); line-height: 1.35; }
+
+/* Lessons */
+.fy-lesson { flex-direction: row; align-items: flex-start; gap: clamp(20px, 3vw, 48px); }
+.fy-lesson-n {
+  font-size: clamp(90px, 11vw, 180px); font-weight: 900; line-height: 0.85;
+  letter-spacing: -0.04em; color: rgba(160, 168, 188, 0.14); flex: 0 0 auto;
+}
+.fy-lesson-body { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.fy-lesson .slide-sub { margin-bottom: 18px; }
+
+.fy-points { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 4px 0 16px; max-width: 980px; }
+.fy-points li {
+  position: relative; padding-left: 22px;
+  font-size: clamp(15px, 1.25vw, 19px); line-height: 1.5; color: var(--text);
+}
+.fy-points li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; border-radius: 2px; background: var(--teal); }
+.fy-points strong { color: var(--gold); font-weight: 700; }
+.fy-points--three li::before { background: var(--coral); }
+
+.fy-takeaway {
+  font-size: clamp(16px, 1.35vw, 21px); font-weight: 600; line-height: 1.45;
+  color: var(--text); max-width: 980px;
+  border-left: 3px solid var(--gold); padding: 6px 0 6px 16px;
+}
+
+/* Lesson 1: the asymmetry */
+.fy-asym { display: flex; gap: 14px; margin: 2px 0 18px; flex-wrap: wrap; }
+.fy-asym > div { display: flex; align-items: baseline; gap: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; }
+.fy-asym-n { font-size: clamp(28px, 2.6vw, 40px); font-weight: 900; color: var(--text-mute); }
+.fy-asym-n--gold { color: var(--gold); }
+.fy-asym-l { font-size: 14px; color: var(--text-mute); }
+
+/* Lesson 2: the check ladder */
+.fy-ladder { display: flex; align-items: flex-end; gap: 12px; margin: 0 0 18px; }
+.fy-rung {
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 18px; min-width: 170px;
+}
+.fy-rung:nth-child(1) { height: 78px; }
+.fy-rung:nth-child(2) { height: 104px; }
+.fy-rung--top { height: 132px; border-color: rgba(255, 215, 32, 0.55); background: rgba(255, 215, 32, 0.08); }
+.fy-rung-v { font-size: clamp(20px, 1.8vw, 28px); font-weight: 800; color: var(--text); }
+.fy-rung--top .fy-rung-v { color: var(--gold); }
+.fy-rung-l { font-size: 13px; color: var(--text-mute); }
+
+/* Lesson 3: the social ladder */
+.fy-steps { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 18px; }
+.fy-steps > span:not(.fy-steps-arrow) {
+  font-size: 15px; font-weight: 700; color: var(--text);
+  background: rgba(244, 182, 169, 0.1); border: 1px solid rgba(244, 182, 169, 0.45);
+  border-radius: 999px; padding: 7px 14px;
+}
+.fy-steps-arrow { color: var(--text-mute); }
+
+/* Lesson 4: 2010 vs 2026 */
+.fy-vs { display: grid; grid-template-columns: 1fr 1.6fr; gap: 14px; margin: 6px 0 18px; width: 100%; max-width: 980px; }
+.fy-vs-col { display: flex; flex-direction: column; gap: 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; }
+.fy-vs-col--now { border-color: rgba(75, 181, 171, 0.55); background: rgba(75, 181, 171, 0.07); }
+.fy-vs-y { font-size: clamp(24px, 2.2vw, 34px); font-weight: 900; color: var(--text-mute); }
+.fy-vs-col--now .fy-vs-y { color: var(--teal); }
+.fy-vs-t { font-size: 15px; color: var(--text); line-height: 1.45; }
+
+/* Lesson 5: three metrics */
+.fy-metrics { display: flex; gap: 12px; flex-wrap: wrap; margin: 6px 0 18px; }
+.fy-metric { background: rgba(255, 215, 32, 0.08); border: 1px solid rgba(255, 215, 32, 0.45); border-radius: 12px; padding: 12px 18px; }
+.fy-metric-t { font-size: clamp(16px, 1.4vw, 21px); font-weight: 800; color: var(--gold); }
+
+/* Lesson 6 */
+.fy-quote {
+  font-size: clamp(22px, 2.2vw, 34px); font-weight: 800; font-style: italic;
+  color: var(--teal); letter-spacing: -0.01em; margin-top: 4px;
+}
+
+/* Stack and theses */
+.fy-grid--theses { width: 100%; max-width: 1100px; margin: 8px 0 20px; }
+.fy-grid--theses .fy-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+.fy-angles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 1100px; }
+.fy-angle {
+  display: flex; flex-direction: column; gap: 6px;
+  font-size: clamp(15px, 1.25vw, 19px); font-weight: 700; color: var(--text);
+  border: 1px solid rgba(75, 181, 171, 0.4); background: rgba(75, 181, 171, 0.06);
+  border-radius: 12px; padding: 14px 16px;
+}
+.fy-angle--phys { border-color: rgba(255, 215, 32, 0.5); background: rgba(255, 215, 32, 0.07); }
+.fy-angle-k { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); }
+.fy-under { margin: 18px 0 0; }
+
+/* Funds */
+.fy-funds { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; max-width: 1100px; margin-top: 8px; }
+.fy-fund { display: flex; flex-direction: column; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px; }
+.fy-fund--ai { border-color: rgba(255, 215, 32, 0.5); background: rgba(255, 215, 32, 0.06); }
+.fy-fund-k { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); }
+.fy-fund--ai .fy-fund-k { color: var(--gold); }
+.fy-fund-h { font-size: clamp(19px, 1.7vw, 26px); font-weight: 800; color: var(--text); line-height: 1.25; }
+.fy-fund ul { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.fy-fund li { font-size: 16px; color: var(--text-mute); line-height: 1.45; }
+
+/* Close */
+.fy-close { align-items: center; text-align: center; }
+.fy-close .slide-headline, .fy-close .slide-sub { margin-left: auto; margin-right: auto; }
+.fy-close-marks { display: flex; gap: 8px; margin: 18px 0 12px; }
+.fy-close-marks span { width: 28px; height: 28px; border-radius: 4px; }
+.fy-close-marks span:nth-child(1) { background: #FFFFFF; }
+.fy-close-marks span:nth-child(2) { background: var(--teal); }
+.fy-close-marks span:nth-child(3) { background: var(--coral); }
+.fy-close-name { font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+
+/* Speaker notes (N toggles) */
+.fy-notes { display: none; }
+body.fy-show-notes .slide.is-active .fy-notes {
+  display: block; position: fixed; left: 24px; right: 24px; bottom: 18px; z-index: 60;
+  background: rgba(20, 22, 32, 0.94); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 16px; font-size: 15px; line-height: 1.5; color: var(--text);
+}
+
+/* Inline company logo (five-years.js) */
+.fy-inline-logo { display: inline-flex; width: 1em; height: 1em; margin-right: 0.35em; vertical-align: -0.12em; background: #FFFFFF; border-radius: 0.22em; align-items: center; justify-content: center; overflow: hidden; }
+.fy-inline-logo img { width: 80%; height: 80%; object-fit: contain; }
+
+/* Entry motion — presenting layout only. Below 769px slides.css stacks every
+   slide in a scrolling column and never sets .is-active, so hiding inactive
+   content there would blank the whole deck. */
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  .slide .slide-inner > *, .slide .fy-lesson-body > * { transition: opacity 500ms ease, transform 500ms ease; }
+  .slide:not(.is-active) .slide-inner > *, .slide:not(.is-active) .fy-lesson-body > * { opacity: 0; transform: translateY(10px); }
+}
+
+/* Narrow screens: slides scroll vertically on mobile (slides.css), so stack */
+@media (max-width: 900px) {
+  .fy-then-now, .fy-funds, .fy-vs { grid-template-columns: 1fr; }
+  .fy-grid, .fy-angles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fy-lesson { flex-direction: column; gap: 4px; }
+  .fy-lesson-n { font-size: 72px; }
+  .fy-ladder { flex-wrap: wrap; }
+}
+
+/* ── Photos and people (assets/five-years) ── */
+.fy-split { flex-direction: row; align-items: center; gap: clamp(24px, 4vw, 64px); }
+.fy-split-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.fy-portrait { flex: 0 0 clamp(240px, 26vw, 400px); margin: 0; }
+.fy-portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px; display: block; box-shadow: 0 18px 40px -18px rgba(0,0,0,0.6); }
+.fy-portrait figcaption { font-size: 13px; color: var(--text-mute); margin-top: 10px; }
+
+.fy-record { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 760px; }
+.fy-record-row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: baseline; border-top: 1px solid var(--border); padding-top: 8px; }
+.fy-record-k { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); }
+.fy-record-v { font-size: clamp(14px, 1.15vw, 17px); color: var(--text-mute); line-height: 1.45; }
+.fy-record-v strong { color: var(--text); }
+
+.fy-people { display: grid; gap: 16px; width: 100%; }
+.fy-people--partners { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.fy-people--ops { grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: 900px; }
+.fy-people-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); margin: 22px 0 10px; }
+.fy-person { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.fy-person img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block; background: var(--bg-card); }
+.fy-person--sm img { width: 72px; height: 72px; border-radius: 50%; }
+.fy-person--sm { flex-direction: row; align-items: center; gap: 12px; }
+.fy-person figcaption { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.fy-person strong { font-size: clamp(14px, 1.1vw, 17px); color: var(--text); font-weight: 700; }
+.fy-person span { font-size: 13px; color: var(--text-mute); line-height: 1.35; }
+
+.fy-faces { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px 14px; width: 100%; max-width: 1100px; margin: 4px 0 16px; }
+.fy-face { margin: 0; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.fy-face img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; border: 2px solid rgba(244, 182, 169, 0.45); }
+.fy-face figcaption { display: flex; flex-direction: column; min-width: 0; }
+.fy-face strong { font-size: 13px; color: var(--text); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fy-face span { font-size: 11.5px; color: var(--text-mute); line-height: 1.3; }
+
+.fy-deals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 1150px; margin: 0 0 16px; }
+.fy-deal { display: flex; flex-direction: column; gap: 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; }
+.fy-deal-n { font-size: 16px; color: var(--text); }
+.fy-deal-v { font-size: clamp(22px, 2vw, 30px); font-weight: 900; color: var(--gold); letter-spacing: -0.01em; }
+.fy-deal-t { font-size: 13.5px; color: var(--text-mute); line-height: 1.45; }
+
+.fy-events { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 10px; width: 100%; max-width: 1150px; margin: 2px 0 16px; }
+.fy-events img { width: 100%; height: clamp(120px, 15vh, 180px); object-fit: cover; border-radius: 12px; display: block; }
+
+@media (max-width: 900px) {
+  .fy-split { flex-direction: column; }
+  .fy-portrait { flex-basis: auto; width: 100%; max-width: 360px; }
+  .fy-people--partners { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .fy-people--ops { grid-template-columns: 1fr; }
+  .fy-faces { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fy-deals { grid-template-columns: 1fr; }
+  .fy-events { grid-template-columns: 1fr 1fr; }
+  .fy-record-row { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* slides.css carries layout overrides keyed to the State of AI deck's slide
+   numbers (.slide[data-slide="13"] etc.). Neutralise them for this deck. */
+body[data-plain-deck] .slide { align-items: center; padding: 64px 72px; }
+@media (max-width: 768px) { body[data-plain-deck] .slide { padding: 80px 24px; } body[data-plain-deck] .slide.slide--cover { padding: 0; align-items: stretch; } }
+body[data-plain-deck] .slide.slide--cover { padding: 0; align-items: stretch; }
+
+/* Who we are: logo strip on white chips */
+.fy-logos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; max-width: 760px; }
+.fy-logos img { height: 34px; width: auto; max-width: 128px; object-fit: contain; background: #FFFFFF; border-radius: 8px; padding: 7px 10px; box-sizing: border-box; }
+.fy-people--partners { grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: 1180px; }
+.fy-people--ops { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 820px; }
+
+/* Merged "who we are + numbers" slide */
+.fy-waves { font-size: clamp(15px, 1.2vw, 18px); color: var(--text-mute); margin: 0 0 4px; }
+.fy-waves span { color: var(--teal); margin: 0 6px; }
+.fy-split .fy-logos { margin-top: 12px; }
+.fy-record-line { font-size: clamp(13px, 1.05vw, 15px); color: var(--text-mute); margin: 10px 0 0; line-height: 1.5; }
+.fy-record-line strong { color: var(--text); }
+.fy-numbers { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 820px; margin-top: 18px; }
+.fy-numbers-then { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; }
+.fy-then-line { font-size: 15px; color: var(--text-mute); }
+.fy-numbers-now { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border: 1px solid rgba(255, 215, 32, 0.35); background: rgba(255, 215, 32, 0.05); border-radius: 14px; }
+.fy-numbers-now .fy-col-label { color: var(--gold); }
+.fy-numbers .fy-num { font-size: clamp(26px, 2.6vw, 40px); }
+.fy-split .fy-portrait { flex-basis: clamp(220px, 23vw, 360px); }
+
+/* Case cards: larger logos next to the company name */
+.fy-deal-n strong { display: inline-flex; align-items: center; gap: 12px; font-size: 18px; }
+.fy-deal-n .fy-inline-logo { width: 34px; height: 34px; margin: 0; border-radius: 9px; }
+.fy-deal-n .fy-inline-logo img { width: 78%; height: 78%; }
+
+/* iTech portfolio strip (Bitfury, TradingView, Ecwid, Aviasales) is one wide image */
+.fy-logos img.fy-logo-wide { max-width: none; height: 40px; padding: 8px 14px; }
+.fy-logos img { height: 40px; padding: 8px 12px; max-width: 150px; }
+
+/* A single case card per lesson */
+.fy-deals--one { grid-template-columns: minmax(0, 720px); }
+.fy-deals--one .fy-deal { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 16px; }
+.fy-deals--one .fy-deal-t { flex: 1 1 100%; font-size: 14.5px; }
+.fy-deals--two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; }
+@media (max-width: 900px) { .fy-deals--two { grid-template-columns: 1fr; } }
+
+/* Lesson 1: the Uber story above the asymmetry */
+.fy-story { font-size: clamp(16px, 1.35vw, 20px); color: var(--text); margin: 0 0 10px; }
+.fy-story strong { color: var(--gold); }
+/* Lesson 2: signals line under the takeaway */
+.fy-signals { font-size: clamp(14px, 1.1vw, 16px); color: var(--text-mute); margin: 10px 0 0; }
+/* Lesson 6: Marina's full headline is long */
+.slide-headline.fy-headline--long { font-size: clamp(32px, 3.6vw, 52px); }
+
+/* Lesson 3 carries the most content: tighten it so it fits a 1280x720 projector */
+.fy-dense .slide-headline { font-size: clamp(30px, 3.4vw, 50px); margin-bottom: 8px; }
+.fy-dense .slide-sub { margin-bottom: 10px; }
+.fy-dense .fy-steps { margin-bottom: 10px; }
+.fy-dense .fy-points { gap: 4px; margin-bottom: 10px; }
+.fy-dense .fy-points li { font-size: clamp(14px, 1.1vw, 17px); }
+.fy-dense .fy-deals { margin-bottom: 10px; }
+.fy-dense .fy-deal { padding: 10px 14px; }
+.fy-dense .fy-faces { gap: 8px 12px; margin-bottom: 10px; }
+.fy-dense .fy-face img { width: 40px; height: 40px; }
+
+/* Case cards: the headline is a sentence now, not a number */
+.fy-deal-v { font-size: clamp(18px, 1.6vw, 24px); }
+/* Slide 9: a text tile alongside the number tiles */
+.fy-stat--text { justify-content: center; }
+.fy-stat--text .fy-num { font-size: clamp(18px, 1.6vw, 24px); line-height: 1.25; letter-spacing: -0.01em; }
+
+/* Lesson 3: four equal "take" cards in one row */
+.fy-takes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 1150px; margin: 2px 0 14px; }
+.fy-take { display: flex; flex-direction: column; gap: 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; min-width: 0; }
+.fy-take-n { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); }
+.fy-take-n strong { font-weight: 700; }
+.fy-take-icon { width: 28px; height: 28px; border-radius: 7px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; flex: 0 0 auto; }
+.fy-take-icon img { width: 78%; height: 78%; object-fit: contain; display: block; }
+.fy-take-icon--photo { border-radius: 50%; }
+.fy-take-icon--photo img { width: 100%; height: 100%; object-fit: cover; }
+.fy-take-v { font-size: clamp(15px, 1.25vw, 19px); font-weight: 800; color: var(--gold); line-height: 1.25; }
+.fy-take-t { font-size: 13px; color: var(--text-mute); line-height: 1.4; }
+@media (max-width: 900px) { .fy-takes { grid-template-columns: 1fr 1fr; } }
+
+/* DVC logo (assets/five-years/logos/dvc-logo.svg, the horizontal D V C mark) */
+.fy-cover-logo { height: clamp(44px, 5vw, 64px); width: auto; display: block; margin: 0 0 18px; }
+.fy-close-logo { height: clamp(56px, 6vw, 84px); width: auto; display: block; margin: 22px auto 14px; }
+.fy-corner-logo { position: fixed; top: 18px; left: 24px; height: 24px; width: auto; z-index: 50; opacity: 0.95; }
+body:has(.slide--cover.is-active) .fy-corner-logo,
+body:has(.slide--fy-close.is-active) .fy-corner-logo { display: none; }
+@media (max-width: 768px) { .fy-corner-logo { display: none; } }
+
+
+/* ── DVC brand palette (from dvc.ai): navy #1D253E, blue #2080D6, teal #4BB5AB,
+   yellow #FFD720, peach #F4B6A9. Overrides the State of AI tokens from
+   slides.css for this deck only. ── */
+:root {
+  --bg-primary: #1D253E;
+  --bg-card:    #27304B;
+  --bg-card-2:  #313B58;
+  --teal:       #4BB5AB;
+  --gold:       #FFD720;
+  --coral:      #F4B6A9;
+  --purple:     #2080D6;
+  --text:       #F4F5F8;
+  --text-mute:  #A9B1C7;
+  --border:     rgba(169, 177, 199, 0.16);
+}
+html, body { background: var(--bg-primary); }
+.cover-block--teal   { background: #4BB5AB; }
+.cover-block--salmon { background: #F4B6A9; }
+.cover-block--gold   { background: #FFD720; }
+.cover-block--navy   { background: #1D253E; }
+.cover-block--blue   { background: #2080D6; }
+.cover-title { color: #1D253E; }
+.hl-accent--teal  { background-image: linear-gradient(120deg, #4BB5AB 0%, #9FE1DA 100%); }
+.hl-accent--gold  { background-image: linear-gradient(120deg, #FFD720 0%, #FFEC8F 100%); }
+.hl-accent--coral { background-image: linear-gradient(120deg, #F4B6A9 0%, #FFDCD3 100%); }
+.progress-fill { background: linear-gradient(90deg, #2080D6, #4BB5AB, #FFD720); }
+.cover-wordmark, .cover-eyebrow, .cover-footer { color: rgba(29, 37, 62, 0.72); }
+/* slides.css paints a State of AI teal/coral glow behind its slide 2 */
+body[data-plain-deck] .slide[data-slide="2"] { background: none; }
+
+/* ── Funds slide: the main selling slide ── */
+.fy-funds-slide .slide-headline { font-size: clamp(30px, 3.4vw, 50px); margin-bottom: 14px; }
+.fy-fundwall { display: grid; grid-template-columns: 1.45fr 1fr; gap: 16px; width: 100%; max-width: 1200px; }
+.fy-fundcard { display: flex; flex-direction: column; gap: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; padding: 16px 18px; min-width: 0; }
+.fy-fundcard--ai { border-color: rgba(255, 215, 32, 0.45); background: linear-gradient(180deg, rgba(255, 215, 32, 0.07), rgba(255, 215, 32, 0.02)); }
+.fy-fundcard-head { display: flex; flex-direction: column; gap: 6px; }
+.fy-fundcard .fy-fund-h { font-size: clamp(17px, 1.5vw, 22px); }
+.fy-terms { display: flex; flex-wrap: wrap; gap: 6px; }
+.fy-terms span { font-size: 12.5px; color: var(--text); background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px; }
+
+.fy-cogrid { display: grid; gap: 6px; }
+.fy-cogrid--rf { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.fy-cogrid--ai { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fy-co { height: 44px; background: #FFFFFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 7px; padding: 0 8px; min-width: 0; }
+.fy-co--word img { max-height: 22px; max-width: 86%; object-fit: contain; display: block; }
+.fy-co-icon { width: 22px; height: 22px; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; border-radius: 5px; overflow: hidden; }
+.fy-co-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.fy-co-n { font-size: 12px; font-weight: 700; color: #1D253E; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.01em; }
+.fy-cogrid--ai .fy-co { height: 50px; }
+
+.fy-stack { display: inline-flex; flex: 0 0 auto; }
+.fy-stack-img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bg-primary); margin-left: -8px; background: var(--bg-card); }
+.fy-stack-img:first-child { margin-left: 0; }
+.fy-stack--lg .fy-stack-img { width: 38px; height: 38px; margin-left: -10px; }
+.fy-stack--lg .fy-stack-img:first-child { margin-left: 0; }
+.fy-fund-lps { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-mute); margin-top: auto; }
+
+.fy-collective { display: flex; align-items: center; gap: 16px; width: 100%; max-width: 1200px; margin-top: 14px; padding: 12px 16px; border: 1px solid rgba(75, 181, 171, 0.4); background: rgba(75, 181, 171, 0.07); border-radius: 14px; }
+.fy-collective-t { font-size: clamp(14px, 1.15vw, 17px); color: var(--text-mute); }
+.fy-collective-t strong { color: var(--teal); }
+.fy-funds-slide .slide-source { margin-top: 8px; }
+
+@media (max-width: 900px) {
+  .fy-fundwall { grid-template-columns: 1fr; }
+  .fy-cogrid--rf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fy-cogrid--ai { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fy-collective { flex-direction: column; align-items: flex-start; }
+}
+.fy-co-n { white-space: normal; line-height: 1.1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 11.5px; }
+.fy-co { justify-content: flex-start; padding: 0 9px; }
+.fy-co--word { justify-content: center; }
+.fy-cogrid--ai { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Uniform tiles: same icon size, same type size, left aligned */
+.fy-co-icon { width: 24px; height: 24px; border-radius: 6px; }
+.fy-co-n { font-size: 12.5px; }
+.fy-cogrid--ai .fy-co-n { font-size: 13.5px; }
+.fy-cogrid--ai .fy-co-icon { width: 28px; height: 28px; }

@@ -7,21 +7,19 @@
   const ANGLES = [
     {
       key: 'saas',
-      title: 'SAAS TO INCUMBENTS',
+      title: 'Software to incumbents',
       tagline: 'Sell software to the people doing the work.',
       glyph: 'stack',
-      color: '#4BB5AB',
-      when: 'Many moderately-sized buyers · similar workflows',
-      badWhen: 'Concentrated market or fragmented + sticky clients',
+      color: '#4CB5AB',
+      when: 'Buyers can adopt software · workflows repeat',
+      badWhen: 'Weak distribution or low willingness to pay',
       customer: 'The service provider',
-      capital: { label: 'Equity · moderate · inference-cost drag', dots: 2 },
+      capital: { label: 'Primarily equity · inference and working capital matter', dots: 2 },
       pricing: 'Seat + usage hybrid',
-      grossMargin: 52,
-      grossMarginLabel: '40-60%',
-      ebitda: 5,
-      ebitdaLabel: '0-10% (near break-even)',
+      marginEconomics: 'Inference, support and human review reduce software margins',
+      profitability: 'Depends on pricing, retention and delivery cost; no universal EBITDA band',
       comps: [
-        { name: 'Harvey',        detail: '$15.5B ($550M, Sep 9 2026) · ARR above $400M per the CEO ≈ 39×' },
+        { name: 'Harvey',        detail: 'Legal software for law firms and in-house teams' },
         { name: 'Legora',        detail: 'Harvey’s direct European competitor' },
         { name: 'ServiceTitan',  detail: 'NASDAQ: TTAN' },
         { name: 'ServiceNow Otto', detail: 'May 2026' },
@@ -41,55 +39,41 @@
     },
     {
       key: 'vertical',
-      title: 'VERTICAL AGENTIC',
+      title: 'Vertical agentic operator',
       tagline: 'Replace the service. Sell the outcome.',
       glyph: 'arrow',
-      color: '#FFD720',
-      when: 'Concentrated market · clear winners possible',
-      badWhen: 'Highly fragmented or relationship-locked customers',
+      color: '#4CB5AB',
+      when: 'Own the deliverable · reachable customers · repeatable work',
+      badWhen: 'Unpriced liability or expensive human exceptions',
       customer: 'The end customer',
-      capital: { label: 'Equity · heavy · deep venture-burn', dots: 3 },
+      capital: { label: 'Equity; debt where cash flows support it', dots: 3 },
       pricing: 'Outcome / per-task',
-      grossMargin: 45,
-      grossMarginLabel: '30-55%',
-      ebitda: -15,
-      ebitdaLabel: 'Negative (scaling)',
+      marginEconomics: 'Price the outcome, including exceptions, liability and human delivery',
+      profitability: 'Automation can improve margins, but service responsibility is not optional',
       comps: [
-        { name: 'Sierra',     detail: '$15.8B / ~$165M ARR ≈ 96×' },
-        { name: 'Decagon',    detail: '$4.5B ($250M Series D, Jan 2026) — no multiple shown: the ARR denominator could not be sourced' },
-        { name: 'Lovable',    detail: '$600M+ run-rate (Sep 2026) · $13.3B' },
-        { name: 'Crescendo',  detail: 'Acquired PartnerHero' },
-        { name: 'EvenUp',     detail: '$2B+ · demand letters' }
+        { name: 'Crosby',     detail: 'AI-native law firm for commercial contracts' },
+        { name: 'Amperos',    detail: 'AI-enabled billing service for healthcare providers' },
+        { name: 'Unlimited Industries', detail: 'AI-native civil engineering; engineer of record' },
       ],
       dvc: [
-        { name: 'Higgsfield',         detail: '$5.4B Series B (Aug 2026) · $1B run-rate (Sep 2026)' },
-        { name: 'Doctronic',          detail: 'AI medical consults · acquired Summer Health' },
-        { name: 'Howie AI',           detail: 'EA · scheduling' },
-        { name: 'tely.ai',            detail: 'B2B content marketing' },
-        { name: 'Unreal Labs',        detail: 'Performance marketing' },
-        { name: 'Keye',               detail: 'PE due diligence' },
-        { name: 'Generative Alpha',   detail: 'Investment agent' },
-        { name: 'Realytics',          detail: 'Consumer intel' },
-        { name: 'Motives',            detail: 'Qualitative research' }
+        { name: 'Doctronic', detail: 'AI consultations plus clinician delivery through Summer Health' }
       ]
     },
     {
       key: 'rollup',
-      title: 'AGENTIC ROLLUP',
-      tagline: 'Buy the business. Automate. Lever up. Repeat.',
+      title: 'Agentic rollup',
+      tagline: 'Buy the business. Improve delivery. Reinvest durable cash flow.',
       glyph: 'rollup',
-      color: '#F4B6A9',
+      color: '#4CB5AB',
       when: 'Fragmented · sticky client relationships',
       badWhen: 'Concentrated market or low operating leverage',
       customer: 'You become the service provider',
       capital: { label: 'Equity + Debt · acquisition leverage', dots: 3 },
       pricing: 'Own the P&L · price the work',
-      grossMargin: 42,
-      grossMarginLabel: '35-50%',
-      ebitda: 35,
-      ebitdaLabel: '30-40% target',
+      marginEconomics: 'Consolidated service COGS remain; improvement must be demonstrated',
+      profitability: 'Test organic cash conversion and debt service, not a blanket EBITDA target',
       comps: [
-        { name: 'Dwelly',     detail: 'Property mgmt · $95M equity + debt', dvc: true },
+        { name: 'Dwelly',     detail: 'Property-management rollup', dvc: true },
         { name: 'Crete',      detail: 'Accounting rollup' },
         { name: 'Long Lake',  detail: 'HOA management rollup' },
         { name: 'Eudia',      detail: 'In-house legal' },
@@ -97,7 +81,7 @@
         { name: 'Metropolis', detail: 'Parking operations' }
       ],
       dvc: [
-        { name: 'Dwelly', detail: 'UK property mgmt · $95M equity + debt', link: 'fleetworks' },
+        { name: 'Dwelly', detail: 'UK property-management rollup', link: 'fleetworks' },
         { name: 'Fura',   detail: 'Digital freight broker · uses FleetWorks', link: 'fleetworks' }
       ]
     }
@@ -110,13 +94,13 @@
   const CONTEXT = {
     rollupContest: {
       tag: 'THE ROLLUP ARBITRAGE IS NOW A FUNDED CONTEST',
-      body: 'The rollup arbitrage is now a funded contest: dedicated AI-services holding vehicles are raising against the same small-cap services targets that the angle depends on, alongside a large pool of PE/VC dry powder. We do not print fund sizes here — the specific figures we previously carried could not be sourced. The consequence stands: the 30&ndash;40% EBITDA arbitrage is no longer under-discovered, and the edge is sourcing and operating speed at the small end.'
+      body: 'Acquiring a relationship-heavy service business can buy distribution, customer contracts and cash flow. Automation can improve delivery economics, but acquisition prices, integration expense, human exception handling and debt service determine whether value is created. Higher cash flow can support more debt only if lenders accept its durability; the leverage loop is not automatic.'
     },
     modelLayerServices: {
-      tag: 'MODEL LAYER ENTERS SERVICES',
-      body: 'Anthropic entered AI implementation services directly through <strong>Ode with Anthropic</strong>, a joint venture with private-capital partners. We do not print the venture size or headcount — those figures could not be sourced. The structural point is what matters: the services-capture thesis now has a competitor that owns the model.'
+      tag: 'MARKET STRUCTURE IS A HEURISTIC, NOT A LAW',
+      body: 'Concentration alone does not determine the winning strategy. Bessemer’s AI-native services framework also identifies fragmented supply as an entry advantage. The useful tests are distribution, ownership of delivery, measurable quality, regulatory responsibility and whether the company can retain the automation surplus.'
     },
-    disclosure: 'Multiples are computed on company-disclosed, unaudited ARR, and are dated where the denominator is dated. Margin bands are DVC estimates unchanged from the May 2026 edition. Funding and revenue figures were re-checked against source on Aug 4, 2026.'
+    disclosure: 'Evidence cut: October 16, 2026. No strategy-wide gross-margin or EBITDA bands are asserted. <a href="https://www.bvp.com/atlas/the-ai-pricing-and-monetization-playbook" target="_blank" rel="noopener noreferrer">Pricing evidence</a> · <a href="https://www.bvp.com/atlas/owning-the-outcome-bessemer-s-ai-native-services-evaluation-framework" target="_blank" rel="noopener noreferrer">Services framework</a>. Outcomes pricing alone does not turn a software platform into a service operator.'
   };
 
   function contextHTML(compact) {
@@ -177,7 +161,7 @@
     el.innerHTML = `
       <div class="aa-header">
         <h3 class="aa-title">Three angles of attack on the services map.</h3>
-        <p class="aa-sub">Market structure picks the strategy. Founders who pick the wrong one fight gravity.</p>
+        <p class="aa-sub">Market structure informs the strategy. Distribution, delivery responsibility and economics decide whether it works.</p>
       </div>
       <div class="aa-grid">
         ${ANGLES.map(a => `
@@ -212,21 +196,8 @@
                 <dt>Pricing</dt>
                 <dd>${a.pricing}</dd>
               </div>
-              <div class="aa-row aa-row--bars">
-                <dt>Margin profile</dt>
-                <dd>
-                  <div class="aa-bar-row">
-                    <span class="aa-bar-label">Gross</span>
-                    <div class="aa-bar"><div class="aa-bar-fill aa-bar-fill--gross" style="width:${a.grossMargin}%"></div></div>
-                    <span class="aa-bar-num">${a.grossMarginLabel}</span>
-                  </div>
-                  <div class="aa-bar-row">
-                    <span class="aa-bar-label">EBITDA</span>
-                    <div class="aa-bar${a.ebitda < 0 ? ' aa-bar--negative' : ''}"><div class="aa-bar-fill aa-bar-fill--ebitda" style="width:${Math.max(4, Math.abs(a.ebitda))}%"></div></div>
-                    <span class="aa-bar-num">${a.ebitdaLabel}</span>
-                  </div>
-                </dd>
-              </div>
+              <div class="aa-row"><dt>Economics</dt><dd>${a.marginEconomics}</dd></div>
+              <div class="aa-row"><dt>Profitability</dt><dd>${a.profitability}</dd></div>
               <div class="aa-row aa-row--chips">
                 <dt>Comps</dt>
                 <dd class="aa-chips">${chipsHTML(a.comps, a.color)}</dd>
@@ -241,7 +212,7 @@
       </div>
       ${contextHTML(false)}
       <p class="aa-footer">
-        <strong>Pick one.</strong> The market structure picks the strategy &mdash; not the founder.
+        <strong>Choose the responsibility.</strong> Selling a tool, delivering a service and owning an acquired business are different operating models.
         <span class="aa-footer-note">Inside DVC: <strong>Fura</strong> (rollup) uses <strong>FleetWorks</strong> (SaaS) for its AI voice layer &mdash; the portfolio compounds.</span>
       </p>
     `;
@@ -269,17 +240,21 @@
               <li><span class="aa-stage-fact-label">Best when</span><span class="aa-stage-fact-value">${a.when}</span></li>
               <li><span class="aa-stage-fact-label">Pricing</span><span class="aa-stage-fact-value">${a.pricing}</span></li>
               <li><span class="aa-stage-fact-label">Capital</span><span class="aa-stage-fact-value">${a.capital.label}</span></li>
-              <li><span class="aa-stage-fact-label">Margin</span><span class="aa-stage-fact-value tabnum">Gross ${a.grossMarginLabel} · EBITDA ${a.ebitdaLabel}</span></li>
+              <li><span class="aa-stage-fact-label">Economics</span><span class="aa-stage-fact-value">${a.marginEconomics}</span></li>
             </ul>
             <div class="aa-stage-examples">
               <span class="aa-stage-examples-label">Examples</span>
               <span class="aa-stage-examples-list">${a.comps.slice(0, 3).map(c => c.name).join(' · ')}</span>
             </div>
+            <div class="aa-stage-dvc">
+              <span class="aa-stage-examples-label">DVC examples</span>
+              <span class="aa-stage-examples-list">${a.dvc.slice(0, 4).map(c => c.name).join(' · ')}</span>
+            </div>
           </article>
         `).join('')}
       </div>
       ${contextHTML(true)}
-      <p class="aa-stage-footer">Market structure picks the strategy — not the founder. <span class="aa-stage-footer-note">Full company map in the report.</span></p>
+      <p class="aa-stage-footer">Market structure is a starting hypothesis, not a deterministic rule. <span class="aa-stage-footer-note">Fura uses FleetWorks. Full company map and sources in the report.</span></p>
     `;
     el.dataset.aaStageRendered = '1';
   }
@@ -289,7 +264,9 @@
 
   // Auto-render if a default container is present in the page.
   function autoRender() {
-    render('attack-angles-block');
+    var reportTarget = document.getElementById('attack-angles-block');
+    if (reportTarget && reportTarget.dataset.aaMode === 'stage') renderStage(reportTarget);
+    else render('attack-angles-block');
     renderStage('attack-angles-stage');
   }
   if (document.readyState === 'loading') {

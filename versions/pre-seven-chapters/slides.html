@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State of AI — Slideshow | DVC</title>
+<meta name="description" content="A 20-minute compressed presentation of DVC's State of AI">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="slides.css?v=20261016a">
+<link rel="stylesheet" href="slides-blocks.css?v=20261016a">
+<link rel="stylesheet" href="attack-angles.css?v=20261016a">
+<!-- Single-source fact records (Aug 4 2026 audit) -->
+<script src="facts-data.js?v=20261016a"></script>
+<script src="services-matrix-data.js?v=20261016a"></script>
+<!-- Chart.js 4.x -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- GSAP 3.12 -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <link rel="stylesheet" href="brand.css?v=20261016a">
+</head>
+<body>
+
+<!-- Top progress bar -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Top-left: back to full report -->
+<a class="back-link" href="index.html">← Full Report</a>
+
+<!-- Top-right: fullscreen toggle + slide counter -->
+<button class="fs-toggle" id="fsToggle" type="button" aria-label="Toggle fullscreen (F)" title="Present / Fullscreen (F)">
+  <svg class="fs-icon fs-icon--enter" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M3 8V3h5M17 8V3h-5M3 12v5h5M17 12v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <svg class="fs-icon fs-icon--exit" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M8 3v5H3M12 3v5h5M8 17v-5H3M12 17v-5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span class="fs-toggle-label">Present</span>
+</button>
+<div class="slide-counter"><span id="slideNum">1</span> / <span id="slideTotal">18</span></div>
+
+<!-- Click zones (overlay) -->
+<div class="click-zone click-zone--prev" id="zonePrev" aria-label="Previous slide"></div>
+<div class="click-zone click-zone--next" id="zoneNext" aria-label="Next slide"></div>
+
+<!-- Slides container -->
+<main class="deck" id="deck">
+
+  <!-- ============== SLIDE 1: COVER (DVC squares + QR) ============== -->
+  <section class="slide slide--cover" data-slide="1" id="slide-1">
+    <div class="slide-inner cover-inner">
+      <div class="cover-blocks" aria-hidden="true">
+        <div class="cover-block cover-block--white">
+          <span class="cover-wordmark">Davidovs<br>Venture<br>Collective</span>
+        </div>
+        <div class="cover-block cover-block--teal"></div>
+        <div class="cover-block cover-block--salmon"></div>
+        <div class="cover-block cover-block--gold"></div>
+        <div class="cover-block cover-block--navy"></div>
+        <div class="cover-block cover-block--blue"></div>
+      </div>
+      <div class="cover-content">
+        <p class="cover-eyebrow">DVC presents</p>
+        <h1 class="cover-title">STATE OF AI</h1>
+        <p class="cover-subtitle">The Operating Manual for the AI Revolution</p>
+        <p class="cover-tagline">A 20-minute compressed walk through the full stack &mdash; where money flows, who wins, what changes.</p>
+        <div class="cover-qr-row">
+          <div class="cover-qr-frame" aria-label="QR code linking to state-of-ai.dvc.ai">
+            <svg class="cover-qr-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-label="QR code: state-of-ai.dvc.ai"><rect width="29" height="29" fill="#FFFFFF"/><path d="M2,2h1v1h-1zM3,2h1v1h-1zM4,2h1v1h-1zM5,2h1v1h-1zM6,2h1v1h-1zM7,2h1v1h-1zM8,2h1v1h-1zM10,2h1v1h-1zM12,2h1v1h-1zM14,2h1v1h-1zM15,2h1v1h-1zM16,2h1v1h-1zM17,2h1v1h-1zM18,2h1v1h-1zM20,2h1v1h-1zM21,2h1v1h-1zM22,2h1v1h-1zM23,2h1v1h-1zM24,2h1v1h-1zM25,2h1v1h-1zM26,2h1v1h-1zM2,3h1v1h-1zM8,3h1v1h-1zM11,3h1v1h-1zM15,3h1v1h-1zM16,3h1v1h-1zM18,3h1v1h-1zM20,3h1v1h-1zM26,3h1v1h-1zM2,4h1v1h-1zM4,4h1v1h-1zM5,4h1v1h-1zM6,4h1v1h-1zM8,4h1v1h-1zM12,4h1v1h-1zM14,4h1v1h-1zM16,4h1v1h-1zM17,4h1v1h-1zM20,4h1v1h-1zM22,4h1v1h-1zM23,4h1v1h-1zM24,4h1v1h-1zM26,4h1v1h-1zM2,5h1v1h-1zM4,5h1v1h-1zM5,5h1v1h-1zM6,5h1v1h-1zM8,5h1v1h-1zM10,5h1v1h-1zM11,5h1v1h-1zM14,5h1v1h-1zM15,5h1v1h-1zM16,5h1v1h-1zM18,5h1v1h-1zM20,5h1v1h-1zM22,5h1v1h-1zM23,5h1v1h-1zM24,5h1v1h-1zM26,5h1v1h-1zM2,6h1v1h-1zM4,6h1v1h-1zM5,6h1v1h-1zM6,6h1v1h-1zM8,6h1v1h-1zM10,6h1v1h-1zM11,6h1v1h-1zM12,6h1v1h-1zM14,6h1v1h-1zM16,6h1v1h-1zM17,6h1v1h-1zM20,6h1v1h-1zM22,6h1v1h-1zM23,6h1v1h-1zM24,6h1v1h-1zM26,6h1v1h-1zM2,7h1v1h-1zM8,7h1v1h-1zM10,7h1v1h-1zM11,7h1v1h-1zM12,7h1v1h-1zM14,7h1v1h-1zM15,7h1v1h-1zM16,7h1v1h-1zM20,7h1v1h-1zM26,7h1v1h-1zM2,8h1v1h-1zM3,8h1v1h-1zM4,8h1v1h-1zM5,8h1v1h-1zM6,8h1v1h-1zM7,8h1v1h-1zM8,8h1v1h-1zM10,8h1v1h-1zM12,8h1v1h-1zM14,8h1v1h-1zM16,8h1v1h-1zM18,8h1v1h-1zM20,8h1v1h-1zM21,8h1v1h-1zM22,8h1v1h-1zM23,8h1v1h-1zM24,8h1v1h-1zM25,8h1v1h-1zM26,8h1v1h-1zM10,9h1v1h-1zM11,9h1v1h-1zM13,9h1v1h-1zM16,9h1v1h-1zM2,10h1v1h-1zM6,10h1v1h-1zM8,10h1v1h-1zM9,10h1v1h-1zM10,10h1v1h-1zM12,10h1v1h-1zM13,10h1v1h-1zM14,10h1v1h-1zM16,10h1v1h-1zM19,10h1v1h-1zM20,10h1v1h-1zM21,10h1v1h-1zM22,10h1v1h-1zM23,10h1v1h-1zM26,10h1v1h-1zM2,11h1v1h-1zM9,11h1v1h-1zM10,11h1v1h-1zM13,11h1v1h-1zM16,11h1v1h-1zM17,11h1v1h-1zM18,11h1v1h-1zM19,11h1v1h-1zM22,11h1v1h-1zM23,11h1v1h-1zM25,11h1v1h-1zM2,12h1v1h-1zM6,12h1v1h-1zM8,12h1v1h-1zM9,12h1v1h-1zM11,12h1v1h-1zM12,12h1v1h-1zM15,12h1v1h-1zM16,12h1v1h-1zM17,12h1v1h-1zM21,12h1v1h-1zM22,12h1v1h-1zM23,12h1v1h-1zM24,12h1v1h-1zM3,13h1v1h-1zM4,13h1v1h-1zM5,13h1v1h-1zM11,13h1v1h-1zM12,13h1v1h-1zM19,13h1v1h-1zM24,13h1v1h-1zM25,13h1v1h-1zM2,14h1v1h-1zM3,14h1v1h-1zM4,14h1v1h-1zM6,14h1v1h-1zM7,14h1v1h-1zM8,14h1v1h-1zM9,14h1v1h-1zM12,14h1v1h-1zM14,14h1v1h-1zM17,14h1v1h-1zM19,14h1v1h-1zM20,14h1v1h-1zM23,14h1v1h-1zM24,14h1v1h-1zM25,14h1v1h-1zM26,14h1v1h-1zM2,15h1v1h-1zM3,15h1v1h-1zM5,15h1v1h-1zM6,15h1v1h-1zM11,15h1v1h-1zM14,15h1v1h-1zM15,15h1v1h-1zM16,15h1v1h-1zM17,15h1v1h-1zM18,15h1v1h-1zM22,15h1v1h-1zM25,15h1v1h-1zM5,16h1v1h-1zM8,16h1v1h-1zM9,16h1v1h-1zM10,16h1v1h-1zM13,16h1v1h-1zM14,16h1v1h-1zM16,16h1v1h-1zM17,16h1v1h-1zM19,16h1v1h-1zM21,16h1v1h-1zM22,16h1v1h-1zM23,16h1v1h-1zM24,16h1v1h-1zM6,17h1v1h-1zM7,17h1v1h-1zM10,17h1v1h-1zM11,17h1v1h-1zM12,17h1v1h-1zM13,17h1v1h-1zM17,17h1v1h-1zM21,17h1v1h-1zM22,17h1v1h-1zM24,17h1v1h-1zM25,17h1v1h-1zM2,18h1v1h-1zM3,18h1v1h-1zM6,18h1v1h-1zM8,18h1v1h-1zM9,18h1v1h-1zM10,18h1v1h-1zM12,18h1v1h-1zM13,18h1v1h-1zM14,18h1v1h-1zM17,18h1v1h-1zM18,18h1v1h-1zM19,18h1v1h-1zM20,18h1v1h-1zM21,18h1v1h-1zM22,18h1v1h-1zM23,18h1v1h-1zM24,18h1v1h-1zM10,19h1v1h-1zM11,19h1v1h-1zM12,19h1v1h-1zM13,19h1v1h-1zM15,19h1v1h-1zM18,19h1v1h-1zM22,19h1v1h-1zM2,20h1v1h-1zM3,20h1v1h-1zM4,20h1v1h-1zM5,20h1v1h-1zM6,20h1v1h-1zM7,20h1v1h-1zM8,20h1v1h-1zM10,20h1v1h-1zM11,20h1v1h-1zM13,20h1v1h-1zM14,20h1v1h-1zM15,20h1v1h-1zM16,20h1v1h-1zM18,20h1v1h-1zM20,20h1v1h-1zM22,20h1v1h-1zM2,21h1v1h-1zM8,21h1v1h-1zM13,21h1v1h-1zM17,21h1v1h-1zM18,21h1v1h-1zM22,21h1v1h-1zM23,21h1v1h-1zM24,21h1v1h-1zM25,21h1v1h-1zM26,21h1v1h-1zM2,22h1v1h-1zM4,22h1v1h-1zM5,22h1v1h-1zM6,22h1v1h-1zM8,22h1v1h-1zM10,22h1v1h-1zM11,22h1v1h-1zM12,22h1v1h-1zM14,22h1v1h-1zM18,22h1v1h-1zM19,22h1v1h-1zM20,22h1v1h-1zM21,22h1v1h-1zM22,22h1v1h-1zM23,22h1v1h-1zM24,22h1v1h-1zM2,23h1v1h-1zM4,23h1v1h-1zM5,23h1v1h-1zM6,23h1v1h-1zM8,23h1v1h-1zM11,23h1v1h-1zM13,23h1v1h-1zM15,23h1v1h-1zM16,23h1v1h-1zM17,23h1v1h-1zM19,23h1v1h-1zM20,23h1v1h-1zM21,23h1v1h-1zM24,23h1v1h-1zM25,23h1v1h-1zM26,23h1v1h-1zM2,24h1v1h-1zM4,24h1v1h-1zM5,24h1v1h-1zM6,24h1v1h-1zM8,24h1v1h-1zM11,24h1v1h-1zM12,24h1v1h-1zM13,24h1v1h-1zM15,24h1v1h-1zM18,24h1v1h-1zM20,24h1v1h-1zM23,24h1v1h-1zM25,24h1v1h-1zM2,25h1v1h-1zM8,25h1v1h-1zM11,25h1v1h-1zM14,25h1v1h-1zM16,25h1v1h-1zM17,25h1v1h-1zM21,25h1v1h-1zM22,25h1v1h-1zM23,25h1v1h-1zM24,25h1v1h-1zM25,25h1v1h-1zM2,26h1v1h-1zM3,26h1v1h-1zM4,26h1v1h-1zM5,26h1v1h-1zM6,26h1v1h-1zM7,26h1v1h-1zM8,26h1v1h-1zM10,26h1v1h-1zM11,26h1v1h-1zM13,26h1v1h-1zM14,26h1v1h-1zM16,26h1v1h-1zM17,26h1v1h-1zM20,26h1v1h-1zM24,26h1v1h-1zM25,26h1v1h-1zM26,26h1v1h-1z" fill="#151B2E"/></svg>
+          </div>
+          <div class="cover-qr-meta">
+            <span class="cover-qr-label">Read the full report</span>
+            <a class="cover-qr-url" href="https://state-of-ai.dvc.ai">state-of-ai.dvc.ai</a>
+            <span class="cover-qr-hint">Scan or visit &middot; October 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="cover-footer">
+        <span>Press <kbd>&rarr;</kbd> or click to begin</span>
+      </div>
+    </div>
+    <a class="dive-deeper" data-slide-link="1">&rarr; Full report</a>
+  </section>
+  <!-- ============== SLIDE 2: Opening (cinematic day-in-the-life) ============== -->
+  <section class="slide" data-slide="2" id="slide-2">
+    <div class="slide-inner slide-1">
+      <svg class="house-svg" id="houseSvg" viewBox="0 0 800 500" aria-hidden="true">
+        <defs>
+          <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFE6A8" stop-opacity="0.95"/>
+            <stop offset="45%" stop-color="#FFD720" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#FFD720" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="horizonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stop-color="#4BB5AB" stop-opacity="0.0"/>
+            <stop offset="60%"  stop-color="#4BB5AB" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#4BB5AB" stop-opacity="0.32"/>
+          </linearGradient>
+          <radialGradient id="windowGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFD720" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#FFD720" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="iconBloom" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Atmosphere: stars in the sky -->
+        <g id="starsLayer" opacity="0">
+          <circle class="sky-star" cx="60"  cy="40"  r="1.4" fill="#E8ECEF"/>
+          <circle class="sky-star" cx="140" cy="60"  r="0.9" fill="#E8ECEF"/>
+          <circle class="sky-star" cx="230" cy="30"  r="1.6" fill="#E8ECEF"/>
+          <circle class="sky-star" cx="310" cy="55"  r="1.0" fill="#E8ECEF"/>
+          <circle class="sky-star" cx="540" cy="35"  r="1.3" fill="#E8ECEF"/>
+          <circle class="sky-star" cx="640" cy="50"  r="0.9" fill="#E8ECEF"/>
+          <circle class="sky-star" cx="720" cy="30"  r="1.5" fill="#E8ECEF"/>
+          <circle class="sky-star" cx="100" cy="95"  r="0.8" fill="#E8ECEF"/>
+          <circle class="sky-star" cx="700" cy="100" r="0.8" fill="#E8ECEF"/>
+        </g>
+
+        <!-- Sun: travels left-to-right along an arc, color shifts as time progresses -->
+        <g id="sunGroup" opacity="0">
+          <circle id="sunGlowDisc" cx="0" cy="0" r="60" fill="url(#sunGlow)"/>
+          <circle id="sunCore" cx="0" cy="0" r="14" fill="#FFE6A8"/>
+        </g>
+
+        <!-- Ground line + soft horizon glow -->
+        <rect x="0" y="420" width="800" height="30" fill="url(#horizonGrad)"/>
+        <line id="groundLine" x1="40" y1="430" x2="760" y2="430" stroke="#4BB5AB" stroke-width="2" opacity="0.4" stroke-dasharray="720" stroke-dashoffset="720"/>
+
+        <!-- House outline (architecturally drawn in) -->
+        <path id="houseOutline" d="M 100 430 L 100 220 L 400 80 L 700 220 L 700 430 Z" fill="none" stroke="#A0A8BC" stroke-width="2" opacity="0.7" stroke-dasharray="1500" stroke-dashoffset="1500"/>
+        <path id="houseRoof" d="M 100 220 L 400 80 L 700 220" fill="none" stroke="#FFD720" stroke-width="2" stroke-dasharray="760" stroke-dashoffset="760"/>
+
+        <!-- Internal grid (lights up after the house draws) -->
+        <g id="houseGrid" opacity="0">
+          <line x1="280" y1="430" x2="280" y2="220" stroke="#A0A8BC" stroke-width="1" opacity="0.4" stroke-dasharray="4 4"/>
+          <line x1="520" y1="430" x2="520" y2="220" stroke="#A0A8BC" stroke-width="1" opacity="0.4" stroke-dasharray="4 4"/>
+          <line x1="100" y1="320" x2="700" y2="320" stroke="#A0A8BC" stroke-width="1" opacity="0.4" stroke-dasharray="4 4"/>
+        </g>
+
+        <!-- Window glows behind each icon (warm orange light, fades in when icon activates) -->
+        <circle class="win-glow" id="win-1" cx="180" cy="270" r="54" fill="url(#windowGlow)" opacity="0"/>
+        <circle class="win-glow" id="win-2" cx="400" cy="270" r="54" fill="url(#windowGlow)" opacity="0"/>
+        <circle class="win-glow" id="win-3" cx="620" cy="270" r="54" fill="url(#windowGlow)" opacity="0"/>
+        <circle class="win-glow" id="win-4" cx="280" cy="380" r="54" fill="url(#windowGlow)" opacity="0"/>
+        <circle class="win-glow" id="win-5" cx="520" cy="380" r="54" fill="url(#windowGlow)" opacity="0"/>
+
+        <!-- Connectors that flow icon-to-icon as the day progresses -->
+        <path class="day-connector" id="conn-1" d="M 180 270 Q 290 250 400 270" fill="none" stroke="#4BB5AB" stroke-width="1.5" opacity="0" stroke-dasharray="260" stroke-dashoffset="260"/>
+        <path class="day-connector" id="conn-2" d="M 400 270 Q 510 250 620 270" fill="none" stroke="#FFD720" stroke-width="1.5" opacity="0" stroke-dasharray="260" stroke-dashoffset="260"/>
+        <path class="day-connector" id="conn-3" d="M 620 270 Q 450 320 280 380" fill="none" stroke="#4BB5AB" stroke-width="1.5" opacity="0" stroke-dasharray="480" stroke-dashoffset="480"/>
+        <path class="day-connector" id="conn-4" d="M 280 380 Q 400 360 520 380" fill="none" stroke="#F4B6A9" stroke-width="1.5" opacity="0" stroke-dasharray="260" stroke-dashoffset="260"/>
+
+        <g class="house-icon" id="icon-1" data-time="6:40am" data-label="Email">
+          <circle class="icon-pulse" cx="180" cy="270" r="28" fill="none" stroke="#4BB5AB" stroke-width="2" opacity="0"/>
+          <circle class="icon-bg" cx="180" cy="270" r="28" fill="#26304C" stroke="#4BB5AB" stroke-width="2"/>
+          <path d="M 165 263 L 195 263 L 195 280 L 165 280 Z M 165 263 L 180 273 L 195 263" fill="none" stroke="#4BB5AB" stroke-width="1.8"/>
+          <text x="180" y="320" text-anchor="middle" fill="#E8ECEF" font-size="11" font-weight="600">6:40am · Email</text>
+        </g>
+        <g class="house-icon" id="icon-2" data-time="6:45am" data-label="Calendar">
+          <circle class="icon-pulse" cx="400" cy="270" r="28" fill="none" stroke="#FFD720" stroke-width="2" opacity="0"/>
+          <circle class="icon-bg" cx="400" cy="270" r="28" fill="#26304C" stroke="#FFD720" stroke-width="2"/>
+          <rect x="386" y="258" width="28" height="22" rx="2" fill="none" stroke="#FFD720" stroke-width="1.8"/>
+          <line x1="386" y1="265" x2="414" y2="265" stroke="#FFD720" stroke-width="1.8"/>
+          <text x="400" y="320" text-anchor="middle" fill="#E8ECEF" font-size="11" font-weight="600">6:45am · Calendar</text>
+        </g>
+        <g class="house-icon" id="icon-3" data-time="7:15am" data-label="Telegram">
+          <circle class="icon-pulse" cx="620" cy="270" r="28" fill="none" stroke="#4BB5AB" stroke-width="2" opacity="0"/>
+          <circle class="icon-bg" cx="620" cy="270" r="28" fill="#26304C" stroke="#4BB5AB" stroke-width="2"/>
+          <path d="M 608 270 L 632 262 L 628 282 L 620 276 L 614 280 Z" fill="none" stroke="#4BB5AB" stroke-width="1.8"/>
+          <text x="620" y="320" text-anchor="middle" fill="#E8ECEF" font-size="11" font-weight="600">7:15am · Telegram</text>
+        </g>
+        <g class="house-icon" id="icon-4" data-time="7:20am" data-label="Amazon">
+          <circle class="icon-pulse" cx="280" cy="380" r="28" fill="none" stroke="#FFD720" stroke-width="2" opacity="0"/>
+          <circle class="icon-bg" cx="280" cy="380" r="28" fill="#26304C" stroke="#FFD720" stroke-width="2"/>
+          <rect x="266" y="368" width="28" height="20" rx="1" fill="none" stroke="#FFD720" stroke-width="1.8"/>
+          <path d="M 268 388 Q 280 396 292 388" fill="none" stroke="#FFD720" stroke-width="1.8"/>
+          <text x="280" y="420" text-anchor="middle" fill="#E8ECEF" font-size="11" font-weight="600">7:20am · Amazon</text>
+        </g>
+        <g class="house-icon" id="icon-5" data-time="3:10pm" data-label="Waymo">
+          <circle class="icon-pulse" cx="520" cy="380" r="28" fill="none" stroke="#F4B6A9" stroke-width="2" opacity="0"/>
+          <circle class="icon-bg" cx="520" cy="380" r="28" fill="#26304C" stroke="#F4B6A9" stroke-width="2"/>
+          <rect x="504" y="372" width="32" height="14" rx="3" fill="none" stroke="#F4B6A9" stroke-width="1.8"/>
+          <circle cx="512" cy="388" r="3" fill="none" stroke="#F4B6A9" stroke-width="1.5"/>
+          <circle cx="528" cy="388" r="3" fill="none" stroke="#F4B6A9" stroke-width="1.5"/>
+          <text x="520" y="420" text-anchor="middle" fill="#E8ECEF" font-size="11" font-weight="600">3:10pm · Waymo</text>
+        </g>
+      </svg>
+
+      <div class="opener-words">
+        <h1 class="slide-headline slide-headline--xl opener-headline">This runs today.</h1>
+        <p class="slide-eyebrow opener-eyebrow">A day in the life — already automated</p>
+      </div>
+    </div>
+    <a class="dive-deeper" data-slide-link="2">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 2: Tech Cycles — "The price of intelligence is collapsing" ============== -->
+  <section class="slide slide--tc" data-slide="3" id="slide-3">
+    <div class="slide-inner slide-2">
+      <p class="slide-eyebrow">Tech cycles</p>
+      <h1 class="slide-headline">The price of <span class="hl-accent hl-accent--gold">intelligence</span> is collapsing</h1>
+      <p class="slide-sub">Every platform made one scarce input cheap. AI makes <span class="tc-bright">custom software</span> cheap enough to give every workflow its own brain.</p>
+
+      <!-- ═══ PART A — PRICE-DROP LADDER ═══ -->
+      <div class="tc-ladder" id="tcLadder" aria-hidden="true">
+        <div class="tc-chip" data-step="0">
+          <span class="tc-chip-era">PC</span>
+          <span class="tc-chip-year">1980s</span>
+          <span class="tc-chip-arrow">↓</span>
+          <span class="tc-chip-drop">computation</span>
+        </div>
+        <div class="tc-chip" data-step="1">
+          <span class="tc-chip-era">Internet</span>
+          <span class="tc-chip-year">1995</span>
+          <span class="tc-chip-arrow">↓</span>
+          <span class="tc-chip-drop">information distribution</span>
+        </div>
+        <div class="tc-chip" data-step="2">
+          <span class="tc-chip-era">Mobile</span>
+          <span class="tc-chip-year">2007</span>
+          <span class="tc-chip-arrow">↓</span>
+          <span class="tc-chip-drop">consumer distribution</span>
+        </div>
+        <div class="tc-chip" data-step="3">
+          <span class="tc-chip-era">Cloud</span>
+          <span class="tc-chip-year">2010</span>
+          <span class="tc-chip-arrow">↓</span>
+          <span class="tc-chip-drop">compute + storage + deployment</span>
+        </div>
+        <div class="tc-chip tc-chip--live" data-step="4">
+          <span class="tc-chip-era">AI</span>
+          <span class="tc-chip-year">2023+</span>
+          <span class="tc-chip-arrow">↓</span>
+          <span class="tc-chip-drop">intelligence on tap</span>
+          <span class="tc-here">we are here</span>
+        </div>
+      </div>
+
+      <!-- ═══ PART B — SOFTWARE ECONOMICS ARC ═══ -->
+      <div class="tc-arc" id="tcArc" aria-hidden="true">
+        <p class="tc-arc-label">How software gets built</p>
+        <div class="tc-arc-row">
+          <div class="tc-era" data-era="0">
+            <div class="tc-era-glyph tc-era-glyph--bespoke">
+              <span class="tc-node tc-node--big"></span>
+              <span class="tc-node"></span>
+              <span class="tc-node tc-node--mid"></span>
+            </div>
+            <div class="tc-era-cap">
+              <span class="tc-era-title">Bespoke software</span>
+              <span class="tc-era-sub">Custom for every company. Few pieces. Expensive. Slow.</span>
+            </div>
+          </div>
+
+          <div class="tc-arc-arrow"><span></span></div>
+
+          <div class="tc-era" data-era="1">
+            <div class="tc-era-glyph tc-era-glyph--saas">
+              <span class="tc-saas-block"></span>
+              <span class="tc-saas-fan tc-saas-fan--1"></span>
+              <span class="tc-saas-fan tc-saas-fan--2"></span>
+              <span class="tc-saas-fan tc-saas-fan--3"></span>
+              <span class="tc-saas-fan tc-saas-fan--4"></span>
+              <span class="tc-saas-fan tc-saas-fan--5"></span>
+            </div>
+            <div class="tc-era-cap">
+              <span class="tc-era-title">Universal SaaS</span>
+              <span class="tc-era-sub">One product for many customers. Economies of scale. Standardized workflows.</span>
+            </div>
+          </div>
+
+          <div class="tc-arc-arrow"><span></span></div>
+
+          <div class="tc-era tc-era--live" data-era="2">
+            <div class="tc-era-glyph tc-era-glyph--ai">
+              <span class="tc-ai-core"></span>
+              <span class="tc-ai-orbit tc-ai-orbit--1"></span>
+              <span class="tc-ai-orbit tc-ai-orbit--2"></span>
+              <span class="tc-ai-orbit tc-ai-orbit--3"></span>
+              <span class="tc-ai-orbit tc-ai-orbit--4"></span>
+              <span class="tc-ai-orbit tc-ai-orbit--5"></span>
+              <span class="tc-ai-orbit tc-ai-orbit--6"></span>
+              <span class="tc-ai-orbit tc-ai-orbit--7"></span>
+            </div>
+            <div class="tc-era-cap">
+              <span class="tc-era-title">Custom software at scale</span>
+              <span class="tc-era-sub">Each workflow, user, and company gets adapted software or agents on shared intelligence.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PART C — BRIDGE LINE ═══ -->
+      <div class="tc-bridge">
+        <span class="tc-bridge-line">2023 was ignition.</span>
+        <span class="tc-bridge-sep">·</span>
+        <span class="tc-bridge-line tc-bridge-line--accent">2026 is still the beginning.</span>
+      </div>
+      <p class="tc-punchline">
+        <span>Same software arc.</span>
+        <span class="tc-punchline-sep">·</span>
+        <span>New cost curve.</span>
+        <span class="tc-punchline-sep">·</span>
+        <span class="tc-punchline-accent">Very beginning.</span>
+      </p>
+    </div>
+    <a class="dive-deeper" data-slide-link="3">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 3: THE STACK — UNIFIED (3 internal states) ==============
+       One slide that morphs through three lenses on the same 5-layer stack:
+         state 0: revenue build-up      ("Five layers. One economy.")
+         state 1: revenue ↔ margin lens ("Same stack. Two lenses.")
+         state 2: forces on the stack   ("Two forces. One stack.")
+       Right-arrow / Space / click-next advances internal state first, then slide.
+       data-slide-states="3" tells the deck how many sub-states to step through.
+  -->
+  <section class="slide slide--stack-unified" data-slide="4" data-slide-states="3" id="slide-4">
+    <div class="slide-inner slide-3">
+
+      <!-- Header: three pre-rendered states crossfade -->
+      <div class="su-header">
+        <div class="su-header-state is-active" data-state="0">
+          <p class="slide-eyebrow">The Stack · 1 of 3</p>
+          <h1 class="slide-headline">Five layers. <span class="hl-accent hl-accent--teal">One economy.</span></h1>
+          <p class="slide-sub">$60B at the top generates ~$735B of buildout below (Big 4 2026 midpoint; up to ~$745B at top end).</p>
+        </div>
+        <div class="su-header-state" data-state="1">
+          <p class="slide-eyebrow">Revenue vs Margin · 2 of 3</p>
+          <h1 class="slide-headline">Same stack. <span class="hl-accent hl-accent--gold">Two lenses.</span></h1>
+          <p class="slide-sub">Revenue grew everywhere. Margins didn't follow. The top earns software economics. The bottom earns utility.</p>
+        </div>
+        <div class="su-header-state" data-state="2">
+          <p class="slide-eyebrow">Forces on the Stack · 3 of 3</p>
+          <h1 class="slide-headline">Two forces. <span class="hl-accent hl-accent--coral">One stack.</span></h1>
+          <p class="slide-sub">Down: commoditization. Up: personalization. The moat moved up.</p>
+        </div>
+      </div>
+
+      <!-- Stage: side rails (forces) flank the central stack -->
+      <div class="su-stage" id="suStage" data-state="0">
+
+        <div class="su-rail su-rail--left" aria-hidden="true">
+          <svg viewBox="0 0 60 380" class="force-arrow force-arrow--down" aria-hidden="true">
+            <defs>
+              <filter id="glowCoralU" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <path class="force-path force-path--down" d="M 30 30 L 30 330 M 12 305 L 30 340 L 48 305" fill="none" stroke="#F4B6A9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glowCoralU)"/>
+          </svg>
+          <div class="force-side-label force-side-label--coral">
+            <span class="force-side-title">COMMODITIZATION</span>
+            <span class="force-side-sub">Commodity inference collapsed while frontier list prices rose to $10/$50.</span>
+          </div>
+        </div>
+
+        <!-- Center: unified 5-layer stack — same DOM cards morph between states -->
+        <div class="su-stack" id="suStack"></div>
+
+        <div class="su-rail su-rail--right" aria-hidden="true">
+          <svg viewBox="0 0 60 380" class="force-arrow force-arrow--up" aria-hidden="true">
+            <defs>
+              <filter id="glowTealU" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <path class="force-path force-path--up" d="M 30 350 L 30 50 M 12 75 L 30 40 L 48 75" fill="none" stroke="#4BB5AB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glowTealU)"/>
+          </svg>
+          <div class="force-side-label force-side-label--teal">
+            <span class="force-side-title">PERSONALIZATION</span>
+            <span class="force-side-sub">User behavior, habits, identity.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer stat strip per state -->
+      <div class="su-foot">
+        <div class="su-foot-state is-active" data-state="0">
+          <span class="su-stat"><span class="su-stat-num">$60B</span><span class="su-stat-tag">apps revenue</span></span>
+          <span class="su-stat-sep">·</span>
+          <span class="su-stat"><span class="su-stat-num">~$735B</span><span class="su-stat-tag">2026 capex (mid · up to ~$745B)</span></span>
+          <span class="su-stat-sep">·</span>
+          <span class="su-stat"><span class="su-stat-num su-stat-num--accent">12 : 1</span><span class="su-stat-tag">infra : app revenue</span></span>
+        </div>
+        <div class="su-foot-state" data-state="1">
+          <span class="su-stat"><span class="su-stat-num">+400%</span><span class="su-stat-tag">app revenue growth</span></span>
+          <span class="su-stat-sep">·</span>
+          <span class="su-stat"><span class="su-stat-num su-stat-num--teal">50%</span><span class="su-stat-tag">app gross margin</span></span>
+          <span class="su-stat-sep">·</span>
+          <span class="su-stat"><span class="su-stat-num su-stat-num--coral">12%</span><span class="su-stat-tag">energy margin (utility)</span></span>
+        </div>
+        <div class="su-foot-state" data-state="2">
+          <span class="su-stat"><span class="su-stat-num su-stat-num--coral">100×</span><span class="su-stat-tag">spread between the $0.10/$0.50 floor and $10/$50 frontier list prices, Sep 2026</span></span>
+          <span class="su-stat-sep">·</span>
+          <span class="su-stat"><span class="su-stat-num su-stat-num--teal">moat ↑</span><span class="su-stat-tag">value migrates up</span></span>
+          <span class="su-stat-sep">·</span>
+          <span class="su-stat"><span class="su-stat-num">$60B → ~$735B</span><span class="su-stat-tag">12 : 1 stack ratio</span></span>
+        </div>
+      </div>
+
+      <!-- State pips (clickable) -->
+      <div class="su-pips" id="suPips" role="tablist" aria-label="Stack states">
+        <button class="su-pip is-active" data-pip="0" type="button" role="tab" aria-selected="true">
+          <span class="su-pip-num">1</span><span class="su-pip-label">Five layers</span>
+        </button>
+        <button class="su-pip" data-pip="1" type="button" role="tab" aria-selected="false">
+          <span class="su-pip-num">2</span><span class="su-pip-label">Two lenses</span>
+        </button>
+        <button class="su-pip" data-pip="2" type="button" role="tab" aria-selected="false">
+          <span class="su-pip-num">3</span><span class="su-pip-label">Two forces</span>
+        </button>
+      </div>
+      <p class="su-mobile-hint">Tap a state to switch lenses</p>
+
+    </div>
+    <a class="dive-deeper" data-slide-link="4">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 4: Application Layer Funnel (was 6) ============== -->
+  <section class="slide" data-slide="5" id="slide-5">
+    <div class="slide-inner slide-7 slide-applayer">
+      <p class="slide-eyebrow">Application layer</p>
+      <h1 class="slide-headline">The user never sees the model.</h1>
+      <p class="slide-sub">Whoever owns the application picks the model. Distribution &gt; intelligence.</p>
+
+      <div class="funnel-wrap">
+        <svg class="funnel-svg" viewBox="0 0 900 500" aria-hidden="true">
+          <path d="M 60 40 L 840 40 L 620 240 L 280 240 Z" fill="rgba(75,181,171, 0.04)" stroke="#4BB5AB" stroke-width="1" opacity="0.5"/>
+          <path d="M 280 240 L 620 240 L 600 460 L 300 460 Z" fill="rgba(255,215,32, 0.04)" stroke="#FFD720" stroke-width="1" opacity="0.5"/>
+          <g id="funnelDots"></g>
+          <g id="funnelApps"></g>
+          <g id="funnelModels"></g>
+          <text x="80" y="32" fill="#A0A8BC" font-size="12" font-weight="600">USERS →</text>
+          <text x="80" y="180" fill="#4BB5AB" font-size="13" font-weight="700">APPLICATION LAYER</text>
+          <text x="80" y="500" fill="#A0A8BC" font-size="12" font-weight="600" letter-spacing="0.08em">MODELS · fungible</text>
+        </svg>
+      </div>
+      <div class="tk-strip" style="margin-top:10px">
+        <div class="tk-strip-head">
+          <span class="tk-strip-tag" style="background:#4BB5AB">LAB LEADERSHIP · OCT 16, 2026</span>
+          <span class="tk-strip-warn">Private valuations are primary-round marks; secondary prints differ. Every private ARR figure is company-disclosed and unaudited.</span>
+        </div>
+        <div class="tk-items">
+          <div class="tk-item" style="--tk-c:#D4A574">
+            <span class="tk-item-num tabnum">$965B</span>
+            <span class="tk-item-label"><strong>ANTHROPIC</strong> — primary; $65B Series H closed May 28 2026. <strong>$65B</strong> run-rate at end of July 2026, up from <strong>$47B</strong> in May; <strong>Q3 revenue $16.8B</strong> (Bloomberg, Oct 14). <strong>43.8%</strong> of US paid business use vs OpenAI 40.6% (Ramp, Oct 2026). 1,000+ customers spend over $1M a year.</span>
+          </div>
+          <div class="tk-item" style="--tk-c:#10A37F">
+            <span class="tk-item-num tabnum">$852B</span>
+            <span class="tk-item-label"><strong>OPENAI</strong> — primary; reported Sep 29 to be in talks to raise ~$30B at ~<strong>$1.4T</strong> (not closed), IPO pushed to 2027; run-rate reported at ~$40B in August. ChatGPT mobile apps crossed <strong>1B MAU</strong> (May 2026, Sensor Tower estimate); 1.2B weekly users is OpenAI&rsquo;s own latest disclosure (DevDay, Sep 29 2026). Run-rate topped <strong>$40B</strong> in August (Bloomberg); no audited figures disclosed.</span>
+          </div>
+          <div class="tk-item" style="--tk-c:#4285F4">
+            <span class="tk-item-num tabnum">1B</span>
+            <span class="tk-item-label"><strong>GOOGLE GEMINI</strong> MAU; AI Mode past <strong>1B</strong> MAU; ~<strong>90%</strong> of the F100 on Gemini Enterprise; <strong>22B tokens/min</strong> through the APIs.</span>
+          </div>
+          <div class="tk-item" style="--tk-c:#1877F2">
+            <span class="tk-item-num tabnum">1.2B</span>
+            <span class="tk-item-label"><strong>META AI</strong> MAU / 800M WAU (unverified) — reach embedded in existing search bars. The chosen product is the <strong>Muse</strong> agent (Sep 8, ~4M users); first frontier model <strong>Muse Wonder</strong> on Oct 12.</span>
+          </div>
+        </div>
+      </div>
+      <p class="slide-source">Sources: <a href="https://www.reuters.com/business/anthropic-raises-65-billion-now-valued-965-billion-2026-05-28/" target="_blank" rel="noopener">Reuters</a> &middot; <a href="https://ramp.com/data/ai-index-sept-2026" target="_blank" rel="noopener">Ramp AI Index, September 2026</a> &middot; <a href="https://www.investing.com/news/stock-market-news/anthropic-revenue-run-rate-tops-65-billion-source-says-4864031" target="_blank" rel="noopener">Reuters (Anthropic run-rate)</a> &middot; <a href="https://techcrunch.com/2026/09/29/openai-reportedly-in-talks-to-raise-30b-round-at-1-4t-valuation/" target="_blank" rel="noopener">TechCrunch (OpenAI round)</a> &middot; <a href="https://www.theverge.com/tech/969624/google-says-gemini-now-has-950-million-monthly-users" target="_blank" rel="noopener">The Verge</a> &middot; <a href="https://openai.com/index/accelerating-the-next-phase-ai/" target="_blank" rel="noopener">OpenAI (usage)</a> &middot; <a href="https://www.cnbc.com/2026/07/29/openai-cfo-sarah-friar-tells-employees-arr-in-july-topped-all-of-q2.html" target="_blank" rel="noopener">CNBC (revenue signal)</a></p>
+    </div>
+    <a class="dive-deeper" data-slide-link="5">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 5: Model Cluster (was 7) ============== -->
+  <section class="slide" data-slide="6" id="slide-6">
+    <div class="slide-inner slide-mb">
+      <p class="slide-eyebrow">Model layer &middot; October 2026 flagship set</p>
+      <h1 class="slide-headline">The model market became a <span class="hl-accent hl-accent--gold">barbell</span>.</h1>
+      <p class="slide-sub">Premium multi-day agents hold at <strong>$10/$50</strong>. The floor fell <strong>10&times; in eleven weeks</strong>: $1/$6 (GPT-5.6 Luna, Jul 9) &rarr; $0.20/$1.20 (Jul 30 cut) &rarr; <strong>$0.10/$0.50</strong> (GPT-6 Luna, Sep 22). Why: cheaper inference and caching (OpenAI&rsquo;s stated reason), Chinese open-weight competition (DeepSeek V4.1 Flash at $0.15/$0.60), and buyers routing to cheaper tiers &mdash; the effective price paid per 1M tokens fell 41% since March (Ramp).</p>
+
+      <div class="mb-barbell">
+        <div class="mb-end mb-end--left">
+          <span class="mb-end-num tabnum">$10 / $50</span>
+          <span class="mb-end-label">PREMIUM MULTI-DAY AGENTIC (GPT-6 Astra, Claude Fable 5.1)</span>
+        </div>
+        <div class="mb-bar"></div>
+        <div class="mb-end mb-end--right">
+          <span class="mb-end-num tabnum">$0.10 / $0.50</span>
+          <span class="mb-end-label">THE FLOOR (GPT-6 Luna) &middot; 100&times; below the top</span>
+        </div>
+      </div>
+
+      <div class="mb-lanes">
+        <!-- LANE 1: PREMIUM AGENTIC -->
+        <div class="mb-lane" style="--mb-c:#8CC0EE">
+          <div class="mb-lane-head">
+            <span class="mb-lane-title">PREMIUM AGENTIC</span>
+            <span class="mb-lane-sub">Priced for multi-day autonomous work, not chat</span>
+          </div>
+          <div class="mb-rows">
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Claude Fable 5.1 / Mythos 5.1</span><span class="mb-price tabnum">$10/$50</span></div>
+              <span class="mb-note">Sep 1, succeeding Fable 5 (Jun 9) &middot; multi-day agentic tier. Mythos is restricted to Project Glasswing partners, not generally purchasable. Opus 5.5 (Sep 22) sits below at $4/$20.</span>
+            </div>
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">GPT-6 Astra</span><span class="mb-price tabnum">$10/$50</span></div>
+              <span class="mb-note">GA Sep 4 &middot; OpenAI&rsquo;s top tier now matches Anthropic&rsquo;s price point. GPT-5.6 Sol (Jul 9, billed as 54% more token-efficient on coding) is on a $4/$20 promotion through at least Nov 21 (standard $5/$30).</span>
+            </div>
+          </div>
+          <span class="mb-lane-foot">The top held its price while the floor fell 10&times;.</span>
+        </div>
+
+        <!-- LANE 2: EFFICIENT FRONTIER -->
+        <div class="mb-lane" style="--mb-c:#4BB5AB">
+          <div class="mb-lane-head">
+            <span class="mb-lane-title">EFFICIENT FRONTIER</span>
+            <span class="mb-lane-sub">Frontier-adjacent capability at commodity prices</span>
+          </div>
+          <div class="mb-rows">
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Claude Sonnet 5</span><span class="mb-price tabnum">$2/$10</span></div>
+              <span class="mb-note">$2/$10 is now the standard price (the planned rise to $3/$15 was cancelled); <strong>Sonnet 5.5</strong> (Sep 28) lists at $2/$10. 1M context.</span>
+            </div>
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Grok 4.5 / 4.6 / 4.7</span><span class="mb-price tabnum">$2/$6</span></div>
+              <span class="mb-note">500K context ($4/$12 above 200K tokens), per xAI&rsquo;s model docs. Grok 4.7 shipped Sep 21.</span>
+            </div>
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">GPT-6 Sol / Luna</span><span class="mb-price tabnum">$2/$10 · $0.10/$0.50</span></div>
+              <span class="mb-note">Sep 22. GPT-6 Luna at $0.10/$0.50 set the floor, and <strong>Claude Haiku 5.5</strong> matched it on Oct 7. GPT-6.1 Sol (Sep 29) is $2/$10.</span>
+            </div>
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Gemini 4 Argon</span><span class="mb-price tabnum">$2/$10</span></div>
+              <span class="mb-note">Generally available Oct 13 at an introductory price, $4/$20 from Dec 1; leads 12 of 18 benchmarks in Google&rsquo;s table. Flash 3.6/3.8: $0.75/$3.75 through Dec 31.</span>
+            </div>
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Meta Muse Spark 1.1</span><span class="mb-price tabnum">$1.25/$4.25</span></div>
+              <span class="mb-note">Meta's <strong>first paid Model API</strong>. Its first frontier model, <strong>Muse Wonder</strong> ($4/$20, 1M context), followed on Oct 12.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LANE 3: OPEN-WEIGHT CHINA -->
+        <div class="mb-lane" style="--mb-c:#FFD720">
+          <div class="mb-lane-head">
+            <span class="mb-lane-title">OPEN-WEIGHT CHINA</span>
+            <span class="mb-lane-sub">The parameter-count crown left the West</span>
+          </div>
+          <div class="mb-rows">
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Kimi K3 (Moonshot)</span><span class="mb-price tabnum">2.8T</span></div>
+              <span class="mb-note">896 experts / 16 routed, 104B active &middot; 1M context &middot; weights released <strong>Jul 27</strong>. Largest open-source model to date.</span>
+            </div>
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Qwen3.8 &middot; DeepSeek V4-Pro</span><span class="mb-price tabnum">2.4T &middot; 1.6T</span></div>
+              <span class="mb-note">Qwen3.8 2.4T-A95B (Aug 12) and DeepSeek V4-Pro 1.6T / 49B (Aug 13, MIT). West answers: Meta Muse Spark Open 816B (Oct 15), Reflection Beam (Oct 16).</span>
+            </div>
+          </div>
+          <span class="mb-lane-foot">Open weights now win on scale and ownability — not on price.</span>
+        </div>
+
+        <!-- LANE 4: RESTRICTED / CYBER -->
+        <div class="mb-lane" style="--mb-c:#F4B6A9">
+          <div class="mb-lane-head">
+            <span class="mb-lane-title">RESTRICTED / CYBER</span>
+            <span class="mb-lane-sub">Cyber capability became a release gate, not a footnote</span>
+          </div>
+          <div class="mb-rows">
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Fable 5 / Mythos 5 controls</span><span class="mb-price">restricted access</span></div>
+              <span class="mb-note">The exact suspension duration and regulatory causality were removed because they could not be independently verified.</span>
+            </div>
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">GPT-5.6 pre-release review</span><span class="mb-price">EO 14409</span></div>
+              <span class="mb-note">A US pre-release review process preceded GA. The White House denied granting a &ldquo;green light&rdquo;; OpenAI objected to it becoming &ldquo;the long-term default.&rdquo;</span>
+            </div>
+            <div class="mb-row">
+              <div class="mb-row-top"><span class="mb-model">Gemini 3.5 Flash Cyber</span><span class="mb-price">Dedicated SKU</span></div>
+              <span class="mb-note">Google shipped a cyber-specific model; GPT-5.6 was billed as OpenAI's &ldquo;strongest cybersecurity model yet.&rdquo;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-caveat">
+        <strong>Benchmark integrity:</strong> the Grok 4.5 CursorBench result was <strong>withdrawn</strong> after Cursor disclosed that a snapshot of its codebase had accidentally entered the model's training data. Treat single-benchmark leadership claims accordingly.
+      </div>
+
+      <p class="slide-source">Sources: <a href="https://finance.yahoo.com/technology/ai/articles/openai-cuts-gpt-5-6-173045044.html" target="_blank" rel="noopener">OpenAI price cut (Jul 30)</a> &middot; <a href="https://venturebeat.com/technology/openai-releases-gpt-6-sol-and-luna-models-slashing-api-costs-50-or-more" target="_blank" rel="noopener">VentureBeat (GPT-6 Sol / Luna)</a> &middot; <a href="https://ramp.com/data/ai-index-sept-2026" target="_blank" rel="noopener">Ramp AI Index, Sep 2026</a> &middot; <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic</a> &middot; <a href="https://openai.com/index/gpt-5-6/" target="_blank" rel="noopener">OpenAI GPT-5.6</a> &middot; <a href="https://the-decoder.com/grok-4-5-is-so-cheap-compared-to-fable-5-and-gpt-5-5-that-benchmark-gaps-may-not-matter-much/" target="_blank" rel="noopener">The Decoder</a> &middot; <a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/" target="_blank" rel="noopener">Meta AI</a> &middot; <a href="https://howaiworks.ai/blog/google-gemini-3-6-flash-launch-2026" target="_blank" rel="noopener">How AI Works</a> &middot; <a href="https://www.elser.ai/news/chinas-ai-moment-kimi-k3-deepseek-v4-qwen-2026" target="_blank" rel="noopener">Elser.ai (China)</a> &middot; <a href="https://roo.beehiiv.com/p/grok-4-5" target="_blank" rel="noopener">Roo (CursorBench withdrawal)</a></p>
+    </div>
+    <a class="dive-deeper" data-slide-link="6">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 6: Smarter AND Cheaper (was 8) ============== -->
+  <section class="slide" data-slide="7" id="slide-7">
+    <div class="slide-inner slide-9">
+      <p class="slide-eyebrow">Capability vs. cost</p>
+      <h1 class="slide-headline">Smarter AND cheaper.</h1>
+      <p class="slide-sub">Every prior cycle: more power = more cost. AI inverted that. Embed intelligence everywhere.</p>
+      <div class="chart-wrap chart-wrap--smarter chart-wrap--smarter-compact">
+        <canvas id="smarterChart"></canvas>
+      </div>
+      <div class="tk-strip">
+        <div class="tk-strip-head">
+          <span class="tk-strip-tag">THREE SEPARATE VENDOR CLAIMS, NOT A TIME SERIES</span>
+          <span class="tk-strip-warn">Each figure is a single vendor's own comparison against its own predecessor. They are not measured on a common benchmark and must not be read as a curve.</span>
+        </div>
+        <div class="tk-items">
+          <div class="tk-item" style="--tk-c:#4BB5AB">
+            <span class="tk-item-num">VENDOR CLAIM</span>
+            <span class="tk-item-label"><strong>Grok 4.5</strong> was marketed on lower tokens per task; the exact multiplier was removed after source audit.</span>
+          </div>
+          <div class="tk-item" style="--tk-c:#10A37F">
+            <span class="tk-item-num tabnum">54%</span>
+            <span class="tk-item-label"><strong>GPT-5.6 Sol</strong> is 54% more token-efficient on coding than its predecessor.</span>
+          </div>
+          <div class="tk-item" style="--tk-c:#4285F4">
+            <span class="tk-item-num">VENDOR CLAIM</span>
+            <span class="tk-item-label"><strong>Gemini 3.6 Flash</strong> was marketed on lower output-token use; exact percentage and price delta were removed.</span>
+          </div>
+          <div class="tk-item tk-item--axis">
+            <span class="tk-item-num">NEW ECONOMIC AXIS</span>
+            <span class="tk-item-label">Price-per-token <strong>understates</strong> the decline in cost per completed task. Application-layer gross margin improves faster than any price curve implies.</span>
+          </div>
+        </div>
+      </div>
+      <p class="slide-source">Source for quantified efficiency claim: <a href="https://openai.com/index/gpt-5-6/" target="_blank" rel="noopener">OpenAI</a>. Grok and Gemini cards are retained only as qualitative vendor-positioning signals.</p>
+    </div>
+    <a class="dive-deeper" data-slide-link="7">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 7: Infrastructure & Energy (NATIVE CapEx Explorer) ============== -->
+  <section class="slide" data-slide="8" id="slide-8">
+    <div class="slide-inner slide-block-layout">
+      <div class="slide-text">
+        <p class="slide-eyebrow">Infrastructure &amp; Energy</p>
+        <h1 class="slide-headline">Software demand. Industrial buildout.</h1>
+        <p class="slide-sub">Top-four 2026 capex guidance now sits at <strong>~$735B at the midpoint, up to ~$745B</strong> &mdash; up to ~<strong>$800B</strong> for calendar 2026 including leases, with Google raised to <strong>$195&ndash;205B</strong>. The number held. The way it is paid for did not.</p>
+        <div class="iframe-stat-row">
+          <div class="iframe-stat"><span class="iframe-stat-num">$224B</span><span class="iframe-stat-label">2024 CapEx (BASELINE)</span></div>
+          <span class="iframe-stat-arrow">→</span>
+          <div class="iframe-stat iframe-stat--big"><span class="iframe-stat-num">~$735B</span><span class="iframe-stat-label">2026 GUIDANCE, TOP FOUR (UP TO ~$745B)</span></div>
+          <div class="iframe-stat"><span class="iframe-stat-num">3.1×</span><span class="iframe-stat-label">in 2 years</span></div>
+        </div>
+        <div class="hf-block">
+          <div class="hf-head">
+            <span class="hf-tag">HOW IT&rsquo;S FUNDED</span>
+            <span class="hf-sub">The scale survived. The funding quality changed — this is now a balance-sheet story, not an operating-leverage story.</span>
+          </div>
+          <div class="hf-items">
+            <div class="hf-item">
+              <span class="hf-item-num tabnum">9% &rarr; 32%</span>
+              <span class="hf-item-label">Incremental annual <strong>debt</strong> as a share of hyperscaler capex, FY24 &rarr; LTM mid-2026.</span>
+            </div>
+            <div class="hf-item">
+              <span class="hf-item-num tabnum">$0</span>
+              <span class="hf-item-label"><strong>Buybacks at Meta and Alphabet, H1 2026: $0</strong> &mdash; down from $5.5B in Q4 2025 (all Alphabet) and $27.8B in Q1 2025.</span>
+            </div>
+            <div class="hf-item">
+              <span class="hf-item-num">FCF negative</span>
+              <span class="hf-item-label"><strong>Alphabet</strong> free cash flow turned negative for the first time since its 2004 IPO.</span>
+            </div>
+            <div class="hf-item">
+              <span class="hf-item-num tabnum">$84.75B</span><span class="hf-item-note" style="display:block;font-size:0.62rem;color:#6B7280">program size, not cash collected</span>
+              <span class="hf-item-label">Alphabet <strong>June equity raise</strong> — its first since 2005.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-block-stage">
+        <div class="slide-capex" id="slide7-capex">
+          <div class="capex-header">
+            <h3 class="chart-title">Hyperscaler Capital Expenditure</h3>
+            <div class="capex-total-badge"><span class="tabnum" id="slide7CapexTotalNum">~$735B</span><span class="capex-total-label">2026 GUIDANCE (mid · up to ~$745B)</span></div>
+          </div>
+          <div class="capex-toggles" id="slide7CapexToggles">
+            <button class="capex-tog active" data-company="amazon" style="--tog-color:#FF9900"><span class="tog-dot"></span>Amazon<span class="tog-val tabnum">~$220B</span></button>
+            <button class="capex-tog active" data-company="alphabet" style="--tog-color:#4285F4"><span class="tog-dot"></span>Alphabet<span class="tog-val tabnum">~$200B</span></button>
+            <button class="capex-tog active" data-company="microsoft" style="--tog-color:#7FBA00"><span class="tog-dot"></span>Microsoft<span class="tog-val tabnum">~$175B</span></button>
+            <button class="capex-tog active" data-company="meta" style="--tog-color:#0668E1"><span class="tog-dot"></span>Meta<span class="tog-val tabnum">~$138B</span></button>
+            <button class="capex-tog active" data-company="oracle" style="--tog-color:#C74634"><span class="tog-dot"></span>Oracle<span class="tog-val tabnum">$50B</span></button>
+          </div>
+          <div class="capex-chart-wrap">
+            <canvas id="slide7CapexChart"></canvas>
+          </div>
+          <div class="capex-gap-toggle">
+            <label class="gap-switch">
+              <input type="checkbox" id="slide7GapToggle">
+              <span class="gap-slider"></span>
+            </label>
+            <span class="gap-label">Show AI Revenue vs CapEx gap</span>
+          </div>
+          <span class="stat-source">Source: SEC filings, company earnings, Goldman Sachs, Epoch AI &mdash; 2026 figures are guidance midpoints</span>
+        </div>
+      </div>
+    </div>
+    <a class="dive-deeper" data-slide-link="8">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 9: Silicon & Power (NEW — Aug 2026) ============== -->
+  <section class="slide" data-slide="9" id="slide-9">
+    <div class="slide-inner slide-silicon">
+      <p class="slide-eyebrow">Silicon &amp; Power &middot; the two physical gates</p>
+      <h1 class="slide-headline">The monopoly cracked. <span class="hl-accent hl-accent--gold">The power didn't arrive.</span></h1>
+      <p class="slide-sub">Three independent breaks in NVIDIA's accelerator lock happened in one quarter. Meanwhile announced nuclear runs <strong>5&times; ahead</strong> of operational nuclear — and gas is filling the gap.</p>
+
+      <div class="sp-grid">
+        <!-- LEFT: SILICON -->
+        <div class="sp-col sp-col--silicon">
+          <div class="sp-col-head">
+            <span class="sp-col-tag sp-col-tag--silicon">SILICON</span>
+            <span class="sp-col-sub">The accelerator monopoly cracked in one quarter</span>
+          </div>
+
+          <div class="sp-cards">
+            <div class="sp-card" style="--sp-c:#76B900">
+              <div class="sp-card-top">
+                <span class="sp-card-name">NVIDIA</span>
+                <span class="sp-card-badge">Q2 FY27</span>
+              </div>
+              <span class="sp-card-num tabnum">$96.2B</span>
+              <span class="sp-card-label">quarterly revenue &middot; data center <strong class="tabnum">$89.0B</strong></span>
+              <p class="sp-card-body">Vera Rubin is now in full production; Q3 FY27 guided to $108B &plusmn;2%, excluding China data-center compute. The physical-AI TTM and China-revenue figures previously shown here were removed because they could not be reproduced from the first-party release.</p>
+            </div>
+
+            <div class="sp-card" style="--sp-c:#FF6B6B">
+              <div class="sp-card-top">
+                <span class="sp-card-name">AMD</span>
+                <span class="sp-card-badge">hyperscaler commitments</span>
+              </div>
+              <span class="sp-card-num">INSTINCT</span>
+              <span class="sp-card-label">major hyperscaler commitments</span>
+              <p class="sp-card-body">AMD&rsquo;s roadmap won material hyperscaler adoption. Exact gigawatt totals were removed because the cited report could not be independently reproduced during the audit.</p>
+            </div>
+
+            <div class="sp-card" style="--sp-c:#E07A5F">
+              <div class="sp-card-top">
+                <span class="sp-card-name">BROADCOM &middot; CUSTOM</span>
+                <span class="sp-card-badge">+221%</span>
+              </div>
+              <span class="sp-card-num tabnum">$16.7B</span>
+              <span class="sp-card-label">AI semis FQ3 &middot; Q4 guided <strong class="tabnum">$21.7B</strong></span>
+              <p class="sp-card-body">OpenAI partnered with Broadcom on its <strong>first in-house processors</strong>. Custom silicon is no longer a side bet.</p>
+            </div>
+
+            <div class="sp-card" style="--sp-c:#FFD720">
+              <div class="sp-card-top">
+                <span class="sp-card-name">ETCHED</span>
+                <span class="sp-card-badge" style="background:rgba(140,192,238,0.18);color:#8CC0EE">DVC</span>
+                <span class="sp-card-badge">Aug 18 &middot; $700M</span>
+              </div>
+              <span class="sp-card-num tabnum">$21B</span>
+              <span class="sp-card-label">$700M led by Jane Street &middot; 2&times; the July mark</span>
+              <p class="sp-card-body">Jane Street tested, bought and now runs Etched hardware; the July Series C was $300M at $10.3B. A transformer-only ASIC bet. <em>DVC portfolio company.</em></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: POWER -->
+        <div class="sp-col sp-col--power">
+          <div class="sp-col-head">
+            <span class="sp-col-tag sp-col-tag--power">POWER</span>
+            <span class="sp-col-sub">Announced nuclear vs. electrons on the wire</span>
+          </div>
+
+          <div class="sp-gap">
+            <div class="sp-gap-row">
+              <span class="sp-gap-label">Committed across 13 hyperscaler nuclear deals</span>
+              <div class="sp-gap-track">
+                <div class="sp-gap-fill sp-gap-fill--committed" data-target="100"><span class="tabnum">9.8 GW</span></div>
+              </div>
+            </div>
+            <div class="sp-gap-row">
+              <span class="sp-gap-label">Actually operational today</span>
+              <div class="sp-gap-track">
+                <div class="sp-gap-fill sp-gap-fill--live" data-target="19.6"><span class="tabnum">1.92 GW</span></div>
+              </div>
+            </div>
+            <div class="sp-gap-ratio">
+              <span class="sp-gap-ratio-num tabnum">5:1</span>
+              <span class="sp-gap-ratio-text">announced-to-delivered gap</span>
+            </div>
+          </div>
+
+          <div class="sp-bridge">
+            <span class="sp-bridge-tag">THE BRIDGE IS GAS, NOT FISSION</span>
+            <div class="sp-bridge-body">
+              <div class="sp-bridge-item">
+                <span class="sp-bridge-num tabnum">2.67 GW</span>
+                <span class="sp-bridge-label"><strong>Project Kilby</strong> — off-grid West Texas gas plant, 20-yr PPA with Microsoft. First delivery targeted 2028; final investment decision not yet taken, so this is not committed capital.</span>
+              </div>
+              <div class="sp-bridge-item">
+                <span class="sp-bridge-num tabnum">H2 2027–28</span>
+                <span class="sp-bridge-label"><strong>Three Mile Island / Crane</strong> — 835 MW on a 20-year PPA, ~$16B restart. Produces no power until H2 2027 at the earliest.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-quote">
+            <p>The binding constraints are now <strong>HBM supply, land, electricity and construction labour</strong> — not GPU fabrication.</p>
+            <span class="sp-quote-attr">— Jensen Huang, NVIDIA Q1 FY27</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="slide-source">Sources: <a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm" target="_blank" rel="noopener">NVIDIA Q2 FY2027</a> &middot; <a href="https://www.sec.gov/Archives/edgar/data/0001730168/000173016826000076/avgo-08022026x8kxex99.htm" target="_blank" rel="noopener">Broadcom FQ3 2026</a> &middot; <a href="https://www.reuters.com/business/autos-transportation/companies-pouring-billions-advance-ai-infrastructure-2026-07-22/" target="_blank" rel="noopener">Reuters (AMD/OpenAI)</a> &middot; <a href="https://www.reuters.com/technology/ai-chip-startup-etched-raises-300-million-103-billion-valuation-2026-07-23/" target="_blank" rel="noopener">Reuters (Etched)</a> &middot; <a href="https://smrintel.com/nuclear-data-center-deals/" target="_blank" rel="noopener">SMR Intel tracker, May 2026 cut</a> &middot; <a href="https://techcrunch.com/2026/06/22/microsoft-and-chevron-plan-one-of-the-largest-gas-powered-data-center-projects-in-us/" target="_blank" rel="noopener">TechCrunch (Kilby)</a></p>
+    </div>
+    <a class="dive-deeper" data-slide-link="9">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 8: Agent Anatomy (NATIVE 7-LAYER STACK) ============== -->
+  <section class="slide" data-slide="10" id="slide-10">
+    <div class="slide-inner slide-block-layout">
+      <div class="slide-text">
+        <p class="slide-eyebrow">Agent anatomy</p>
+        <h1 class="slide-headline">It's not one product. It's a new stack.</h1>
+        <p class="slide-sub">47 mapped companies across 7 layers, plus an emerging control plane above them (metrics as of Oct 16, 2026): governance, agent registries, permissions, observability, and evals. Most didn't exist 18 months ago.</p>
+      </div>
+      <div class="slide-block-stage">
+        <div class="aa-stack" id="slide8AgentStack">
+
+          <!-- Layer 1: UI / Frontend -->
+          <div class="aa-layer" data-layer="1" style="--layer-color: #2080D6">
+            <div class="aa-layer-bar">
+              <span class="aa-layer-num">1</span>
+              <svg class="aa-layer-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 21h10M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="aa-layer-name">UI / Frontend Layer</span>
+              <span class="aa-layer-tagline">How agents meet users</span>
+              <svg class="aa-layer-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="aa-layer-detail">
+              <div class="aa-detail-tools">
+                <span class="aa-tool-chip aa-tool-chip--dvc aa-tool-chip--has-tip" data-tip="<strong>CopilotKit</strong> · 38.1K ★<br>Open-source SDK for building in-app AI copilots with Generative UI. Creators of the AG-UI protocol.<br><em>$27M Series A (Glilot, NFX, SignalFire), May 2026 · AG-UI 1.0 released Sep 30, 2026</em>">CopilotKit <span class="aa-stars tabnum">38.1K ★</span> <span class="aa-dvc-badge">DVC</span></span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Vercel AI SDK</strong> · 27.4K ★<br>TypeScript toolkit for AI-powered apps. Unified API for 100+ models with streaming &amp; tool use.<br><em>20M+ monthly downloads</em>">Vercel AI SDK <span class="aa-stars tabnum">27.4K ★</span></span>
+                <span class="aa-tool-chip aa-tool-chip--dvc aa-tool-chip--has-tip" data-tip="<strong>AG-UI Protocol</strong> · 16.6K ★<br>Open event protocol for agent-to-user interaction.<br><em>Adopted by Google, AWS, Microsoft, LangChain, CrewAI</em>">AG-UI <span class="aa-stars tabnum">16.6K ★</span> <span class="aa-dvc-badge">DVC</span></span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Streamlit</strong> · 46K ★<br>Python framework for turning data scripts into apps. Acquired by Snowflake for $800M.<br><em>Used by 90%+ of Fortune 50</em>">Streamlit</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Gradio</strong> · 43.8K ★<br>Python package for building ML demos. Part of Hugging Face.<br><em>5.2M PyPI downloads/mo</em>">Gradio</span>
+              </div>
+              <div class="aa-detail-stat">
+                <span class="aa-stat-number tabnum">12.4K</span>
+                <span class="aa-stat-label">GitHub ★ in 17 months — AG-UI is becoming the standard event protocol for agent-to-user interaction.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layer 2: Orchestration -->
+          <div class="aa-layer" data-layer="2" style="--layer-color: #4BB5AB">
+            <div class="aa-layer-bar">
+              <span class="aa-layer-num">2</span>
+              <svg class="aa-layer-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="18" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 9v3l-4.5 3M12 12l4.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="aa-layer-name">Orchestration</span>
+              <span class="aa-layer-tagline">Planning, routing, multi-agent</span>
+              <svg class="aa-layer-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="aa-layer-detail">
+              <div class="aa-detail-tools">
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>LangGraph</strong> (LangChain) · 129K ★<br>Low-level agent runtime for customizable workflows with human-in-the-loop.<br><em>$160M raised · $1.25B val · 35% of Fortune 500</em>">LangGraph <span class="aa-stars tabnum">129K ★</span></span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>CrewAI</strong> · 59.8K ★<br>Leading OSS framework for orchestrating autonomous agent crews.<br><em>$18M raised · 2.44M PyPI/mo</em>">CrewAI</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>AutoGen</strong> (Microsoft) · 61.4K ★<br>Multi-agent framework. Maintenance mode in 2026 — Microsoft migrating to Agent Framework.">AutoGen</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Semantic Kernel</strong> (Microsoft) · 28.7K ★<br>Enterprise SDK for AI agents in C#, Python, Java. Telemetry, responsible AI hooks.">Semantic Kernel</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Pydantic AI</strong> · 20.7K ★<br>Fastest-growing agent framework by downloads in 2025.<br><em>$17.2M raised · 8M downloads/mo</em>">Pydantic AI</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Sixtyfour</strong> · YC X25<br>Multi-agent orchestration startup.">Sixtyfour</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Kapso</strong><br>Enterprise agent workflow platform.">Kapso</span>
+              </div>
+              <div class="aa-detail-stat">
+                <span class="aa-stat-label">ReAct loops → multi-agent systems with planners, workers, verifiers. Most serious startups eventually build proprietary orchestration.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layer 3: Memory -->
+          <div class="aa-layer" data-layer="3" style="--layer-color: #FFD720">
+            <div class="aa-layer-bar">
+              <span class="aa-layer-num">3</span>
+              <svg class="aa-layer-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M4 9h16M9 4v16" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="15" cy="15" r="2" fill="currentColor" opacity="0.5"/>
+              </svg>
+              <span class="aa-layer-name">Memory</span>
+              <span class="aa-layer-tagline">State beyond the prompt window</span>
+              <svg class="aa-layer-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="aa-layer-detail">
+              <div class="aa-detail-tools">
+                <span class="aa-tool-chip aa-tool-chip--dvc aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>mem0</strong> · $24M raised · YC, Peak XV, GitHub Fund<br>Externalized memory layer. 186M API calls in Q3 2025 (5× in 6 months).<br><em>AWS exclusive memory provider for Agent SDK · +26% accuracy over OpenAI Memory</em>">mem0 <span class="aa-stars tabnum">67.3K ★</span> <span class="aa-dvc-badge">DVC</span></span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Letta</strong> (formerly MemGPT) · 25.2K ★<br>OSS platform for stateful agents with persistent memory.<br><em>$10M seed (Felicis)</em>">Letta / MemGPT</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Zep</strong> · 31.8K ★ (Graphiti)<br>Temporal knowledge graph memory layer.<br><em>YC-backed · 94.8% Deep Memory Retrieval</em>">Zep</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Kite</strong><br>Memory &amp; context management for AI agents.">Kite</span>
+              </div>
+              <div class="aa-detail-stat">
+                <span class="aa-stat-number tabnum">+26%</span>
+                <span class="aa-stat-label">accuracy over OpenAI Memory, 90% less tokens. mem0 externalizes memory — works with any stack.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layer 4: Tool / Action -->
+          <div class="aa-layer" data-layer="4" style="--layer-color: #F4B6A9">
+            <div class="aa-layer-bar">
+              <span class="aa-layer-num">4</span>
+              <svg class="aa-layer-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="aa-layer-name">Tool / Action</span>
+              <span class="aa-layer-tagline">How agents act on the world</span>
+              <svg class="aa-layer-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="aa-layer-detail">
+              <div class="aa-detail-tools">
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Model Context Protocol</strong><br>Open standard for connecting AI to external tools and data. Volatile star and server counts were removed during the Aug 4 audit.">MCP</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>A2A Protocol</strong> (Google) · 26.2K ★<br>Agent-to-Agent protocol for cross-org collaboration. Task lifecycle, discovery, handoffs.<br><em>50+ partners · Salesforce, SAP, ServiceNow</em>">A2A <span class="aa-stars tabnum">26.2K ★</span></span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Function Calling</strong><br>Native LLM capability to invoke structured functions.<br><em>The foundation of all tool use — MCP and A2A build on top</em>">Function Calling</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Browserbase</strong> · $67.5M raised · $300M val<br>Cloud headless browsers for AI agents.<br><em>1,000+ customers, 50M sessions</em>">Browserbase</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Composio</strong> · $29M raised<br>Universal MCP Gateway with reinforcement learning.<br><em>100K+ developers, 200+ paying companies</em>">Composio</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Firecrawl</strong> · $75M Series B (Smash Capital, Sep 2026)<br>AI-native web data extraction.">Firecrawl</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Browser Use</strong> · 118.2K ★<br>OSS Python library for AI browser automation. 89.1% on WebVoyager.<br><em>$17M seed · Used by Airbnb, Amazon, Anthropic</em>">Browser Use</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Exa</strong> · $250M Series C · $2.2B valuation (May 2026)<br>AI-native web search API. Sub-450ms latency.<br><em>a16z-led · Powers Cursor, Notion, Vercel</em>">Exa</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Orthogonal</strong> · YC W26<br>Agentic payments for APIs.">Orthogonal</span>
+              </div>
+              <div class="aa-detail-stat">
+                <span class="aa-stat-label">"MCP is becoming the REST of the AI era" — MCP for tools, A2A for agent-to-agent, AG-UI for agent-to-user.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layer 5: Foundation Model -->
+          <div class="aa-layer" data-layer="5" style="--layer-color: #8CC0EE">
+            <div class="aa-layer-bar">
+              <span class="aa-layer-num">5</span>
+              <svg class="aa-layer-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="aa-layer-name">Foundation Models</span>
+              <span class="aa-layer-tagline">The reasoning engine(s)</span>
+              <svg class="aa-layer-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="aa-layer-detail">
+              <div class="aa-detail-tools">
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>OpenAI</strong> · annualized revenue about <strong>$50B</strong> at end-September on its own net basis (FT, Oct 8 2026); the ~$70B reported in late September was a gross-equivalent figure. It held near ~$25B Feb&ndash;May<br>Current flagship: <strong>GPT-6 Astra</strong> (Sep 4 2026, $10/$50 per 1M tokens), with faster GPT-6 Sol and Luna following on Sep 22; GPT-5.6 Sol / Terra / Luna (Jul 9) are the prior generation. <strong>$852B post-money / $730B pre-money</strong> after the $122B round closed Mar 31 2026 (Amazon ~$50B, NVIDIA and SoftBank ~$30B each).<br><em>1.2B+ weekly ChatGPT users and 2.5M businesses, stated at DevDay (Sep 29 2026); 900M+ was the February 2026 disclosure</em>">OpenAI</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Anthropic</strong> · $965B post-money after the $65B Series H, closed May 28 2026<br>Flagship tier is <strong>Claude Fable 5.1</strong> (Sep 1 2026), $10/$50; Opus 5.5 (Sep 22) and Sonnet 5.5 (Sep 28) followed. Run-rate <strong>topped $65B by end-July 2026</strong> (Reuters), up from the official $30B in April.<br><em>Inventor of MCP · Claude Code &gt;$2.5B run-rate as last disclosed Feb 2026</em>">Anthropic</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Google DeepMind</strong><br>Gemini 4 Argon (GA Oct 13 2026): $2/$10 intro, $4/$20 from Dec 1.<br><em>Leads 12 of 18 benchmarks in Google&rsquo;s table</em>">Google</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>xAI</strong> (Elon Musk)<br>Part of SpaceX since Feb 2026. Grok 4.7 (Sep 21 2026, $2/$6); owns Cursor.<br><em>Colossus training cluster</em>">xAI</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Meta</strong> · Muse Wonder (Oct 12 2026) + Muse Spark Open (Oct 15)<br>Qwen now leads open-model downloads.<br><em>Meta&rsquo;s ~$2B Manus deal was ordered unwound by Beijing (Apr 2026); Manus is independent again</em>">Meta / Llama</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>DeepSeek</strong> · MIT License<br>V3.2 / R1 / V4 Pro: close to US frontier on public benchmarks. Independent held-out evals put V4 Pro meaningfully behind US frontier on uncontaminated tasks; cost efficiency remains real.">DeepSeek</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Mistral</strong> · EU Sovereign AI<br>€3B Series D at more than €21B post-money (Samsung led, Sep 8 2026); Mistral Large 4 preview Oct 6.<br><em>Le Chat: 4× faster than ChatGPT</em>">Mistral</span>
+              </div>
+              <div class="aa-detail-stat">
+                <span class="aa-stat-number tabnum">37%</span>
+                <span class="aa-stat-label">of enterprises use 5+ models in production. Multi-model routing is standard — Harvey uses 6+ providers.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layer 6: Execution -->
+          <div class="aa-layer" data-layer="6" style="--layer-color: #2ECC71">
+            <div class="aa-layer-bar">
+              <span class="aa-layer-num">6</span>
+              <svg class="aa-layer-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 9l3 3-3 3M13 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="aa-layer-name">Execution</span>
+              <span class="aa-layer-tagline">Where code actually runs</span>
+              <svg class="aa-layer-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="aa-layer-detail">
+              <div class="aa-detail-tools">
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>E2B</strong> · $32M raised · Insight Partners<br>Cloud sandboxes for AI agents — de facto standard.<br><em>88% of Fortune 100 signed up · Used by Cursor, Devin, Lovable</em>">E2B</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Daytona</strong><br>OSS standardized dev environments &amp; sandboxes for AI agents.">Daytona</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>WebContainers</strong> (StackBlitz)<br>WebAssembly OS that boots Node.js in browser. Powers Bolt.<br><em>$113M raised · 3M+ MAU</em>">WebContainers</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Modal</strong> · $750M Series D at $15.75B (Accel, Oct 14 2026)<br>Serverless cloud for Python with GPU acceleration.<br><em>Run-rate above $1B (Oct 2026)</em>">Modal</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>NVIDIA Dynamo</strong> · 8.3K ★ · Open Source<br>Inference OS for AI factories.<br><em>Up to 7× Blackwell inference boost · AWS, Azure, GCP, Perplexity, Cursor</em>">Dynamo <span class="aa-stars" style="color:#76B947">NVIDIA OSS</span></span>
+              </div>
+              <div class="aa-detail-stat">
+                <span class="aa-stat-label">3 patterns: local, cloud sandbox, browser-native. Cursor = local, Devin = cloud, Bolt = browser. <strong>Dynamo</strong>: 30× inference throughput.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layer 7: Eval, Voice & Communication -->
+          <div class="aa-layer" data-layer="7" style="--layer-color: #95A5A6">
+            <div class="aa-layer-bar">
+              <span class="aa-layer-num">7</span>
+              <svg class="aa-layer-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="aa-layer-name">Eval, Voice &amp; Comms</span>
+              <span class="aa-layer-tagline">Observability, quality, output</span>
+              <svg class="aa-layer-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="aa-layer-detail">
+              <div class="aa-detail-tools">
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>ElevenLabs</strong> · $22B val (Sep 2026 employee tender)<br>AI voice platform. $600M ARR (Jul 2026, company-disclosed) — passed $330M faster than Twilio in 8 years.<br><em>Sequoia-backed</em>">ElevenLabs</span>
+                <span class="aa-tool-chip aa-tool-chip--funded aa-tool-chip--has-tip" data-tip="<strong>Vapi</strong> · $72M raised · ~$500M val (May 2026)<br>Voice AI agent platform. 1B+ calls handled.<br><em>500K+ developers · Bessemer-backed</em>">Vapi</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>LangSmith</strong> (LangChain)<br>Agent observability: tracing, monitoring, eval. Framework-agnostic.<br><em>$1.25B parent val · 35% of Fortune 500</em>">LangSmith</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Phoenix</strong> (Arize AI) · 11.9K ★<br>OSS AI observability on OpenTelemetry.<br><em>$131M raised · 2.5M+ monthly downloads</em>">Phoenix / Arize</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>Braintrust</strong> · $80M Series B · $800M val<br>AI eval &amp; observability. Brainstore: 80× faster traces.<br><em>Used by Notion, Stripe, Replit · ICONIQ-led</em>">Braintrust</span>
+                <span class="aa-tool-chip aa-tool-chip--has-tip" data-tip="<strong>AgentMail</strong> · $6M seed (General Catalyst)<br>Email inboxes for AI agents.<br><em>100M+ emails delivered · 500+ B2B customers</em>">AgentMail</span>
+              </div>
+              <div class="aa-detail-stat">
+                <span class="aa-stat-label">Best startups treat eval as product, not afterthought. Harvey: BigLaw Bench. Perplexity: search_evals.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <span class="stat-source" style="text-align:center">Sources: Crunchbase, TechCrunch, GitHub, npm, PyPI · 2025–2026</span>
+      </div>
+    </div>
+    <a class="dive-deeper" data-slide-link="10">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 9: Vibe Coding (NEW) ============== -->
+  <section class="slide" data-slide="11" id="slide-11">
+    <div class="slide-inner slide-11 slide-vibe-cc">
+      <p class="slide-eyebrow">Vibe coding</p>
+      <h1 class="slide-headline">Code is becoming a throwaway artifact.</h1>
+      <p class="slide-sub"><strong>42%</strong> of committed code is AI-generated or significantly AI-assisted. Cursor reached <strong>$4B ARR</strong> and was acquired for <strong>$60B all-stock</strong>. Lovable hit <strong>$500M ARR</strong> on <strong>146 employees</strong> — ~$3.4M ARR per head.</p>
+      <div class="vibe-grid" id="vibeGrid"></div>
+      <div class="cc-flow">
+        <div class="cc-flow-head">
+          <span class="cc-flow-tag">CATEGORY CONSOLIDATION</span>
+          <span class="cc-flow-sub">Independent coding tools now face acquisition-consolidation and platform-bundling at the same time. This is model + application vertical integration, not a valuation event.</span>
+        </div>
+        <div class="cc-lanes">
+          <div class="cc-lane">
+            <span class="cc-lane-from">Independent tool</span>
+            <span class="cc-lane-arrow">&darr;</span>
+            <span class="cc-lane-to">Cursor &rarr; SpaceXAI</span>
+            <span class="cc-lane-note"><strong>$4B ARR</strong>; $60B all-stock acquisition signed <strong>Jun 16</strong> and <strong>closed Aug 14</strong>. The IDE and frontier-model ambitions now sit inside one public-company structure.</span>
+          </div>
+          <div class="cc-lane">
+            <span class="cc-lane-from">Model-layer surface</span>
+            <span class="cc-lane-arrow">&darr;</span>
+            <span class="cc-lane-to">Claude Code &rarr; Sonnet 5 bundle</span>
+            <span class="cc-lane-note">Claude Code became the <strong>default surface for Sonnet 5</strong> from Jul 1, at $2/$10 (made permanent Aug 10). The coding tool ships with the model.</span>
+          </div>
+          <div class="cc-lane">
+            <span class="cc-lane-from">Assistant surface</span>
+            <span class="cc-lane-arrow">&darr;</span>
+            <span class="cc-lane-to">Work + Codex &rarr; OpenAI platform</span>
+            <span class="cc-lane-note">ChatGPT Work shipped <strong>Jul 9</strong>; Codex + Work went from ~10M weekly users in July to <strong>35M+</strong> at DevDay on Sep 29 (OpenAI-disclosed).</span>
+          </div>
+          <div class="cc-lane">
+            <span class="cc-lane-from">New entrant</span>
+            <span class="cc-lane-arrow">&darr;</span>
+            <span class="cc-lane-to">Muse Spark &rarr; Meta enters</span>
+            <span class="cc-lane-note">Meta entered coding directly on <strong>Jul 9</strong> with Muse Spark 1.1 at $1.25/$4.25 — its first paid Model API.</span>
+          </div>
+        </div>
+        <p class="cc-flow-sub" style="margin-top:9px">Margin note: Cursor&rsquo;s reported gross margin is close to negative on token pass-through, which makes a <strong style="color:#E8E9ED">~15&times; LTM ARR</strong> acquisition multiple the expected outcome for this cost structure, not a discount.</p>
+      </div>
+      <p class="slide-source">Source: <a href="https://www.sonarsource.com/state-of-code-developer-survey-report.pdf" target="_blank" rel="noopener">SonarSource 2026 State of Code Developer Survey</a> (42% AI-authored code, 72% daily use among triers). Stack Overflow 2026 — 73% of AI-assistant users use them daily (Oct 6) — as secondary signal.</p>
+    </div>
+    <a class="dive-deeper" data-slide-link="11">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 12: Voice AI (NEW — Aug 2026) ============== -->
+  <section class="slide" data-slide="12" id="slide-12">
+    <div class="slide-inner slide-voice">
+      <p class="slide-eyebrow">Voice AI &middot; the category that cleared the bar</p>
+      <h1 class="slide-headline">Voice stopped being a feature. <span class="hl-accent hl-accent--teal">It became a layer.</span></h1>
+      <p class="slide-sub">A year ago voice was a demo. In July 2026 it has a $600M ARR independent, a full-duplex frontier model, and 41% of the Fortune 500 paying for it.</p>
+
+      <!-- Animated waveform -->
+      <div class="va-wave" id="voiceWave" aria-hidden="true">
+        <div class="va-wave-bars" id="voiceWaveBars"></div>
+        <div class="va-wave-mid"></div>
+        <div class="va-wave-caption">
+          <span class="va-wave-tag">FULL DUPLEX</span>
+          <span class="va-wave-text">Both sides speak at once. Turn-taking stopped being the product constraint.</span>
+        </div>
+      </div>
+
+      <div class="va-cards">
+        <div class="va-card" style="--va-c:#4BB5AB">
+          <div class="va-card-head">
+            <span class="va-card-name">ELEVENLABS</span>
+            <span class="va-card-tag">Independent · July 2026</span>
+          </div>
+          <span class="va-card-num tabnum">$600M</span>
+          <span class="va-card-label">ARR — from $330M at end-2025 (~175% YoY)</span>
+          <ul class="va-card-list">
+            <li><strong class="tabnum">41%</strong> of the Fortune 500 as customers</li>
+            <li><strong class="tabnum">1B+</strong> end users reached via API</li>
+            <li><strong class="tabnum">$22M</strong> paid out to <strong class="tabnum">10.4K+</strong> voice creators</li>
+          </ul>
+          <span class="va-card-caveat">Company-disclosed, unaudited (CEO, All-In conference)</span>
+        </div>
+
+        <div class="va-card" style="--va-c:#10A37F">
+          <div class="va-card-head">
+            <span class="va-card-name">OPENAI GPT-LIVE</span>
+            <span class="va-card-tag">2026 product release</span>
+          </div>
+          <span class="va-card-num">Full duplex</span>
+          <span class="va-card-label">OpenAI introduced a full-duplex voice interface</span>
+          <ul class="va-card-list">
+            <li>Simultaneous listen-and-speak — no push-to-talk turn model</li>
+            <li>Platform-level: voice ships with the frontier model, not beside it</li>
+            <li>The independent layer and the platform layer now overlap</li>
+          </ul>
+          <span class="va-card-caveat">Primary source: OpenAI product announcement</span>
+        </div>
+      </div>
+
+      <div class="va-strip">
+        <div class="va-strip-item">
+          <span class="va-strip-num tabnum">$600M</span>
+          <span class="va-strip-label">ELEVENLABS ARR</span>
+        </div>
+        <div class="va-strip-item">
+          <span class="va-strip-num tabnum">41%</span>
+          <span class="va-strip-label">OF THE FORTUNE 500</span>
+        </div>
+        <div class="va-strip-item">
+          <span class="va-strip-num tabnum">1B+</span>
+          <span class="va-strip-label">API END USERS</span>
+        </div>
+        <div class="va-strip-item va-strip-item--dvc">
+          <span class="va-strip-num">FleetWorks · Avoca</span>
+          <span class="va-strip-label">DVC VOICE-AGENT EXPOSURE</span>
+        </div>
+      </div>
+
+      <p class="slide-source">Sources: <a href="https://www.postbeam.ai/blog/how-elevenlabs-grows" target="_blank" rel="noopener">Postbeam</a> and <a href="https://www.saastr.com/elevenlabs-went-from-0-to-600m-arr-in-41-months-when-the-ai-agent-closes-the-deal-they-still-pay-the-human-with-carles-reina-first-vp-of-revenue/" target="_blank" rel="noopener">SaaStr</a> &middot; <a href="https://elevenlabs.io/blog/tender-22bn" target="_blank" rel="noopener">ElevenLabs</a> (ElevenLabs, company-disclosed) &middot; <a href="https://openai.com/index/introducing-gpt-live/" target="_blank" rel="noopener">OpenAI GPT-Live</a></p>
+    </div>
+    <a class="dive-deeper" data-slide-link="12">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 10: Business Models + ARPU (NATIVE) ============== -->
+  <section class="slide" data-slide="13" id="slide-13">
+    <div class="slide-inner slide-iframe-layout slide-bizmodels">
+      <div class="iframe-headline">
+        <p class="slide-eyebrow">Business models · usage is the engine</p>
+        <h1 class="slide-headline">Outcome pricing stopped being a thesis. <span class="hl-accent hl-accent--teal">It became a price list.</span></h1>
+        <p class="slide-sub">In one quarter the category acquired published prices, an incumbent convert, a quantified TAM at risk and a services proof point. What is unresolved is <strong>margin</strong>, not mechanism.</p>
+      </div>
+      <div class="pricing-row pricing-row--compact">
+        <div class="pricing-icon pricing-icon--cracked"><div class="pricing-glyph">👤</div><span class="pricing-label">Per-seat</span></div>
+        <div class="pricing-icon pricing-icon--glow"><div class="pricing-glyph">≡</div><span class="pricing-label pricing-label--teal">Per-token (API)</span></div>
+        <div class="pricing-icon"><div class="pricing-glyph">∞</div><span class="pricing-label">Per-subscription</span></div>
+        <div class="pricing-icon pricing-icon--cracked"><div class="pricing-glyph">◉</div><span class="pricing-label">Per-ad</span></div>
+        <div class="pricing-icon pricing-icon--glow"><div class="pricing-glyph">✓</div><span class="pricing-label pricing-label--teal">Per-outcome / per-task</span></div>
+      </div>
+      <div class="pm-band">
+        <div class="pm-head">
+          <span class="pm-tag">A PRICED MARKET</span>
+          <span class="pm-sub">Published per-outcome prices now exist across the category — not projections, list prices.</span>
+        </div>
+        <div class="pm-prices">
+          <div class="pm-price"><span class="pm-price-num tabnum">$2</span><span class="pm-price-label">Salesforce Help Agent — per resolved issue; no charge on escalation</span></div>
+          <div class="pm-price"><span class="pm-price-num tabnum">$0.10</span><span class="pm-price-label">Salesforce <strong>Flex Credits</strong> — per action</span></div>
+          <div class="pm-price"><span class="pm-price-num">OUTCOMES</span><span class="pm-price-label">Cognizant reports new BPO contracts moving to outcome-based models</span></div>
+        </div>
+        <div class="pm-proof">
+          <div class="pm-proof-item"><span class="pm-proof-num">GA</span><span class="pm-proof-label"><strong>Agentforce Help Agent</strong> shipped pay-per-resolution GA in July — and Salesforce closed the <strong>m3ter</strong> acquisition Jul 1 to meter and bill it.</span></div>
+          <div class="pm-proof-item"><span class="pm-proof-num tabnum">$234B</span><span class="pm-proof-label">Gartner: ~<strong>20%</strong> of enterprise application software spend is exposed <strong>by 2030</strong> to &ldquo;agentic arbitrage&rdquo; — outcomes delivered without the seat login.</span></div>
+          <div class="pm-proof-item"><span class="pm-proof-num tabnum">45%</span><span class="pm-proof-label">of <strong>Cognizant&rsquo;s</strong> new BPO contracts are now signed on outcome-based commercial models. Services pricing is converting too.</span></div>
+        </div>
+      </div>
+      <div class="slide-arpu-block slide-arpu-block--compact">
+        <p class="slide-arpu-intro">
+          Charge for the work. Anthropic: <strong class="tabnum">$65B+</strong> reported run-rate (end-July 2026), up from the official <strong class="tabnum">$30B</strong> in April. Perplexity: &gt;<strong class="tabnum">$750M</strong> annualized revenue by Aug 2026, roughly triple the start of the year. OpenAI: <strong class="tabnum">1.2B+</strong> weekly users (DevDay, Sep 29, 2026). ARPU and paid-conversion comparisons use modelled, non-comparable user bases and are shown only as directional context.
+        </p>
+        <div class="pm-proof">
+          <div class="pm-proof-item"><span class="pm-proof-num">ENTERPRISE</span><span class="pm-proof-label">Enterprise-heavy model usage monetizes differently from consumer reach. Existing ARPU estimates mix incompatible MAU and WAU denominators, so exact comparisons were removed.</span></div>
+          <div class="pm-proof-item"><span class="pm-proof-num">HYBRID</span><span class="pm-proof-label">Seats, usage and outcomes coexist. A subscription floor still absorbs volatility while the meter moves toward completed work.</span></div>
+          <div class="pm-proof-item"><span class="pm-proof-num">MARGIN</span><span class="pm-proof-label">The unresolved question is not whether outcome pricing exists, but whether the price covers inference, escalation and implementation.</span></div>
+        </div>
+        <span class="stat-source">Sources: <a href="https://www.cio.com/article/4184688/it-hurtles-toward-the-great-enterprise-pricing-reset.html" target="_blank" rel="noopener">CIO / Gartner</a> &middot; <a href="https://www.teqfocus.com/newsletter/teqfocus-insights-july-2026-ai-pricing-shifts-to-outcomes/" target="_blank" rel="noopener">Teqfocus</a> (Salesforce) &middot; <a href="https://www.moneycontrol.com/artificial-intelligence/outcome-based-pricing-gains-ground-as-45-of-cognizant-s-new-bpo-contracts-adopt-the-model-article-13966968.html" target="_blank" rel="noopener">Moneycontrol</a> (Cognizant)</span>
+      </div>
+    </div>
+    <a class="dive-deeper" data-slide-link="13">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 11: Sequoia Services Matrix (NATIVE) ============== -->
+  <section class="slide" data-slide="14" id="slide-14">
+    <div class="slide-inner slide-iframe-layout slide-iframe-layout--full">
+      <div class="slide-text slide-text--compact">
+        <p class="slide-eyebrow">Services disruption</p>
+        <h1 class="slide-headline">Where AI autopilots are attacking services.</h1>
+        <p class="slide-sub">Vertical market sizes for ten categories after <a href="https://sequoiacap.com/article/services-the-new-software/" target="_blank" rel="noopener">Sequoia Capital (Bek, March 2026)</a>. Remaining categories, quadrant grouping and company selections are DVC&rsquo;s. Funding figures checked Aug 4, 2026.</p>
+      </div>
+      <div class="slide-seq-matrix">
+        <div id="slide-seq-matrix-mount"></div>
+        <script>if(window.SERVICES_MATRIX)window.SERVICES_MATRIX.render('slide-seq-matrix-mount',{consolidation:false});</script>
+      </div>
+    </div>
+    <a class="dive-deeper" data-slide-link="14">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 12: Three attack angles (NATIVE) ============== -->
+  <section class="slide" data-slide="15" id="slide-15">
+    <div class="slide-inner slide-iframe-layout">
+      <div class="iframe-headline">
+        <p class="slide-eyebrow">How founders attack the services map</p>
+        <h1 class="slide-headline">Three angles. Pick one.</h1>
+        <p class="slide-sub">SaaS to incumbents. Vertical agentic. Agentic rollup. The market structure picks the strategy &mdash; not the founder.</p>
+      </div>
+      <div class="slide-attack-stage" id="attack-angles-stage" aria-label="Three attack angles — stage view"></div>
+    </div>
+    <a class="dive-deeper" data-slide-link="15">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 16: Healthcare AI (NEW — Aug 2026) ============== -->
+  <section class="slide" data-slide="16" id="slide-16">
+    <div class="slide-inner slide-hcs">
+      <p class="slide-eyebrow">Healthcare AI &middot; incentive mechanics</p>
+      <h1 class="slide-headline">AI makes healthcare more efficient — <span class="hl-accent hl-accent--coral">and more expensive.</span></h1>
+      <p class="slide-sub">AI follows incentives. In fee-for-service, the same visit documented better is a higher-severity claim. Efficiency and total spend both go up.</p>
+
+      <div class="hcs-grid">
+        <!-- LEFT: the two-arrow tension -->
+        <div class="hcs-tension">
+          <span class="hcs-panel-tag">THE MECHANISM</span>
+          <div class="hcs-arrow hcs-arrow--down">
+            <svg viewBox="0 0 40 90" class="hcs-arrow-svg" aria-hidden="true">
+              <path d="M20 6 V70" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <path d="M8 58 L20 76 L32 58" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="hcs-arrow-text">
+              <span class="hcs-arrow-title">WORKFLOW TIME</span>
+              <span class="hcs-arrow-body">Independent studies show ambient documentation can reduce documentation burden; effect sizes vary by workflow and adoption.</span>
+            </div>
+          </div>
+          <div class="hcs-arrow hcs-arrow--up">
+            <svg viewBox="0 0 40 90" class="hcs-arrow-svg" aria-hidden="true">
+              <path d="M20 84 V20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <path d="M8 32 L20 14 L32 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="hcs-arrow-text">
+              <span class="hcs-arrow-title">CLAIM SEVERITY &amp; COST</span>
+              <span class="hcs-arrow-body">PwC's mechanism is not more services — it is <strong>&ldquo;changes in severity, mix and amount per claim.&rdquo;</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MIDDLE: the numbers -->
+        <div class="hcs-numbers">
+          <span class="hcs-panel-tag">WHAT THE PAYERS NOW SAY</span>
+          <div class="hcs-num-card hcs-num-card--lead">
+            <span class="hcs-num tabnum">9%</span>
+            <span class="hcs-num-label">2027 medical cost trend, group plans (8.5% individual) — the highest in nearly two decades</span>
+          </div>
+          <div class="hcs-num-card">
+            <span class="hcs-num tabnum">~70%</span>
+            <span class="hcs-num-label">of health plans rank provider AI documentation and coding in their <strong>top three</strong> cost inflators. ~20% call it the single biggest.</span>
+          </div>
+          <div class="hcs-num-card hcs-num-card--evidence">
+            <span class="hcs-num">SEVERITY</span>
+            <span class="hcs-num-label">Payers identify documentation and coding intensity as a mechanism that can raise the amount paid per claim.</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: two gates -->
+        <div class="hcs-gates">
+          <span class="hcs-panel-tag">TWO GATES</span>
+          <div class="hcs-gate hcs-gate--reimb">
+            <span class="hcs-gate-num">01</span>
+            <span class="hcs-gate-title">REIMBURSEMENT</span>
+            <span class="hcs-gate-sub">decides what gets bought</span>
+            <ul class="hcs-gate-list">
+              <li><strong>WISeR</strong> brought AI-assisted prior authorization into <em>Original</em> Medicare and triggered congressional resistance.</li>
+              <li><strong>ePA</strong> becomes mandatory <strong>Jan 1, 2027</strong> for MA, Medicaid, CHIP and FFE plans.</li>
+            </ul>
+          </div>
+          <div class="hcs-gate hcs-gate--liab">
+            <span class="hcs-gate-num">02</span>
+            <span class="hcs-gate-title">LIABILITY</span>
+            <span class="hcs-gate-sub">decides what gets deployed</span>
+            <ul class="hcs-gate-list">
+              <li><strong class="tabnum">76.6%</strong> of harmful errors across every tested clinical AI were <strong>omissions</strong>, with potential for severe harm in up to <strong>24.6%</strong> of cases &mdash; NOHARM, 100 real cases across 10 specialties and 31 models; not peer-reviewed, disputed.</li>
+              <li>OpenAI sued for the <strong>unauthorized practice of medicine</strong> one day before Health in ChatGPT launched.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM: two clocks + DVC -->
+      <div class="hcs-bottom">
+        <div class="hcs-clocks">
+          <span class="hcs-clock-tag">TWO CLOCKS, NOT ONE</span>
+          <div class="hcs-clock hcs-clock--admin">
+            <span class="hcs-clock-num tabnum">2–4 yrs</span>
+            <span class="hcs-clock-label"><strong>ADMIN</strong> — moves on regulatory deadlines (ePA 2027, NHS App triage by April 2028)</span>
+          </div>
+          <div class="hcs-clock hcs-clock--clinical">
+            <span class="hcs-clock-num tabnum">10–15 yrs</span>
+            <span class="hcs-clock-label"><strong>CLINICAL AUTONOMY</strong> — moves on evidence, liability and regulated deployment rather than vendor pilots.</span>
+          </div>
+        </div>
+        <div class="hcs-dvc">
+          <span class="hcs-dvc-tag">DVC PORTFOLIO</span>
+          <div class="hcs-dvc-item">
+            <span class="hcs-dvc-name">DOCTRONIC</span>
+            <span class="hcs-dvc-body">Acquired <strong>Summer Health</strong> in July — adding pediatric domain data and expertise.</span>
+          </div>
+          <div class="hcs-dvc-item">
+            <span class="hcs-dvc-name">COLLECTLY</span>
+            <span class="hcs-dvc-body">Live in the <strong>Epic Showroom</strong> with bidirectional Epic integration.<span class="hcs-dvc-caveat">company announcement</span></span>
+          </div>
+        </div>
+      </div>
+
+      <p class="slide-source">Sources: <a href="https://jamanetwork.com/journals/jamanetworkopen" target="_blank" rel="noopener">JAMA Network</a> (ambient-documentation direction) &middot; <a href="https://www.axios.com/2026/06/12/health-ai-more-expensive-costs" target="_blank" rel="noopener">Axios</a> and <a href="https://fortune.com/2026/06/12/ai-making-medical-bills-higher/" target="_blank" rel="noopener">Fortune</a> (PwC 2027 trend) &middot; <a href="https://www.statnews.com/2026/07/16/medicare-ai-prior-authorization-pilot-wiser-senate-vote/" target="_blank" rel="noopener">STAT</a> (WISeR) &middot; <a href="https://stanfordhealthcare.org/v2/publications/968/968514.html" target="_blank" rel="noopener">NOHARM abstract</a> &middot; <a href="https://www.reuters.com/legal/government/chatgpts-advice-kept-man-seeking-medical-treatment-dangerous-condition-lawsuit-2026-07-22/" target="_blank" rel="noopener">Reuters</a> (lawsuit)</p>
+    </div>
+    <a class="dive-deeper" data-slide-link="16">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 13: Physical AI (REBUILT) ============== -->
+  <section class="slide" data-slide="17" id="slide-17">
+    <div class="slide-inner slide-physical slide-physical-aug">
+      <p class="slide-eyebrow">Physical AI</p>
+      <h1 class="slide-headline">It already left the screen.</h1>
+      <p class="slide-sub">$38 trillion labor market in play. The Waymo&ndash;Tesla gap <strong>widened</strong> rather than closed, and humanoids reached the public markets before the units did.</p>
+
+      <div class="phys-tiles" id="physTiles"></div>
+
+      <div class="phys-stats-strip" id="physStatsStrip"></div>
+
+      <div class="tk-strip" style="margin-top:14px">
+        <div class="tk-strip-head">
+          <span class="tk-strip-tag" style="background:#F4B6A9">FUNDING RAN AHEAD OF DELIVERY</span>
+          <span class="tk-strip-warn">Humanoid funding hit $8.6B in 2026 by late July &mdash; 1.8&times; all of 2025 &mdash; with two public-market events. The delivery ledger has not moved with the cap table.</span>
+        </div>
+        <div class="tk-items">
+          <div class="tk-item" style="--tk-c:#FFD720">
+            <span class="tk-item-num tabnum">$39B</span>
+            <span class="tk-item-label"><strong>FIGURE AI</strong> reported valuation on $2.34B raised &mdash; the sector&rsquo;s high-water mark.</span>
+          </div>
+          <div class="tk-item" style="--tk-c:#2080D6">
+            <span class="tk-item-num tabnum">~$2.5B</span>
+            <span class="tk-item-label"><strong>AGILITY ROBOTICS</strong> going public via SPAC, raising $620M+ gross expected &mdash; the S-4 is effective (Oct 13) and holders vote on Nov 2 &mdash; and its CEO declined to promise a home robot.</span>
+          </div>
+          <div class="tk-item" style="--tk-c:#8CC0EE">
+            <span class="tk-item-num">PUBLIC-MARKET PLANS</span>
+            <span class="tk-item-label">Several humanoid companies announced large rounds or public-market plans, but company-specific valuation and IPO-target figures were removed when they could not be independently confirmed.</span>
+          </div>
+          <div class="tk-item tk-item--axis" style="border-color:rgba(244,182,169,0.26);background:rgba(244,182,169,0.06)">
+            <span class="tk-item-num" style="color:#F4B6A9">THE CAVEAT</span>
+            <span class="tk-item-label">Large humanoid rounds have not yet produced matching unit deliveries. NVIDIA now reports physical AI as a meaningful infrastructure line, but the trailing-twelve-month revenue figure previously printed here could not be independently confirmed.</span>
+          </div>
+        </div>
+      </div>
+      <p class="slide-source">Sources: <a href="https://robofutur.com/en/articles/robotaxi-reality-check-2026/" target="_blank" rel="noopener">RoboFutur</a> and <a href="https://techcrunch.com/2026/09/01/waymo-accelerates-robotaxi-expansion-with-launches-in-denver-san-diego-and-tampa/" target="_blank" rel="noopener">TechCrunch (Waymo)</a> (Waymo) &middot; <a href="https://www.reuters.com/business/autos-transportation/teslas-once-bullish-tone-robotaxis-shifts-2026-07-23/" target="_blank" rel="noopener">Reuters</a> and <a href="https://electrek.co/2026/07/22/tesla-robotaxi-growth-flat-own-chart-q2-2026/" target="_blank" rel="noopener">Electrek</a> (Tesla) &middot; <a href="https://venturepost.co/funding/humanoid-robot-startups-2026" target="_blank" rel="noopener">Venture Post</a> and <a href="https://www.grabarobot.com/blog/humanoid-funding-vs-units-delivered-2026/" target="_blank" rel="noopener">GrabaRobot</a> (humanoids). Rhoda figures per DVC.</p>
+    </div>
+    <a class="dive-deeper" data-slide-link="17">→ Dive deeper</a>
+  </section>
+  <!-- ============== SLIDE 14: Key Learnings (close) ============== -->
+  <section class="slide" data-slide="18" id="slide-18">
+    <div class="slide-inner slide-15 slide-keylearn">
+      <p class="slide-eyebrow">Key learnings</p>
+      <h1 class="slide-headline">Six things <span class="hl-accent hl-accent--teal">we now believe</span>.</h1>
+      <p class="slide-sub">Revised August 4, 2026. Where value is shifting, what's structural, and which of our own beliefs the last quarter forced us to retire.</p>
+
+      <ol class="kl-grid" aria-label="Key learnings">
+        <li class="kl-card kl-card--teal">
+          <span class="kl-num">01</span>
+          <h3 class="kl-title">Models commoditize. Distribution wins — but distribution changed meaning.</h3>
+          <p class="kl-body">The contested surfaces stopped being app stores and became <strong>records, regulators and institutional accounts</strong>. OpenAI now connects hospital records and Apple Health inside ChatGPT; Mayo Clinic owns a frontier clinical model that Microsoft distributes; OpenAI and Anthropic <em>donated</em> public-health seats rather than sell them. Leadership also inverted: Anthropic at <strong>43.8%</strong> of US paid business use vs OpenAI&rsquo;s 40.6% (Ramp AI Index, October 2026).</p>
+        </li>
+        <li class="kl-card kl-card--coral">
+          <span class="kl-num">02</span>
+          <h3 class="kl-title">Energy is still binding — and it is being met with gas, not fission.</h3>
+          <p class="kl-body"><strong>9.8 GW</strong> of hyperscaler nuclear committed against <strong>1.92 GW</strong> operational in the May 2026 tracker snapshot. Project Kilby is a proposed <strong>2.67 GW</strong> off-grid gas bridge, but it had no final investment decision as of Aug 4, 2026. The real constraints are construction and financing: debt went from <strong>9% to 32%</strong> of hyperscaler capex and Alphabet's free cash flow turned negative for the first time since 2004.</p>
+        </li>
+        <li class="kl-card kl-card--gold">
+          <span class="kl-num">03</span>
+          <h3 class="kl-title">Outcome pricing has been invented. Margin is the unresolved variable.</h3>
+          <p class="kl-body">We are retiring &ldquo;the pricing model is still being invented.&rdquo; Salesforce now lists per-resolution and per-action pricing, and Cognizant reports new BPO contracts moving toward outcome-based commercial models. Gartner puts <strong>$234B</strong> (~20% of enterprise app spend) in scope <strong>by 2030</strong>. What remains unresolved is whether those unit economics survive token costs.</p>
+        </li>
+        <li class="kl-card kl-card--purple">
+          <span class="kl-num">04</span>
+          <h3 class="kl-title">Open weights lead on scale. Regulated inference stays proprietary.</h3>
+          <p class="kl-body">Chinese open weights took the parameter crown through <strong>Kimi K3 at 2.8T</strong>, according to Moonshot&rsquo;s own release. They matter because they are <em>ownable</em>, not simply because they are cheaper. Unsupported DeepSeek parameter splits and secondary-source price comparisons were removed. Regulated enterprise inference remains proprietary or hybrid.</p>
+        </li>
+        <li class="kl-card kl-card--teal">
+          <span class="kl-num">05</span>
+          <h3 class="kl-title">Coalitions, not empires.</h3>
+          <p class="kl-body">Three stacks now define the frontier. <strong>OpenAI / Microsoft / Oracle / AWS</strong>: exclusivity reset, multi-cloud assembly, no single protector. <strong>Anthropic / Amazon / Google / SpaceX / Cursor</strong>: diversified compute and distribution, with a competitor (xAI) already inside the tent. <strong>Meta</strong>: separate, vertically controlled. Everyone gets stronger; everyone gets more exposed.</p>
+        </li>
+        <li class="kl-card kl-card--coral">
+          <span class="kl-num">06</span>
+          <h3 class="kl-title">AI follows incentives. Efficiency doesn&rsquo;t guarantee lower spend.</h3>
+          <p class="kl-body">Health plans project a <strong>9%</strong> 2027 medical cost trend — the highest in ~two decades — and ~<strong>70%</strong> rank provider AI documentation and coding among their top three inflators. Same care, higher-severity code, no rise in denials. Read across: in any fee-for-service market, AI raises throughput <em>and</em> the bill. Humanoids stay &ldquo;real but slower&rdquo; for the same class of reason — <strong>$8.6B</strong> of 2026 funding against a delivery ledger that hasn&rsquo;t moved.</p>
+        </li>
+      </ol>
+
+      <p class="kl-kicker">Not a bubble — a repricing with a mechanism. Public markets have started marking the private book, and concentration (OpenAI + Anthropic took <strong>43%</strong> of every H1 2026 venture dollar) is now market structure rather than a warning. You are not late to a trend; you are early to a restructuring.</p>
+    </div>
+    <a class="dive-deeper" data-slide-link="18">→ Dive deeper</a>
+  </section>
+
+</main>
+
+<!-- Hint at bottom -->
+<div class="nav-hint">← →  Space  ·  Esc to exit</div>
+
+<script src="logo-names.js?v=20261016a"></script>
+<script src="logos.js?v=20261016a"></script>
+<script src="slides-data.js?v=20261016a"></script>
+<script src="attack-angles.js?v=20261016a"></script>
+<script src="slides.js?v=20261016a"></script>
+<script>
+/* Slide 12 — Three attack angles: scroll affordance wiring.
+ * Toggles data-can-scroll / data-at-bottom on the wrapper so CSS can
+ * show the bottom fade + "Scroll" hint pill only when relevant. */
+(function () {
+  var wrap = document.getElementById('slide12AttackWrap');
+  var scroller = document.getElementById('slide12AttackScroll');
+  if (!wrap || !scroller) return;
+
+  function update() {
+    if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+      wrap.removeAttribute('data-can-scroll');
+      wrap.removeAttribute('data-at-bottom');
+      return;
+    }
+    var canScroll = scroller.scrollHeight - scroller.clientHeight > 4;
+    var atBottom  = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 6;
+    wrap.setAttribute('data-can-scroll', canScroll ? 'true' : 'false');
+    wrap.setAttribute('data-at-bottom', atBottom ? 'true' : 'false');
+  }
+
+  scroller.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  // Re-evaluate after attack-angles.js renders content + on slide activation.
+  setTimeout(update, 50);
+  setTimeout(update, 350);
+  setTimeout(update, 800);
+  // When the deck navigates to slide 12, reset to top so user sees first row.
+  document.addEventListener('keydown', function () { setTimeout(update, 360); });
+  document.addEventListener('click',   function () { setTimeout(update, 360); });
+
+  // Wheel + touch redirect: click-zones (z-index:30) cover the slide and the
+  // body has overflow:hidden, so a wheel over the slide never reaches the
+  // inner scroller. Capture wheel/touchmove globally and forward to the
+  // scroller while slide 12 is active and not on mobile (mobile uses normal
+  // page scroll).
+  var slide12 = document.getElementById('slide-12');
+  function isMobile() { return window.matchMedia && window.matchMedia('(max-width: 768px)').matches; }
+  function activeIsTwelve() { return slide12 && slide12.classList.contains('is-active'); }
+
+  window.addEventListener('wheel', function (e) {
+    if (isMobile() || !activeIsTwelve()) return;
+    if (scroller.scrollHeight - scroller.clientHeight <= 4) return;
+    // Forward delta to the scroller and keep page from staying frozen
+    scroller.scrollTop += e.deltaY;
+    e.preventDefault();
+  }, { passive: false });
+
+  // Touch — non-mobile tablets (mobile already gets natural page scroll)
+  var touchY = null;
+  window.addEventListener('touchstart', function (e) {
+    if (isMobile() || !activeIsTwelve() || !e.touches[0]) return;
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  window.addEventListener('touchmove', function (e) {
+    if (isMobile() || !activeIsTwelve() || touchY == null || !e.touches[0]) return;
+    if (scroller.scrollHeight - scroller.clientHeight <= 4) return;
+    var y = e.touches[0].clientY;
+    scroller.scrollTop += (touchY - y);
+    touchY = y;
+    e.preventDefault();
+  }, { passive: false });
+  window.addEventListener('touchend', function () { touchY = null; }, { passive: true });
+
+  // Reset scroll to top when slide 12 *becomes* active (entry only, so a user
+  // navigating away and back lands at the top of the table).
+  var wasActive = activeIsTwelve();
+  var checkEntry = function () {
+    var nowActive = activeIsTwelve();
+    if (nowActive && !wasActive) { scroller.scrollTop = 0; setTimeout(update, 50); }
+    wasActive = nowActive;
+  };
+  document.addEventListener('keydown', function () { setTimeout(checkEntry, 50); });
+  document.addEventListener('click', function () { setTimeout(checkEntry, 50); });
+})();
+</script>
+</body>
+</html>

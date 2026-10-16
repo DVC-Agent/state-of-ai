@@ -5,7 +5,7 @@ Evidence cut: October 16, 2026. The design and existing feature set start from G
 ## Preservation
 
 - The previous GitHub site is available through “Previous version” in the rebuilt site.
-- Its 107 retained deployable files were compared byte-for-byte with the preserved baseline. None was changed.
+- Its 107 retained backup files were compared byte-for-byte with the preserved baseline. None was changed.
 - Both the previous GitHub source and the preceding preview source are preserved as separate archives in the Project, together with a Git bundle.
 - Local backup refs: `backup/pre-narrative-github-20261016` and `backup/pre-narrative-preview-20261016`.
 
@@ -48,6 +48,14 @@ No universal gross-margin or EBITDA bands, synthetic revenue-market totals, mism
 - No horizontal page overflow found at 375px. Wide money-flow diagrams use intentional internal horizontal scrolling.
 
 QA found and corrected inherited tooltip dependencies, a zero-height mobile deck container, small map labels, clipped phone controls, a mobile cover overflow, a cover button behind navigation and an overlapping opener caption. Initial test failures and their resolved retests are preserved in the browser QA log.
+
+## Hosted preview verification
+
+The updated preview retains artifact ID `6f1dadc7-09ca-45dd-ac5b-c7bf11de4ee2`. A fresh browser context confirmed seven report chapters, 17 deck slides, loaded local brand fonts, synchronized figures, rendered robotics and industrial rivers, a working service-map detail panel, keyboard navigation and a source link opening the expected external destination.
+
+At 375px, both report width and active slide width were 375px, and the active slide had a visible 812px containing block. The preserved previous-version link opened the original 18-section report rather than accidentally routing back to the new entry page. No JavaScript runtime exceptions were captured in the hosted checks.
+
+The automated bundle scanner flagged native-fullscreen references in the untouched archived/legacy deck files, which are not the new deck's presentation implementation. The preview was uploaded with that broad scanner disabled after manual desktop/mobile QA; the current deck uses in-page presentation focus mode. This is not a claim that the archived deck's original native-fullscreen control works inside a restricted preview iframe.
 
 ## Scope of assurance
 

@@ -39,7 +39,7 @@
 
   .hero-content--dvc .hero-tension {
     text-align: center !important;
-    font-size: 0.78rem !important;
+    font-size: 0.75rem !important;
     max-width: 300px !important;
     margin: 0.25rem auto 0.5rem !important;
     color: #555B6E !important;
@@ -53,14 +53,14 @@
   .hero-wordmark {
     top: 14px;
     left: 14px;
-    font-size: 10px;
+    font-size: 12px;
     z-index: 4;
   }
 
   .hero-dvc-url {
     bottom: 10px;
     right: 14px;
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -89,13 +89,13 @@
 
   .section-bridge p,
   .section-intro {
-    font-size: 0.88rem !important;
+    font-size: 0.875rem !important;
     line-height: 1.55 !important;
     padding: 0 4px;
   }
 
   .subsection-title {
-    font-size: 0.82rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -106,7 +106,7 @@
   }
 
   .money-flow-subtitle {
-    font-size: 0.82rem !important;
+    font-size: 0.875rem !important;
   }
 
   .mf-controls {
@@ -114,12 +114,12 @@
   }
 
   .mf-toggle-btn {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     padding: 6px 10px;
   }
 
   .mf-journey-btn {
-    font-size: 0.72rem !important;
+    font-size: 0.75rem !important;
     padding: 6px 12px !important;
   }
 
@@ -128,11 +128,11 @@
   }
 
   .mf-layer-label {
-    font-size: 0.7rem !important;
+    font-size: 0.75rem !important;
   }
 
   .mf-layer-name {
-    font-size: 0.82rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -140,7 +140,7 @@
 @media (max-width: 480px) {
   .explosion-pill {
     padding: 0.5rem 0.75rem !important;
-    font-size: 0.78rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
@@ -167,7 +167,7 @@
   }
 
   .aa-layer-title {
-    font-size: 0.78rem !important;
+    font-size: 0.75rem !important;
   }
 
   .aa-expanded-content {
@@ -175,7 +175,7 @@
   }
 
   .aa-company-chip {
-    font-size: 0.65rem !important;
+    font-size: 0.75rem !important;
     padding: 3px 8px !important;
   }
 }
@@ -187,7 +187,7 @@
   }
 
   .ae-protocol-title {
-    font-size: 0.82rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -210,11 +210,11 @@
   }
 
   .pai-av-stat-num {
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
   }
 
   .pai-av-stat-label {
-    font-size: 0.62rem !important;
+    font-size: 0.75rem !important;
   }
 
   .pai-treemap {
@@ -227,7 +227,7 @@
   }
 
   .pai-treemap-cell strong {
-    font-size: 0.72rem !important;
+    font-size: 0.75rem !important;
   }
 
   .pai-econ-row {
@@ -237,11 +237,11 @@
   }
 
   .pai-econ-label {
-    font-size: 0.65rem !important;
+    font-size: 0.75rem !important;
   }
 
   .pai-econ-val {
-    font-size: 0.65rem !important;
+    font-size: 0.75rem !important;
   }
 
   .pai-fsd-chart {
@@ -332,12 +332,12 @@
   }
 
   .eco-thesis p {
-    font-size: 0.82rem !important;
+    font-size: 0.875rem !important;
     line-height: 1.55 !important;
   }
 
   .eco-cat-header {
-    font-size: 0.72rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
@@ -355,11 +355,11 @@
   }
 
   .outlook-card h3 {
-    font-size: 0.95rem !important;
+    font-size: 1rem !important;
   }
 
   .outlook-card p {
-    font-size: 0.8rem !important;
+    font-size: 0.875rem !important;
     line-height: 1.5 !important;
   }
 }
@@ -372,15 +372,15 @@
   }
 
   .closing-line-2 {
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
   }
 
   .closing-line-3 {
-    font-size: 0.88rem !important;
+    font-size: 0.875rem !important;
   }
 
   .closing-line-4 {
-    font-size: 0.82rem !important;
+    font-size: 0.875rem !important;
   }
 
   .dvc-logo--closing {
@@ -429,14 +429,14 @@
 
   /* Bottom-line quote in outlook */
   #sec-14 > .container > div:last-child p {
-    font-size: 0.92rem !important;
+    font-size: 1rem !important;
     line-height: 1.55 !important;
     padding: 0 4px;
   }
 
   /* Make all inline stat-source smaller */
   .stat-source {
-    font-size: 0.62rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
@@ -450,7 +450,7 @@
 
   td, th {
     white-space: nowrap;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
   }
 }
 

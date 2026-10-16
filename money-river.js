@@ -143,8 +143,8 @@
       });
 
       var colorOf = function (n) {
-        if (n.layer === 0) return n.role === 'consumer' ? '#FF8C42' : n.role === 'capital' ? '#9B7BFF' : n.role === 'public' ? '#6FA6E0' : '#4A90D9';
-        return n.layer === 1 ? '#4ECDC4' : '#A0A8BC';
+        if (n.layer === 0) return n.role === 'consumer' ? '#E07A5F' : n.role === 'capital' ? '#9B7BFF' : n.role === 'public' ? '#6FA6E0' : '#2080D6';
+        return n.layer === 1 ? '#4BB5AB' : '#A0A8BC';
       };
 
       linkSel = svg.append('g').selectAll('g').data(graph.links).join('g').attr('class', 'link-group');

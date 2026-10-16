@@ -16,22 +16,76 @@
     if (VIA_DDG[domain]) return 'https://icons.duckduckgo.com/ip3/' + encodeURIComponent(domain) + '.ico';
     return 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(domain) + '&sz=64';
   }
-  function img(domain, onload) {
+  function img(domain, onload, onerror) {
     if (!url(domain)) return;
     var i = new Image();
     i.alt = ''; i.referrerPolicy = 'no-referrer'; i.decoding = 'async';
     i.onload = function () { onload(i); };
+    if (onerror) i.onerror = onerror;
     i.src = url(domain);
+  }
+
+  // One look for every inline company logo in the report: a 26px white square.
+  var TILE = 'display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;margin-right:8px;border-radius:0;background:#FFFFFF;vertical-align:middle;overflow:hidden;flex:0 0 auto';
+  var MONO = 'display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;margin-right:8px;border-radius:0;background:rgba(250,249,245,0.14);color:#FAF9F5;font-size:12px;font-weight:600;letter-spacing:0.02em;vertical-align:middle;flex:0 0 auto';
+
+  // Every name -> domain map the report already keeps, in order of trust.
+  function domainFor(name) {
+    var n = (name || '').replace(/\s+/g, ' ').trim();
+    if (!n) return null;
+    var maps = [window.LOGO_NAMES || {}, window.EXTRA_LOGO_NAMES || {}, window.PORTFOLIO_DOMAINS || {}];
+    for (var k = 0; k < maps.length; k++) if (maps[k][n]) return maps[k][n];
+    var cd = (window.COMPANY_DOMAINS || {})[n];
+    return cd && cd.length ? cd[0] : null;
+  }
+  function initials(name) {
+    var w = name.replace(/[^A-Za-z0-9 ]/g, ' ').trim().split(/\s+/);
+    return ((w[0] || '')[0] || '').toUpperCase() + ((w[1] || '')[0] || '').toUpperCase();
+  }
+  // The name a chip shows: its own text, without badges (DVC) or the numbers beside it.
+  function ownText(e) {
+    var t = '';
+    for (var i = 0; i < e.childNodes.length; i++) { var n = e.childNodes[i]; if (n.nodeType === 3) t += n.textContent; else break; }
+    return t.replace(/\s+/g, ' ').trim();
+  }
+
+  // Chips and pills: every company named in one gets the same tile; with no known logo, its initials.
+  var CHIPS = '.aa-tool-chip, .aa-chip-name, .chip, .mf-pill-name';
+  function tagChips(root) {
+    (root || document).querySelectorAll(CHIPS).forEach(function (e) {
+      if (e.getAttribute('data-rv') || e.querySelector('.rv-logo')) return;
+      var name = ownText(e); if (!name) return;
+      e.setAttribute('data-rv', '1');
+      var d = domainFor(name);
+      var mono = function () {
+        if (e.querySelector('.rv-logo')) return;
+        var m = document.createElement('span'); m.className = 'rv-logo rv-logo--mono'; m.setAttribute('aria-hidden', 'true');
+        m.style.cssText = MONO; m.textContent = initials(name); e.insertBefore(m, e.firstChild);
+      };
+      if (!d || !url(d)) { mono(); return; }
+      img(d, function (i) {
+        var s = document.createElement('span'); s.className = 'rv-logo'; s.setAttribute('aria-hidden', 'true');
+        s.style.cssText = TILE;
+        i.style.cssText = 'width:80%;height:80%;object-fit:contain;display:block';
+        s.appendChild(i); e.insertBefore(s, e.firstChild);
+      }, mono);
+    });
   }
 
   function applyAvatar(el) {
     var d = el.getAttribute('data-logo'); if (!d || el.classList.contains('has-logo')) return;
     img(d, function (i) {
       // Sizes are inline so a stale cached stylesheet can never blow the image up.
-      i.style.cssText = 'width:62%;height:62%;object-fit:contain;display:block';
+      i.style.cssText = 'width:76%;height:76%;object-fit:contain;display:block';
       el.classList.add('has-logo'); el.style.background = '#FFFFFF'; el.style.color = 'transparent';
       el.textContent = ''; el.appendChild(i);
     });
+  }
+
+  var AVATARS = '[data-logo], .ar-card-icon, .model-logo, .pai-brain-icon, .inc-co-icon, .eco-logo';
+  function nearAvatar(e) {
+    for (var a = e.parentElement, i = 0; a && i < 2; a = a.parentElement, i++) if (a.querySelector(AVATARS)) return true;
+    return false;
   }
 
   // Skip the money rivers and the portfolio cloud: they render their own logos.
@@ -47,6 +101,8 @@
         // skip when the parent carries its own text, or the name sits in running prose.
         var par = e.parentNode;
         if (!par || Array.prototype.some.call(par.childNodes, function (n) { return n.nodeType === 3 && n.textContent.trim(); })) return;
+        // A card that already shows the company's big tile beside its heading gets no second logo.
+        if (nearAvatar(e)) return;
         var prose = e.closest('p, li, .aug-card-body, .aug-card-label, .aug-block-lede');
         if (prose && prose.textContent.trim().length > e.textContent.trim().length + 3) return;
         var t = e.textContent.trim();
@@ -55,8 +111,8 @@
         e.setAttribute('data-rv', '1');
         img(d, function (i) {
           var s = document.createElement('span'); s.className = 'rv-logo'; s.setAttribute('aria-hidden', 'true');
-          s.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;width:1.15em;height:1.15em;margin-right:0.4em;border-radius:0.25em;background:#FFFFFF;vertical-align:-0.18em;overflow:hidden;flex:0 0 auto';
-          i.style.cssText = 'width:78%;height:78%;object-fit:contain;display:block';
+          s.style.cssText = TILE;
+          i.style.cssText = 'width:80%;height:80%;object-fit:contain;display:block';
           s.appendChild(i);
           e.insertBefore(s, e.firstChild);
         });
@@ -67,6 +123,7 @@
   function run(root) {
     (root || document).querySelectorAll('[data-logo]').forEach(applyAvatar);
     tagHeadings(root);
+    tagChips(root);
   }
   window.dvcLogoUrl = url;
   window.dvcApplyLogos = run;

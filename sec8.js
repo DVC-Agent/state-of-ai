@@ -66,23 +66,23 @@
 
     // Gradient fill
     const gradient = ctx.createLinearGradient(0, 0, 0, 280);
-    gradient.addColorStop(0, 'rgba(78, 205, 196, 0.35)');
-    gradient.addColorStop(1, 'rgba(78, 205, 196, 0.02)');
+    gradient.addColorStop(0, 'rgba(75,181,171, 0.35)');
+    gradient.addColorStop(1, 'rgba(75,181,171, 0.02)');
 
     fsdChartInstance = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['2021', '2022', '2023', '2024', '2025', '2026E'],
+        labels: ['2021', '2022', '2023', '2024', '2025', 'Q2 2026'],
         datasets: [
           {
             type: 'line',
             label: 'Cumulative Miles (B)',
-            data: [0.006, 0.08, 0.67, 2.25, 4.25, 10],
-            borderColor: '#4ECDC4',
+            data: [0.006, 0.08, 0.67, 2.25, 4.25, 12],
+            borderColor: '#4BB5AB',
             backgroundColor: gradient,
             borderWidth: 3,
-            pointBackgroundColor: '#4ECDC4',
-            pointBorderColor: '#2D3142',
+            pointBackgroundColor: '#4BB5AB',
+            pointBorderColor: '#1D253E',
             pointBorderWidth: 2,
             pointRadius: 5,
             pointHoverRadius: 7,
@@ -93,22 +93,22 @@
           {
             type: 'bar',
             label: 'Cumulative Miles (B)',
-            data: [0.006, 0.08, 0.67, 2.25, 4.25, 10],
+            data: [0.006, 0.08, 0.67, 2.25, 4.25, 12],
             backgroundColor: [
-              'rgba(78,205,196,0.15)',
-              'rgba(78,205,196,0.2)',
-              'rgba(78,205,196,0.25)',
-              'rgba(78,205,196,0.3)',
-              'rgba(78,205,196,0.35)',
-              'rgba(245,197,66,0.3)'
+              'rgba(75,181,171,0.15)',
+              'rgba(75,181,171,0.2)',
+              'rgba(75,181,171,0.25)',
+              'rgba(75,181,171,0.3)',
+              'rgba(75,181,171,0.35)',
+              'rgba(255,215,32,0.3)'
             ],
             borderColor: [
-              'rgba(78,205,196,0.3)',
-              'rgba(78,205,196,0.35)',
-              'rgba(78,205,196,0.4)',
-              'rgba(78,205,196,0.5)',
-              'rgba(78,205,196,0.6)',
-              'rgba(245,197,66,0.5)'
+              'rgba(75,181,171,0.3)',
+              'rgba(75,181,171,0.35)',
+              'rgba(75,181,171,0.4)',
+              'rgba(75,181,171,0.5)',
+              'rgba(75,181,171,0.6)',
+              'rgba(255,215,32,0.5)'
             ],
             borderWidth: 1,
             borderRadius: 6,
@@ -126,10 +126,10 @@
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#1A1A2E',
+            backgroundColor: '#151B2E',
             titleColor: '#fff',
             bodyColor: '#A0A8BC',
-            borderColor: 'rgba(78,205,196,0.2)',
+            borderColor: 'rgba(75,181,171,0.2)',
             borderWidth: 1,
             cornerRadius: 8,
             padding: 12,
@@ -150,14 +150,14 @@
             grid: { color: 'rgba(255,255,255,0.04)' },
             ticks: {
               color: '#A0A8BC',
-              font: { family: 'Inter', size: 12, weight: 600 }
+              font: { family: 'Stabil Grotesk', size: 12, weight: 600 }
             }
           },
           y: {
             grid: { color: 'rgba(255,255,255,0.04)' },
             ticks: {
               color: '#A0A8BC',
-              font: { family: 'Inter', size: 11 },
+              font: { family: 'Stabil Grotesk', size: 11 },
               callback: function(val) { return val + 'B'; }
             },
             beginAtZero: true

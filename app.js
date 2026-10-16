@@ -15,7 +15,7 @@
     let animId;
     let width, height;
 
-    const COLORS = ['#4ECDC4', '#6EAFD8', '#F5C542', '#7C4DFF', '#A0A8BC'];
+    const COLORS = ['#4BB5AB', '#7DB6EA', '#FFD720', '#8CC0EE', '#A0A8BC'];
     const PARTICLE_COUNT = Math.min(80, Math.floor(window.innerWidth / 15));
     const CONNECTION_DIST = 140;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -57,7 +57,7 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
             const alpha = (1 - dist / CONNECTION_DIST) * 0.15;
-            ctx.strokeStyle = `rgba(78, 205, 196, ${alpha})`;
+            ctx.strokeStyle = `rgba(75,181,171, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -277,7 +277,7 @@
     if (typeof Chart !== 'undefined') {
       Chart.defaults.color = '#A0A8BC';
       Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
-      Chart.defaults.font.family = "'Inter', sans-serif";
+      Chart.defaults.font.family = "'Stabil Grotesk', sans-serif";
       Chart.defaults.animation.duration = reducedMotion ? 0 : 1200;
     }
 
@@ -308,7 +308,7 @@
                 {
                   label: 'Reasoning Models (%)',
                   data: [2, 5, 12, 18, 28, 35, 42, 48, 55],
-                  backgroundColor: '#4ECDC4',
+                  backgroundColor: '#4BB5AB',
                   borderRadius: 4,
                   barPercentage: 0.7,
                 },
@@ -360,11 +360,11 @@
     // Annual capex data by company ($B) — SEC filings, earnings, analyst estimates
     const YEARS = ['2020', '2021', '2022', '2023', '2024', '2025', '2026E'];
     const COMPANIES = {
-      amazon:   { label: 'Amazon',   color: '#FF9900', data: [40, 61, 63, 54, 83, 131, 220] },
-      alphabet: { label: 'Alphabet', color: '#4285F4', data: [22, 29, 31, 32, 52, 91, 200] },
-      microsoft:{ label: 'Microsoft',color: '#7FBA00', data: [20, 27, 32, 35, 56, 80, 190] },
+      amazon:   { label: 'Amazon',   color: '#FF9900', data: [40, 61, 63, 53, 83, 131, 220] },
+      alphabet: { label: 'Alphabet', color: '#4285F4', data: [22, 25, 31, 32, 52, 91, 200] },
+      microsoft:{ label: 'Microsoft',color: '#7FBA00', data: [18, 23, 25, 35, 56, 83, 175] },
       meta:     { label: 'Meta',     color: '#0668E1', data: [16, 19, 32, 28, 39, 72, 138] },
-      oracle:   { label: 'Oracle',   color: '#C74634', data: [9, 7, 9, 9, 13, 35, 50] },
+      oracle:   { label: 'Oracle',   color: '#C74634', data: [1.6, 2.1, 4.5, 8.7, 6.9, 21.2, 55.7] }, // fiscal years ending May (FY20–FY26), 10-K
     };
 
     // AI enterprise revenue estimates ($B) for gap overlay
@@ -398,15 +398,15 @@
         datasets.push({
           label: 'AI Revenue',
           data: [...AI_REVENUE],
-          backgroundColor: 'rgba(232,131,124,0.08)',
-          borderColor: '#E8837C',
+          backgroundColor: 'rgba(244,182,169,0.08)',
+          borderColor: '#F4B6A9',
           borderWidth: 2.5,
           borderDash: [6, 3],
           fill: 'origin',
           tension: 0.35,
           pointRadius: 4,
-          pointBackgroundColor: '#E8837C',
-          pointBorderColor: '#2D3142',
+          pointBackgroundColor: '#F4B6A9',
+          pointBorderColor: '#1D253E',
           pointBorderWidth: 1.5,
           yAxisID: 'yRevenue',
           order: -1,
@@ -438,7 +438,7 @@
         const xPos = x2022 + (x2023 - x2022) * 0.21; // ~Mar in the year
         const ctx = chart.ctx;
         ctx.save();
-        ctx.strokeStyle = 'rgba(245,197,66,0.5)';
+        ctx.strokeStyle = 'rgba(255,215,32,0.5)';
         ctx.lineWidth = 1;
         ctx.setLineDash([4, 4]);
         ctx.beginPath();
@@ -447,11 +447,11 @@
         ctx.stroke();
         ctx.setLineDash([]);
         // Label
-        ctx.fillStyle = '#F5C542';
+        ctx.fillStyle = '#FFD720';
         ctx.font = '600 10px Inter, sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText('GPT-4', xPos, yScale.top + 14);
-        ctx.fillStyle = 'rgba(245,197,66,0.6)';
+        ctx.fillStyle = 'rgba(255,215,32,0.6)';
         ctx.font = '9px Inter, sans-serif';
         ctx.fillText('Mar 2023', xPos, yScale.top + 26);
         ctx.restore();
@@ -469,8 +469,8 @@
           plugins: {
             legend: { display: false },
             tooltip: {
-              backgroundColor: 'rgba(45,49,66,0.95)',
-              borderColor: 'rgba(78,205,196,0.2)',
+              backgroundColor: 'rgba(29,37,62,0.95)',
+              borderColor: 'rgba(75,181,171,0.2)',
               borderWidth: 1,
               padding: 12,
               titleFont: { size: 13, weight: '600' },
@@ -588,7 +588,7 @@
 
     function animateRing(canvas) {
       const pct = parseInt(canvas.dataset.pct) || 0;
-      const color = canvas.dataset.color || '#E8837C';
+      const color = canvas.dataset.color || '#F4B6A9';
       const ctx = canvas.getContext('2d');
       const size = 64;
       canvas.width = size * 2;
@@ -656,35 +656,35 @@
                 {
                   label: 'US Base Case (TWh)',
                   data: [176, 205, 240, 280, 325, 390],
-                  borderColor: '#4ECDC4',
-                  backgroundColor: 'rgba(78, 205, 196, 0.1)',
+                  borderColor: '#4BB5AB',
+                  backgroundColor: 'rgba(75,181,171, 0.1)',
                   fill: true,
                   tension: 0.4,
                   pointRadius: 5,
-                  pointBackgroundColor: '#4ECDC4',
+                  pointBackgroundColor: '#4BB5AB',
                   borderWidth: 2.5,
                 },
                 {
                   label: 'US High Case (TWh)',
                   data: [176, 215, 265, 340, 440, 580],
-                  borderColor: '#E8837C',
-                  backgroundColor: 'rgba(232, 131, 124, 0.06)',
+                  borderColor: '#F4B6A9',
+                  backgroundColor: 'rgba(244,182,169, 0.06)',
                   fill: true,
                   tension: 0.4,
                   pointRadius: 5,
-                  pointBackgroundColor: '#E8837C',
+                  pointBackgroundColor: '#F4B6A9',
                   borderWidth: 2.5,
                   borderDash: [6, 4],
                 },
                 {
                   label: 'China (TWh)',
                   data: [90, 100, 150, 190, 220, 260],
-                  borderColor: '#F5C542',
-                  backgroundColor: 'rgba(245, 197, 66, 0.08)',
+                  borderColor: '#FFD720',
+                  backgroundColor: 'rgba(255,215,32, 0.08)',
                   fill: true,
                   tension: 0.4,
                   pointRadius: 5,
-                  pointBackgroundColor: '#F5C542',
+                  pointBackgroundColor: '#FFD720',
                   borderWidth: 2.5,
                   borderDash: [4, 3],
                 },
@@ -1114,15 +1114,15 @@
       google: {
         name: 'Google',
         rank: '#1 Best Positioned',
-        color: '#4ECDC4',
-        superpower: 'Owns search (90%), cloud ($24.8B in Q2 2026, +82%), custom TPUs, 950M Gemini app MAU (Jul 2026), and the Anthropic relationship',
-        heel: 'AI Overviews halve clickthrough rates (15% → 8%), compressing Google\'s $200B search ad machine. Each AI answer that replaces a search link erodes high-intent ad inventory.',
-        stat: 'Perplexity: 200M daily queries (~1.3% of Google\'s 15B/day). ChatGPT: 2.5B prompts/day. Combined AI search is now a real threat — growing 20%+ month-over-month.'
+        color: '#4BB5AB',
+        superpower: 'Owns search (90%), cloud ($24.8B in Q2 2026, +82%), custom TPUs, 1B+ Gemini app MAU (Aug 2026), and the Anthropic relationship',
+        heel: 'AI Overviews halve clickthrough rates (15% → 8%), compressing Google\'s ~$225B (2025) search ad machine. Each AI answer that replaces a search link erodes high-intent ad inventory.',
+        stat: 'ChatGPT: 2.5B prompts/day (Jul 2025) and 1.2B+ weekly users (Sep 2026). Google still holds ~90% of search (Statcounter, Sep 2026).'
       },
       microsoft: {
         name: 'Microsoft',
         rank: '#2 Enterprise King',
-        color: '#7C4DFF',
+        color: '#8CC0EE',
         superpower: 'Deepest enterprise distribution: Office 365, Azure, GitHub, LinkedIn. 30M+ paid M365 Copilot seats (FY26 Q4). Multi-model (OpenAI, Anthropic, Mistral).',
         heel: 'Consumer AI is invisible — consumer Copilot is a rounding error next to ChatGPT\'s ~1B mobile MAU. No consumer identity. Bing AI never broke through.',
         stat: 'Rolled out Claude Code to its E+D division, telling even non-technical employees to use it. M365 Copilot drives ARPU uplift, but hedging away from OpenAI dependency.'
@@ -1130,8 +1130,8 @@
       meta: {
         name: 'Meta',
         rank: '#3 Brute Force',
-        color: '#4A90D9',
-        superpower: '3.58B daily users across Facebook/Instagram/WhatsApp. $201B revenue. Can embed AI into every surface without asking.',
+        color: '#2080D6',
+        superpower: '3.60B daily users across Facebook/Instagram/WhatsApp (Jun 2026). $201B revenue (FY2025). Can embed AI into every surface without asking.',
         heel: 'Four AI reorgs in 6 months. Llama 4 flopped on benchmarks. Open-source lead lost to DeepSeek. Cut ~8,000 jobs in May 2026 while guiding 2026 CapEx to $130–145B (narrowed Jul 29). Even Meta is testing investor patience.',
         stat: 'Launched Muse Spark (Apr 2026) — first model from Meta Superintelligence Labs. Banned external AI agents from WhatsApp, building own assistant for 2B+ users. $14.3B invested in Scale AI (49% stake). Cutting humans, adding AI. Partnered with Broadcom (Apr 15) to co-develop custom AI silicon.'
       },
@@ -1139,15 +1139,15 @@
         name: 'Apple',
         rank: '#4 Disciplined',
         color: '#A0A8BC',
-        superpower: 'Best on-device silicon (M-series, A-series). 2B+ active devices. Unmatched privacy trust. On-device inference is the future. CapEx discipline while everyone else burns cash.',
-        heel: 'Apple Intelligence still underwhelming. Siri overhaul delayed a year. Switched from OpenAI to Google Gemini for Siri backend (Jan 2026) — outsourcing the hardest part.',
+        superpower: 'Best on-device silicon (M-series, A-series). 2.5B+ active devices (Jan 2026). Unmatched privacy trust. On-device inference is the future. CapEx discipline while everyone else burns cash.',
+        heel: 'Apple Intelligence still underwhelming. Siri overhaul slipped more than a year and shipped with iOS 27 (Sep 14 2026) only as an opt-in beta. Switched from OpenAI to Google Gemini for Siri backend (Jan 2026) — outsourcing the hardest part.',
         stat: 'Bloomberg (May 2026): &ldquo;Apple is winning the AI spending game by not playing it.&rdquo; Strong Q2 earnings, no AI CapEx blowout. Pick-and-shovel strategy: take a cut on every AI service running on iPhone, no infrastructure bet of their own. Gemini-backed Siri shipped with iOS 27 (Sep 14 2026) as an opt-in beta.'
       },
       xai: {
         name: 'xAI / SpaceX',
-        rank: '#5 Arms Dealer',
-        color: '#E8837C',
-        superpower: 'Absorbed into SpaceX. $1.25T combined valuation. Colossus supercomputer. Now using compute as acquisition currency — $60B all-stock acquisition of Cursor agreed Jun 16 2026, closed Aug 14 2026.',
+        rank: '#5 Wildcard',
+        color: '#F4B6A9',
+        superpower: 'Absorbed into SpaceX at a $1.25T combined valuation; SpaceX listed Jun 12 2026 at ~$1.77T. Colossus supercomputer. Now using compute as acquisition currency — $60B all-stock acquisition of Cursor agreed Jun 16 2026, closed Aug 14 2026.',
         heel: 'Lost all 11 original cofounders. Elon rebuilding team from scratch. Grok 5 has slipped repeatedly and was still unreleased at end-Sep 2026; xAI remains consistently behind OpenAI/Anthropic on benchmarks.',
         stat: 'April 2026: Signed Cursor deal giving SpaceX option to acquire at $60B. Cursor gets Colossus access — "bottlenecked by compute" no more. SpaceX completed its IPO on June 12 2026.'
       },
@@ -1162,10 +1162,10 @@
       amazon: {
         name: 'Amazon',
         rank: 'Unique Threat',
-        color: '#FF8C42',
+        color: '#E07A5F',
         superpower: 'AWS $129B rev. $69B ads. 1M+ robots across 300+ facilities. Trainium custom chips. Nova 2 Pro reasoning model on Bedrock.',
         heel: 'AI shopping agents threaten $69B ad business — if agents optimize for price, not sponsored placements. Amazon knows it.',
-        stat: 'Response: Rufus AI (250M+ users, 60% higher conversion) and Buy for Me (agentic purchasing on 500K+ external sites).'
+        stat: 'Response: Rufus AI (250M+ users, 60% higher conversion, 2025) and Buy for Me (agentic purchasing on 500K+ external sites).'
       }
     };
 
@@ -1286,16 +1286,16 @@
     const aumContainer = document.getElementById('aumBars');
     if (aumContainer) {
       const aumData = [
-        { name: 'BlackRock',       aum: 14.04, color: '#4ECDC4' },
-        { name: 'Vanguard',        aum: 11.60, color: '#4ECDC4' },
-        { name: 'UBS',             aum: 6.90,  color: '#4A90D9' },
-        { name: 'Fidelity',        aum: 6.80,  color: '#4A90D9' },
-        { name: 'State Street',    aum: 5.70,  color: '#4A90D9' },
-        { name: 'JPMorgan',        aum: 4.80,  color: '#F5C542' },
-        { name: 'Goldman Sachs',   aum: 3.60,  color: '#F5C542' },
-        { name: 'Capital Group',   aum: 3.20,  color: '#F5C542' },
-        { name: 'Crédit Agricole', aum: 2.72,  color: '#E8837C' },
-        { name: 'Allianz',         aum: 2.55,  color: '#E8837C' },
+        { name: 'BlackRock',       aum: 14.04, color: '#4BB5AB' },
+        { name: 'Vanguard',        aum: 11.60, color: '#4BB5AB' },
+        { name: 'UBS',             aum: 6.90,  color: '#2080D6' },
+        { name: 'Fidelity',        aum: 6.80,  color: '#2080D6' },
+        { name: 'State Street',    aum: 5.70,  color: '#2080D6' },
+        { name: 'JPMorgan',        aum: 4.80,  color: '#FFD720' },
+        { name: 'Goldman Sachs',   aum: 3.60,  color: '#FFD720' },
+        { name: 'Capital Group',   aum: 3.20,  color: '#FFD720' },
+        { name: 'Crédit Agricole', aum: 2.72,  color: '#F4B6A9' },
+        { name: 'Allianz',         aum: 2.55,  color: '#F4B6A9' },
       ];
       const maxAum = aumData[0].aum;
 
@@ -1304,19 +1304,19 @@
         row.style.cssText = 'display:flex;align-items:center;gap:0.75rem;';
 
         const label = document.createElement('span');
-        label.style.cssText = 'min-width:110px;color:#C8CCD4;font-size:0.78rem;font-weight:600;text-align:right;white-space:nowrap;';
+        label.style.cssText = 'min-width:110px;color:#C8CCD4;font-size:0.75rem;font-weight:600;text-align:right;white-space:nowrap;';
         label.textContent = d.name;
 
         const track = document.createElement('div');
-        track.style.cssText = 'flex:1;height:26px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;position:relative;';
+        track.style.cssText = 'flex:1;height:26px;background:rgba(255,255,255,0.04);border-radius:0;overflow:hidden;position:relative;';
 
         const fill = document.createElement('div');
         const pct = (d.aum / maxAum) * 100;
-        fill.style.cssText = `width:0%;height:100%;border-radius:6px;background:${d.color};opacity:0.85;transition:width 1.2s cubic-bezier(0.22,1,0.36,1);transition-delay:${i * 0.08}s;position:relative;`;
+        fill.style.cssText = `width:0%;height:100%;border-radius:0;background:${d.color};opacity:0.85;transition:width 1.2s cubic-bezier(0.22,1,0.36,1);transition-delay:${i * 0.08}s;position:relative;`;
         fill.dataset.targetWidth = pct + '%';
 
         const val = document.createElement('span');
-        val.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:0.72rem;font-weight:700;color:#1a1d28;font-variant-numeric:tabular-nums;';
+        val.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:0.75rem;font-weight:700;color:#1a1d28;font-variant-numeric:tabular-nums;';
         val.textContent = '$' + d.aum.toFixed(1) + 'T';
         fill.appendChild(val);
 
@@ -1344,16 +1344,18 @@
     const paretoContainer = document.getElementById('paretoDeals');
     if (paretoContainer) {
       const dealData = [
-        { company: 'Anthropic', amount: 65,  label: '$65B',   date: 'May 2026',  investors: 'Series H closed May 28 2026 at $965B post-money — the second-largest private round on record', color: '#F5C542' },
-        { company: 'OpenAI',    amount: 122, label: '$122B',  date: 'Mar 2026',  investors: 'Series F closed at $852B post-money / $730B pre-money — SoftBank $30B + Amazon $50B + NVIDIA $30B',  color: '#E8837C' },
-        { company: 'OpenAI',    amount: 40,  label: '$40B',   date: 'Mar 2025',  investors: 'SoftBank, Microsoft, Thrive Capital',  color: '#E8837C' },
-        { company: 'Anthropic', amount: 30,  label: '$30B',   date: 'Feb 2026',  investors: 'Series G at $380B post-money — GIC + Coatue lead',      color: '#F5C542' },
-        { company: 'Scale AI',  amount: 14.3,label: '$14.3B', date: 'Jun 2025',  investors: 'Tiger Global, existing investors',      color: '#4ECDC4' },
-        { company: 'Anthropic', amount: 13,  label: '$13B',   date: 'Jul 2025',  investors: 'Menlo Ventures, a16z, SWFs',            color: '#F5C542' },
-        { company: 'xAI',       amount: 10,  label: '$10B+',  date: 'Apr 2025',  investors: 'A16z, Lightspeed, Sequoia',             color: '#4A90D9' },
-        { company: 'Prometheus',amount: 6.2, label: '$6.2B',  date: 'Feb 2025',  investors: 'Mag 7-backed data center JV',           color: '#A78BFA' },
-        { company: 'xAI',       amount: 5.3, label: '$5.3B',  date: 'Jan 2025',  investors: 'Qatar IA, a16z, Sequoia, Fidelity',     color: '#4A90D9' },
+        { company: 'Anthropic', amount: 65,  label: '$65B',   date: 'May 2026',  investors: 'Series H closed May 28 2026 at $965B post-money — the second-largest private round on record', color: '#FFD720' },
+        { company: 'OpenAI',    amount: 122, label: '$122B',  date: 'Mar 2026',  investors: 'Series F closed at $852B post-money / $730B pre-money — SoftBank $30B + Amazon $50B + NVIDIA $30B',  color: '#F4B6A9' },
+        { company: 'OpenAI',    amount: 40,  label: '$40B',   date: 'Mar 2025',  investors: 'SoftBank, Microsoft, Thrive Capital',  color: '#F4B6A9' },
+        { company: 'Anthropic', amount: 30,  label: '$30B',   date: 'Feb 2026',  investors: 'Series G at $380B post-money — GIC + Coatue lead',      color: '#FFD720' },
+        { company: 'Scale AI',  amount: 14.3,label: '$14.3B', date: 'Jun 2025',  investors: 'Meta, for a 49% stake',      color: '#4BB5AB' },
+        { company: 'Anthropic', amount: 13,  label: '$13B',   date: 'Sep 2025',  investors: 'Series F at $183B post-money — ICONIQ lead; Fidelity, Lightspeed co-lead',            color: '#FFD720' },
+        { company: 'xAI',       amount: 10,  label: '$10B',   date: 'Jul 2025',  investors: '$5B debt + $5B strategic equity (Morgan Stanley)',             color: '#2080D6' },
+        { company: 'Prometheus',amount: 6.2, label: '$6.2B',  date: 'Nov 2025',  investors: 'Jeff Bezos’s physical-AI startup Project Prometheus',           color: '#8CC0EE' },
+        { company: 'xAI',       amount: 20,  label: '$20B',   date: 'Jan 2026',  investors: 'Series E — Valor, StepStone, Fidelity, QIA, MGX; NVIDIA and Cisco strategic',     color: '#2080D6' },
       ];
+      // Largest first, and every bar scaled to the largest round (OpenAI's $122B once rendered at 188%).
+      dealData.sort((a, b) => b.amount - a.amount);
       const maxDeal = dealData[0].amount;
       let activeTooltipRow = null; // track active tooltip for mobile
 
@@ -1362,15 +1364,15 @@
         row.style.cssText = 'display:flex;align-items:center;gap:0.75rem;cursor:pointer;position:relative;';
 
         const label = document.createElement('span');
-        label.style.cssText = 'min-width:85px;color:#C8CCD4;font-size:0.78rem;font-weight:600;text-align:right;white-space:nowrap;';
+        label.style.cssText = 'min-width:85px;color:#C8CCD4;font-size:0.75rem;font-weight:600;text-align:right;white-space:nowrap;';
         label.textContent = d.company;
 
         const track = document.createElement('div');
-        track.style.cssText = 'flex:1;height:32px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden;position:relative;';
+        track.style.cssText = 'flex:1;height:32px;background:rgba(255,255,255,0.04);border-radius:0;overflow:hidden;position:relative;';
 
         const fill = document.createElement('div');
         const pct = (d.amount / maxDeal) * 100;
-        fill.style.cssText = `width:0%;height:100%;border-radius:8px;background:linear-gradient(90deg,${d.color},${d.color}cc);transition:width 1s cubic-bezier(0.22,1,0.36,1);transition-delay:${i * 0.1}s;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;min-width:fit-content;`;
+        fill.style.cssText = `width:0%;height:100%;border-radius:0;background:linear-gradient(90deg,${d.color},${d.color}cc);transition:width 1s cubic-bezier(0.22,1,0.36,1);transition-delay:${i * 0.1}s;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;min-width:fit-content;`;
         fill.dataset.targetWidth = pct + '%';
 
         const amountSpan = document.createElement('span');
@@ -1381,7 +1383,7 @@
         track.appendChild(fill);
 
         const dateBadge = document.createElement('span');
-        dateBadge.style.cssText = 'min-width:65px;color:#A0A8BC;font-size:0.7rem;text-align:left;white-space:nowrap;';
+        dateBadge.style.cssText = 'min-width:65px;color:#A0A8BC;font-size:0.75rem;text-align:left;white-space:nowrap;';
         dateBadge.textContent = d.date;
 
         row.appendChild(label);
@@ -1390,12 +1392,12 @@
 
         // Detail row (mobile-friendly, replaces tooltip on small screens)
         const detailRow = document.createElement('div');
-        detailRow.style.cssText = 'display:none;padding:0.5rem 0 0.25rem 0;font-size:0.76rem;color:#A0A8BC;line-height:1.5;';
+        detailRow.style.cssText = 'display:none;padding:0.5rem 0 0.25rem 0;font-size:0.75rem;color:#A0A8BC;line-height:1.5;';
         detailRow.innerHTML = `<span style="color:${d.color};font-weight:600">${d.company}</span> · ${d.label} · ${d.date} — <span style="color:#C8CCD4">${d.investors}</span>`;
 
         // Tooltip (desktop hover)
         const tooltip = document.createElement('div');
-        tooltip.style.cssText = 'position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:#2D3142;border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.6rem 1rem;font-size:0.76rem;color:#E8E9ED;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.25s;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,0.4);';
+        tooltip.style.cssText = 'position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:#1D253E;border:1px solid rgba(255,255,255,0.12);border-radius:0;padding:0.6rem 1rem;font-size:0.75rem;color:#E8E9ED;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.25s;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,0.4);';
         tooltip.innerHTML = `<strong style="color:${d.color}">${d.company}</strong> · ${d.label} · ${d.date}<br><span style="color:#A0A8BC">${d.investors}</span>`;
         row.appendChild(tooltip);
 

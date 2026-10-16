@@ -21,7 +21,7 @@
   'use strict';
 
   var F = {
-    auditDate: '2026-08-04',
+    auditDate: '2026-10-16',
     auditNote: 'Figures checked against source on Aug 4, 2026. Private-company revenue is company-disclosed and unaudited unless marked otherwise.',
 
     /* ── LABS ───────────────────────────────────────────────────────────── */
@@ -34,11 +34,11 @@
         basis: 'primary priced round — $65B Series H (Altimeter, Dragoneer, Greenoaks, Sequoia)'
       },
       runRate: {
-        value: '$65B+ at end of July 2026 (Bloomberg), up from $47B in June and the company\u2019s own $30B disclosure in April; NYT (Sep 18) reports it on track to top $100B by year-end',
+        value: '$65B+ at end of July 2026 (Bloomberg), up from $47B in May and the company\u2019s own $30B disclosure in April; Q3 2026 revenue $16.8B, up ~45% from Q2 (Bloomberg, Oct 14, unaudited)',
         asOf: '2026-08-17',
         sourceUrl: 'https://fortune.com/2026/08/18/anthropic-annual-revenue-run-rate-65-billion/',
         evidenceType: 'wire-reported',
-        basis: 'annualised run-rate, not recognised revenue; a time series ($14B Feb \u2192 $19B Mar \u2192 $30B Apr \u2192 $47B Jun \u2192 $65B Jul), not a source conflict. Prospectus: Q2 2026 revenue $11.5B; 2025 revenue ~$4.6B.'
+        basis: 'annualised run-rate, not recognised revenue; a time series ($14B Feb \u2192 $19B Mar \u2192 $30B Apr \u2192 $47B May, company-disclosed in the Series H post \u2192 $65B Jul), not a source conflict. Prospectus: Q2 2026 revenue $11.5B; 2025 revenue ~$4.6B.'
       },
       multiple: {
         value: '~15\u00d7',
@@ -48,11 +48,11 @@
         basis: '$965B primary mark \u00f7 $65B run-rate (end of July 2026)'
       },
       enterpriseShare: {
-        value: '43.8% of US businesses pay for Anthropic vs OpenAI\u2019s 39.8%',
-        asOf: '2026-09-09',
-        sourceUrl: 'https://ramp.com/data/ai-index-sept-2026',
+        value: '43.8% of US businesses pay for Anthropic vs OpenAI\u2019s 40.6%',
+        asOf: '2026-10-14',
+        sourceUrl: 'https://ramp.com/data/ai-index-oct-2026',
         evidenceType: 'official',
-        basis: 'Ramp AI Index, September 2026 release (August data); corporate-card transaction data across Ramp customers, skewed to startups and SMBs — not US-wide market share.'
+        basis: 'Ramp AI Index, October 2026 release (September data); lead narrowed to 3.2 pts, overall adoption 55.9%, token spend flat two months running; corporate-card transaction data across Ramp customers, skewed to startups and SMBs — not US-wide market share.'
       },
       flagship: {
         value: 'Claude Fable 5.1 (Sep 1 2026, $10/$50 per 1M tokens, cache reads cut 75%); followed by Opus 5.5 (Sep 22) and Sonnet 5.5 (Sep 28)',
@@ -104,14 +104,14 @@
         asOf: '2026-09-29',
         sourceUrl: 'https://openai.com/index/accelerating-the-next-phase-ai/',
         evidenceType: 'company-disclosed',
-        basis: 'last company-disclosed weekly figure, February 2026; not comparable to the mobile MAU estimate'
+        basis: 'stated at DevDay, Sep 29 2026 (The Decoder); plus 2.5M businesses on OpenAI products. Not comparable to the mobile MAU estimate.'
       },
       arr: {
-        value: 'nearing $70B annualised revenue rate, up more than 70% since July',
-        asOf: '2026-09-29',
-        sourceUrl: 'https://finance.yahoo.com/technology/ai/articles/openai-annual-revenue-pace-nears-193534681.html',
+        value: '~$50B annualised revenue at end-September 2026 on OpenAI\u2019s net basis; ~$70B gross-equivalent; targets \u2265$70B by year-end',
+        asOf: '2026-10-08',
+        sourceUrl: 'https://news.bloombergtax.com/artificial-intelligence/openais-annualized-revenue-nears-50-billion-ft-says',
         evidenceType: 'wire-reported',
-        basis: 'annualised run-rate, held near this level February through mid-2026'
+        basis: 'FT via Bloomberg. The ~$70B reported Sep 29 grossed up partner and cloud sales the way Anthropic counts them; later source wins. Run-rate was ~$25B Feb\u2013May, >$40B in August. Q3 run-rate +77%, enterprise +107%.'
       },
       flagship: {
         value: 'GPT-6 Astra (GA Sep 4 2026) at $10/$50; GPT-6 Sol / Luna (Sep 22) at $2/$10 and $0.10/$0.50 per 1M tokens',
@@ -140,9 +140,9 @@
       capex2026: {
         value: '$195\u2013205B',
         asOf: '2026-07-22',
-        sourceUrl: 'https://insight.factset.com/hyperscalers-tap-external-financing-as-ai-capex-outruns-cash-flow',
+        sourceUrl: 'https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000066/googexhibit991q22026.htm',
         evidenceType: 'official',
-        basis: 'FY2026 capex guidance raised on the July 22 2026 Q2 call from $180\u2013190B'
+        basis: 'FY2026 capex guidance raised on the July 22 2026 Q2 call from $180\u2013190B (Alphabet Q2 release; FactSet\u2019s page still showed the old range)'
       },
       fcf: {
         value: 'Q2 2026 free cash flow of \u2212$5.9B \u2014 first negative quarter since the 2004 IPO',
@@ -180,7 +180,21 @@
         asOf: '2026-07-30',
         sourceUrl: 'https://about.fb.com/news/',
         evidenceType: 'company-disclosed',
-        basis: 'embedded reach across Facebook, Instagram and WhatsApp \u2014 a distribution number, not a chosen-assistant number'
+        basis: 'embedded reach across Facebook, Instagram and WhatsApp \u2014 a distribution number, not a chosen-assistant number. Not found in Meta\u2019s Q2 release or call coverage (Oct 16 audit): unverified.'
+      },
+      museAgent: {
+        value: 'Muse personal agent launched Sep 8 2026 (free tier, $20 and $100 plans; small-business version Sep 29); ~4M users by early October',
+        asOf: '2026-10-06',
+        sourceUrl: 'https://www.axios.com/2026/09/08/meta-debuts-muse-personal-ai-agent',
+        evidenceType: 'wire-reported',
+        basis: 'Axios (launch, pricing), CNBC (small business, Sep 29), TIME (4M users, Oct 6). Runs on Muse Spark in a per-user cloud VM with a visible browser.'
+      },
+      museWonder: {
+        value: 'Muse Wonder (Oct 12 2026), Meta\u2019s first frontier model, $4/$20 per 1M tokens, 1M context; Wonder Full limited to Muse Code subscribers',
+        asOf: '2026-10-12',
+        sourceUrl: 'https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/',
+        evidenceType: 'official',
+        basis: 'Benchmarks are Meta\u2019s own; Artificial Analysis: Wonder Full 56, Wonder 52, Claude Opus 5.5 58.'
       }
     },
 
@@ -391,11 +405,11 @@
     etched: {
       dvc: true,
       round: {
-        value: '$300M Series C at a $10.3B valuation, led by Sequoia with a16z, Jane Street and SK Hynix; >$1B raised in total',
-        asOf: '2026-07-23',
-        sourceUrl: 'https://www.reuters.com/technology/ai-chip-startup-etched-raises-300-million-103-billion-valuation-2026-07-23/',
+        value: '$700M at a $21B valuation, led by Jane Street (Aug 18 2026); follows a $300M Series C at $10.3B (Jul 23, Sequoia with a16z, Jane Street and SK Hynix)',
+        asOf: '2026-08-18',
+        sourceUrl: 'https://techcrunch.com/2026/08/18/etcheds-valuation-doubles-to-21b-in-a-month/',
         evidenceType: 'wire-reported',
-        basis: 'Round, valuation, date, lead and cumulative total confirmed. The previously shown "$1B of pre-orders" is removed: no source states it.'
+        basis: 'Jane Street tested, bought and runs Etched hardware. >$1B in customer contracts is company-stated. TechCrunch lists both Argo and Diffusion as investors. July round, valuation, date and lead confirmed. The previously shown "$1B of pre-orders" is removed: no source states it.'
       },
       disclosure: {
         value: 'Etched IS a DVC portfolio company',
@@ -408,22 +422,23 @@
 
     capex: {
       topFour2026: {
-        value: '~$750B midpoint, up to ~$760B top end',
-        asOf: '2026-07-27',
+        value: '~$735B midpoint, up to ~$745B top end',
+        asOf: '2026-07-30',
         sourceUrl: 'https://insight.factset.com/hyperscalers-tap-external-financing-as-ai-capex-outruns-cash-flow',
         evidenceType: 'official',
-        basis: 'sum of company guidance midpoints: Amazon ~$220B (raised Jul 30 2026) + Alphabet ~$200B ($195\u2013205B) + Microsoft ~$190B (calendar 2026 reaffirmed Jul 29) + Meta ~$137.5B ($130\u2013145B, narrowed Jul 29). Calendar 2026.'
+        basis: 'sum of company guidance midpoints: Amazon ~$220B (raised Jul 30 2026) + Alphabet ~$200B ($195\u2013205B) + Microsoft ~$175B (calendar 2026, reported basis: Jul 29 lease reclassification moved ~$15B from finance to operating leases, plan unchanged) + Meta ~$137.5B ($130\u2013145B, narrowed Jul 29). Calendar 2026. Top end 220 + 205 + 175 + 145.'
       },
       base2025: {
         value: '~$402\u2013410B',
         asOf: '2026-04-29',
         sourceUrl: 'https://analysis-atlas.com/research/hyperscaler-ai-capex-2026/',
         evidenceType: 'estimate',
-        basis: 'top-four calendar-2025 capex; the +77% step-up to 2026 only works off this base'
+        basis: 'top-four calendar-2025 capex; the ~+80% step-up to 2026 only works off this base'
       },
       amazon: { value: '~$220B', asOf: '2026-07-30', sourceUrl: 'https://www.theglobeandmail.com/investing/markets/stocks/AMZN/pressreleases/3730734/amazon-amzn-q2-2026-earnings-call-transcript/', evidenceType: 'official', basis: 'calendar-2026 cash capex, raised from ~$200B on the Q2 call citing higher memory costs' },
-      alphabet: { value: '~$200B ($195\u2013205B)', asOf: '2026-07-22', sourceUrl: 'https://insight.factset.com/hyperscalers-tap-external-financing-as-ai-capex-outruns-cash-flow', evidenceType: 'official', basis: 'FY2026 guidance raised July 22 2026' },
-      microsoft: { value: '~$190B', asOf: '2026-04-29', sourceUrl: 'https://analysis-atlas.com/research/hyperscaler-ai-capex-2026/', evidenceType: 'official', basis: 'calendar-2026 guidance including ~$25B attributed to higher component pricing' },
+      alphabet: { value: '~$200B ($195\u2013205B)', asOf: '2026-07-22', sourceUrl: 'https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000066/googexhibit991q22026.htm', evidenceType: 'official', basis: 'FY2026 guidance raised July 22 2026' },
+      microsoft: { value: '~$175B', asOf: '2026-07-29', sourceUrl: 'https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4', evidenceType: 'official', basis: 'calendar-2026, reported basis. CFO: plan unchanged, but more leases shift from finance to operating, which adjusts the expectation to ~$175B (was ~$190B). Q1 FY27 capex guided above $50B.' },
+      oracle: { value: '$55.7B', asOf: '2026-06-22', sourceUrl: 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1341439&type=10-K', evidenceType: 'official', basis: 'FY2026 (ended May 31 2026) capex per 10-K; FY2027 guided to $90\u201395B gross, no more than $70B net cash' },
       meta: { value: '~$138B', asOf: '2026-07-29', sourceUrl: 'https://www.sec.gov/Archives/edgar/data/0001326801/000162828026050596/meta-06302026xexhibit991.htm', evidenceType: 'official', basis: 'midpoint ($137.5B) of $130\u2013145B calendar-2026 guidance incl. finance-lease principal, narrowed from $125\u2013145B' },
       debtShare: {
         value: '9% \u2192 32% incremental annual debt as a share of hyperscaler capex, FY24 \u2192 LTM mid-2026',
@@ -433,26 +448,26 @@
         basis: 'FactSet; strongest quantitative claim in the infrastructure section'
       },
       nuclear: {
-        value: '9.8 GW committed across 13 hyperscaler nuclear deals; 1.92 GW actually operational (tracker snapshot, May 2026)',
-        asOf: '2026-05-31',
+        value: '9.8 GW committed across 13 hyperscaler nuclear deals (tracker, updated Jul 6 2026); 1.92 GW actually operational (Amazon\u2013Talen); plus Google\u2013Constellation 890 MW of new uprate capacity (Oct 6 2026)',
+        asOf: '2026-10-06',
         sourceUrl: 'https://smrintel.com/nuclear-data-center-deals/',
         evidenceType: 'tracker',
-        basis: 'SMR Intel deal tracker, May 2026 cut. Four apparently independent trackers all trace to this one tracker \u2014 it is one source, not four. The 1.92 GW is a single deal: Amazon\u2019s front-of-meter PPA with Talen for Susquehanna (the 960 MW figure is the plant-side half of the same arrangement).'
+        basis: 'SMR Intel deal tracker, last updated Jul 6 2026 (9.8 GW / 13 deals unchanged; the page no longer shows an operational figure, so the 1.92 GW is sourced to the Amazon\u2013Talen 1,920 MW contract itself). Four apparently independent trackers all trace to this one tracker \u2014 it is one source, not four. The 1.92 GW is a single deal: Amazon\u2019s front-of-meter PPA with Talen for Susquehanna (the 960 MW figure is the plant-side half of the same arrangement).'
       },
       projectKilby: {
         value: '2.67 GW Project Kilby \u2014 20-year PPA signed with Microsoft June 22 2026 under Chevron subsidiary Energy Forge One LLC, off-grid gas in Reeves County, Texas, first power 2028',
         asOf: '2026-06-22',
         sourceUrl: 'https://techcrunch.com/2026/06/22/microsoft-and-chevron-plan-one-of-the-largest-gas-powered-data-center-projects-in-us/',
         evidenceType: 'wire-reported',
-        basis: 'Chevron has NOT yet taken final investment decision (expected end-2026), so this is not yet committed capital. The Environmental Integrity Project estimates >13M tons of CO\u2082.'
+        basis: 'Chevron has NOT yet taken final investment decision: expected end-2026, it could slip to 2027 after Texas paused TCEQ environmental permits for data centres on Sep 21 2026 (The Next Web, Oct 1). First power still targeted for 2028. The Environmental Integrity Project estimates >13M tons of CO\u2082.'
       }
     },
 
     /* ── PHYSICAL AI ────────────────────────────────────────────────────── */
     waymo: {
       metros: {
-        value: '15 commercial US markets \u2014 Denver, San Diego and Tampa opened to the public on September 1 2026 and Las Vegas on September 14 2026 (invite codes first); San Antonio service paused',
-        asOf: '2026-09-14',
+        value: '15 commercial US markets \u2014 San Antonio (incl. airport), San Diego and Tampa opened to all riders on October 14 2026; Denver opened Sep 1 and Las Vegas Sep 14 (invite codes); Toronto announced Oct 16 for 2028',
+        asOf: '2026-10-16',
         sourceUrl: 'https://www.cnbc.com/2026/07/08/waymo-starts-driverless-rides-in-san-diego-las-vegas-tampa-denver.html',
         evidenceType: 'wire-reported',
         basis: 'public commercial service vs employee-only. Phoenix, SF Bay Area, LA, Austin, Atlanta, Dallas, Houston, San Antonio, Orlando, Miami, Nashville.'
@@ -465,18 +480,18 @@
         basis: 'the flatness is the material fact: the 1M-by-year-end target needs a 2\u00d7 in five months'
       },
       fleet: {
-        value: '4,000+ vehicles',
-        asOf: '2026-09-01',
-        sourceUrl: 'https://roadsigns.com/blogs/resources/how-many-waymo-cars-are-there',
+        value: '~3,871 vehicles',
+        asOf: '2026-06-17',
+        sourceUrl: 'https://www.nhtsa.gov/recalls',
         evidenceType: 'official',
-        basis: 'Waymo\u2019s June 17 2026 NHTSA safety filing, up from 3,067 in December 2025'
+        basis: 'Waymo\u2019s June 17 2026 NHTSA filing, up from 3,067 in December 2025. Waymo publishes no fleet count; the \u201c4,000+\u201d in circulation traces only to a blog.'
       },
       miles: {
         value: '271M+ fully autonomous (rider-only) miles through June 2026',
         asOf: '2026-06-30',
         sourceUrl: 'https://waymo.com/safety/impact/',
         evidenceType: 'official',
-        basis: 'first-party; rider-only miles across five operating geographies. 94% fewer serious-or-fatal-injury crashes; now driving more than 4M miles every week.'
+        basis: 'first-party; rider-only miles across five operating geographies. 95% fewer serious-injury-or-worse crashes and 82% fewer injury crashes than human drivers (Waymo, Sep 24 2026); the page says \u201cmillions of miles per week\u201d.'
       }
     },
 
@@ -551,11 +566,11 @@
 
     agility: {
       spac: {
-        value: '~$2.5B valuation via merger with Churchill Capital Corp XI, expected to raise >$620M gross \u2014 announced, NOT yet closed',
-        asOf: '2026-07-05',
+        value: '$2.5B pre-money equity value via merger with Churchill Capital Corp XI, expected to raise >$620M gross \u2014 S-4 effective Oct 13 2026, holder vote Nov 2, close targeted November (ticker AGLT)',
+        asOf: '2026-10-13',
         sourceUrl: 'https://techcrunch.com/2026/07/05/this-humanoid-robotics-company-is-going-public-but-its-ceo-isnt-promising-a-robot-in-your-home-anytime-soon/',
         evidenceType: 'wire-reported',
-        basis: 'still needs shareholder approval and SEC review; expected to complete later in 2026'
+        basis: 'agilityrobotics.com release, Oct 13 2026. Not the largest humanoid raise: Figure\u2019s Series C exceeded $1B and Apptronik raised $935M.'
       }
     },
 
@@ -576,11 +591,11 @@
         asOf: '2026-05-14',
         sourceUrl: 'https://www.cnbc.com/2026/05/14/cerebras-cbrs-stock-trade-nasdaq-ipo.html',
         evidenceType: 'wire-reported',
-        basis: 'fully-diluted market cap at the day-one close. The largest US tech IPO since Uber in 2019.'
+        basis: 'fully-diluted market cap at the day-one close. At the time the largest US tech IPO since Uber in 2019; SpaceX\u2019s June 12 IPO (~$75B raised) is now the largest IPO ever.'
       },
       drawdown: {
-        value: '$386.34 peak to ~$176.61 \u2014 roughly \u221254% on price',
-        asOf: '2026-07-15',
+        value: '$386.34 peak to a $133.88 low \u2014 roughly \u221263% on price; opened Oct 16 at $142.17',
+        asOf: '2026-10-16',
         sourceUrl: 'https://www.fool.com/investing/2026/05/14/cerebras-just-pulled-off-the-biggest-ipo-of-2026-h/',
         evidenceType: 'wire-reported',
         basis: 'SHARE PRICE basis throughout. Mixing a fully-diluted cap at the high with a float-only cap at the low mechanically exaggerates the drawdown, so price is used for the drawdown and market cap is stated once, on one basis.'
@@ -686,11 +701,11 @@
         basis: 'company count only. The previously shown "$1B+ combined funding" total did not reconcile with the sum of the listed raises and has been removed rather than restated. Individual metrics as of Aug 4 2026.'
       },
       e2b: {
-        value: '88% of the Fortune 100 have signed up for E2B sandboxes',
-        asOf: '2026-08-04',
-        sourceUrl: 'https://e2b.dev/',
+        value: '88% of the Fortune 100 have signed up for E2B sandboxes (as of July 2025)',
+        asOf: '2025-07',
+        sourceUrl: 'https://www.insightpartners.com/ideas/e2b-raises-a-21m-series-a-to-offer-cloud-for-ai-agents-to-fortune-100/',
         evidenceType: 'company-disclosed',
-        basis: 'signups, not usage \u2014 the weaker and accurate verb'
+        basis: 'signups, not usage \u2014 the weaker and accurate verb. From E2B\u2019s July 2025 Series A release; no longer on e2b.dev, so dated to 2025.'
       }
     },
 

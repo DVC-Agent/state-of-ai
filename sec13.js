@@ -168,22 +168,22 @@
 
   /* === Color Maps === */
   const catColors = {
-    'apps':'#4ECDC4','commerce':'#4ECDC4','media':'#4ECDC4','edtech':'#4ECDC4',
-    'enterprise':'#4A90D9','marketing':'#4A90D9','legal':'#4A90D9','logistics':'#4A90D9',
+    'apps':'#4BB5AB','commerce':'#4BB5AB','media':'#4BB5AB','edtech':'#4BB5AB',
+    'enterprise':'#2080D6','marketing':'#2080D6','legal':'#2080D6','logistics':'#2080D6',
     'fintech':'#66BB6A',
-    'health':'#E8837C',
-    'infra':'#7C4DFF','devtools':'#7C4DFF','compute':'#7C4DFF','agents':'#7C4DFF',
-    'physical-ai':'#F5C542',
-    'research':'#FF8C42'
+    'health':'#F4B6A9',
+    'infra':'#8CC0EE','devtools':'#8CC0EE','compute':'#8CC0EE','agents':'#8CC0EE',
+    'physical-ai':'#FFD720',
+    'research':'#E07A5F'
   };
 
   const groupLabels = {
-    'apps-consumer': { label: 'Applications & Consumer', color: '#4ECDC4' },
-    'enterprise-saas': { label: 'Enterprise & Vertical SaaS', color: '#4A90D9' },
-    'health-biotech': { label: 'Health & Biotech', color: '#E8837C' },
-    'ai-infra': { label: 'AI Infrastructure & DevTools', color: '#7C4DFF' },
-    'physical-ai': { label: 'Physical AI & Robotics', color: '#F5C542' },
-    'research-frontier': { label: 'Research & Frontier', color: '#FF8C42' }
+    'apps-consumer': { label: 'Applications & Consumer', color: '#4BB5AB' },
+    'enterprise-saas': { label: 'Enterprise & Vertical SaaS', color: '#2080D6' },
+    'health-biotech': { label: 'Health & Biotech', color: '#F4B6A9' },
+    'ai-infra': { label: 'AI Infrastructure & DevTools', color: '#8CC0EE' },
+    'physical-ai': { label: 'Physical AI & Robotics', color: '#FFD720' },
+    'research-frontier': { label: 'Research & Frontier', color: '#E07A5F' }
   };
 
   const groupOrder = ['apps-consumer','enterprise-saas','health-biotech','ai-infra','physical-ai','research-frontier'];
@@ -220,7 +220,7 @@
   // Create tooltip
   const tooltip = document.createElement('div');
   tooltip.className = 'eco-tooltip';
-  tooltip.innerHTML = '<div class="eco-tooltip-name"></div><div class="eco-tooltip-cat"></div><div style="margin-top:3px;color:#C8CCD4;font-size:0.72rem"></div>';
+  tooltip.innerHTML = '<div class="eco-tooltip-name"></div><div class="eco-tooltip-cat"></div><div style="margin-top:3px;color:#C8CCD4;font-size:0.75rem"></div>';
   document.body.appendChild(tooltip);
 
   // Group counts

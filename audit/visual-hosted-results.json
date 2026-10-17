@@ -1,0 +1,14 @@
+{
+  "reportChapters": 7,
+  "benchmarkDefaultCells": 24,
+  "deckComputeLabels": [
+    "Q1 2024",
+    "Q2 2026",
+    "Q3 2026 E",
+    "Q4 2026 E"
+  ],
+  "focusedServicesEmbed": true,
+  "errors": [],
+  "assetId": "6f1dadc7-09ca-45dd-ac5b-c7bf11de4ee2",
+  "sourceCommit": "a6bf9c6"
+}

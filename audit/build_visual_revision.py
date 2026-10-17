@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup,Comment,Doctype
 
 ROOT=Path(__file__).resolve().parent.parent
 BASE=ROOT/"versions/pre-seven-chapters"
-EVIDENCE="backup/pre-narrative-preview-20261016"
+INPUTS=ROOT/"audit/inputs"
 METRICS=json.loads(subprocess.check_output(["node","-e",
     "require('./facts-data.js');require('./narrative-data.js');require('./evidence-additions-data.js');console.log(JSON.stringify(NARRATIVE_DATA.metrics))"],cwd=ROOT))
 def parse(text): return BeautifulSoup(text,"html.parser")
@@ -27,7 +27,7 @@ def metric_html(key,cls=""):
     return f'<span class="{cls}" data-visual-metric="{key}" title="{html.escape(m["period"]+". "+m["qualifier"],quote=True)}">{html.escape(m["display"])}</span>'
 
 s=parse((BASE/"index.html").read_text())
-evidence=parse(subprocess.check_output(["git","show",EVIDENCE+":index.html"],cwd=ROOT).decode())
+evidence=parse((INPUTS/"audited-evidence.html").read_text())
 cover_original=str(s.select_one("#sec-0"))
 original_ids={x["id"] for x in s.select("[id]")}
 widget_selectors=[
@@ -550,7 +550,7 @@ js=js.replace("document.querySelectorAll('.section');",
               "document.querySelectorAll('#sec-0, .visual-chapter, #sec-15');")
 js=js.replace("    document.addEventListener('keydown', (e) => {\n      if (e.key",
               "    document.addEventListener('keydown', (e) => {\n      if (e.target.closest('input,textarea,select,button,[contenteditable]')) return;\n      if (e.key")
-inc=json.loads(subprocess.check_output(["git","show",EVIDENCE+":audit/incumbents.json"],cwd=ROOT))
+inc=json.loads((INPUTS/"incumbents.json").read_text())
 start=js.index("    const companyData = {",js.index("function initIncumbents"))
 end=js.index("\n\n    let activeCompany",start)
 js=js[:start]+"    const companyData = "+json.dumps(inc)+";"+js[end:]

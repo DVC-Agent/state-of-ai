@@ -24,7 +24,12 @@ fix-agent-anatomy.py
 # QA screenshots (generated)
 qa/
 qa-full/
+qa-visual/
 audit/*.png
+audit/semianalysis-source-html.txt
+.venv/
+__pycache__/
+.pytest_cache/
 
 # Node (if added later)
 node_modules/

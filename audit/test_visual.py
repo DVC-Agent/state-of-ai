@@ -2,7 +2,7 @@
 from pathlib import Path
 from collections import Counter
 from bs4 import BeautifulSoup
-import subprocess, json, hashlib, tarfile, io
+import subprocess, json, hashlib
 
 R=Path(__file__).resolve().parent.parent
 results={}
@@ -31,13 +31,12 @@ manifest=json.loads((R/"audit/visual-preservation.json").read_text())
 for surface in ["report","deck"]:
     for selector,count in manifest[surface].items():
         assert manifest["after_"+surface][selector]>=count,(surface,selector)
-archive=tarfile.open(fileobj=io.BytesIO(subprocess.check_output(["git","archive","backup/pre-narrative-github-20261016"],cwd=R)))
+baseline=json.loads((R/"audit/inputs/original-source-sha256.json").read_text())
 verified=0
-for member in archive.getmembers():
-    if not member.isfile():continue
-    archived=R/"versions/pre-seven-chapters"/member.name
-    if not archived.exists():continue
-    assert archived.read_bytes()==archive.extractfile(member).read(),("Backup modified",member.name)
+for name,expected in baseline["files"].items():
+    archived=R/"versions/pre-seven-chapters"/name
+    assert archived.is_file(),("Backup missing",name)
+    assert hashlib.sha256(archived.read_bytes()).hexdigest()==expected,("Backup modified",name)
     verified+=1
 results["backup"]={"unchanged_original_files":verified}
 extra=json.loads(subprocess.check_output(["node","-e","require('./facts-data.js');require('./narrative-data.js');require('./evidence-additions-data.js');console.log(JSON.stringify(EVIDENCE_ADDITIONS))"],cwd=R))

@@ -285,7 +285,7 @@
       "role": "industry",
       "evidence": "modeled",
       "src": "https://www.iea.org/reports/world-energy-investment-2025/executive-summary",
-      "description": "Upstream, midstream, LNG and refining. IEA: upstream investment just under $570B in 2025 (-4%). The largest buyer of instrumentation and process control. Marsh: 44% of the 100 largest hydrocarbon losses trace to mechanical-integrity failure and the refining fleet averages ~45 years (North America 61). Aramco expects $3-5B of technology-realised value in 2025.",
+      "description": "Upstream, midstream, LNG and refining. IEA: upstream investment just under $570B in 2025 (-4%). The largest buyer of instrumentation and process control. Marsh: 44% of the 100 largest hydrocarbon losses trace to mechanical-integrity failure and the refining fleet averages ~45 years (North America 61). Aramco's historical 2025 expectation was $3-5B of technology-realised value; this is not a current forecast or an audited savings observation.",
       "value_b": 79.14,
       "display": "$79.1B"
     },

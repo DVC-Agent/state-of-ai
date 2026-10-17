@@ -17,6 +17,8 @@
       popup = document.createElement('div');
       popup.className = 'aa-tip-popup';
       document.body.appendChild(popup);
+      popup.addEventListener('mouseenter', function () { clearTimeout(hideTimer); });
+      popup.addEventListener('mouseleave', hideTip);
 
       // Dismiss on outside tap (mobile)
       document.addEventListener('click', function () {
@@ -82,6 +84,9 @@
   }
 
   function bindTipEvents(el, modifier) {
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('focus', function () { showTip(el, modifier); });
+    el.addEventListener('blur', hideTip);
     el.addEventListener('mouseenter', function () {
       if (!isTouchDevice) showTip(el, modifier);
     });

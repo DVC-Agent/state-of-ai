@@ -1,0 +1,205 @@
+{
+  "shortDeckBounds": {
+    "top": 64,
+    "bottom": 656,
+    "height": 720,
+    "scroll": 681,
+    "client": 592
+  },
+  "deckCompute": [
+    [
+      67,
+      13,
+      10,
+      7
+    ],
+    [
+      4,
+      50,
+      53,
+      55
+    ],
+    [
+      29,
+      37,
+      37,
+      38
+    ]
+  ],
+  "deckPrices": [
+    [
+      0.1,
+      2,
+      10
+    ],
+    [
+      0.5,
+      10,
+      50
+    ]
+  ],
+  "deckScoreCells": 76,
+  "deckMissingScores": 3,
+  "deckCapexWithoutAmazon": "$512.5B",
+  "oracleScope": "true",
+  "deckCapexRestored": "$732.5B",
+  "reportLegalReadout": "Harvey's Legal Agent Benchmark · Gemini 4 Argon: 19.6%. Vals AI. Not the percentage of all legal work a model can automate. Method ↗",
+  "sourceOpened": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_argon_model_evaluation.pdf",
+  "mobileWidth": {
+    "viewport": 375,
+    "document": 375,
+    "grid": 343
+  },
+  "reportScoreCells": 76,
+  "reportMissingScores": 3,
+  "metricMismatches": [],
+  "mobileDeckWidth": {
+    "viewport": 375,
+    "document": 375
+  },
+  "desktopReturn": "slide-7",
+  "consoleErrors": [],
+  "coreControlPass": {
+    "lenses": [
+      "Distribution",
+      "Capability / access",
+      "Usable capacity",
+      "Memory / software",
+      "Connection / permits"
+    ],
+    "depreciation": "$50K",
+    "contribution": "0¢",
+    "journeyClosed": true,
+    "noIssuers": "$0B",
+    "allIssuers": "$732.5B"
+  },
+  "recordedAt": "2026-10-17T05:11:48.136Z",
+  "final18SlideRenderPass": [
+    {
+      "id": "slide-1",
+      "words": 51,
+      "svg": 1,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-2",
+      "words": 29,
+      "svg": 1,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-3",
+      "words": 119,
+      "svg": 0,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-4",
+      "words": 165,
+      "svg": 2,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-5",
+      "words": 178,
+      "svg": 1,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-6",
+      "words": 218,
+      "svg": 0,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-7",
+      "words": 103,
+      "svg": 0,
+      "canvas": 1,
+      "width": 1440
+    },
+    {
+      "id": "slide-8",
+      "words": 172,
+      "svg": 0,
+      "canvas": 1,
+      "width": 1440
+    },
+    {
+      "id": "slide-9",
+      "words": 313,
+      "svg": 0,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-10",
+      "words": 273,
+      "svg": 14,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-11",
+      "words": 303,
+      "svg": 0,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-12",
+      "words": 164,
+      "svg": 0,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-13",
+      "words": 233,
+      "svg": 0,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-15",
+      "words": 362,
+      "svg": 3,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-14",
+      "words": 244,
+      "svg": 0,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-16",
+      "words": 300,
+      "svg": 2,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-17",
+      "words": 229,
+      "svg": 3,
+      "canvas": 0,
+      "width": 1440
+    },
+    {
+      "id": "slide-18",
+      "words": 161,
+      "svg": 0,
+      "canvas": 0,
+      "width": 1440
+    }
+  ]
+}

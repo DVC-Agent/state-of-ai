@@ -60,6 +60,7 @@
     } catch (_) { /* ignore */ }
     // Stash desired entry state on the multi-state slide BEFORE animation fires
     const slideEl = slides[idx];
+    if (window.matchMedia('(max-width: 768px)').matches) requestAnimationFrame(function(){ slideEl.scrollIntoView({block:'start'}); });
     if (slideEl && parseInt(slideEl.dataset.slideStates || '0', 10) > 1) {
       const totalStates = parseInt(slideEl.dataset.slideStates, 10);
       const enteredFromAfter = fromIdx > idx;
@@ -68,7 +69,7 @@
     if (!animatedFor.has(idx)) {
       animatedFor.add(idx);
       // small delay so the crossfade has begun
-      setTimeout(() => triggerSlideAnimation(idx + 1), 120);
+      setTimeout(() => triggerSlideAnimation(parseInt(slideEl.dataset.slide, 10)), 120);
     } else {
       // Re-entry: reset multi-state slides so the talk replays cleanly
       const driver = getStateDriver(slideEl);
@@ -106,27 +107,11 @@
   }
 
   // ── Fullscreen ──
-  function isFullscreen() {
-    return !!(document.fullscreenElement || document.webkitFullscreenElement);
-  }
-  function enterFullscreen() {
-    const el = document.documentElement;
-    const req = el.requestFullscreen || el.webkitRequestFullscreen;
-    if (req) req.call(el).catch(() => {});
-  }
-  function exitFullscreen() {
-    const exit = document.exitFullscreen || document.webkitExitFullscreen;
-    if (exit && isFullscreen()) exit.call(document).catch(() => {});
-  }
-  function toggleFullscreen() {
-    if (isFullscreen()) exitFullscreen(); else enterFullscreen();
-  }
-  function syncFullscreenClass() {
-    document.body.classList.toggle('is-fullscreen', isFullscreen());
-  }
-  document.addEventListener('fullscreenchange', syncFullscreenClass);
-  document.addEventListener('webkitfullscreenchange', syncFullscreenClass);
-
+  function isFullscreen() { return document.body.classList.contains('is-fullscreen'); }
+  function enterFullscreen() { document.body.classList.add('is-fullscreen'); document.getElementById('fsToggle').setAttribute('aria-pressed','true'); }
+  function exitFullscreen() { document.body.classList.remove('is-fullscreen'); document.getElementById('fsToggle').setAttribute('aria-pressed','false'); }
+  function toggleFullscreen() { isFullscreen() ? exitFullscreen() : enterFullscreen(); }
+  function syncFullscreenClass() {}
   const fsBtn = document.getElementById('fsToggle');
   if (fsBtn) fsBtn.addEventListener('click', toggleFullscreen);
 
@@ -134,6 +119,7 @@
   document.addEventListener('keydown', e => {
     // Don't intercept keys when user is typing in inputs/textareas
     const t = e.target;
+    if (e.key === ' ' && t && (t.tagName === 'SUMMARY' || t.tagName === 'BUTTON')) return;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
       e.preventDefault(); next();
@@ -142,7 +128,7 @@
     } else if (e.key === 'Escape') {
       // ESC: exit fullscreen if in it; otherwise return to report
       if (isFullscreen()) {
-        // Browser exits fullscreen automatically on Escape; just sync class
+        exitFullscreen(); // Leave in-page presentation focus mode
         // (no explicit nav)
         return;
       }
@@ -181,7 +167,7 @@
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
     if (Math.abs(dx) <= 50 || Math.abs(dx) <= Math.abs(dy)) return;
-    if (isMobile) {
+    if (window.matchMedia('(max-width: 768px)').matches) {
       // Only advance internal state when the swipe started on the unified-stack slide.
       const slideEl = touchStartTarget && touchStartTarget.closest && touchStartTarget.closest('.slide--stack-unified');
       if (!slideEl) return;
@@ -193,22 +179,28 @@
   }, { passive: true });
 
   // ── On mobile (no virtual slides) — let scroll happen but still animate on enter ──
-  if (isMobile) {
+  {
     // Make all slides visible (CSS already does this); use IntersectionObserver
     const io = new IntersectionObserver(entries => {
+      if (!window.matchMedia('(max-width: 768px)').matches) return;
       entries.forEach(en => {
         if (en.isIntersecting) {
           const n = parseInt(en.target.dataset.slide, 10);
-          if (!animatedFor.has(n - 1)) {
-            animatedFor.add(n - 1);
+          const pos = slides.indexOf(en.target); if (!animatedFor.has(pos)) {
+            animatedFor.add(pos);
             triggerSlideAnimation(n);
           }
-          if (numEl) numEl.textContent = n;
-          if (progressEl) progressEl.style.width = ((n / total) * 100) + '%';
+          const r = en.target.getBoundingClientRect(); if (r.top <= innerHeight/2 && r.bottom >= innerHeight/2) { activeIndex = pos; if (numEl) numEl.textContent = pos + 1;
+          if (progressEl) progressEl.style.width = (((pos + 1) / total) * 100) + '%'; }
         }
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.05 });
     slides.forEach(s => io.observe(s));
+    window.matchMedia('(max-width: 768px)').addEventListener('change',function(ev){
+      if (!ev.matches) { window.scrollTo(0,0); activate(activeIndex); }
+      else { slides[activeIndex].scrollIntoView({block:'start'}); }
+    });
+
   }
 
   // ── Dispatcher ──
@@ -549,10 +541,10 @@
         }
       } else if (state === 1) {
         // State B — margin lens. Bar fills proportional to margin; numbers swap.
-        card.style.setProperty('--accent', marginSemantic);
+        card.style.setProperty('--accent', '#4CB5AB');
         card.classList.add('stack-layer--margin');
-        value.textContent = marginPct + '%';
-        label.textContent = card.dataset.growth + ' rev · ' + card.dataset.marginRange + ' margin';
+        value.textContent = 'Cost drivers';
+        label.textContent = card.dataset.marginRange;
         if (marginBar) {
           if (window.gsap) {
             // Animate via custom property
@@ -825,175 +817,7 @@
     initSlide7Capex();
   };
 
-  function initSlide7Capex() {
-    const canvas = document.getElementById('slide7CapexChart');
-    if (!canvas || canvas.dataset.inited === '1' || typeof Chart === 'undefined') return;
-    canvas.dataset.inited = '1';
-
-    let chart = null;
-    let showGap = false;
-
-    const YEARS = ['2020', '2021', '2022', '2023', '2024', '2025', '2026E'];
-    const COMPANIES = {
-      amazon:    { label: 'Amazon',    color: '#FF9900', data: [40, 61, 63, 53, 83, 131, 220] },
-      alphabet:  { label: 'Alphabet',  color: '#4285F4', data: [22, 25, 31, 32, 52, 91, 200] },
-      microsoft: { label: 'Microsoft', color: '#7FBA00', data: [18, 23, 25, 35, 56, 83, 175] },
-      meta:      { label: 'Meta',      color: '#0668E1', data: [16, 19, 32, 28, 39, 72, 138] },
-      oracle:    { label: 'Oracle',    color: '#C74634', data: [1.6, 2.1, 4.5, 8.7, 6.9, 21.2, 55.7] } // fiscal years ending May (FY20–FY26), 10-K
-    };
-    const AI_REVENUE = [2, 5, 10, 20, 40, 100, 180];
-    const activeCompanies = new Set(Object.keys(COMPANIES));
-
-    function buildDatasets() {
-      const datasets = [];
-      const keys = Object.keys(COMPANIES);
-      keys.forEach((key, i) => {
-        const c = COMPANIES[key];
-        const on = activeCompanies.has(key);
-        datasets.push({
-          label: c.label,
-          data: on ? [...c.data] : c.data.map(() => 0),
-          backgroundColor: on ? c.color + '55' : 'transparent',
-          borderColor: on ? c.color : 'transparent',
-          borderWidth: on ? 1.5 : 0,
-          fill: true,
-          tension: 0.35,
-          pointRadius: 0,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: c.color,
-          order: keys.length - i
-        });
-      });
-      if (showGap) {
-        datasets.push({
-          label: 'AI Revenue',
-          data: [...AI_REVENUE],
-          backgroundColor: 'rgba(244,182,169,0.08)',
-          borderColor: '#F4B6A9',
-          borderWidth: 2.5,
-          borderDash: [6, 3],
-          fill: 'origin',
-          tension: 0.35,
-          pointRadius: 4,
-          pointBackgroundColor: '#F4B6A9',
-          pointBorderColor: '#1D253E',
-          pointBorderWidth: 1.5,
-          yAxisID: 'yRevenue',
-          order: -1
-        });
-      }
-      return datasets;
-    }
-
-    function updateTotal() {
-      const el = document.getElementById('slide7CapexTotalNum');
-      if (!el) return;
-      const total = Object.keys(COMPANIES).reduce((s, k) => s + (activeCompanies.has(k) ? COMPANIES[k].data[6] : 0), 0);
-      el.textContent = '~$' + Math.round(total / 5) * 5 + 'B';
-    }
-
-    const gpt4Plugin = {
-      id: 'slide7Gpt4Line',
-      afterDraw(c) {
-        const xs = c.scales.x, ys = c.scales.y;
-        const x2022 = xs.getPixelForValue(2);
-        const x2023 = xs.getPixelForValue(3);
-        const xPos = x2022 + (x2023 - x2022) * 0.21;
-        const ctx = c.ctx;
-        ctx.save();
-        ctx.strokeStyle = 'rgba(255,215,32,0.5)';
-        ctx.lineWidth = 1;
-        ctx.setLineDash([4, 4]);
-        ctx.beginPath();
-        ctx.moveTo(xPos, ys.top);
-        ctx.lineTo(xPos, ys.bottom);
-        ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.fillStyle = '#FFD720';
-        ctx.font = '600 10px Inter, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('GPT-4', xPos, ys.top + 14);
-        ctx.fillStyle = 'rgba(255,215,32,0.6)';
-        ctx.font = '9px Inter, sans-serif';
-        ctx.fillText('Mar 2023', xPos, ys.top + 26);
-        ctx.restore();
-      }
-    };
-
-    chart = new Chart(canvas, {
-      type: 'line',
-      data: { labels: YEARS, datasets: buildDatasets() },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: 'rgba(29,37,62,0.95)',
-            borderColor: 'rgba(75,181,171,0.2)',
-            borderWidth: 1,
-            padding: 12,
-            titleFont: { size: 13, weight: '600' },
-            bodyFont: { size: 12 },
-            callbacks: {
-              label: function (ctx) {
-                if (ctx.raw === 0) return null;
-                return ' ' + ctx.dataset.label + ': $' + ctx.raw + 'B';
-              },
-              afterBody: function (items) {
-                const total = items.reduce((s, i) => s + (i.raw || 0), 0);
-                return '\n Total: $' + total + 'B';
-              }
-            }
-          }
-        },
-        scales: {
-          x: { grid: { color: 'rgba(255,255,255,0.03)' }, ticks: { color: '#A0A8BC', font: { size: 11 } } },
-          y: {
-            stacked: true, beginAtZero: true,
-            ticks: { callback: v => '$' + v + 'B', color: '#A0A8BC', font: { size: 11 }, maxTicksLimit: 8 },
-            grid: { color: 'rgba(255,255,255,0.04)' }
-          },
-          yRevenue: {
-            display: false, beginAtZero: true, min: 0,
-            afterDataLimits(axis) { const m = axis.chart.scales.y.max; if (m) axis.max = m; }
-          }
-        },
-        elements: { line: { borderJoinStyle: 'round' } }
-      },
-      plugins: [gpt4Plugin]
-    });
-
-    const togs = document.getElementById('slide7CapexToggles');
-    if (togs) {
-      togs.addEventListener('click', e => {
-        const btn = e.target.closest('.capex-tog');
-        if (!btn) return;
-        const key = btn.dataset.company;
-        if (activeCompanies.has(key)) {
-          if (activeCompanies.size === 1) return;
-          activeCompanies.delete(key);
-          btn.classList.remove('active');
-        } else {
-          activeCompanies.add(key);
-          btn.classList.add('active');
-        }
-        chart.data.datasets = buildDatasets();
-        chart.update('active');
-        updateTotal();
-      });
-    }
-
-    const gap = document.getElementById('slide7GapToggle');
-    if (gap) {
-      gap.addEventListener('change', () => {
-        showGap = gap.checked;
-        chart.data.datasets = buildDatasets();
-        chart.update('active');
-      });
-    }
-  }
+  function initSlide7Capex() { window.VISUAL_DECK.capex(); }
 
   // ─── SLIDE 4 — Funnel (was slide 6 — GSAP) ───
   ANIMATIONS[5] = function () {
@@ -1137,95 +961,12 @@
 
   // ─── SLIDE 6 — Smarter AND cheaper dual axis (was 8) ───
   let smarterChart = null;
-  ANIMATIONS[7] = function () {
-    if (smarterChart) return;
-    const ctx = document.getElementById('smarterChart');
-    if (!ctx || !window.Chart) return;
-
-    const labels = D.smarterCurve.map(p => p.date);
-    const mmlu   = D.smarterCurve.map(p => p.mmlu);
-    const cost   = D.smarterCurve.map(p => p.cost);
-
-    smarterChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels,
-        datasets: [
-          {
-            label: 'MMLU benchmark (%)',
-            data: mmlu,
-            yAxisID: 'yMMLU',
-            borderColor: '#4BB5AB',
-            backgroundColor: 'rgba(75,181,171,0.10)',
-            fill: false, tension: 0.3,
-            pointBackgroundColor: '#4BB5AB', pointRadius: 5, pointBorderColor: '#fff', pointBorderWidth: 1,
-            borderWidth: 3
-          },
-          {
-            label: 'Cost ($/M tokens)',
-            data: cost,
-            yAxisID: 'yCost',
-            borderColor: '#F4B6A9',
-            backgroundColor: 'rgba(244,182,169,0.08)',
-            fill: false, tension: 0.3,
-            pointBackgroundColor: '#F4B6A9', pointRadius: 5, pointBorderColor: '#fff', pointBorderWidth: 1,
-            borderWidth: 3, borderDash: [6, 4]
-          }
-        ]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        animation: { duration: 1800, easing: 'easeOutQuart' },
-        plugins: {
-          legend: {
-            position: 'top', align: 'end',
-            labels: { color: '#E8ECEF', font: { size: 12, weight: '600' }, boxWidth: 14 }
-          },
-          tooltip: { backgroundColor: '#1f2433', borderColor: '#4BB5AB', borderWidth: 1 }
-        },
-        scales: {
-          x: { grid: { display: false }, ticks: { color: '#A0A8BC', font: { weight: '600' } } },
-          yMMLU: {
-            position: 'left', min: 60, max: 100,
-            grid: { color: 'rgba(160,168,188,0.08)' },
-            ticks: { color: '#4BB5AB', callback: v => v + '%' },
-            title: { display: true, text: 'MMLU (capability) ↑', color: '#4BB5AB', font: { weight: '700', size: 11 } }
-          },
-          yCost: {
-            type: 'logarithmic',
-            position: 'right', min: 0.1, max: 100,
-            grid: { drawOnChartArea: false },
-            ticks: { color: '#F4B6A9', callback: v => '$' + (v < 1 ? v : v.toFixed(0)) },
-            title: { display: true, text: '$ / M tokens (cost) ↓', color: '#F4B6A9', font: { weight: '700', size: 11 } }
-          }
-        }
-      },
-      plugins: [{
-        id: 'crossoverLabel',
-        afterDatasetsDraw(chart) {
-          const meta = chart.getDatasetMeta(0);
-          if (!meta.data || meta.data.length < 3) return;
-          const p = meta.data[2]; // 2025 point — approximate crossover
-          const ctx = chart.ctx;
-          ctx.save();
-          ctx.fillStyle = '#FFD720';
-          ctx.font = '700 11px Inter';
-          ctx.textAlign = 'center';
-          ctx.fillText('The assumption broke.', p.x, p.y - 18);
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 9, 0, Math.PI * 2);
-          ctx.strokeStyle = '#FFD720'; ctx.lineWidth = 1.5;
-          ctx.stroke();
-          ctx.restore();
-        }
-      }]
-    });
-  };
+  ANIMATIONS[7] = function () { window.VISUAL_DECK.initEvidence(); };
 
   // ─── SLIDE 8 — Agent anatomy (iframe of 7-layer stack) ───
   ANIMATIONS[10] = function () {
     initSlide8AgentStack();
-    const layers = document.querySelectorAll('#slide-9 .aa-layer');
+    const layers = document.querySelectorAll('#slide-10 .aa-layer');
     if (window.gsap && layers.length) {
       gsap.fromTo(layers,
         { opacity: 0, y: 10 },
@@ -1520,11 +1261,11 @@
 
   // ─── SLIDE 10 — Pricing + ARPU (NATIVE bars) ───
   ANIMATIONS[13] = function () {
-    const icons = document.querySelectorAll('#slide-11 .pricing-icon');
+    const icons = document.querySelectorAll('#slide-13 .pricing-icon');
     if (icons.length && window.gsap) {
       gsap.from(icons, { y: 14, opacity: 0, duration: 0.45, stagger: 0.07, ease: 'power2.out' });
     }
-    const fills = document.querySelectorAll('#slide-11 .slide-arpu-fill');
+    const fills = document.querySelectorAll('#slide-13 .slide-arpu-fill');
     if (fills.length && window.gsap) {
       fills.forEach(function (el) {
         const target = el.style.width || '0%';
@@ -1565,7 +1306,7 @@
     if (window.ATTACK_ANGLES && typeof window.ATTACK_ANGLES.renderStage === 'function') {
       window.ATTACK_ANGLES.renderStage('attack-angles-stage');
     }
-    const cards = document.querySelectorAll('#slide-13 .aa-stage-card');
+    const cards = document.querySelectorAll('#slide-15 .aa-stage-card');
     if (cards.length && window.gsap) {
       gsap.from(cards, { y: 18, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' });
     }
@@ -1573,7 +1314,7 @@
 
   // ─── SLIDE 14 — Key Learnings (staggered card fade-in) ───
   ANIMATIONS[18] = function () {
-    const cards = document.querySelectorAll('#slide-15 .kl-card');
+    const cards = document.querySelectorAll('#slide-18 .kl-card');
     if (cards.length && window.gsap) {
       gsap.from(cards, { y: 14, opacity: 0, duration: 0.45, stagger: 0.08, ease: 'power2.out' });
     } else {
@@ -1589,7 +1330,7 @@
         });
       });
     }
-    const kicker = document.querySelector('#slide-15 .kl-kicker');
+    const kicker = document.querySelector('#slide-18 .kl-kicker');
     if (kicker && window.gsap) {
       gsap.from(kicker, { y: 8, opacity: 0, delay: 0.55, duration: 0.5, ease: 'power2.out' });
     }

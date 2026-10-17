@@ -1,0 +1,19 @@
+/* Preserve the original deck design. Only copy density and iframe compatibility. */
+html {scroll-behavior:auto}
+/* Original full-window navigation zones intercepted native controls.
+   Keep edge-click navigation, without covering the charts and disclosures. */
+body .click-zone--prev,body .click-zone--next {width:48px!important}
+.slide:not(.slide--cover) .slide-sub {max-width:1050px}
+.slide:not(.slide--cover) .slide-source {line-height:1.5}
+.slide:not(.slide--cover) [data-full-context] {cursor:help}
+.su-stack .stack-label {max-width:42%;font-size:12px;line-height:1.35}
+.su-foot-state {font-size:12px;color:#C8CCD4;line-height:1.5}
+.visual-slide-evidence {font-size:12px}
+.slide:not(.slide--cover) .kl-card p {font-size:15px;line-height:1.5}
+.model-lane-names {font-size:20px;line-height:1.5;margin:28px 0;color:#FFFFFF}
+.model-lane-depth>summary {font-size:12px;line-height:1.6;cursor:pointer;color:#4CB5AB;padding:12px 0}
+.model-lane-depth[open] {max-height:42vh;overflow-y:auto}
+@media(min-width:769px) and (max-height:800px){
+  .slide:not(#slide-1) .slide-inner {max-height:calc(100vh - 128px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#4CB5AB #1D253E}
+  #deck-evidence-chart {height:300px}
+}

@@ -21,23 +21,23 @@
   'use strict';
 
   var F = {
-    auditDate: '2026-10-16',
+    auditDate: '2026-11-19',
     auditNote: 'Figures checked against source on Aug 4, 2026. Private-company revenue is company-disclosed and unaudited unless marked otherwise.',
 
     /* ── LABS ───────────────────────────────────────────────────────────── */
     anthropic: {
       valuation: {
-        value: '$965B post-money',
-        asOf: '2026-05-28',
-        sourceUrl: 'https://www.reuters.com/business/anthropic-raises-65-billion-now-valued-965-billion-2026-05-28/',
+        value: 'IPO priced at $83 on Nov 18 2026, raising $81.3B (largest IPO on record); about $1.5T fully diluted, about $1.1T undiluted; Nasdaq: ANT from Nov 19',
+        asOf: '2026-11-18',
+        sourceUrl: 'https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html',
         evidenceType: 'wire-reported',
         basis: 'primary priced round — $65B Series H (Altimeter, Dragoneer, Greenoaks, Sequoia)'
       },
       runRate: {
-        value: '$65B+ at end of July 2026 (Bloomberg), up from $47B in May and the company\u2019s own $30B disclosure in April; Q3 2026 revenue $16.8B, up ~45% from Q2 (Bloomberg, Oct 14, unaudited)',
-        asOf: '2026-08-17',
-        sourceUrl: 'https://fortune.com/2026/08/18/anthropic-annual-revenue-run-rate-65-billion/',
-        evidenceType: 'wire-reported',
+        value: '$81B run-rate at Oct 31 2026 per the amended S-1 (28-day consumption x13 plus subscriptions x12); Q3 2026 GAAP revenue $16.96B, GAAP operating loss $567M; 9M 2026 revenue $33.24B',
+        asOf: '2026-10-31',
+        sourceUrl: 'https://247wallst.com/investing/2026/11/11/anthropic-says-its-revenue-run-rate-jumped-to-an-81-billion-run-rate/',
+        evidenceType: 'official',
         basis: 'annualised run-rate, not recognised revenue; a time series ($14B Feb \u2192 $19B Mar \u2192 $30B Apr \u2192 $47B May, company-disclosed in the Series H post \u2192 $65B Jul), not a source conflict. Prospectus: Q2 2026 revenue $11.5B; 2025 revenue ~$4.6B.'
       },
       multiple: {
@@ -48,16 +48,16 @@
         basis: '$965B primary mark \u00f7 $65B run-rate (end of July 2026)'
       },
       enterpriseShare: {
-        value: '43.8% of US businesses pay for Anthropic vs OpenAI\u2019s 40.6%',
-        asOf: '2026-10-14',
-        sourceUrl: 'https://ramp.com/data/ai-index-oct-2026',
+        value: '44.8% of US businesses pay for Anthropic vs OpenAI 40.6% (October data); overall paid adoption 56.8%',
+        asOf: '2026-11-11',
+        sourceUrl: 'https://ramp.com/data/ai-index',
         evidenceType: 'official',
         basis: 'Ramp AI Index, October 2026 release (September data); lead narrowed to 3.2 pts, overall adoption 55.9%, token spend flat two months running; corporate-card transaction data across Ramp customers, skewed to startups and SMBs — not US-wide market share.'
       },
       flagship: {
-        value: 'Claude Fable 5.1 (Sep 1 2026, $10/$50 per 1M tokens, cache reads cut 75%); followed by Opus 5.5 (Sep 22) and Sonnet 5.5 (Sep 28)',
-        asOf: '2026-09-28',
-        sourceUrl: 'https://www.anthropic.com/claude-fable-and-mythos-5-1',
+        value: 'Claude Fable 5.2 and Mythos 5.2 (Nov 9 2026) at $8/$40 per 1M tokens, down from $10/$50; Mythos restricted to verified organisations',
+        asOf: '2026-11-09',
+        sourceUrl: 'https://www.anthropic.com/claude-fable-and-mythos-5-2',
         evidenceType: 'official',
         basis: 'generally available flagship. Mythos 5 is the same weights with safeguards lifted and is restricted to Project Glasswing partners \u2014 not purchasable.'
       },
@@ -79,10 +79,10 @@
 
     openai: {
       valuation: {
-        value: '$852B post-money',
-        asOf: '2026-03-31',
-        sourceUrl: 'https://openai.com/index/accelerating-the-next-phase-ai/',
-        evidenceType: 'official',
+        value: '~$11B first close at $1.25T (Nov 6 2026) of a round cut from $30B to ~$20B; pre- vs post-money basis differs across reports',
+        asOf: '2026-11-06',
+        sourceUrl: 'https://www.bloomberg.com/news/articles/2026-11-06/openai-completes-11-billion-portion-of-funding-at-1-25-trillion-value',
+        evidenceType: 'wire-reported',
         basis: 'primary priced round \u2014 $122B closed Mar 31 2026'
       },
       secondary: {
@@ -114,10 +114,10 @@
         basis: 'FT via Bloomberg. The ~$70B reported Sep 29 grossed up partner and cloud sales the way Anthropic counts them; later source wins. Run-rate was ~$25B Feb\u2013May, >$40B in August. Q3 run-rate +77%, enterprise +107%.'
       },
       flagship: {
-        value: 'GPT-6 Astra (GA Sep 4 2026) at $10/$50; GPT-6 Sol / Luna (Sep 22) at $2/$10 and $0.10/$0.50 per 1M tokens',
-        asOf: '2026-09-22',
-        sourceUrl: 'https://developers.openai.com/api/docs/pricing',
-        evidenceType: 'wire-reported',
+        value: 'GPT-6.2 Astra (Nov 17 2026) at $8/$40, 20% below GPT-6 Astra; GPT-6.2 Sol at $2/$10',
+        asOf: '2026-11-17',
+        sourceUrl: 'https://openai.com/index/introducing-gpt-6-2-astra-sol/',
+        evidenceType: 'official',
         basis: 'published API list prices'
       },
       microsoft: {
@@ -183,10 +183,10 @@
         basis: 'embedded reach across Facebook, Instagram and WhatsApp \u2014 a distribution number, not a chosen-assistant number. Not found in Meta\u2019s Q2 release or call coverage (Oct 16 audit): unverified.'
       },
       museAgent: {
-        value: 'Muse personal agent launched Sep 8 2026 (free tier, $20 and $100 plans; small-business version Sep 29); ~4M users by early October',
-        asOf: '2026-10-06',
-        sourceUrl: 'https://www.axios.com/2026/09/08/meta-debuts-muse-personal-ai-agent',
-        evidenceType: 'wire-reported',
+        value: 'Muse personal agent: 10M+ accounts in the US and Canada, about 25% daily use (Q3 call)',
+        asOf: '2026-10-21',
+        sourceUrl: 'https://www.news4jax.com/business/2026/10/21/meta-q3-revenue-tops-estimates-and-zuckerberg-says-muse-accounts-have-topped-10-million/',
+        evidenceType: 'company-disclosed',
         basis: 'Axios (launch, pricing), CNBC (small business, Sep 29), TIME (4M users, Oct 6). Runs on Muse Spark in a per-user cloud VM with a visible browser.'
       },
       museWonder: {
@@ -283,10 +283,10 @@
 
     perplexity: {
       arr: {
-        value: '>$750M annualised revenue by August 2026, up from >$450M in March',
-        asOf: '2026-08-24',
-        sourceUrl: 'https://the-decoder.com/nvidia-in-talks-to-invest-in-perplexity-at-30-billion-plus-valuation/',
-        evidenceType: 'wire-reported',
+        value: '~$1B annualised revenue (CEO Aravind Srinivas at Semafor, Nov 16 2026), up from >$750M in August; IPO possible as early as Q1 2027',
+        asOf: '2026-11-16',
+        sourceUrl: 'https://inc42.com/buzz/perplexity-may-launch-ipo-as-early-as-q1-cy27-ceo-aravind-srinivas/',
+        evidenceType: 'company-disclosed',
         basis: 'FT reporting of a ~50% one-month rise from ~$305M following the February 25 2026 launch of Computer; ~$500M is a Sacra estimate'
       },
       valuation: {
@@ -373,9 +373,9 @@
     /* ── SILICON, CAPEX, POWER ──────────────────────────────────────────── */
     nvidia: {
       quarter: {
-        value: 'Q2 FY2027 revenue $96.2B (+106% YoY, +18% QoQ), data center $89.0B (+117%), GAAP gross margin 75.0%, net income $59.7B (+126%); Q3 FY2027 guided to ~$108B \u00b12%. Prior quarter (Q1 FY2027) $81.6B.',
-        asOf: '2026-08-26',
-        sourceUrl: 'https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027',
+        value: 'Q3 FY2027 revenue $115.8B (+103% YoY), data center $107.6B (+110%); Q4 FY2027 guided to $130B +/-3% with no China data-center compute; Jensen Huang resigned Nov 11 2026, Colette Kress interim CEO',
+        asOf: '2026-11-17',
+        sourceUrl: 'https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/default.aspx',
         evidenceType: 'official',
         basis: 'SINGLE QUARTER (Q2 FY2027, ended Jul 26 2026). Not comparable to the $215.9B annual figure. The $108B guide excludes any data-center compute revenue from China. Q2 equity-security gains were $7.771B of $59.688B net income (~13%).'
       },
@@ -422,10 +422,10 @@
 
     capex: {
       topFour2026: {
-        value: '~$735B midpoint, up to ~$745B top end',
-        asOf: '2026-07-30',
-        sourceUrl: 'https://insight.factset.com/hyperscalers-tap-external-financing-as-ai-capex-outruns-cash-flow',
-        evidenceType: 'official',
+        value: '~$730B midpoint after Q3 calls (Amazon ~$220B, Alphabet $195-205B, Microsoft ~$170B calendar 2026, Meta $135-145B)',
+        asOf: '2026-10-29',
+        sourceUrl: 'https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx',
+        evidenceType: 'dvc-analysis',
         basis: 'sum of company guidance midpoints: Amazon ~$220B (raised Jul 30 2026) + Alphabet ~$200B ($195\u2013205B) + Microsoft ~$175B (calendar 2026, reported basis: Jul 29 lease reclassification moved ~$15B from finance to operating leases, plan unchanged) + Meta ~$137.5B ($130\u2013145B, narrowed Jul 29). Calendar 2026. Top end 220 + 205 + 175 + 145.'
       },
       base2025: {
@@ -487,9 +487,9 @@
         basis: 'Waymo\u2019s June 17 2026 NHTSA filing, up from 3,067 in December 2025. Waymo publishes no fleet count; the \u201c4,000+\u201d in circulation traces only to a blog.'
       },
       miles: {
-        value: '271M+ fully autonomous (rider-only) miles through June 2026',
-        asOf: '2026-06-30',
-        sourceUrl: 'https://waymo.com/safety/impact/',
+        value: '300M+ fully autonomous (rider-only) miles',
+        asOf: '2026-10-28',
+        sourceUrl: 'https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/',
         evidenceType: 'official',
         basis: 'first-party; rider-only miles across five operating geographies. 95% fewer serious-injury-or-worse crashes and 82% fewer injury crashes than human drivers (Waymo, Sep 24 2026); the page says \u201cmillions of miles per week\u201d.'
       }
@@ -566,9 +566,9 @@
 
     agility: {
       spac: {
-        value: '$2.5B pre-money equity value via merger with Churchill Capital Corp XI, expected to raise >$620M gross \u2014 S-4 effective Oct 13 2026, holder vote Nov 2, close targeted November (ticker AGLT)',
-        asOf: '2026-10-13',
-        sourceUrl: 'https://techcrunch.com/2026/07/05/this-humanoid-robotics-company-is-going-public-but-its-ceo-isnt-promising-a-robot-in-your-home-anytime-soon/',
+        value: 'Merger with Churchill Capital Corp XI closed Nov 4 2026; AGLT trading on Nasdaq from Nov 5 at a $2.5B pre-money value, below $10 by Nov 6',
+        asOf: '2026-11-06',
+        sourceUrl: 'https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/',
         evidenceType: 'wire-reported',
         basis: 'agilityrobotics.com release, Oct 13 2026. Not the largest humanoid raise: Figure\u2019s Series C exceeded $1B and Apptronik raised $935M.'
       }

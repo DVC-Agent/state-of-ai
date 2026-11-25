@@ -1,38 +1,38 @@
-/* October 16, 2026 evidence cut; historical baselines retain their dates. */
+/* October 16, 2026 evidence cut, figures refreshed November 19, 2026; historical baselines retain their dates. */
 (function(root){"use strict";var D={
-  "auditDate": "2026-10-16",
+  "auditDate": "2026-11-19",
   "auditNote": "Disclosure dates are metric-specific. Historical transactions are not current market prices. Private-company operating results are unaudited unless explicitly established otherwise.",
   "anthropic": {
     "valuation": {
-      "value": "$965B post-money",
-      "asOf": "2026-05-28",
-      "sourceUrl": "https://www.reuters.com/business/anthropic-raises-65-billion-now-valued-965-billion-2026-05-28/",
-      "evidenceType": "wire-reported",
-      "basis": "primary priced round — $65B Series H (Altimeter, Dragoneer, Greenoaks, Sequoia)"
+      "value": "IPO priced at $83 on Nov 18 2026, raising $81.3B (largest IPO on record); about $1.5T fully diluted, about $1.1T undiluted; Nasdaq: ANT from Nov 19",
+      "asOf": "2026-11-18",
+      "sourceUrl": "https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html",
+      "evidenceType": "official",
+      "basis": "IPO market price, not a priced private round. Plus a $26B private placement from Google, Microsoft, Nvidia and AMD at the IPO price."
     },
     "runRate": {
-      "value": "$16.8B reported Q3 2026 revenue",
-      "asOf": "2026-10-14",
-      "sourceUrl": "https://www.reuters.com/business/finance/anthropics-q3-revenue-surges-45-nearly-17-billion-2026-10-14/",
-      "evidenceType": "wire-reported",
-      "basis": "Reported quarter, not run-rate. Reuters investor-day account: Q2 $11.6B; Q1 $4.7B. Adjusted profitability is not GAAP profitability.",
-      "lastVerified": "2026-10-16"
+      "value": "$16.96B Q3 2026 GAAP revenue; $81B run-rate at Oct 31 2026",
+      "asOf": "2026-11-10",
+      "sourceUrl": "https://247wallst.com/investing/2026/11/11/anthropic-says-its-revenue-run-rate-jumped-to-an-81-billion-run-rate/",
+      "evidenceType": "official",
+      "basis": "Amended S-1 (Nov 10). Q3 GAAP revenue $16.96B, GAAP operating loss $567M; 9M 2026 revenue $33.24B. Run-rate is 28-day consumption x13 plus subscriptions x12; a reported quarter is not a run-rate.",
+      "lastVerified": "2026-11-19"
     },
     "enterpriseShare": {
-      "value": "43.8% Anthropic; 40.6% OpenAI; 55.9% any AI",
-      "asOf": "2026-09-30",
-      "sourceUrl": "https://ramp.com/data/ai-index-oct-2026",
+      "value": "44.8% Anthropic; 40.6% OpenAI; 56.8% any AI",
+      "asOf": "2026-10-31",
+      "sourceUrl": "https://ramp.com/data/ai-index",
       "evidenceType": "official",
-      "basis": "September observed payments among Ramp businesses. Overlapping vendor adoption, not exclusive market share; October 14 release.",
-      "lastVerified": "2026-10-16"
+      "basis": "October observed payments among Ramp businesses. Overlapping vendor adoption, not exclusive market share; November 11 release.",
+      "lastVerified": "2026-11-19"
     },
     "flagship": {
-      "value": "Fable 5.1 $10/$50; Opus 5.5 $4/$20; Sonnet 5.5 $2/$10; Haiku 5.5 $0.10/$0.50",
-      "asOf": "2026-10-16",
-      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/pricing",
+      "value": "Fable 5.2 $8/$40; Opus 5.5 $4/$20; Sonnet 5.5 $2/$10; Haiku 5.5 $0.10/$0.50",
+      "asOf": "2026-11-09",
+      "sourceUrl": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
       "evidenceType": "official",
-      "basis": "USD per million standard input/output tokens. Haiku price applies to prompts up to 100K input tokens; above that $0.50/$2.50. Cache, batch and regional pricing differ.",
-      "lastVerified": "2026-10-16"
+      "basis": "USD per million standard input/output tokens. Fable 5.2 and Mythos 5.2 (Nov 9) cut the top tier from $10/$50; Mythos is restricted to verified organisations. Haiku price applies to prompts up to 100K input tokens; above that $0.50/$2.50.",
+      "lastVerified": "2026-11-19"
     },
     "seriesH": {
       "value": "$65B Series H at $965B post-money",
@@ -44,11 +44,11 @@
   },
   "openai": {
     "valuation": {
-      "value": "$852B post-money",
-      "asOf": "2026-03-31",
-      "sourceUrl": "https://openai.com/index/accelerating-the-next-phase-ai/",
-      "evidenceType": "official",
-      "basis": "primary priced round — $122B closed Mar 31 2026"
+      "value": "~$11B first close at $1.25T (Nov 6 2026) of a round cut from $30B to ~$20B",
+      "asOf": "2026-11-06",
+      "sourceUrl": "https://www.bloomberg.com/news/articles/2026-11-06/openai-completes-11-billion-portion-of-funding-at-1-25-trillion-value",
+      "evidenceType": "wire-reported",
+      "basis": "Pre- vs post-money basis differs across reports. Previous priced round: $122B closed Mar 31 2026 at $852B post-money."
     },
     "arr": {
       "value": "Nearly $50B annualized September revenue",
@@ -59,12 +59,12 @@
       "lastVerified": "2026-10-16"
     },
     "flagship": {
-      "value": "GPT-6 Astra $10/$50; GPT-6.1 Sol $2/$10; GPT-6 Luna $0.10/$0.50",
-      "asOf": "2026-10-16",
-      "sourceUrl": "https://developers.openai.com/api/docs/pricing",
+      "value": "GPT-6.2 Astra $8/$40; GPT-6.2 Sol $2/$10; GPT-6 Luna $0.10/$0.50",
+      "asOf": "2026-11-17",
+      "sourceUrl": "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
       "evidenceType": "official",
-      "basis": "USD per million standard short-context input/output tokens. Cached input $1/$0.10/$0.01 respectively.",
-      "lastVerified": "2026-10-16"
+      "basis": "USD per million standard short-context input/output tokens. GPT-6.2 Astra (Nov 17) is 20% below GPT-6 Astra.",
+      "lastVerified": "2026-11-19"
     },
     "microsoft": {
       "value": "Non-exclusive IP licence through 2032; OpenAI→Microsoft revenue share continues through 2030 at the same percentage subject to a total cap; Microsoft no longer pays revenue share to OpenAI",
@@ -198,11 +198,11 @@
   },
   "nvidia": {
     "quarter": {
-      "value": "Q2 FY2027 revenue $96.2B (+106% YoY, +18% QoQ), data center $89.0B (+117%), GAAP gross margin 75.0%, net income $59.7B (+126%); Q3 FY2027 guided to ~$108B ±2%. Prior quarter (Q1 FY2027) $81.6B.",
-      "asOf": "2026-08-26",
-      "sourceUrl": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+      "value": "Q3 FY2027 revenue $115.8B (+103% YoY), data center $107.6B (+110%); Q4 FY2027 guided to $130B ±3% with no China data-center compute assumed",
+      "asOf": "2026-11-17",
+      "sourceUrl": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/default.aspx",
       "evidenceType": "official",
-      "basis": "SINGLE QUARTER (Q2 FY2027, ended Jul 26 2026). Not comparable to the $215.9B annual figure. The $108B guide excludes any data-center compute revenue from China. Q2 equity-security gains were $7.771B of $59.688B net income (~13%)."
+      "basis": "SINGLE QUARTER (Q3 FY2027). Above the ~$108B guide. Not comparable to annual figures. Jensen Huang resigned as CEO on Nov 11 2026; CFO Colette Kress is interim CEO."
     },
     "year": {
       "value": "$215.9B FY2026 revenue (+65% YoY), gross margin 71.1%, data center revenue $193.7B",
@@ -246,12 +246,12 @@
   },
   "capex": {
     "topFour2026": {
-      "value": "~$733B midpoint; $720–745B guidance range",
-      "asOf": "2026-10-16",
-      "sourceUrl": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
+      "value": "~$730B midpoint; $720–740B guidance range",
+      "asOf": "2026-10-29",
+      "sourceUrl": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
       "evidenceType": "dvc-analysis",
-      "basis": "Amazon 220 + Alphabet 195–205 + Microsoft 175 + Meta 130–145 ($B). Mixed company-reported capex scopes, not pure AI spending.",
-      "lastVerified": "2026-10-16"
+      "basis": "After Q3 calls: Amazon 220 + Alphabet 195–205 + Microsoft ~170 + Meta 135–145 ($B). Mixed company-reported capex scopes, not pure AI spending.",
+      "lastVerified": "2026-11-19"
     },
     "amazon": {
       "value": "~$220B",
@@ -268,19 +268,19 @@
       "basis": "FY2026 guidance raised July 22 2026"
     },
     "microsoft": {
-      "value": "~$175B calendar-2026 reported capex",
-      "asOf": "2026-07-29",
+      "value": "~$170B calendar-2026 reported capex",
+      "asOf": "2026-10-29",
       "sourceUrl": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
       "evidenceType": "official",
-      "basis": "Finance-to-operating-lease reclassification changes presentation; underlying investment expectations are unchanged.",
-      "lastVerified": "2026-10-16"
+      "basis": "Trimmed on the Q3 call on delayed third-party capacity. Finance-to-operating-lease reclassification changes presentation.",
+      "lastVerified": "2026-11-19"
     },
     "meta": {
-      "value": "~$138B",
-      "asOf": "2026-07-29",
-      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/0001326801/000162828026050596/meta-06302026xexhibit991.htm",
+      "value": "~$140B",
+      "asOf": "2026-10-29",
+      "sourceUrl": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
       "evidenceType": "official",
-      "basis": "midpoint ($137.5B) of $130–145B calendar-2026 guidance incl. finance-lease principal, narrowed from $125–145B"
+      "basis": "midpoint ($140B) of $135–145B calendar-2026 guidance incl. finance-lease principal, narrowed on the Q3 call"
     },
     "nuclear": {
       "value": "45 GW conditional SMR offtake pipeline",
@@ -323,11 +323,12 @@
       "basis": "Waymo’s June 17 2026 NHTSA safety filing, up from 3,067 in December 2025"
     },
     "miles": {
-      "value": "271M+ fully autonomous (rider-only) miles through June 2026",
-      "asOf": "2026-06-30",
-      "sourceUrl": "https://waymo.com/safety/impact/",
+      "value": "300M+ fully autonomous (rider-only) miles",
+      "asOf": "2026-10-28",
+      "sourceUrl": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/",
       "evidenceType": "official",
-      "basis": "first-party; rider-only miles across five operating geographies. 94% fewer serious-or-fatal-injury crashes; now driving more than 4M miles every week."
+      "basis": "first-party; rider-only miles across five operating geographies. 94% fewer serious-or-fatal-injury crashes; now driving more than 4M miles every week.",
+      "lastVerified": "2026-11-19"
     }
   },
   "rhoda": {

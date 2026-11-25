@@ -3,12 +3,12 @@
   // Restore the original interactive surface; shared facts update in place.
   var D=window.SLIDES_DATA,M=window.NARRATIVE_DATA.metrics;
   if(D){
-    D.hyperscalerCapex.y2026=732.5;
-    D.hyperscalerCapex.y2026Label='$732.5B';
+    D.hyperscalerCapex.y2026=730;
+    D.hyperscalerCapex.y2026Label='$730B';
     D.labLeadership.anthropic.runRate=M.anthropicRevenue.display+' reported Q3 revenue';
     D.labLeadership.openai.runRate=M.openaiRevenue.display+' annualized September pace';
     D.stackLayers[0].revenueLabel='Higgsfield annualized pace · September 29';
-    D.stackLayers[2].revenue2026='$732.5B';
+    D.stackLayers[2].revenue2026='$730B';
     D.vibeCoding.forEach(function(c){
       if(c.name==='Cursor'){c.stat='Inference-heavy tool';c.desc='Tool economics differ from high-margin SaaS. Not a service operator.';}
       if(c.name==='Claude Code'){c.stat='Model + coding surface';c.desc='Runtime, distribution and tool access matter alongside model capability.';}

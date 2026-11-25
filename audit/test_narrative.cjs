@@ -3,13 +3,13 @@ const ctx={};vm.createContext(ctx);
 for(const f of ['facts-data.js','narrative-data.js','healthcare-data.js','robotics-data.js','industrial-data.js','services-matrix-data.js'])vm.runInContext(fs.readFileSync(f,'utf8'),ctx);
 const D=ctx.NARRATIVE_DATA,M=D.metrics;
 assert.equal(D.chapters.length,7);
-assert.equal(D.capex.reduce((s,x)=>s+x.mid,0),732.5);
+assert.equal(D.capex.reduce((s,x)=>s+x.mid,0),730);
 assert.equal(D.capex.reduce((s,x)=>s+x.low,0),720);
-assert.equal(D.capex.reduce((s,x)=>s+x.high,0),745);
+assert.equal(D.capex.reduce((s,x)=>s+x.high,0),740);
 for(const [k,m] of Object.entries(M)){
   for(const field of ['label','display','period','asOf','url','source','type','qualifier'])assert.ok(m[field],`${k}.${field} missing`);
   assert.match(m.url,/^https:\/\//);
-  assert.ok(m.asOf<='2026-10-16',`${k} future evidence date`);
+  assert.ok(m.asOf<='2026-11-19',`${k} future evidence date`);
 }
 for(const d of [ctx.ROBOTICS_DATA,ctx.INDUSTRIAL_DATA]){
   assert.ok(d.auditLog.length);

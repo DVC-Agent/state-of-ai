@@ -3,6 +3,7 @@ from pathlib import Path
 from copy import deepcopy
 import json,re,subprocess
 from bs4 import BeautifulSoup,Comment,Doctype
+import sys;sys.path.insert(0,str(Path(__file__).resolve().parent));import nov19_refresh
 ROOT=Path(__file__).resolve().parent.parent
 BASE=ROOT/"versions/pre-seven-chapters"
 s=BeautifulSoup((BASE/"slides.html").read_text(),"html.parser")
@@ -190,7 +191,7 @@ for el in s.select("script[src],link[rel=stylesheet][href]"):
     attr="src" if el.name=="script" else "href"
     if not el[attr].startswith(("http:","https:","//")):
         el[attr]=el[attr].split("?")[0]+"?v=20261016-visual-final"
-(ROOT/"slides.html").write_text(str(s))
+(ROOT/"slides.html").write_text(nov19_refresh.apply(str(s),nov19_refresh.DECK,"deck"))
 
 js=(BASE/"slides.js").read_text()
 js=js.replace("setTimeout(() => triggerSlideAnimation(idx + 1), 120);",

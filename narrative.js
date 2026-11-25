@@ -105,21 +105,17 @@
   if (window.SERVICES_MATRIX && document.getElementById('seq-matrix-mount')) window.SERVICES_MATRIX.render('seq-matrix-mount');
   if (window.ATTACK_ANGLES && document.getElementById('attack-angles-block')) window.ATTACK_ANGLES.renderStage('attack-angles-block');
   // Shared exploration affordance. No hover-only dependency, including on the deck map.
-  // Tip text is authored markup (bold, links, line breaks). Parse it in an inert document and keep only
-  // formatting tags and http(s) links, so attribute text can never inject script or event handlers.
-  var TIP_TAGS={STRONG:1,B:1,EM:1,I:1,BR:1,SPAN:1,SMALL:1,CODE:1,P:1,UL:1,OL:1,LI:1,A:1};
-  function safeTipFragment(markup) {
-    var src=new DOMParser().parseFromString(markup,'text/html').body,out=document.createDocumentFragment();
-    (function copy(from,to){
-      Array.prototype.forEach.call(from.childNodes,function(n){
-        if(n.nodeType===3){to.appendChild(document.createTextNode(n.nodeValue));return;}
-        if(n.nodeType!==1)return;
-        if(!TIP_TAGS[n.tagName]){to.appendChild(document.createTextNode(n.textContent));return;}
-        var c=document.createElement(n.tagName.toLowerCase());
-        if(n.tagName==='A'){var h=n.getAttribute('href')||'';if(/^https?:\/\//i.test(h))c.setAttribute('href',h);}
-        copy(n,c);to.appendChild(c);
-      });
-    })(src,out);
+  // Tip text is authored markup. It is never parsed as HTML: tags are stripped to plain text, line breaks
+  // kept, entities decoded, and each http(s) link is listed as its address, so attribute text cannot inject markup.
+  var TIP_ENTITIES={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&nbsp;':' '};
+  function tipContent(markup) {
+    var urls=[];
+    var text=markup.replace(/<a\b[^>]*\bhref=["'](https?:\/\/[^"']+)["'][^>]*>/gi,function(m,u){urls.push(u);return '';})
+      .replace(/<br\s*\/?>/gi,'\n').replace(/<\/(p|li)>/gi,'\n').replace(/<[^>]*>/g,'')
+      .replace(/&(amp|lt|gt|quot|#39|nbsp);/g,function(e){return TIP_ENTITIES[e];});
+    var out=document.createDocumentFragment(),body=document.createElement('div');
+    body.style.whiteSpace='pre-line';body.textContent=text.trim();out.appendChild(body);
+    urls.forEach(function(u){var code=document.createElement('code');code.className='source-address';code.textContent=u;out.appendChild(code);});
     return out;
   }
   window.bindExplorerTips = function(scope) {
@@ -130,12 +126,8 @@
         if(!dialog)return;
         previousFocus=el;tip.hidden=true;
         var box=dialog.querySelector('.metric-dialog-content'),wrap=document.createElement('div');
-        wrap.className='explorer-dialog-content';wrap.appendChild(safeTipFragment(el.getAttribute('data-tip')||''));
+        wrap.className='explorer-dialog-content';wrap.appendChild(tipContent(el.getAttribute('data-tip')||''));
         box.textContent='';box.appendChild(wrap);
-        dialog.querySelectorAll('.explorer-dialog-content a[href^="http"]').forEach(function(a){
-          a.target='_blank';a.rel='noopener noreferrer';
-          var url=document.createElement('code');url.className='source-address';url.textContent=a.href;a.after(url);
-        });
         dialog.showModal();
       }
       el.addEventListener('click',open);

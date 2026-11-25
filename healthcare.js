@@ -80,7 +80,7 @@
     if (statsRow) {
       statsRow.innerHTML = DATA.headlineStats.map(function (s) {
         return '<div class="hc-stat">' +
-                 '<div class="hc-stat-value tabnum">' + escapeHtml(s.value) + '</div>' +
+                 '<div class="hc-stat-value tabnum"' + (s.metricKey ? ' data-metric="' + escapeHtml(s.metricKey) + '"' : '') + '>' + escapeHtml(s.value) + '</div>' +
                  '<div class="hc-stat-label">' + escapeHtml(s.label) + '</div>' +
                  (s.sub ? '<div class="hc-stat-sub">' + escapeHtml(s.sub) + '</div>' : '') +
                '</div>';

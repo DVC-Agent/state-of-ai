@@ -1,0 +1,302 @@
+{
+  "checks": [
+    {
+      "name": "robotics node drawer",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "robotics views and DVC filter",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "industrial node and controls",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "service map accessible detail",
+      "pass": false,
+      "error": "TimeoutError: locator.click: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator('#services-map>summary')\n    - locator resolved to <summary>…</summary>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is not stable\n  - retrying click actio"
+    },
+    {
+      "name": "portfolio filters",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "service map accessible detail retry",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "all issuer toggles round trip",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "evidence source opens correct URL",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "live report desktop-mobile-desktop resize",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "deck presentation and keyboard cycle",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "deck hash refresh",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "deck services detail",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "latest update only",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "mobile evidence detail and Escape",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "health": {
+    "allOpen": true,
+    "allClosed": true,
+    "healthDvcFilter": "true",
+    "patientStates": 6,
+    "patientDrawer": true
+  },
+  "shortBounds": [
+    {
+      "id": "slide-1",
+      "x": false,
+      "y": false
+    },
+    {
+      "id": "slide-2",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-3",
+      "x": false,
+      "y": false
+    },
+    {
+      "id": "slide-4",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-5",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-6",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-7",
+      "x": false,
+      "y": false
+    },
+    {
+      "id": "slide-8",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-9",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-10",
+      "x": false,
+      "y": false
+    },
+    {
+      "id": "slide-11",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-12",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-13",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-14",
+      "x": false,
+      "y": false
+    },
+    {
+      "id": "slide-15",
+      "x": false,
+      "y": true
+    },
+    {
+      "id": "slide-16",
+      "x": false,
+      "y": false
+    },
+    {
+      "id": "slide-17",
+      "x": false,
+      "y": false
+    }
+  ],
+  "mobileFinal": [
+    {
+      "id": "slide-1",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-2",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-3",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-4",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-5",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-6",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-7",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-8",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-9",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-10",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-11",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-12",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-13",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-14",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-15",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-16",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    },
+    {
+      "id": "slide-17",
+      "height": 812,
+      "hscroll": false,
+      "hasText": true
+    }
+  ],
+  "healthMobileControls": [
+    {
+      "view": "money",
+      "left": 25,
+      "right": 187.5,
+      "height": 43.1875
+    },
+    {
+      "view": "ai",
+      "left": 187.5,
+      "right": 350,
+      "height": 43.1875
+    },
+    {
+      "view": "incentives",
+      "left": 25,
+      "right": 187.5,
+      "height": 43.1875
+    },
+    {
+      "view": "companies",
+      "left": 187.5,
+      "right": 350,
+      "height": 43.1875
+    }
+  ],
+  "errors": [],
+  "desktopSlides": 17,
+  "mobileSlides": 17,
+  "reportChapters": 7
+}

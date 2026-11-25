@@ -50,7 +50,10 @@
     if (!el || !D || !root.d3 || !root.d3.sankey) return;
     var d3 = root.d3;
     var id = 'mr' + (++uid);
-    var fmt = D.fmtUSD;
+    var fmt = typeof D.fmtUSD === 'function' ? D.fmtUSD : function (b) {
+      if (!Number.isFinite(b)) return 'Not available';
+      return b >= 1000 ? '$' + (b / 1000).toFixed(2) + 'T' : '$' + b.toFixed(1) + 'B';
+    };
 
     el.innerHTML =
       '<div class="mr-stats" data-r="stats"></div>' +
@@ -108,7 +111,7 @@
 
     // ---- Stat tiles, method, sources, audit log ------------------------
     $('stats').innerHTML = D.headlineStats.map(function (s) {
-      return '<div class="mr-stat"><div class="v">' + s.value + '</div><div class="l">' + s.label + '</div><div class="s">' + (s.src ? '<a href="' + s.src + '" target="_blank" rel="noopener">' + s.sub + '</a>' : s.sub) + '</div></div>';
+      return '<div class="mr-stat"><div class="v"' + (s.metricKey ? ' data-metric="' + s.metricKey + '"' : '') + '>' + s.value + '</div><div class="l">' + s.label + '</div><div class="s">' + (s.src ? '<a href="' + s.src + '" target="_blank" rel="noopener">' + s.sub + '</a>' : s.sub) + '</div></div>';
     }).join('');
     $('method').innerHTML = D.method.map(function (m) { return '<li>' + m + '</li>'; }).join('');
     $('sources').innerHTML = D.sources.map(function (s) { return '<li><a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a></li>'; }).join('');

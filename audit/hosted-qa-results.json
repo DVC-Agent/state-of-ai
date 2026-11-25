@@ -1,0 +1,44 @@
+{
+  "assetId": "6f1dadc7-09ca-45dd-ac5b-c7bf11de4ee2",
+  "hostReport": {
+    "title": "State of AI | DVC",
+    "chapters": 7,
+    "metrics": [],
+    "rivers": [
+      {
+        "id": "robotics-river",
+        "nodes": 38
+      },
+      {
+        "id": "industrial-river",
+        "nodes": 27
+      }
+    ],
+    "fonts": true
+  },
+  "hostServiceDetail": true,
+  "hostDeck": {
+    "total": 17,
+    "index": 2,
+    "metrics": [],
+    "height": 1000
+  },
+  "hostMobileDeck": {
+    "height": 812,
+    "width": 375,
+    "client": 375
+  },
+  "hostedSourceOpened": true,
+  "hostMobileReport": {
+    "width": 375,
+    "viewport": 375,
+    "metrics": []
+  },
+  "backupVisible": {
+    "title": "State of AI — October 2026 | DVC",
+    "sections": 18,
+    "newChapters": 0,
+    "hero": "DVC's\nSTATE OF AI"
+  },
+  "hostErrors": []
+}

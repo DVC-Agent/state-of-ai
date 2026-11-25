@@ -243,7 +243,7 @@
 
   // --- KEYBOARD NAVIGATION ---
   function initKeyboard() {
-    const sectionEls = document.querySelectorAll('.section');
+    const sectionEls = document.querySelectorAll('#sec-0, .visual-chapter, #sec-15');
     let currentSection = 0;
 
     function getCurrentSection() {
@@ -257,6 +257,7 @@
     }
 
     document.addEventListener('keydown', (e) => {
+      if (e.target.closest('input,textarea,select,button,[contenteditable]')) return;
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
         e.preventDefault();
         currentSection = Math.min(getCurrentSection() + 1, sectionEls.length - 1);
@@ -291,284 +292,10 @@
     initEnergyChart();
   }
 
-  function initReasoningChart() {
-    const canvas = document.getElementById('reasoningChart');
-    if (!canvas || typeof Chart === 'undefined') return;
+  function initReasoningChart() { window.VISUAL_CHARTS.initReasoningChart(); }
 
-    let chart = null;
+  function initCapexChart() { window.VISUAL_CHARTS.initCapexChart(); }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !chart) {
-          chart = new Chart(canvas, {
-            type: 'bar',
-            data: {
-              labels: ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026'],
-              datasets: [
-                {
-                  label: 'Reasoning Models (%)',
-                  data: [2, 5, 12, 18, 28, 35, 42, 48, 55],
-                  backgroundColor: '#4BB5AB',
-                  borderRadius: 4,
-                  barPercentage: 0.7,
-                },
-                {
-                  label: 'Standard Models (%)',
-                  data: [98, 95, 88, 82, 72, 65, 58, 52, 45],
-                  backgroundColor: 'rgba(160,168,188,0.3)',
-                  borderRadius: 4,
-                  barPercentage: 0.7,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: true,
-              plugins: {
-                legend: {
-                  position: 'top',
-                  labels: { padding: 16, usePointStyle: true, pointStyleWidth: 10 },
-                },
-              },
-              scales: {
-                x: { stacked: true, grid: { display: false } },
-                y: {
-                  stacked: true,
-                  max: 100,
-                  ticks: { callback: (v) => v + '%' },
-                  grid: { color: 'rgba(255,255,255,0.04)' },
-                },
-              },
-            },
-          });
-          observer.unobserve(canvas);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(canvas);
-  }
-
-  function initCapexChart() {
-    const canvas = document.getElementById('capexChart');
-    if (!canvas || typeof Chart === 'undefined') return;
-
-    let chart = null;
-    let showGap = false;
-
-    // Annual capex data by company ($B) — SEC filings, earnings, analyst estimates
-    const YEARS = ['2020', '2021', '2022', '2023', '2024', '2025', '2026E'];
-    const COMPANIES = {
-      amazon:   { label: 'Amazon',   color: '#FF9900', data: [40, 61, 63, 53, 83, 131, 220] },
-      alphabet: { label: 'Alphabet', color: '#4285F4', data: [22, 25, 31, 32, 52, 91, 200] },
-      microsoft:{ label: 'Microsoft',color: '#7FBA00', data: [18, 23, 25, 35, 56, 83, 175] },
-      meta:     { label: 'Meta',     color: '#0668E1', data: [16, 19, 32, 28, 39, 72, 138] },
-      oracle:   { label: 'Oracle',   color: '#C74634', data: [1.6, 2.1, 4.5, 8.7, 6.9, 21.2, 55.7] }, // fiscal years ending May (FY20–FY26), 10-K
-    };
-
-    // AI enterprise revenue estimates ($B) for gap overlay
-    const AI_REVENUE = [2, 5, 10, 20, 40, 100, 180];
-
-    const activeCompanies = new Set(Object.keys(COMPANIES));
-
-    function buildDatasets() {
-      const datasets = [];
-      const keys = Object.keys(COMPANIES);
-      keys.forEach((key, i) => {
-        const c = COMPANIES[key];
-        datasets.push({
-          label: c.label,
-          data: activeCompanies.has(key) ? [...c.data] : c.data.map(() => 0),
-          backgroundColor: activeCompanies.has(key)
-            ? c.color + '55'
-            : 'transparent',
-          borderColor: activeCompanies.has(key) ? c.color : 'transparent',
-          borderWidth: activeCompanies.has(key) ? 1.5 : 0,
-          fill: true,
-          tension: 0.35,
-          pointRadius: 0,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: c.color,
-          order: keys.length - i,
-        });
-      });
-
-      if (showGap) {
-        datasets.push({
-          label: 'AI Revenue',
-          data: [...AI_REVENUE],
-          backgroundColor: 'rgba(244,182,169,0.08)',
-          borderColor: '#F4B6A9',
-          borderWidth: 2.5,
-          borderDash: [6, 3],
-          fill: 'origin',
-          tension: 0.35,
-          pointRadius: 4,
-          pointBackgroundColor: '#F4B6A9',
-          pointBorderColor: '#1D253E',
-          pointBorderWidth: 1.5,
-          yAxisID: 'yRevenue',
-          order: -1,
-        });
-      }
-      return datasets;
-    }
-
-    function updateTotalBadge() {
-      const el = document.getElementById('capexTotalNum');
-      if (!el) return;
-      // The badge is the Big-4 hyperscaler total; Oracle reports on a different
-      // fiscal year, so it stays on the chart but out of the sum.
-      const total = Object.keys(COMPANIES).reduce((sum, key) => {
-        return sum + (key !== 'oracle' && activeCompanies.has(key) ? COMPANIES[key].data[6] : 0);
-      }, 0);
-      el.textContent = '~$' + Math.round(total / 5) * 5 + 'B';
-    }
-
-    // GPT-4 annotation plugin
-    const gpt4Plugin = {
-      id: 'gpt4Line',
-      afterDraw(chart) {
-        const xScale = chart.scales.x;
-        const yScale = chart.scales.y;
-        // GPT-4 launched Mar 2023 — between index 2 (2022) and 3 (2023), closer to 3
-        const x2022 = xScale.getPixelForValue(2);
-        const x2023 = xScale.getPixelForValue(3);
-        const xPos = x2022 + (x2023 - x2022) * 0.21; // ~Mar in the year
-        const ctx = chart.ctx;
-        ctx.save();
-        ctx.strokeStyle = 'rgba(255,215,32,0.5)';
-        ctx.lineWidth = 1;
-        ctx.setLineDash([4, 4]);
-        ctx.beginPath();
-        ctx.moveTo(xPos, yScale.top);
-        ctx.lineTo(xPos, yScale.bottom);
-        ctx.stroke();
-        ctx.setLineDash([]);
-        // Label
-        ctx.fillStyle = '#FFD720';
-        ctx.font = '600 10px Inter, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('GPT-4', xPos, yScale.top + 14);
-        ctx.fillStyle = 'rgba(255,215,32,0.6)';
-        ctx.font = '9px Inter, sans-serif';
-        ctx.fillText('Mar 2023', xPos, yScale.top + 26);
-        ctx.restore();
-      },
-    };
-
-    function createChart() {
-      chart = new Chart(canvas, {
-        type: 'line',
-        data: { labels: YEARS, datasets: buildDatasets() },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: 'rgba(29,37,62,0.95)',
-              borderColor: 'rgba(75,181,171,0.2)',
-              borderWidth: 1,
-              padding: 12,
-              titleFont: { size: 13, weight: '600' },
-              bodyFont: { size: 12 },
-              callbacks: {
-                label: function(ctx) {
-                  if (ctx.raw === 0) return null;
-                  return ' ' + ctx.dataset.label + ': $' + ctx.raw + 'B';
-                },
-                afterBody: function(items) {
-                  const total = items.reduce((s, i) => s + (i.raw || 0), 0);
-                  return '\n Total: $' + total + 'B';
-                },
-              },
-            },
-          },
-          scales: {
-            x: {
-              grid: { color: 'rgba(255,255,255,0.03)' },
-              ticks: { color: '#A0A8BC', font: { size: 11 } },
-            },
-            y: {
-              stacked: true,
-              beginAtZero: true,
-              ticks: {
-                callback: (v) => '$' + v + 'B',
-                color: '#A0A8BC',
-                font: { size: 11 },
-                maxTicksLimit: 8,
-              },
-              grid: { color: 'rgba(255,255,255,0.04)' },
-            },
-            yRevenue: {
-              display: false,
-              beginAtZero: true,
-              min: 0,
-              // Match the main y-axis max so the revenue line is properly scaled
-              afterDataLimits(axis) {
-                const mainMax = axis.chart.scales.y.max;
-                if (mainMax) axis.max = mainMax;
-              },
-            },
-          },
-          elements: { line: { borderJoinStyle: 'round' } },
-        },
-        plugins: [gpt4Plugin],
-      });
-    }
-
-    // Toggle company visibility
-    const toggleContainer = document.getElementById('capexToggles');
-    if (toggleContainer) {
-      toggleContainer.addEventListener('click', (e) => {
-        const btn = e.target.closest('.capex-tog');
-        if (!btn) return;
-        const key = btn.dataset.company;
-        if (activeCompanies.has(key)) {
-          if (activeCompanies.size === 1) return; // keep at least one
-          activeCompanies.delete(key);
-          btn.classList.remove('active');
-        } else {
-          activeCompanies.add(key);
-          btn.classList.add('active');
-        }
-        if (chart) {
-          chart.data.datasets = buildDatasets();
-          chart.update('active');
-        }
-        updateTotalBadge();
-      });
-    }
-
-    // Gap toggle
-    const gapToggle = document.getElementById('gapToggle');
-    if (gapToggle) {
-      gapToggle.addEventListener('change', () => {
-        showGap = gapToggle.checked;
-        if (chart) {
-          chart.data.datasets = buildDatasets();
-          chart.update('active');
-        }
-      });
-    }
-
-    // Intersection observer — init chart when visible
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !chart) {
-          createChart();
-          observer.unobserve(canvas);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(canvas);
-  }
-
-  // FCF ring animation
   function initFCFRings() {
     const rings = document.querySelectorAll('.fcf-ring');
     if (!rings.length) return;
@@ -626,7 +353,7 @@
           displayPct = '-' + pct + '%';
           ctx.font = '600 9px Inter, sans-serif';
         } else {
-          displayPct = '-' + Math.round(progress * 100) + '%';
+          displayPct = (canvas.dataset.prefix || '') + Math.round(progress * 100) + '%';
         }
         ctx.fillText(displayPct, cx, cy);
 
@@ -639,85 +366,8 @@
     }
   }
 
-  function initEnergyChart() {
-    const canvas = document.getElementById('energyChart');
-    if (!canvas || typeof Chart === 'undefined') return;
+  function initEnergyChart() { window.VISUAL_CHARTS.initEnergyChart(); }
 
-    let chart = null;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !chart) {
-          chart = new Chart(canvas, {
-            type: 'line',
-            data: {
-              labels: ['2023', '2024', '2025', '2026E', '2027E', '2028E'],
-              datasets: [
-                {
-                  label: 'US Base Case (TWh)',
-                  data: [176, 205, 240, 280, 325, 390],
-                  borderColor: '#4BB5AB',
-                  backgroundColor: 'rgba(75,181,171, 0.1)',
-                  fill: true,
-                  tension: 0.4,
-                  pointRadius: 5,
-                  pointBackgroundColor: '#4BB5AB',
-                  borderWidth: 2.5,
-                },
-                {
-                  label: 'US High Case (TWh)',
-                  data: [176, 215, 265, 340, 440, 580],
-                  borderColor: '#F4B6A9',
-                  backgroundColor: 'rgba(244,182,169, 0.06)',
-                  fill: true,
-                  tension: 0.4,
-                  pointRadius: 5,
-                  pointBackgroundColor: '#F4B6A9',
-                  borderWidth: 2.5,
-                  borderDash: [6, 4],
-                },
-                {
-                  label: 'China (TWh)',
-                  data: [90, 100, 150, 190, 220, 260],
-                  borderColor: '#FFD720',
-                  backgroundColor: 'rgba(255,215,32, 0.08)',
-                  fill: true,
-                  tension: 0.4,
-                  pointRadius: 5,
-                  pointBackgroundColor: '#FFD720',
-                  borderWidth: 2.5,
-                  borderDash: [4, 3],
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: true,
-              plugins: {
-                legend: {
-                  position: 'top',
-                  labels: { padding: 16, usePointStyle: true, pointStyleWidth: 10 },
-                },
-              },
-              scales: {
-                x: { grid: { display: false } },
-                y: {
-                  ticks: { callback: (v) => v + ' TWh' },
-                  grid: { color: 'rgba(255,255,255,0.04)' },
-                },
-              },
-            },
-          });
-          observer.unobserve(canvas);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(canvas);
-  }
-
-  // --- MONEY FLOW SECTION ---
   function initMoneyFlow() {
     const section = document.querySelector('.section--money-flow');
     if (!section) return;
@@ -782,6 +432,8 @@
     });
 
     // ═══ SCROLL-DRIVEN YEAR PROGRESSION — APPLE-QUALITY ═══
+    if (section.querySelector('[data-lenses]')) return;
+
     const yearBtns = section.querySelectorAll('.mf-year-toggle .mf-toggle-btn');
     const yearToggle = section.querySelector('.mf-year-toggle');
     const yearSequence = ['2024', '2025', '2026'];
@@ -1110,64 +762,7 @@
     const detailHeel = detail.querySelector('.inc-detail-heel');
     const detailStat = detail.querySelector('.inc-detail-stat');
 
-    const companyData = {
-      google: {
-        name: 'Google',
-        rank: '#1 Best Positioned',
-        color: '#4BB5AB',
-        superpower: 'Owns search (90%), cloud ($24.8B in Q2 2026, +82%), custom TPUs, 1B+ Gemini app MAU (Aug 2026), and the Anthropic relationship',
-        heel: 'AI Overviews halve clickthrough rates (15% → 8%), compressing Google\'s ~$225B (2025) search ad machine. Each AI answer that replaces a search link erodes high-intent ad inventory.',
-        stat: 'ChatGPT: 2.5B prompts/day (Jul 2025) and 1.2B+ weekly users (Sep 2026). Google still holds ~90% of search (Statcounter, Sep 2026).'
-      },
-      microsoft: {
-        name: 'Microsoft',
-        rank: '#2 Enterprise King',
-        color: '#8CC0EE',
-        superpower: 'Deepest enterprise distribution: Office 365, Azure, GitHub, LinkedIn. 30M+ paid M365 Copilot seats (FY26 Q4). Multi-model (OpenAI, Anthropic, Mistral).',
-        heel: 'Consumer AI is invisible — consumer Copilot is a rounding error next to ChatGPT\'s ~1B mobile MAU. No consumer identity. Bing AI never broke through.',
-        stat: 'Rolled out Claude Code to its E+D division, telling even non-technical employees to use it. M365 Copilot drives ARPU uplift, but hedging away from OpenAI dependency.'
-      },
-      meta: {
-        name: 'Meta',
-        rank: '#3 Brute Force',
-        color: '#2080D6',
-        superpower: '3.60B daily users across Facebook/Instagram/WhatsApp (Jun 2026). $201B revenue (FY2025). Can embed AI into every surface without asking.',
-        heel: 'Four AI reorgs in 6 months. Llama 4 flopped on benchmarks. Open-source lead lost to DeepSeek. Cut ~8,000 jobs in May 2026 while guiding 2026 CapEx to $130–145B (narrowed Jul 29). Even Meta is testing investor patience.',
-        stat: 'Launched Muse Spark (Apr 2026) — first model from Meta Superintelligence Labs. Banned external AI agents from WhatsApp, building own assistant for 2B+ users. $14.3B invested in Scale AI (49% stake). Cutting humans, adding AI. Partnered with Broadcom (Apr 15) to co-develop custom AI silicon.'
-      },
-      apple: {
-        name: 'Apple',
-        rank: '#4 Disciplined',
-        color: '#A0A8BC',
-        superpower: 'Best on-device silicon (M-series, A-series). 2.5B+ active devices (Jan 2026). Unmatched privacy trust. On-device inference is the future. CapEx discipline while everyone else burns cash.',
-        heel: 'Apple Intelligence still underwhelming. Siri overhaul slipped more than a year and shipped with iOS 27 (Sep 14 2026) only as an opt-in beta. Switched from OpenAI to Google Gemini for Siri backend (Jan 2026) — outsourcing the hardest part.',
-        stat: 'Bloomberg (May 2026): &ldquo;Apple is winning the AI spending game by not playing it.&rdquo; Strong Q2 earnings, no AI CapEx blowout. Pick-and-shovel strategy: take a cut on every AI service running on iPhone, no infrastructure bet of their own. Gemini-backed Siri shipped with iOS 27 (Sep 14 2026) as an opt-in beta.'
-      },
-      xai: {
-        name: 'xAI / SpaceX',
-        rank: '#5 Wildcard',
-        color: '#F4B6A9',
-        superpower: 'Absorbed into SpaceX at a $1.25T combined valuation; SpaceX listed Jun 12 2026 at ~$1.77T. Colossus supercomputer. Now using compute as acquisition currency — $60B all-stock acquisition of Cursor agreed Jun 16 2026, closed Aug 14 2026.',
-        heel: 'Lost all 11 original cofounders. Elon rebuilding team from scratch. Grok 5 has slipped repeatedly and was still unreleased at end-Sep 2026; xAI remains consistently behind OpenAI/Anthropic on benchmarks.',
-        stat: 'April 2026: Signed Cursor deal giving SpaceX option to acquire at $60B. Cursor gets Colossus access — "bottlenecked by compute" no more. SpaceX completed its IPO on June 12 2026.'
-      },
-      nvidia: {
-        name: 'NVIDIA',
-        rank: 'Arms Dealer',
-        color: '#76B900',
-        superpower: '$36B+ committed across ecosystem investments: OpenAI, Anthropic, xAI, robotics. $20B non-exclusive technology licence plus asset purchase and acqui-hire for Groq (Dec 2025); NVIDIA states it did not acquire Groq. Vera Rubin ships 2026.',
-        heel: 'Google TPU, Amazon Trainium, Microsoft Maia — every hyperscaler building custom silicon to reduce NVIDIA dependency.',
-        stat: 'Ironically: NVIDIA\'s biggest risk is its own customers becoming competitors. But switching costs are enormous (CUDA moat).'
-      },
-      amazon: {
-        name: 'Amazon',
-        rank: 'Unique Threat',
-        color: '#E07A5F',
-        superpower: 'AWS $129B rev. $69B ads. 1M+ robots across 300+ facilities. Trainium custom chips. Nova 2 Pro reasoning model on Bedrock.',
-        heel: 'AI shopping agents threaten $69B ad business — if agents optimize for price, not sponsored placements. Amazon knows it.',
-        stat: 'Response: Rufus AI (250M+ users, 60% higher conversion, 2025) and Buy for Me (agentic purchasing on 500K+ external sites).'
-      }
-    };
+    const companyData = {"google": {"name": "Google", "rank": "DVC thesis: integrated position", "color": "#4CB5AB", "superpower": "Search, cloud, Gemini, custom silicon and developer distribution.", "heel": "AI changes the monetization of answers and the route from discovery to transaction.", "stat": "October model update: Gemini 4 Argon. Product reach, paid adoption and infrastructure revenue are separate metrics."}, "microsoft": {"name": "Microsoft", "rank": "DVC thesis: enterprise distribution", "color": "#4CB5AB", "superpower": "Enterprise software, developer tools and cloud distribution.", "heel": "Partner dependence, model competition and infrastructure commitments need separate underwriting.", "stat": "Calendar-2026 reported capex is about $175B after lease reclassification; underlying investment expectations are unchanged."}, "meta": {"name": "Meta", "rank": "DVC thesis: embedded reach", "color": "#4CB5AB", "superpower": "Social distribution and AI embedded in existing products.", "heel": "Reach is not the same as paid demand or a chosen-assistant relationship.", "stat": "Muse Wonder is the October release. No stale model-price or user-count ranking is asserted."}, "apple": {"name": "Apple", "rank": "DVC thesis: device access", "color": "#4CB5AB", "superpower": "Devices, operating-system access and on-device computation.", "heel": "Control of distribution is not a substitute for product execution.", "stat": "Evaluate actual shipped functionality and partner terms, not an old launch forecast."}, "xai": {"name": "xAI / SpaceX", "rank": "DVC thesis: integrated resources", "color": "#4CB5AB", "superpower": "Compute access, consumer distribution and corporate integration.", "heel": "Integration does not establish enterprise adoption or sustainable serving economics.", "stat": "Financing, corporate transactions, product use and recognized revenue have different evidence requirements."}, "nvidia": {"name": "NVIDIA", "rank": "DVC thesis: ecosystem supplier", "color": "#4CB5AB", "superpower": "Accelerators, software, networking and infrastructure partnerships.", "heel": "Customers also develop alternative silicon; challengers need proof of shipment, utilization and economics.", "stat": "Etched\u2019s August $21B financing mark is not equivalent to scaled supply or market share."}, "amazon": {"name": "Amazon", "rank": "DVC thesis: cloud and commerce", "color": "#4CB5AB", "superpower": "Cloud infrastructure, commerce distribution and the customer transaction.", "heel": "Agent-led discovery can change how shoppers encounter sponsored placements.", "stat": "Whether value shifts depends on who controls selection, checkout, fulfilment and the customer relationship."}};
 
     let activeCompany = null;
 
@@ -1285,18 +880,7 @@
     // --- AUM Horizontal Bar Chart ---
     const aumContainer = document.getElementById('aumBars');
     if (aumContainer) {
-      const aumData = [
-        { name: 'BlackRock',       aum: 14.04, color: '#4BB5AB' },
-        { name: 'Vanguard',        aum: 11.60, color: '#4BB5AB' },
-        { name: 'UBS',             aum: 6.90,  color: '#2080D6' },
-        { name: 'Fidelity',        aum: 6.80,  color: '#2080D6' },
-        { name: 'State Street',    aum: 5.70,  color: '#2080D6' },
-        { name: 'JPMorgan',        aum: 4.80,  color: '#FFD720' },
-        { name: 'Goldman Sachs',   aum: 3.60,  color: '#FFD720' },
-        { name: 'Capital Group',   aum: 3.20,  color: '#FFD720' },
-        { name: 'Crédit Agricole', aum: 2.72,  color: '#F4B6A9' },
-        { name: 'Allianz',         aum: 2.55,  color: '#F4B6A9' },
-      ];
+      const aumData = [{"name": "Etched \u00b7 Aug 2026", "aum": 0.7, "color": "#4CB5AB"}, {"name": "Harvey \u00b7 Sep 2026", "aum": 0.55, "color": "#4CB5AB"}, {"name": "Rhoda \u00b7 Mar 2026", "aum": 0.45, "color": "#4CB5AB"}, {"name": "Higgsfield \u00b7 Aug 2026", "aum": 0.4, "color": "#4CB5AB"}, {"name": "ElevenLabs \u00b7 Sep tender", "aum": 0.3, "color": "#9AA3B7"}];
       const maxAum = aumData[0].aum;
 
       aumData.forEach((d, i) => {
@@ -1317,7 +901,7 @@
 
         const val = document.createElement('span');
         val.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:0.75rem;font-weight:700;color:#1a1d28;font-variant-numeric:tabular-nums;';
-        val.textContent = '$' + d.aum.toFixed(1) + 'T';
+        val.textContent = '$' + d.aum.toFixed(2) + 'B';
         fill.appendChild(val);
 
         track.appendChild(fill);

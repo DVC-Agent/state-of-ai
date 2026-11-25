@@ -61,6 +61,8 @@
   }
   function slug(v) { return String(v || '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, ''); }
   function placementOf(a) {
+    var dp = a.getAttribute('data-placement');
+    if (dp) return dp.replace(/-/g, '_');
     if (a.closest('.d-mod-apply') || a.classList.contains('apply-rail') || a.classList.contains('d-mod-apply')) return 'cover';
     if (a.classList.contains('apply-block')) return 'top_block';
     if (a.classList.contains('apply-closing')) return 'report_end';

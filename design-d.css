@@ -529,3 +529,53 @@ html.design-d .d-method { padding: 0 0 48px; }
 /* Notes toolbar now sits under "Method and corrections" at the end of the report. */
 html.design-d .d-method .visual-tools { max-width: none; margin: 0; padding: 4px 0 0 !important; border: 0 !important; gap: 24px !important; background: transparent !important; }
 html.design-d .d-method .visual-tools button, html.design-d .d-method .visual-tools a { font-size: 13px !important; min-height: 28px; }
+
+/* ---------- Subscribe blocks and inline Apply bars (Nov 25) ---------- */
+html.design-d .d-cta-section { padding: 48px 0 !important; background: transparent !important; }
+html.design-d .d-sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html.design-d .d-hp-wrap { position: absolute; left: -5000px; }
+html.design-d .d-subscribe { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 8px 40px; align-items: center; color: var(--d-navy); }
+html.design-d .d-subscribe--inline { border-top: 1px solid var(--d-navy); border-bottom: 1px solid var(--d-line); padding: 24px 0; }
+html.design-d .d-subscribe--module { background: var(--d-teal); padding: 40px; margin: 32px 0 0; }
+/* On teal, secondary text goes full Navy to keep contrast above 4.5:1. */
+html.design-d .d-subscribe--module .d-subscribe-sub, html.design-d .d-subscribe--module .d-subscribe-fine, html.design-d .d-subscribe--module .d-subscribe-fine a { color: var(--d-navy) !important; }
+html.design-d .d-subscribe-copy { grid-row: span 3; display: grid; gap: 4px; }
+html.design-d .d-subscribe-title { margin: 0 !important; font: 500 20px/26px var(--d-font) !important; color: var(--d-navy) !important; }
+html.design-d .d-subscribe--module .d-subscribe-title { font-size: 32px !important; line-height: 38px !important; }
+html.design-d .d-subscribe-sub { margin: 0 !important; font-size: 16px !important; line-height: 24px !important; color: var(--d-text2) !important; }
+html.design-d .d-subscribe-form { display: flex; gap: 0; margin: 0; }
+html.design-d .d-subscribe-form input[type="email"] {
+  flex: 1 1 auto; min-width: 0; height: 48px; padding: 0 16px; border: 1px solid var(--d-navy); border-right: 0; border-radius: 0;
+  background: var(--d-white); color: var(--d-navy); font: 400 16px/1 var(--d-font);
+}
+html.design-d .d-subscribe-form input[type="email"]:focus { outline: 2px solid var(--d-blue); outline-offset: 0; }
+html.design-d .d-subscribe-form button {
+  flex: none; height: 48px; padding: 0 24px; border: 1px solid var(--d-navy); border-radius: 0; background: var(--d-navy); color: var(--d-white);
+  font: 500 16px/1 var(--d-font); cursor: pointer; transition: background-color .15s ease;
+}
+html.design-d .d-subscribe-form button:hover { background: var(--d-blue); border-color: var(--d-blue); }
+html.design-d .d-subscribe-form button:disabled { opacity: .6; cursor: progress; }
+html.design-d .d-subscribe-fine { margin: 0 !important; font-size: 12px !important; line-height: 16px !important; color: var(--d-text2) !important; }
+html.design-d .d-subscribe-fine a { color: var(--d-navy) !important; text-decoration: underline; text-underline-offset: 2px; }
+html.design-d .d-subscribe-status { margin: 0 !important; min-height: 20px; font-size: 14px !important; line-height: 20px !important; color: var(--d-navy) !important; }
+html.design-d .d-subscribe[data-state="error"] .d-subscribe-status { color: #B4462F !important; }
+
+html.design-d .d-apply-inline {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; margin: 32px 0; padding: 24px 32px;
+  background: var(--d-teal); color: var(--d-navy) !important; text-decoration: none !important; transition: background-color .2s ease, color .2s ease;
+}
+html.design-d .d-apply-inline span { font-size: 16px; line-height: 24px; }
+html.design-d .d-apply-inline strong { font: 500 20px/26px var(--d-font); white-space: nowrap; }
+html.design-d .d-apply-inline:hover { background: var(--d-navy); color: var(--d-white) !important; }
+
+@media (max-width: 760px) {
+  html.design-d .d-subscribe { grid-template-columns: 1fr; }
+  html.design-d .d-subscribe-copy { grid-row: auto; }
+  html.design-d .d-subscribe--module { padding: 24px; }
+  html.design-d .d-subscribe--module .d-subscribe-title { font-size: 24px !important; line-height: 30px !important; }
+  html.design-d .d-apply-inline { padding: 20px; }
+}
+html.design-d .d-subscribe, html.design-d .d-apply-inline { box-sizing: border-box; max-width: 100%; }
+@media (max-width: 760px) {
+  html.design-d .d-cta-section > .container { padding-left: 16px !important; padding-right: 16px !important; }
+}

@@ -416,7 +416,7 @@ replace('Ramp AI Index, Oct 2026 (Sep data)', 'Ramp AI Index, October 2026 data 
 
 
 # Cache version for the D layer files after this round.
-s = s.replace('design-d.css?v=d6', 'design-d.css?v=d9').replace('design-d.js?v=d6', 'design-d.js?v=d7')
+s = s.replace('design-d.css?v=d6', 'design-d.css?v=d12').replace('design-d.js?v=d6', 'design-d.js?v=d7')
 
 
 # ============ Round 2 (Tony, Nov 25 13:43): 1.14, 1.15, 1.16, 1.18, 1.19, 2.9, 2.10, 6.5 ============
@@ -595,3 +595,46 @@ replace('<script src="design-d.js?v=d7"></script>', '<script src="design-d.js?v=
 
 # Legacy anchor: the ARPU table left with T17; its id moves to the pricing-paradigms block so old #arpu-block links still land.
 replace('<div class="biz-pricing-landscape anim-fade">', '<div class="biz-pricing-landscape anim-fade" id="arpu-block">', 'legacy anchor #arpu-block on the paradigms block')
+
+
+# ============ Subscribe blocks and two inline Apply bars (Tony, Nov 25 18:34) ============
+HP = '<div class="d-hp-wrap" aria-hidden="true"><input class="d-hp" type="text" name="b_8e1abc47a24dbf1b221ae3782_f1fd16d180" tabindex="-1" value="" autocomplete="off"></div>'
+def subscribe_block(placement, variant, title, sub):
+    return (f'<div class="d-subscribe d-subscribe--{variant}" data-placement="{placement}">'
+            f'<div class="d-subscribe-copy"><p class="d-subscribe-title">{title}</p><p class="d-subscribe-sub">{sub}</p></div>'
+            f'<form class="d-subscribe-form" novalidate><label class="d-sr" for="sub-email-{placement}">Email</label>'
+            f'<input id="sub-email-{placement}" type="email" name="EMAIL" placeholder="you@company.com" autocomplete="email" required>{HP}'
+            f'<button type="submit">Get updates</button></form>'
+            f'<p class="d-subscribe-fine">One email per edition. Unsubscribe anytime. <a href="https://dvc.ai/privacy" target="_blank" rel="noopener">Privacy</a></p>'
+            f'<p class="d-subscribe-status" role="status" aria-live="polite"></p></div>')
+def apply_bar(placement, lead):
+    return (f'<a class="d-apply-inline" data-placement="{placement}" href="https://app.theoss.ai/invest?utm_source=state-of-ai&amp;utm_medium=report-{placement}&amp;utm_campaign=soai-nov-2026" target="_blank" rel="noopener">'
+            f'<span>{lead}</span><strong>Apply to invest with us →</strong></a>')
+def wrap_section(inner):
+    return f'<section class="section d-cta-section"><div class="container">{inner}</div></section>'
+
+# After chapter 1 (AI stack): a slim subscribe line, inside the chapter so analytics files it under chapter 1.
+i = once('<article class="visual-chapter" data-chapter="2"')
+k = s.rfind('</article>', 0, i)
+s = s[:k] + wrap_section(subscribe_block('after-ai-stack', 'inline', 'We update this report as the market moves.', 'Get each new edition by email.')) + s[k:]
+log.append('subscribe line after chapter 1')
+
+# After chapter 4 (Services): an Apply bar.
+i = once('<article class="visual-chapter" data-chapter="5"')
+k = s.rfind('</article>', 0, i)
+s = s[:k] + wrap_section(apply_bar('after-services', 'DVC invests across the AI stack.')) + s[k:]
+log.append('apply bar after chapter 4')
+
+# Chapter 7: an Apply bar right after the DVC thesis.
+ti = enc('>THE DVC THESIS</h3>', 'div', 1)
+tj = element_end(s, ti)
+s = s[:tj] + apply_bar('after-dvc-thesis', 'DVC invests across the AI stack.') + s[tj:]
+log.append('apply bar after the DVC thesis')
+
+# End of the report: the full subscribe module right after the closing Apply button.
+ai = once('<a class="apply-closing')
+aj = element_end(s, ai)
+s = s[:aj] + subscribe_block('report-end', 'module', 'Get the next edition', 'We update this report as the market moves. Each new edition comes to your inbox.') + s[aj:]
+log.append('subscribe module at the end')
+
+replace('<script src="analytics.js?v=a4"></script>', '<script src="analytics.js?v=a5"></script><script src="subscribe.js?v=s3"></script>', 'subscribe.js loaded; analytics cache bump')

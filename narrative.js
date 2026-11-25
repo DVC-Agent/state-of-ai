@@ -105,18 +105,32 @@
   if (window.SERVICES_MATRIX && document.getElementById('seq-matrix-mount')) window.SERVICES_MATRIX.render('seq-matrix-mount');
   if (window.ATTACK_ANGLES && document.getElementById('attack-angles-block')) window.ATTACK_ANGLES.renderStage('attack-angles-block');
   // Shared exploration affordance. No hover-only dependency, including on the deck map.
-  // Tip text is authored markup. It is never parsed as HTML: tags are stripped to plain text, line breaks
-  // kept, entities decoded, and each http(s) link is listed as its address, so attribute text cannot inject markup.
-  var TIP_ENTITIES={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&nbsp;':' '};
-  function tipContent(markup) {
-    var urls=[];
-    var text=markup.replace(/<a\b[^>]*\bhref=["'](https?:\/\/[^"']+)["'][^>]*>/gi,function(m,u){urls.push(u);return '';})
-      .replace(/<br\s*\/?>/gi,'\n').replace(/<\/(p|li)>/gi,'\n').replace(/<[^>]*>/g,'')
-      .replace(/&(amp|lt|gt|quot|#39|nbsp);/g,function(e){return TIP_ENTITIES[e];});
-    var out=document.createDocumentFragment(),body=document.createElement('div');
-    body.style.whiteSpace='pre-line';body.textContent=text.trim();out.appendChild(body);
-    urls.forEach(function(u){var code=document.createElement('code');code.className='source-address';code.textContent=u;out.appendChild(code);});
-    return out;
+  /* Tooltip markup comes from data attributes in our own HTML. It is never handed to the HTML parser:
+     a small tokenizer rebuilds the few tags tips use (bold, italics, spans, line breaks, https links)
+     with createElement and createTextNode, so attribute text cannot turn into script or event handlers. */
+  function appendSafeMarkup(target, markup) {
+    var ENT = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&nbsp;': ' ' };
+    var ALLOWED = { strong: 1, b: 1, em: 1, i: 1, span: 1, small: 1, br: 1, a: 1 };
+    var decode = function (t) { return t.replace(/&(amp|lt|gt|quot|#39|nbsp);/g, function (e) { return ENT[e]; }); };
+    var stack = [target], re = /<(\/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>|[^<]+|</g, m, src = String(markup || '');
+    while ((m = re.exec(src))) {
+      var top = stack[stack.length - 1];
+      if (!m[2]) { top.appendChild(document.createTextNode(decode(m[0]))); continue; }
+      var tag = m[2].toLowerCase();
+      if (!ALLOWED[tag]) continue;
+      if (m[1]) {
+        for (var k = stack.length - 1; k > 0; k--) { if (stack[k].nodeName.toLowerCase() === tag) { stack.length = k; break; } }
+        continue;
+      }
+      var node = document.createElement(tag);
+      if (tag === 'a') {
+        var h = /\bhref\s*=\s*["']([^"']+)["']/i.exec(m[3]), url = h ? decode(h[1]) : '';
+        if (/^https:\/\/[^\s"'<>]+$/i.test(url)) { node.setAttribute('href', url); node.target = '_blank'; node.rel = 'noopener noreferrer'; }
+      }
+      top.appendChild(node);
+      if (tag !== 'br') stack.push(node);
+    }
+    return target;
   }
   window.bindExplorerTips = function(scope) {
     (scope || document).querySelectorAll('[data-tip]').forEach(function(el) {
@@ -126,7 +140,10 @@
         if(!dialog)return;
         previousFocus=el;tip.hidden=true;
         var box=dialog.querySelector('.metric-dialog-content'),wrap=document.createElement('div');
-        wrap.className='explorer-dialog-content';wrap.appendChild(tipContent(el.getAttribute('data-tip')||''));
+        wrap.className='explorer-dialog-content';appendSafeMarkup(wrap,el.getAttribute('data-tip'));
+        wrap.querySelectorAll('a[href]').forEach(function(a){
+          var url=document.createElement('code');url.className='source-address';url.textContent=a.href;a.after(url);
+        });
         box.textContent='';box.appendChild(wrap);
         dialog.showModal();
       }

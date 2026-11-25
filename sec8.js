@@ -40,7 +40,12 @@
         const detail = this.getAttribute('data-detail');
         const sector = this.getAttribute('data-sector');
         if (detail) {
-          tooltip.innerHTML = '<strong style="color:#fff;display:block;margin-bottom:4px">' + sector + '</strong>' + detail;
+          tooltip.textContent = '';
+          const head = document.createElement('strong');
+          head.style.cssText = 'color:#fff;display:block;margin-bottom:4px';
+          head.textContent = sector || '';
+          tooltip.appendChild(head);
+          tooltip.appendChild(document.createTextNode(detail));
           tooltip.classList.add('visible');
         }
       });

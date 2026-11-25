@@ -6,6 +6,35 @@
 (function () {
   'use strict';
 
+  /* Tooltip markup comes from data attributes in our own HTML. It is never handed to the HTML parser:
+     a small tokenizer rebuilds the few tags tips use (bold, italics, spans, line breaks, https links)
+     with createElement and createTextNode, so attribute text cannot turn into script or event handlers. */
+  function appendSafeMarkup(target, markup) {
+    var ENT = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&nbsp;': ' ' };
+    var ALLOWED = { strong: 1, b: 1, em: 1, i: 1, span: 1, small: 1, br: 1, a: 1 };
+    var decode = function (t) { return t.replace(/&(amp|lt|gt|quot|#39|nbsp);/g, function (e) { return ENT[e]; }); };
+    var stack = [target], re = /<(\/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>|[^<]+|</g, m, src = String(markup || '');
+    while ((m = re.exec(src))) {
+      var top = stack[stack.length - 1];
+      if (!m[2]) { top.appendChild(document.createTextNode(decode(m[0]))); continue; }
+      var tag = m[2].toLowerCase();
+      if (!ALLOWED[tag]) continue;
+      if (m[1]) {
+        for (var k = stack.length - 1; k > 0; k--) { if (stack[k].nodeName.toLowerCase() === tag) { stack.length = k; break; } }
+        continue;
+      }
+      var node = document.createElement(tag);
+      if (tag === 'a') {
+        var h = /\bhref\s*=\s*["']([^"']+)["']/i.exec(m[3]), url = h ? decode(h[1]) : '';
+        if (/^https:\/\/[^\s"'<>]+$/i.test(url)) { node.setAttribute('href', url); node.target = '_blank'; node.rel = 'noopener noreferrer'; }
+      }
+      top.appendChild(node);
+      if (tag !== 'br') stack.push(node);
+    }
+    return target;
+  }
+
+
   /* Shared tooltip popup (singleton) */
   var popup = null;
   var hideTimer = null;
@@ -42,7 +71,8 @@
     var p = getPopup();
     clearTimeout(hideTimer);
     activeEl = el;
-    p.innerHTML = el.getAttribute('data-tip');
+    p.textContent = '';
+    appendSafeMarkup(p, el.getAttribute('data-tip'));
 
     // Modifier classes
     p.classList.remove('aa-tip-popup--funded', 'aa-tip-popup--model');

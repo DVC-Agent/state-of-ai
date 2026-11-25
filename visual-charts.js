@@ -27,7 +27,7 @@
       if(!el||!canvas)return;
       el.classList.add('compute-picture');
       var h=el.querySelector('h3,h4');if(h)h.textContent='Training did not disappear. It changed shape.';
-      source(el,'computeMix','Anthropic + OpenAI combined. September 13 analyst model; both Q3 and Q4 2026 are estimates, not company disclosures.');
+      source(el,'computeMix','Modeled share of lab compute capacity, Anthropic + OpenAI combined. The SemiAnalysis model is dated September 13, before Q3 results; Q3 and Q4 2026 are model estimates, not company disclosures.');
       var controls=document.createElement('div');controls.className='compute-controls';
       controls.innerHTML='<span>OpenAI + Anthropic · modeled share of lab compute capacity</span><button type="button" class="evidence-switch" aria-pressed="false">Full timeline</button>';
       el.insertBefore(controls,canvas);
@@ -62,7 +62,7 @@
         if(c){c.data=data();c.update();}
       }
       container.querySelectorAll('[data-company]:not([data-company="oracle"])').forEach(function(b){b.setAttribute('aria-pressed','true');b.addEventListener('click',function(){var k=b.dataset.company;active.has(k)?active.delete(k):active.add(k);b.classList.toggle('active',active.has(k));b.setAttribute('aria-pressed',String(active.has(k)));update();});});
-      source(container,'capexTotal','Selected four, calendar 2026 issuer guidance; $720–745B combined range. Different accounting scopes, not AI-only spending.');
+      source(container,'capexTotal','Selected four, calendar 2026 issuer guidance; $720–740B combined range. Different accounting scopes, not AI-only spending.');
       whenVisible(canvas,function(){c=new Chart(canvas,{type:'bar',data:data(),options:options('B')});});
       update();
     },

@@ -5,6 +5,7 @@ from pathlib import Path
 from copy import deepcopy
 import subprocess,json,re,html
 from bs4 import BeautifulSoup,Comment,Doctype
+import sys;sys.path.insert(0,str(Path(__file__).resolve().parent));import nov19_refresh
 
 ROOT=Path(__file__).resolve().parent.parent
 BASE=ROOT/"versions/pre-seven-chapters"
@@ -270,9 +271,9 @@ for card in s.select(".model-card"):
         stat=card.select_one(".model-stat")
         if key in ["deepseek","kimi","glm","metaModels","priceGemini"]:set_text(stat,m["display"])
         if key=="pricePremium" and "Sol" in txt:
-            set_text(card.select_one(".model-name"),"GPT-6.1 Sol / Luna")
+            set_text(card.select_one(".model-name"),"GPT-6.2 Sol / Luna")
             set_text(stat,"$2/$10 · $0.10/$0.50")
-            card["data-tip"]="GPT-6.1 Sol: $2/$10. GPT-6 Luna: $0.10/$0.50. Standard input/output USD per 1M tokens. "+cite("priceWorkhorse")
+            card["data-tip"]="GPT-6.2 Sol: $2/$10. GPT-6 Luna: $0.10/$0.50. Standard input/output USD per 1M tokens. "+cite("priceWorkhorse")
         elif key=="priceClaude":
             if "Fable" in txt:
                 set_text(stat,"$10 / $50")
@@ -517,7 +518,7 @@ manifest["cover_unchanged"]=True
 for q,n in manifest["report"].items():
     if q in [".capex-tog"]:continue
     assert manifest["after_report"][q]>=n,(q,n,manifest["after_report"][q])
-(ROOT/"index.html").write_text(str(s))
+(ROOT/"index.html").write_text(nov19_refresh.apply(str(s),nov19_refresh.REPORT,"report"))
 (ROOT/"audit/visual-preservation.json").write_text(json.dumps(manifest,indent=2))
 print("Restored original report graphics:",manifest["after_report"],"copy folds",folded)
 notes_head=deepcopy(s.head)
@@ -530,7 +531,7 @@ notes=f'''<main class="container update-page"><a href="index.html">← Full repo
 <article><h2>Read the denominator</h2><p>The benchmark suite is vendor-selected. The compute model covers OpenAI and Anthropic combined, and marks both Q3 and Q4 2026 as estimates. Forecasts are not observations.</p></article>
 </div><p><a href="{METRICS["geminiBenchmarks"]["url"]}" target="_blank" rel="noopener noreferrer">Google DeepMind model card ↗</a> · <a href="{METRICS["computeMix"]["url"]}" target="_blank" rel="noopener noreferrer">SemiAnalysis source ↗</a></p>
 <p><a href="slides.html">Open the slides →</a> · <a href="versions/pre-seven-chapters/index.html">Preserved previous version →</a></p></main>'''
-(ROOT/"whats-new.html").write_text(f'<!DOCTYPE html><html lang="en">{notes_head}<body>{notes}</body></html>')
+(ROOT/"whats-new.html").write_text(nov19_refresh.apply(f'<!DOCTYPE html><html lang="en">{notes_head}<body>{notes}</body></html>',nov19_refresh.WHATS_NEW,"whats-new",common=False))
 
 # Restore the original application behavior with narrowly scoped replacements.
 js=(BASE/"app.js").read_text()

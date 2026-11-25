@@ -1,5 +1,5 @@
 /* The seven-part report, slide figures, evidence cards and mouseovers share these records.
- * Evidence cut: 2026-10-16. A historical observation is never rolled forward implicitly.
+ * Evidence cut: 2026-10-16; selected figures refreshed 2026-11-19. A historical observation is never rolled forward implicitly.
  */
 (function(root) {
   'use strict';
@@ -23,34 +23,34 @@
   var SEQ='https://sequoiacap.com/article/services-the-new-software/';
   add('energy2025','Global data-center electricity use','485 TWh','2025 observed baseline','2026-10-14',IEA,'IEA','official','All data centers, not only AI. Historical consumption, not operating generation capacity.');
   add('energy2030','Global data-center electricity outlook','950 TWh','2030 central projection','2026-10-14',IEA,'IEA','forecast','All data centers. A forecast, not delivered capacity or AI-only demand.');
-  from('nvidiaQuarter','nvidia.quarter','NVIDIA revenue','$96.2B','Q2 FY2027; quarter ended July 26, 2026','NVIDIA','Reported quarterly revenue, rounded from $96.221B. Not annual revenue or a hardware TAM.');
+  from('nvidiaQuarter','nvidia.quarter','NVIDIA revenue','$115.8B','Q3 FY2027; reported November 2026','NVIDIA','Reported quarterly revenue; data center $107.6B. Q4 guided to $130B ±3%. Not annual revenue or a hardware TAM.');
   from('capexAmazon','capex.amazon','Amazon cash capex guidance','$220B','Calendar 2026 guidance','Amazon','Cash capex guidance. Finance-lease treatment is not harmonized with other issuers.');
   from('capexAlphabet','capex.alphabet','Alphabet capex guidance','$195-205B','Calendar 2026 guidance','Alphabet','Consolidated capex guidance; midpoint $200B. Not AI-only spending.');
-  from('capexMicrosoft','capex.microsoft','Microsoft reported capex guide','$175B','Calendar 2026 guidance','Microsoft','Excludes operating leases. Reclassification changes presentation, not underlying investment expectations.');
-  from('capexMeta','capex.meta','Meta capex guidance','$130-145B','Calendar 2026 guidance','Meta','Includes finance-lease principal; midpoint $137.5B.');
-  from('capexTotal','capex.topFour2026','Selected-four capex midpoint','$732.5B','Calendar 2026 issuer guidance','Issuer earnings calls','Arithmetic sum: Amazon 220 + Alphabet 200 + Microsoft 175 + Meta 137.5, in billions. Mixed accounting scopes, not total AI spend.');
-  from('capexRange','capex.topFour2026','Selected-four guidance range','$720-745B','Calendar 2026 issuer guidance','Issuer earnings calls','Arithmetic lower/upper bounds with Amazon and Microsoft point guides. Mixed scopes, not a statistical confidence interval.');
+  from('capexMicrosoft','capex.microsoft','Microsoft reported capex guide','~$170B','Calendar 2026 guidance after the Q3 call','Microsoft','Excludes operating leases. Reclassification changes presentation, not underlying investment expectations.');
+  from('capexMeta','capex.meta','Meta capex guidance','$135-145B','Calendar 2026 guidance after the Q3 call','Meta','Includes finance-lease principal; midpoint $140B.');
+  from('capexTotal','capex.topFour2026','Selected-four capex midpoint','$730B','Calendar 2026 issuer guidance after Q3 calls','Issuer earnings calls','Arithmetic sum: Amazon 220 + Alphabet 200 + Microsoft 170 + Meta 140, in billions. Mixed accounting scopes, not total AI spend.');
+  from('capexRange','capex.topFour2026','Selected-four guidance range','$720-740B','Calendar 2026 issuer guidance after Q3 calls','Issuer earnings calls','Arithmetic lower/upper bounds with Amazon and Microsoft point guides. Mixed scopes, not a statistical confidence interval.');
   M.capexTotal.detail=M.capexTotal.qualifier;
-  M.capexRange.detail='Selected-four calendar-2026 issuer guidance ranges from $720B to $745B, with a $732.5B midpoint. Company accounting scopes differ.';
+  M.capexRange.detail='Selected-four calendar-2026 issuer guidance ranges from $720B to $740B, with a $730B midpoint after Q3 calls. Company accounting scopes differ.';
   M.capexMeta.detail=M.capexMeta.qualifier;
-  from('pricePremium','openai.flagship','Premium API list-price tier','$10 / $50','Per 1M input / output tokens; October 16 cut','OpenAI pricing','GPT-6 Astra standard short-context prices. Claude Fable 5.1 has the same input/output list prices. Cache and processing modes differ.');
-  from('priceWorkhorse','openai.flagship','Workhorse API list-price tier','$2 / $10','Per 1M input / output tokens; October 16 cut','OpenAI pricing','GPT-6.1 Sol standard short-context prices. Claude Sonnet 5.5 has the same input/output list prices. Not equal cost per successful task.');
+  from('pricePremium','openai.flagship','Premium API list-price tier','$8 / $40','Per 1M input / output tokens; November 17 cut','OpenAI pricing','GPT-6.2 Astra standard short-context prices, 20% below GPT-6 Astra. Claude Fable 5.2 has the same input/output list prices. Cache and processing modes differ.');
+  from('priceWorkhorse','openai.flagship','Workhorse API list-price tier','$2 / $10','Per 1M input / output tokens; November 17','OpenAI pricing','GPT-6.2 Sol standard short-context prices. Claude Sonnet 5.5 has the same input/output list prices. Not equal cost per successful task.');
   from('priceSmall','openai.flagship','Small-model API list-price tier','$0.10 / $0.50','Per 1M input / output tokens; October 16 cut','OpenAI pricing','GPT-6 Luna standard short-context prices. Haiku 5.5 matches only for prompts up to 100K tokens; its longer prompts cost $0.50/$2.50.');
-  from('priceClaude','anthropic.flagship','Claude pricing and context rules','Haiku: 100K threshold','Per-request prompt length; October 16 cut','Anthropic pricing','Haiku 5.5: $0.10/$0.50 up to 100K input tokens; $0.50/$2.50 above. Fable 5.1 $10/$50; Opus 5.5 $4/$20; Sonnet 5.5 $2/$10. All per 1M input/output tokens.');
+  from('priceClaude','anthropic.flagship','Claude pricing and context rules','Haiku: 100K threshold','Per-request prompt length; November 9 cut','Anthropic pricing','Haiku 5.5: $0.10/$0.50 up to 100K input tokens; $0.50/$2.50 above. Fable 5.2 $8/$40; Opus 5.5 $4/$20; Sonnet 5.5 $2/$10. All per 1M input/output tokens.');
   from('priceGemini','google.flagship','Gemini 4 Argon introductory pricing','$2 / $10','Per 1M input/output; through November 30, 2026','Google Cloud','Introductory rate. Standard prices become $4/$20 after November 30; not a permanent price comparison.');
   from('metaModels','meta.flagship','Meta October model release','Muse Wonder','October 12, 2026 announcement','Meta','Wonder through Meta Model API and Muse Code; Wonder Full through subscriptions. Price and open-weight status not inferred.');
   add('deepseek','DeepSeek V4.1 Flash','MIT weights','Model card checked October 16, 2026','2026-09-10','https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash','DeepSeek model card','official','Downloadable MIT-licensed weights; up to 1M context. Hosting control is not a promise of low total serving cost.');
   add('kimi','Kimi K3','1M context','Release material checked October 16, 2026','2026-10-16','https://www.kimi.com/en/blog/kimi-k3','Moonshot / Kimi','company-disclosed','Page does not state a calendar launch date. It describes 1M context and a full-weight release schedule. Verify the actual weight artifact and exact license before use; do not infer unrestricted rights.');
   add('glm','GLM-5.3 and GLM-5.3-Flash','Distinct releases','August 18 and August 26, 2026','2026-08-26','https://docs.z.ai/release-notes/new-released','Z.ai release notes','official','Release notes do not by themselves establish exact downloadable-weight availability or license terms.');
-  from('anthropicRevenue','anthropic.runRate','Anthropic reported revenue','$16.8B','Q3 2026 reported quarter','CNBC','Investor-meeting reporting, not an independently audited public filing. A reported quarter is not an exit run-rate. Adjusted profit is not GAAP profit.','https://www.cnbc.com/2026/10/15/anthropics-third-quarter-revenue-hits-16point8-billion-ipo.html');
+  from('anthropicRevenue','anthropic.runRate','Anthropic reported revenue','$16.96B','Q3 2026 GAAP revenue','Amended S-1 via 247 Wall St','From the amended S-1 (Nov 10); GAAP operating loss $567M. A reported quarter is not an exit run-rate; the separate $81B run-rate at Oct 31 is a different metric.');
   from('openaiRevenue','openai.arr','OpenAI annualized revenue','~$50B','September 2026 annualized pace','Axios','Annualized pace, not booked annual revenue. Partner-sales gross/net treatment differs from Anthropic.','https://www.axios.com/2026/10/08/openai-50-billion-arr-anthropic-revenue-accounting');
   from('higgsfieldRevenue','higgsfield.runRate','Higgsfield annualized revenue','>$1B','September 2026 four-week revenue pace','Higgsfield','Latest four weeks multiplied by 13. Company-disclosed run-rate, not contracted ARR or trailing-year revenue.','https://higgsfield.ai/blog/higgsfield-1b-annualized-revenue-run-rate');
   M.higgsfieldRevenue.asOf='2026-09-29';
   from('lovableRevenue','lovable.arr','Lovable annualized revenue','>$600M','September 24, 2026 disclosure','TechCrunch','Co-founder disclosure. Annualized sales, not contracted ARR; no current employee denominator.');
   M.lovableRevenue.detail='Co-founder Fabian Hedin disclosed more than $600M in annualized revenue on September 24, 2026. This is not contracted ARR or a current revenue-per-employee ratio.';
-  from('rampAny','anthropic.enterpriseShare','Ramp businesses paying any AI vendor','55.9%','September 2026 observed payments','Ramp','Ramp business sample; overlapping vendor payments, not a representative census.');
-  from('rampAnthropic','anthropic.enterpriseShare','Ramp businesses paying Anthropic','43.8%','September 2026 observed payments','Ramp','Vendor payments overlap. Not exclusive market share or share of total AI spend.');
-  from('rampOpenai','anthropic.enterpriseShare','Ramp businesses paying OpenAI','40.6%','September 2026 observed payments','Ramp','Vendor payments overlap. Not exclusive market share or share of total AI spend.');
+  from('rampAny','anthropic.enterpriseShare','Ramp businesses paying any AI vendor','56.8%','October 2026 observed payments','Ramp','Ramp business sample; overlapping vendor payments, not a representative census.');
+  from('rampAnthropic','anthropic.enterpriseShare','Ramp businesses paying Anthropic','44.8%','October 2026 observed payments','Ramp','Vendor payments overlap. Not exclusive market share or share of total AI spend.');
+  from('rampOpenai','anthropic.enterpriseShare','Ramp businesses paying OpenAI','40.6%','October 2026 observed payments','Ramp','Vendor payments overlap. Not exclusive market share or share of total AI spend.');
   add('voiceEnterprise','ElevenLabs enterprise mix','55%','Revenue mix disclosed September 30, 2026','2026-09-30','https://elevenlabs.io/blog/tender-22bn','ElevenLabs','company-disclosed','Enterprise share of company revenue, not share of the voice market.');
   add('voiceConversations','ElevenLabs agent conversations','>15M / week','Disclosed September 30, 2026','2026-09-30','https://elevenlabs.io/blog/tender-22bn','ElevenLabs','company-disclosed','Company-disclosed weekly conversations; not resolved work, independently measured ROI or unique customers.');
   add('aiResearch','Claude-led measured model R&D work','26%','Anthropic internal index; August 2026','2026-10-08','https://press.airstreet.com/p/state-of-ai-2026','Air Street State of AI 2026','reported internal measure','Company-specific supervised R&D measure. Not cross-lab productivity or autonomous recursive improvement.');
@@ -96,8 +96,8 @@
     capex:[
       {key:'amazon',name:'Amazon',low:220,mid:220,high:220,metric:'capexAmazon'},
       {key:'alphabet',name:'Alphabet',low:195,mid:200,high:205,metric:'capexAlphabet'},
-      {key:'microsoft',name:'Microsoft',low:175,mid:175,high:175,metric:'capexMicrosoft'},
-      {key:'meta',name:'Meta',low:130,mid:137.5,high:145,metric:'capexMeta'}
+      {key:'microsoft',name:'Microsoft',low:170,mid:170,high:170,metric:'capexMicrosoft'},
+      {key:'meta',name:'Meta',low:135,mid:140,high:145,metric:'capexMeta'}
     ],
     legacyAnchors:{'sec-0':'top','sec-1':'ai-stack','sec-2':'layer-applications','sec-3':'layer-models','sec-4':'agentic','sec-5':'agent-architecture','sec-6':'agent-evidence','sec-7':'layer-cloud','sec-8':'physical','sec-9':'business-models','sec-healthcare-ai':'healthcare','sec-industrial-ai':'industrial-explorer','sec-10':'control-evidence','sec-11':'control-evidence','sec-12':'investing','sec-13':'dvc-ecosystem','sec-14':'underwriting','sec-15':'investing'}
   };

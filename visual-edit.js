@@ -10,7 +10,7 @@
           var i=+b.dataset.lens;
           root.querySelectorAll('.mf-toggle-btn').forEach(function(x){x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b));});
           document.getElementById('mfYearToggle').dataset.activeIdx=String(i);
-          root.querySelectorAll('[data-lenses]').forEach(function(x){x.textContent=JSON.parse(x.dataset.lenses)[i];});
+          root.querySelectorAll('[data-lenses]').forEach(function(x){x.textContent=JSON.parse(x.dataset.lenses)[i];if(x.dataset.lensTitles)x.title=JSON.parse(x.dataset.lensTitles)[i];});
         });
       });
       var journey=document.getElementById('mfJourneyOverlay');
